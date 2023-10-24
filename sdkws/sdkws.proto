@@ -133,6 +133,12 @@ message FriendRequest{
   string ex = 13;
 }
 
+message GroupSaved{
+  string groupID = 1;
+  string userID = 2;
+  int64 createTime = 3;
+}
+
 
 ///////////////////////////////////base end/////////////////////////////////////
 enum PullOrder{

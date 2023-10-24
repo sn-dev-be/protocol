@@ -105,7 +105,17 @@ const (
 
 	BusinessNotificationBegin = 2000
 	BusinessNotification      = 2001
-	BusinessNotificationEnd   = 2099
+
+	TransferSuccessNotification  = 2002
+	TransferFailedNotification   = 2003
+	RechargeSuccessNotification  = 2004
+	RechargeFailedNotification   = 2005
+	WithdrawSuccessNotification  = 2006
+	WithdrawFailedNotification   = 2007
+	RedPacketTimeoutNotification = 2008
+	TransferReceivedNotification = 2009
+
+	BusinessNotificationEnd = 2099
 
 	ClearConversationNotification = 2101
 	DeleteMsgsNotification        = 2102

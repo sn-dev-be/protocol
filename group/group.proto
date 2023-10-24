@@ -361,6 +361,32 @@ message notificationUserInfoUpdateReq {
 message notificationUserInfoUpdateResp {
 }
 
+
+message SaveGroupReq{
+  string groupID = 1;
+  string userID = 2;
+}
+
+message SaveGroupResp{
+}
+
+message UnsaveGroupReq{
+  string groupID = 1;
+  string userID = 2;
+}
+
+message UnsaveGroupResp{
+}
+
+message GetSavedGroupListReq{
+  string userID = 1;
+}
+
+message GetSavedGroupListResp{
+  int64 total = 1;
+  repeated sdkws.GroupSaved groupSaved = 2;
+}
+
 service group{
   //创建群
   rpc createGroup(CreateGroupReq) returns(CreateGroupResp);
@@ -429,6 +455,15 @@ service group{
   rpc GroupCreateCount(GroupCreateCountReq) returns (GroupCreateCountResp);
 
   rpc NotificationUserInfoUpdate(notificationUserInfoUpdateReq)returns(notificationUserInfoUpdateResp);
+
+  //保存群
+  rpc SaveGroup(SaveGroupReq) returns(SaveGroupResp);
+  //取消保存群
+  rpc UnsaveGroup(UnsaveGroupReq) returns(UnsaveGroupResp);
+  //获取服务端所有保存群组
+  rpc getSavedGroupList(GetSavedGroupListReq) returns (GetSavedGroupListResp);
+
+
 }
 
 
