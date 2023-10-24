@@ -2471,13 +2471,8 @@ type SearchMessageReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-<<<<<<< HEAD
 	SendID      string                   `protobuf:"bytes,1,opt,name=sendID,proto3" json:"sendID,omitempty"` // 发送者ID
 	RecvID      string                   `protobuf:"bytes,2,opt,name=recvID,proto3" json:"recvID,omitempty"` // 接收者ID
-=======
-	SendID      string                   `protobuf:"bytes,1,opt,name=sendID,proto3" json:"sendID,omitempty"` //发送者ID
-	RecvID      string                   `protobuf:"bytes,2,opt,name=recvID,proto3" json:"recvID,omitempty"` //接收者ID
->>>>>>> 009b202be0b5f4dc0726d42dbff0574105d8c291
 	MsgType     int32                    `protobuf:"varint,3,opt,name=msgType,proto3" json:"msgType,omitempty"`
 	SendTime    string                   `protobuf:"bytes,4,opt,name=sendTime,proto3" json:"sendTime,omitempty"`
 	SessionType int32                    `protobuf:"varint,5,opt,name=sessionType,proto3" json:"sessionType,omitempty"`
