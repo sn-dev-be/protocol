@@ -133,6 +133,12 @@ message FriendRequest{
   string ex = 13;
 }
 
+message GroupSaved{
+  string groupID = 1;
+  string userID = 2;
+  int64 createTime = 3;
+}
+
 
 ///////////////////////////////////base end/////////////////////////////////////
 enum PullOrder{
@@ -410,6 +416,19 @@ message GroupMemberInfoSetTips{
   GroupMemberFullInfo opUser = 2;
   int64 operationTime = 3;
   GroupMemberFullInfo changedUser = 4;
+}
+
+message PaymentNotificationTips{
+	string sendID = 1;
+  string sendNickname =2;
+  string recvID =3;
+  string recvNickname=4;
+  string coinNum=5;
+  string coinType=6;
+  string content=7;
+  int32 transactionStatus=8;
+  int32 transactionType=9;
+  string transactionHash =10;
 }
 
 //////////////////////friend/////////////////////
