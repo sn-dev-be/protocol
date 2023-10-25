@@ -89,11 +89,48 @@ const (
 	GroupInfoSetAnnouncementNotification     = 1519
 	GroupInfoSetNameNotification             = 1520
 
+	// Signaling
 	SignalingNotificationBegin = 1600
 	SignalingNotification      = 1601
 	SignalingNotificationEnd   = 1649
 
-	SuperGroupNotificationBegin  = 1650
+	VoiceCall = 1
+	VideoCall = 2
+
+	SignalingInviation            = 1
+	SignalingAccept               = 2
+	SignalingReject               = 3
+	SignalingJoin                 = 4
+	SignalingCancel               = 5
+	SignalingHungUp               = 6
+	SignalingClose                = 7
+	SignalingMicphoneStatusChange = 8
+	SignalingSpeakStatusChange    = 9
+
+	// voiceCall
+	SignalingInvitedNotification               = 1602
+	SignalingAcceptedNotification              = 1603
+	SignalingRejectedNotification              = 1604
+	SignalingJoinedNotification                = 1605
+	SignalingCanceledNotification              = 1606
+	SignalingHungUpNotification                = 1607
+	SignalingMicphoneStatusChangedNotification = 1608
+	SignalingClosedNotification                = 1609
+	SignalingSpeakStatusChangedNotification    = 1610
+	SignalingGroupInvitedNotification          = 1611
+	SignalingSingleChatRejectedNotification    = 1612
+	SignalingGroupJoinedNotification           = 1613
+	SignalingSingleChatCanceledNotification    = 1614
+	SignalingSingleChatClosedNotification      = 1615
+
+	VoiceCallRoomEnabled  = 1
+	VoiceCallRoomDisabled = 2
+
+	RedPacketClaimedNotification       = 2401
+	RedPacketExpiredNotification       = 2402
+	RedPacketClaimedByUserNotification = 2403
+
+	SuperGroupNotificationBegin  = 165
 	SuperGroupUpdateNotification = 1651
 	MsgDeleteNotification        = 1652
 	SuperGroupNotificationEnd    = 1699

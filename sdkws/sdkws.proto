@@ -229,6 +229,55 @@ message TipsComm{
   string jsonDetail = 3;
 }
 
+//////////////////////signaling/////////////////////
+
+message SignalData {
+  string  sendID = 1;
+  string  senderNickname = 2;
+  string  senderFaceURL = 3;
+  int32   mediaType = 4;
+  int32   signalType = 5;
+  bytes   content = 6;
+  int64   createTime = 7;
+  int32   senderPlatformID = 8;
+}
+
+message UserSendSignalMsgResp {
+}
+
+message SignalVoiceCallElem {
+  string channelID = 1;
+  repeated PublicUserInfo opUsers = 2;
+  int64 createTime = 3;
+  int32 status = 4;
+}
+
+message SignalReq {
+  string fromUserID = 1;
+  string channelID = 2;
+  int32 sessionType = 3;
+  string groupID = 4;
+  string customeData = 5;
+  int32 duration = 6;
+  int32 micphoneStatus = 7;
+  repeated string inviteUsersID = 8;
+}
+
+message SignalResp {
+  string channelID = 1;
+  PublicUserInfo user = 2;
+  int32 remainingSeconds = 3;
+  int32 elapsedSeconds = 4;
+  int32 micphoneStatus = 5;
+}
+
+//////////////////////redPacket/////////////////////
+message RedPacketTips {
+    string messageID = 1;
+    string redPacketID = 2;
+    PublicUserInfo claimUser = 3;
+}
+
 //////////////////////group/////////////////////
 
 
@@ -510,7 +559,6 @@ message MarkAsReadTips {
   repeated int64 seqs = 3;
   int64 hasReadSeq = 4;
 }
-
 
 message SetAppBackgroundStatusReq {
   string userID = 1;
