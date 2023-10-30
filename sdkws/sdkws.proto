@@ -278,10 +278,20 @@ message SignalResp {
 }
 
 //////////////////////redPacket/////////////////////
+message RedPacketElem {
+  string redPacketID = 1;
+  string greetings = 2;
+  int32 status = 3;
+}
+
 message RedPacketTips {
-    string messageID = 1;
-    string redPacketID = 2;
-    PublicUserInfo claimUser = 3;
+  string clientMsgID = 1;
+  string redPacketID = 2;
+  PublicUserInfo claimUser = 3;
+  int64 seq = 4;
+  string conversationID = 5;
+  int32 sessionType = 6;
+  int32 status = 7;
 }
 
 //////////////////////group/////////////////////
