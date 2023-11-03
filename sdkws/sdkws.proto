@@ -290,7 +290,7 @@ message RedPacketTips {
   PublicUserInfo claimUser = 3;
   int64 seq = 4;
   string conversationID = 5;
-  int32 sessionType = 6;
+  int32 contentType  = 6;
   int32 status = 7;
 }
 
