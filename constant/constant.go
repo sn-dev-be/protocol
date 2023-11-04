@@ -152,6 +152,8 @@ const (
 	RedPacketTimeoutNotification = 2008
 	TransferReceivedNotification = 2009
 
+	WalletBindChangedNotification = 2010
+
 	BusinessNotificationEnd = 2099
 
 	ClearConversationNotification = 2101
