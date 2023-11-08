@@ -139,6 +139,27 @@ message GroupSaved{
   int64 createTime = 3;
 }
 
+message ServerFullInfo {
+  string serverID = 1;
+  string serverName = 2;
+  string icon = 3;
+  string description = 4;
+  string banner = 5;
+  string ownerUserID = 6;
+  int32 memberNumber = 7;
+  int32 applyMode = 8;
+  int32 inviteMode = 9;
+  int32 searchable = 10;
+  int32 userMutualAccessible = 11;
+  int32 status = 12;
+  int32 categoryNumber = 13;
+  int32 channelNumber = 14;
+  string ex = 15;
+  string createTime = 16;
+  repeated string memberAvatarList = 17;
+
+}
+
 
 ///////////////////////////////////base end/////////////////////////////////////
 enum PullOrder{

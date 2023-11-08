@@ -14,14 +14,63 @@
 
 syntax = "proto3";
 package OpenIMServer.club;
-// import "sdkws/sdkws.proto";
+import "sdkws/sdkws.proto";
 // import "wrapperspb/wrapperspb.proto";
 option go_package = "github.com/OpenIMSDK/protocol/club";
 
-message CreateServerReq {}
+message CreateServerReq {
+  string serverID = 1;
+  string serverName = 2;
+  string icon = 3;
+  string description = 4;
+  string banner = 5;
+  int32 applyMode = 6;
+  int32 inviteMode = 7;
+  int32 searchable = 8;
+  int32 userMutualAccessible = 9;
+  int32 status = 10;
+  string ownerUserID = 11;
+  string ex = 12;
+}
+
+
 message CreateServerResp {}
+
+message GetServerListReq {
+  sdkws.RequestPagination pagination = 1;
+  string serverName = 2;
+}
+
+
+message GetServerListResp {
+  int32 total = 1;
+  repeated sdkws.ServerFullInfo servers = 2;
+}
+
+message GetServerDetailsReq {
+  string serverID = 1;
+}
+
+
+message GetServerDetailsResp {
+  sdkws.ServerFullInfo server = 1;
+}
+
+message DeleteServerReq {
+  repeated string serverIDList = 1;
+}
+
+
+message DeleteServerResp {
+}
 
 service club {
   // 创建部落
   rpc createServer(CreateServerReq) returns (CreateServerResp);
+  //获取部落列表
+  rpc getServerList(GetServerListReq) returns (GetServerListResp);
+  //获取部落详情
+  rpc getServerDetails(GetServerDetailsReq) returns (GetServerDetailsResp);
+  //删除部落
+  rpc batchDeleteServers(DeleteServerReq) returns (DeleteServerResp);
 }
