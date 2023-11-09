@@ -18,6 +18,19 @@ import "sdkws/sdkws.proto";
 // import "wrapperspb/wrapperspb.proto";
 option go_package = "github.com/OpenIMSDK/protocol/club";
 
+message RoleAuth {
+	string manageServer = 1;          
+	string shareServer = 2;           
+	string manageMember = 3;          
+	string sendMsg = 4;        
+	string manageMsg = 5;     
+	string manageCommunity = 6;  
+	string postTweet = 7;
+	string tweetReply = 8;
+	string manageGroupCategory = 9;
+	string manageGroup = 10;
+ }
+
 message CreateServerReq {
   string serverID = 1;
   string serverName = 2;
@@ -33,8 +46,17 @@ message CreateServerReq {
   string ex = 12;
 }
 
-
 message CreateServerResp {}
+
+message CreateGroupCategoryReq {
+  string serverID = 1;
+  string categoryName = 2;
+  string ownerUserID  = 3;
+
+}
+
+message CreateGroupCategoryResp {}
+
 
 message GetServerListReq {
   sdkws.RequestPagination pagination = 1;
@@ -73,4 +95,7 @@ service club {
   rpc getServerDetails(GetServerDetailsReq) returns (GetServerDetailsResp);
   //删除部落
   rpc batchDeleteServers(DeleteServerReq) returns (DeleteServerResp);
+
+  // 创建分组
+  rpc createGroupCategory(CreateGroupCategoryReq) returns (CreateGroupCategoryResp);
 }

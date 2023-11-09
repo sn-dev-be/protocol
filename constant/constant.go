@@ -233,6 +233,7 @@ const (
 	NormalGroup  = 0
 	SuperGroup   = 1
 	WorkingGroup = 2
+	ServerGroup  = 3
 
 	GroupBaned          = 3
 	GroupBanPrivateChat = 4
@@ -431,4 +432,9 @@ const (
 const (
 	ChatChannelType = 1
 	AppChannelType  = 2
+)
+
+const (
+	ServerRoleAuthAllowed = "allowed"
+	ServerRoleAuthDenied  = "denied"
 )
