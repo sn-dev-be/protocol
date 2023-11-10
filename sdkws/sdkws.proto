@@ -37,6 +37,13 @@ message GroupInfo{
   int32 applyMemberFriend = 15;
   int64 notificationUpdateTime = 16;
   string notificationUserID = 17;
+  int32 conditionType = 18;
+  string condition = 19;
+  int32 syncMode = 20;
+  int32 visitorMode = 21;
+  int32 viewMode = 22;
+  string groupCategoryID = 23;
+  string serverID = 24;
 }
 
 message GroupInfoForSet{

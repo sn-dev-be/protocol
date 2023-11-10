@@ -152,11 +152,8 @@ const (
 	RedPacketTimeoutNotification = 2008
 	TransferReceivedNotification = 2009
 
-<<<<<<< HEAD
 	WalletBindChangedNotification = 2010
 
-=======
->>>>>>> 5f2b17b (支付通知、保存群)
 	BusinessNotificationEnd = 2099
 
 	ClearConversationNotification = 2101
@@ -179,6 +176,8 @@ const (
 	GroupChatType        = 2
 	SuperGroupChatType   = 3
 	NotificationChatType = 4
+	ServerGroupChatType  = 5
+
 	// token.
 	NormalToken  = 0
 	InValidToken = 1

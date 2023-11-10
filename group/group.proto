@@ -33,14 +33,7 @@ message CreateGroupResp{
 
 message CreateServerGroupReq{
   sdkws.GroupInfo groupInfo = 1;
-  int32 condition = 2;
-  int32 conditionType = 3;
-  int32 syncMode = 4;
-  int32 visitorMode = 5;
-  int32 viewMode = 6;
-  string groupCategoryID = 7;
-  string serverID = 8;
-  string ownerUserID = 9; //owner
+  string ownerUserID = 2; //owner
 }
 message CreateServerGroupResp{
   sdkws.GroupInfo groupInfo = 1;
@@ -479,12 +472,4 @@ service group{
   rpc getSavedGroupList(GetSavedGroupListReq) returns (GetSavedGroupListResp);
   //创建部落群
   rpc createServerGroup(CreateServerGroupReq) returns(CreateServerGroupResp);
-
 }
-
-
-
-
-
-
-
