@@ -395,6 +395,13 @@ message GetSavedGroupListResp{
   repeated sdkws.GroupSaved groupSaved = 2;
 }
 
+message GetServerGroupsReq{
+  string serverID = 1;
+}
+message GetServerGroupsResp{
+  repeated sdkws.ServerGroupListInfo groups = 1;
+}
+
 service group{
   //创建群
   rpc createGroup(CreateGroupReq) returns(CreateGroupResp);
@@ -472,4 +479,6 @@ service group{
   rpc getSavedGroupList(GetSavedGroupListReq) returns (GetSavedGroupListResp);
   //创建部落群
   rpc createServerGroup(CreateServerGroupReq) returns(CreateServerGroupResp);
+  //获取部落群集合
+  rpc GetServerGroups(GetServerGroupsReq) returns(GetServerGroupsResp);
 }

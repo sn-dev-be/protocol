@@ -62,27 +62,29 @@ message GetServerListReq {
   sdkws.RequestPagination pagination = 1;
   string serverName = 2;
 }
-
-
 message GetServerListResp {
   int32 total = 1;
   repeated sdkws.ServerFullInfo servers = 2;
 }
 
+message GetJoinedServerListReq{
+  string serverID = 1;
+}
+message GetJoinedServerListResp{
+  repeated sdkws.ServersListInfo servers = 1;
+}
+
 message GetServerDetailsReq {
   string serverID = 1;
 }
-
-
 message GetServerDetailsResp {
   sdkws.ServerFullInfo server = 1;
+  repeated sdkws.GroupCategoryListInfo categoryList =2;
 }
 
 message DeleteServerReq {
   repeated string serverIDList = 1;
 }
-
-
 message DeleteServerResp {
 }
 
@@ -91,11 +93,12 @@ service club {
   rpc createServer(CreateServerReq) returns (CreateServerResp);
   //获取部落列表
   rpc getServerList(GetServerListReq) returns (GetServerListResp);
+  //获取加入的部落列表
+  rpc getJoinedServerList(GetJoinedServerListReq) returns(GetJoinedServerListResp);
   //获取部落详情
   rpc getServerDetails(GetServerDetailsReq) returns (GetServerDetailsResp);
   //删除部落
   rpc batchDeleteServers(DeleteServerReq) returns (DeleteServerResp);
-
   // 创建分组
   rpc createGroupCategory(CreateGroupCategoryReq) returns (CreateGroupCategoryResp);
 }
