@@ -645,7 +645,6 @@ message ServersListInfo{
   string serverID = 1;
   string serverName = 2;
   string icon = 3;
-  bool lastPointed = 4; //上次停留的server
 }
 
 message GroupCategoryListInfo{

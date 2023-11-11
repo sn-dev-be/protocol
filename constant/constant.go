@@ -425,6 +425,7 @@ const (
 	Unsubscribe    = 2
 )
 
+// server
 const (
 	DefaultCategoryType = 1
 	SysCategoryType     = 2
@@ -439,4 +440,36 @@ const (
 const (
 	ServerRoleAuthAllowed = "allowed"
 	ServerRoleAuthDenied  = "denied"
+)
+
+// server status
+const (
+	ServerOk = 1
+)
+
+// join server verification
+const (
+	JoinServerNeedVerification = 0 // 需要审核
+	JoinServerDirectly         = 1 // 直接进部落
+
+	ServerResponseNotHandle = 0
+	ServerResponseAgree     = 1
+	ServerResponseRefuse    = -1
+)
+
+const (
+	ServerSearchableDenied  = 0 // 不可以被搜索
+	ServerSearchableAllowed = 1 // 可以被搜索
+)
+
+const (
+	ServerInvitedDenied  = 0 // 不可以邀请
+	ServerInvitedAllowed = 1 // 可以邀请
+)
+
+const (
+	ServerRoleTypeEveryOne   = 0
+	ServerRoleTypeAdmin      = 1
+	ServerRoleTypeSuperAdmin = 2
+	ServerRoleTypeOwner      = 3
 )

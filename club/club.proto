@@ -58,17 +58,14 @@ message CreateGroupCategoryReq {
 message CreateGroupCategoryResp {}
 
 
-message GetServerListReq {
-  sdkws.RequestPagination pagination = 1;
-  string serverName = 2;
+message GetServerRecommendedListReq {
 }
-message GetServerListResp {
-  int32 total = 1;
-  repeated sdkws.ServerFullInfo servers = 2;
+message GetServerRecommendecListResp {
+  repeated sdkws.ServerFullInfo servers = 1;
 }
 
 message GetJoinedServerListReq{
-  string serverID = 1;
+  string userID = 1;
 }
 message GetJoinedServerListResp{
   repeated sdkws.ServersListInfo servers = 1;
@@ -80,6 +77,7 @@ message GetServerDetailsReq {
 message GetServerDetailsResp {
   sdkws.ServerFullInfo server = 1;
   repeated sdkws.GroupCategoryListInfo categoryList =2;
+  bool joined = 3;
 }
 
 message DeleteServerReq {
@@ -88,15 +86,34 @@ message DeleteServerReq {
 message DeleteServerResp {
 }
 
+message JoinServerReq{
+  string serverID = 1;
+  string reqMessage = 2;
+  int32 joinSource = 3;
+  string userID = 4;
+  string invitedUserID = 5;
+}
+message JoinServerResp{}
+
+message QuitServerReq{
+  string serverID = 1;
+  string userID = 2;
+}
+message QuitServerResp{}
+
 service club {
   // 创建部落
   rpc createServer(CreateServerReq) returns (CreateServerResp);
   //获取部落列表
-  rpc getServerList(GetServerListReq) returns (GetServerListResp);
+  rpc getServerRecommendedList(GetServerRecommendedListReq) returns (GetServerRecommendecListResp);
   //获取加入的部落列表
   rpc getJoinedServerList(GetJoinedServerListReq) returns(GetJoinedServerListResp);
   //获取部落详情
   rpc getServerDetails(GetServerDetailsReq) returns (GetServerDetailsResp);
+  //加入部落
+  rpc joinServer(JoinServerReq) returns (JoinServerResp);
+  //退出部落
+  rpc quitServer(QuitServerReq) returns(QuitServerResp);
   //删除部落
   rpc batchDeleteServers(DeleteServerReq) returns (DeleteServerResp);
   // 创建分组
