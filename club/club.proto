@@ -15,21 +15,21 @@
 syntax = "proto3";
 package OpenIMServer.club;
 import "sdkws/sdkws.proto";
-// import "wrapperspb/wrapperspb.proto";
+import "wrapperspb/wrapperspb.proto";
 option go_package = "github.com/OpenIMSDK/protocol/club";
 
 message RoleAuth {
-	string manageServer = 1;          
-	string shareServer = 2;           
-	string manageMember = 3;          
-	string sendMsg = 4;        
-	string manageMsg = 5;     
-	string manageCommunity = 6;  
-	string postTweet = 7;
-	string tweetReply = 8;
-	string manageGroupCategory = 9;
-	string manageGroup = 10;
- }
+  string manageServer = 1;
+  string shareServer = 2;
+  string manageMember = 3;
+  string sendMsg = 4;
+  string manageMsg = 5;
+  string manageCommunity = 6;
+  string postTweet = 7;
+  string tweetReply = 8;
+  string manageGroupCategory = 9;
+  string manageGroup = 10;
+}
 
 message CreateServerReq {
   string serverID = 1;
@@ -45,16 +45,13 @@ message CreateServerReq {
   string ownerUserID = 11;
   string ex = 12;
 }
-
 message CreateServerResp {}
 
 message CreateGroupCategoryReq {
   string serverID = 1;
   string categoryName = 2;
-  string ownerUserID  = 3;
-
+  string ownerUserID = 3;
 }
-
 message CreateGroupCategoryResp {}
 
 
@@ -64,26 +61,71 @@ message GetServerRecommendecListResp {
   repeated sdkws.ServerFullInfo servers = 1;
 }
 
-message GetJoinedServerListReq{
-  string userID = 1;
+message GetServerDetailsReq { string serverID = 1; }
+message GetServerDetailsResp { sdkws.ServerFullInfo server = 1; }
+
+message DeleteServerReq { repeated string serverIDList = 1; }
+message DeleteServerResp {}
+
+///////////////////////serverMember///////////////////////////////
+message GetServerMemberListReq {
+  sdkws.RequestPagination pagination = 1;
+  string serverID = 2;
+  int32 filter = 3;
+}
+message GetServerMemberListResp {
+  uint32 total = 1;
+  repeated sdkws.ServerMemberFullInfo members = 2;
+}
+
+message GetServerMembersInfoReq {
+  string serverID = 1;
+  repeated string userIDs = 2;
+}
+message GetServerMembersInfoResp {
+  repeated sdkws.ServerMemberFullInfo members = 1;
+}
+
+message KickServerMemberReq {
+  string serverID = 1;
+  repeated string kickedUserIDs = 2;
+  string reason = 3;
+}
+message KickServerMemberResp {
+}
+
+message GetJoinedServerListReq {
+  sdkws.RequestPagination pagination = 1;
+  string fromUserID = 2;
 }
 message GetJoinedServerListResp{
-  repeated sdkws.ServersListInfo servers = 1;
+  uint32 total = 1;
+  repeated  sdkws.ServerInfo servers = 2;
 }
 
-message GetServerDetailsReq {
+message GetServerMembersCMSReq {
+  sdkws.RequestPagination pagination = 1;
+  string serverID = 2;
+  string userName = 3;
+}
+message GetServerMembersCMSResp {
+  uint32 total = 1;
+  repeated sdkws.ServerMemberFullInfo members = 2;
+}
+
+message MuteServerMemberReq{
   string serverID = 1;
+  string userID = 2;
+  uint32 mutedSeconds = 3;
 }
-message GetServerDetailsResp {
-  sdkws.ServerFullInfo server = 1;
-  repeated sdkws.GroupCategoryListInfo categoryList =2;
-  bool joined = 3;
+message MuteServerMemberResp{
 }
 
-message DeleteServerReq {
-  repeated string serverIDList = 1;
+message CancelMuteServerMemberReq{
+  string serverID = 1;
+  string userID = 2;
 }
-message DeleteServerResp {
+message CancelMuteServerMemberResp{
 }
 
 message JoinServerReq{
@@ -100,14 +142,53 @@ message QuitServerReq{
   string userID = 2;
 }
 message QuitServerResp{}
+message SetServerMemberInfo{
+  string serverID = 1;
+  string userID = 2;
+  OpenIMServer.protobuf.StringValue nickname = 3;
+  OpenIMServer.protobuf.StringValue faceURL = 4;
+  OpenIMServer.protobuf.Int32Value roleLevel = 5;
+  OpenIMServer.protobuf.StringValue ex = 6;
+}
+message SetServerMemberInfoReq{
+  repeated SetServerMemberInfo members = 1;
+}
+message SetServerMemberInfoResp{
+}
+
+message GetServerMemberUserIDsReq { string serverID = 1; }
+message GetServerMemberUserIDsResp { repeated string userIDs = 1; }
+
+message GetUserInServerMembersReq {
+  string userID = 1;
+  repeated string serverIDs = 2;
+}
+message GetUserInServerMembersResp{
+  repeated sdkws.ServerMemberFullInfo members = 1;
+}
+
+message GetServerMemberRoleLevelReq{
+  string serverID = 1;
+  repeated int32 roleLevels = 2;
+}
+message GetServerMemberRoleLevelResp {
+  repeated sdkws.ServerMemberFullInfo members = 1;
+}
+
+message GetServerMemberCacheReq {
+  string serverID = 1;
+  string serverMemberID = 2;
+}
+message GetServerMemberCacheResp {
+  sdkws.ServerMemberFullInfo member = 1;
+}
+
 
 service club {
   // 创建部落
   rpc createServer(CreateServerReq) returns (CreateServerResp);
   //获取部落列表
   rpc getServerRecommendedList(GetServerRecommendedListReq) returns (GetServerRecommendecListResp);
-  //获取加入的部落列表
-  rpc getJoinedServerList(GetJoinedServerListReq) returns(GetJoinedServerListResp);
   //获取部落详情
   rpc getServerDetails(GetServerDetailsReq) returns (GetServerDetailsResp);
   //加入部落
@@ -116,6 +197,32 @@ service club {
   rpc quitServer(QuitServerReq) returns(QuitServerResp);
   //删除部落
   rpc batchDeleteServers(DeleteServerReq) returns (DeleteServerResp);
+
+
   // 创建分组
   rpc createGroupCategory(CreateGroupCategoryReq) returns (CreateGroupCategoryResp);
+
+
+  //获取某个部落的部落成员
+  rpc getServerMemberList(GetServerMemberListReq) returns(GetServerMemberListResp);
+  //获取某个部落的指定部落成员
+  rpc getServerMembersInfo(GetServerMembersInfoReq) returns(GetServerMembersInfoResp);
+  //踢出部落
+  rpc kickServerMember(KickServerMemberReq) returns (KickServerMemberResp);
+  //获取某个人已加入部落
+  rpc getJoinedServerList(GetJoinedServerListReq) returns (GetJoinedServerListResp);
+  rpc getServerMembersCMS(GetServerMembersCMSReq) returns(GetServerMembersCMSResp);
+  //对某个部落成员禁言
+  rpc muteServerMember(MuteServerMemberReq) returns(MuteServerMemberResp);
+  //对某个部落成员取消禁言
+  rpc cancelMuteServerMember(CancelMuteServerMemberReq) returns(CancelMuteServerMemberResp);
+  //设置部落成员信息
+  rpc setServerMemberInfo(SetServerMemberInfoReq) returns (SetServerMemberInfoResp);
+  //获取某个用户在指定部落中的信息
+  rpc getUserInServerMembers(GetUserInServerMembersReq) returns (GetUserInServerMembersResp);
+  //获取部落成员用户ID
+  rpc getServerMemberUserIDs(GetServerMemberUserIDsReq) returns (GetServerMemberUserIDsResp);
+  //查询部落组中对应级别的成员
+  rpc GetServerMemberRoleLevel(GetServerMemberRoleLevelReq)returns (GetServerMemberRoleLevelResp);
+  rpc GetServerMemberCache(GetServerMemberCacheReq) returns (GetServerMemberCacheResp);
 }

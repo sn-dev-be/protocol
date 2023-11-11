@@ -188,6 +188,7 @@ service conversation {
   rpc GetRecvMsgNotNotifyUserIDs(GetRecvMsgNotNotifyUserIDsReq) returns (GetRecvMsgNotNotifyUserIDsResp);
   rpc CreateSingleChatConversations(CreateSingleChatConversationsReq) returns (CreateSingleChatConversationsResp);
   rpc CreateGroupChatConversations(CreateGroupChatConversationsReq) returns (CreateGroupChatConversationsResp);
+  rpc CreateServerGroupChatConversations(CreateGroupChatConversationsReq) returns (CreateGroupChatConversationsResp);
   rpc SetConversationMaxSeq(SetConversationMaxSeqReq) returns(SetConversationMaxSeqResp);
   rpc GetConversationIDs(GetConversationIDsReq) returns(GetConversationIDsResp);
   rpc SetConversations(SetConversationsReq) returns(SetConversationsResp);

@@ -473,3 +473,10 @@ const (
 	ServerRoleTypeSuperAdmin = 2
 	ServerRoleTypeOwner      = 3
 )
+
+// club
+const (
+	ServerOwner         = 100
+	ServerAdmin         = 60
+	ServerOrdinaryUsers = 20
+)
