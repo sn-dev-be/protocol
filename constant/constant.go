@@ -440,3 +440,10 @@ const (
 	ServerRoleAuthAllowed = "allowed"
 	ServerRoleAuthDenied  = "denied"
 )
+
+// club
+const (
+	ServerOwner         = 100
+	ServerAdmin         = 60
+	ServerOrdinaryUsers = 20
+)
