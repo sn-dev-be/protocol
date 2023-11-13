@@ -480,5 +480,6 @@ service group{
   //创建部落群
   rpc createServerGroup(CreateServerGroupReq) returns(CreateServerGroupResp);
   //获取部落群集合
-  // rpc GetServerGroups(GetServerGroupsReq) returns(GetServerGroupsResp);
+  rpc GetServerGroups(GetServerGroupsReq) returns(GetServerGroupsResp);
+  
 }

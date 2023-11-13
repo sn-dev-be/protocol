@@ -2030,7 +2030,7 @@ var file_conversation_conversation_proto_rawDesc = []byte{
 	0x49, 0x4d, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x2e, 0x63, 0x6f, 0x6e, 0x76, 0x65, 0x72, 0x73,
 	0x61, 0x74, 0x69, 0x6f, 0x6e, 0x2e, 0x43, 0x6f, 0x6e, 0x76, 0x65, 0x72, 0x73, 0x61, 0x74, 0x69,
 	0x6f, 0x6e, 0x52, 0x0d, 0x63, 0x6f, 0x6e, 0x76, 0x65, 0x72, 0x73, 0x61, 0x74, 0x69, 0x6f, 0x6e,
-	0x73, 0x32, 0xa8, 0x0f, 0x0a, 0x0c, 0x63, 0x6f, 0x6e, 0x76, 0x65, 0x72, 0x73, 0x61, 0x74, 0x69,
+	0x73, 0x32, 0xbc, 0x10, 0x0a, 0x0c, 0x63, 0x6f, 0x6e, 0x76, 0x65, 0x72, 0x73, 0x61, 0x74, 0x69,
 	0x6f, 0x6e, 0x12, 0x70, 0x0a, 0x0f, 0x47, 0x65, 0x74, 0x43, 0x6f, 0x6e, 0x76, 0x65, 0x72, 0x73,
 	0x61, 0x74, 0x69, 0x6f, 0x6e, 0x12, 0x2d, 0x2e, 0x4f, 0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53, 0x65,
 	0x72, 0x76, 0x65, 0x72, 0x2e, 0x63, 0x6f, 0x6e, 0x76, 0x65, 0x72, 0x73, 0x61, 0x74, 0x69, 0x6f,
@@ -2152,11 +2152,20 @@ var file_conversation_conversation_proto_rawDesc = []byte{
 	0x6e, 0x49, 0x4d, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x2e, 0x63, 0x6f, 0x6e, 0x76, 0x65, 0x72,
 	0x73, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x2e, 0x47, 0x65, 0x74, 0x43, 0x6f, 0x6e, 0x76, 0x65, 0x72,
 	0x73, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x4f, 0x66, 0x66, 0x6c, 0x69, 0x6e, 0x65, 0x50, 0x75, 0x73,
-	0x68, 0x55, 0x73, 0x65, 0x72, 0x49, 0x44, 0x73, 0x52, 0x65, 0x73, 0x70, 0x42, 0x2c, 0x5a, 0x2a,
-	0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x4f, 0x70, 0x65, 0x6e, 0x49,
-	0x4d, 0x53, 0x44, 0x4b, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x63, 0x6f, 0x6c, 0x2f, 0x63, 0x6f,
-	0x6e, 0x76, 0x65, 0x72, 0x73, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74,
-	0x6f, 0x33,
+	0x68, 0x55, 0x73, 0x65, 0x72, 0x49, 0x44, 0x73, 0x52, 0x65, 0x73, 0x70, 0x12, 0x91, 0x01, 0x0a,
+	0x1a, 0x47, 0x65, 0x74, 0x43, 0x6f, 0x6e, 0x76, 0x65, 0x72, 0x73, 0x61, 0x74, 0x69, 0x6f, 0x6e,
+	0x73, 0x42, 0x79, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x49, 0x44, 0x73, 0x12, 0x38, 0x2e, 0x4f, 0x70,
+	0x65, 0x6e, 0x49, 0x4d, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x2e, 0x63, 0x6f, 0x6e, 0x76, 0x65,
+	0x72, 0x73, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x2e, 0x47, 0x65, 0x74, 0x43, 0x6f, 0x6e, 0x76, 0x65,
+	0x72, 0x73, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x42, 0x79, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x49,
+	0x44, 0x73, 0x52, 0x65, 0x71, 0x1a, 0x39, 0x2e, 0x4f, 0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53, 0x65,
+	0x72, 0x76, 0x65, 0x72, 0x2e, 0x63, 0x6f, 0x6e, 0x76, 0x65, 0x72, 0x73, 0x61, 0x74, 0x69, 0x6f,
+	0x6e, 0x2e, 0x47, 0x65, 0x74, 0x43, 0x6f, 0x6e, 0x76, 0x65, 0x72, 0x73, 0x61, 0x74, 0x69, 0x6f,
+	0x6e, 0x73, 0x42, 0x79, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x49, 0x44, 0x73, 0x52, 0x65, 0x73, 0x70,
+	0x42, 0x2c, 0x5a, 0x2a, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x4f,
+	0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53, 0x44, 0x4b, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x63, 0x6f,
+	0x6c, 0x2f, 0x63, 0x6f, 0x6e, 0x76, 0x65, 0x72, 0x73, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x62, 0x06,
+	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -2243,22 +2252,24 @@ var file_conversation_conversation_proto_depIdxs = []int32{
 	22, // 30: OpenIMServer.conversation.conversation.GetUserConversationIDsHash:input_type -> OpenIMServer.conversation.GetUserConversationIDsHashReq
 	24, // 31: OpenIMServer.conversation.conversation.GetConversationsByConversationID:input_type -> OpenIMServer.conversation.GetConversationsByConversationIDReq
 	26, // 32: OpenIMServer.conversation.conversation.GetConversationOfflinePushUserIDs:input_type -> OpenIMServer.conversation.GetConversationOfflinePushUserIDsReq
-	5,  // 33: OpenIMServer.conversation.conversation.GetConversation:output_type -> OpenIMServer.conversation.GetConversationResp
-	9,  // 34: OpenIMServer.conversation.conversation.GetAllConversations:output_type -> OpenIMServer.conversation.GetAllConversationsResp
-	7,  // 35: OpenIMServer.conversation.conversation.GetConversations:output_type -> OpenIMServer.conversation.GetConversationsResp
-	3,  // 36: OpenIMServer.conversation.conversation.SetConversation:output_type -> OpenIMServer.conversation.SetConversationResp
-	11, // 37: OpenIMServer.conversation.conversation.GetRecvMsgNotNotifyUserIDs:output_type -> OpenIMServer.conversation.GetRecvMsgNotNotifyUserIDsResp
-	13, // 38: OpenIMServer.conversation.conversation.CreateSingleChatConversations:output_type -> OpenIMServer.conversation.CreateSingleChatConversationsResp
-	15, // 39: OpenIMServer.conversation.conversation.CreateGroupChatConversations:output_type -> OpenIMServer.conversation.CreateGroupChatConversationsResp
-	15, // 40: OpenIMServer.conversation.conversation.CreateServerGroupChatConversations:output_type -> OpenIMServer.conversation.CreateGroupChatConversationsResp
-	17, // 41: OpenIMServer.conversation.conversation.SetConversationMaxSeq:output_type -> OpenIMServer.conversation.SetConversationMaxSeqResp
-	19, // 42: OpenIMServer.conversation.conversation.GetConversationIDs:output_type -> OpenIMServer.conversation.GetConversationIDsResp
-	21, // 43: OpenIMServer.conversation.conversation.SetConversations:output_type -> OpenIMServer.conversation.SetConversationsResp
-	23, // 44: OpenIMServer.conversation.conversation.GetUserConversationIDsHash:output_type -> OpenIMServer.conversation.GetUserConversationIDsHashResp
-	25, // 45: OpenIMServer.conversation.conversation.GetConversationsByConversationID:output_type -> OpenIMServer.conversation.GetConversationsByConversationIDResp
-	27, // 46: OpenIMServer.conversation.conversation.GetConversationOfflinePushUserIDs:output_type -> OpenIMServer.conversation.GetConversationOfflinePushUserIDsResp
-	33, // [33:47] is the sub-list for method output_type
-	19, // [19:33] is the sub-list for method input_type
+	28, // 33: OpenIMServer.conversation.conversation.GetConversationsByGroupIDs:input_type -> OpenIMServer.conversation.GetConversationsByGroupIDsReq
+	5,  // 34: OpenIMServer.conversation.conversation.GetConversation:output_type -> OpenIMServer.conversation.GetConversationResp
+	9,  // 35: OpenIMServer.conversation.conversation.GetAllConversations:output_type -> OpenIMServer.conversation.GetAllConversationsResp
+	7,  // 36: OpenIMServer.conversation.conversation.GetConversations:output_type -> OpenIMServer.conversation.GetConversationsResp
+	3,  // 37: OpenIMServer.conversation.conversation.SetConversation:output_type -> OpenIMServer.conversation.SetConversationResp
+	11, // 38: OpenIMServer.conversation.conversation.GetRecvMsgNotNotifyUserIDs:output_type -> OpenIMServer.conversation.GetRecvMsgNotNotifyUserIDsResp
+	13, // 39: OpenIMServer.conversation.conversation.CreateSingleChatConversations:output_type -> OpenIMServer.conversation.CreateSingleChatConversationsResp
+	15, // 40: OpenIMServer.conversation.conversation.CreateGroupChatConversations:output_type -> OpenIMServer.conversation.CreateGroupChatConversationsResp
+	15, // 41: OpenIMServer.conversation.conversation.CreateServerGroupChatConversations:output_type -> OpenIMServer.conversation.CreateGroupChatConversationsResp
+	17, // 42: OpenIMServer.conversation.conversation.SetConversationMaxSeq:output_type -> OpenIMServer.conversation.SetConversationMaxSeqResp
+	19, // 43: OpenIMServer.conversation.conversation.GetConversationIDs:output_type -> OpenIMServer.conversation.GetConversationIDsResp
+	21, // 44: OpenIMServer.conversation.conversation.SetConversations:output_type -> OpenIMServer.conversation.SetConversationsResp
+	23, // 45: OpenIMServer.conversation.conversation.GetUserConversationIDsHash:output_type -> OpenIMServer.conversation.GetUserConversationIDsHashResp
+	25, // 46: OpenIMServer.conversation.conversation.GetConversationsByConversationID:output_type -> OpenIMServer.conversation.GetConversationsByConversationIDResp
+	27, // 47: OpenIMServer.conversation.conversation.GetConversationOfflinePushUserIDs:output_type -> OpenIMServer.conversation.GetConversationOfflinePushUserIDsResp
+	30, // 48: OpenIMServer.conversation.conversation.GetConversationsByGroupIDs:output_type -> OpenIMServer.conversation.GetConversationsByGroupIDsResp
+	34, // [34:49] is the sub-list for method output_type
+	19, // [19:34] is the sub-list for method input_type
 	19, // [19:19] is the sub-list for extension type_name
 	19, // [19:19] is the sub-list for extension extendee
 	0,  // [0:19] is the sub-list for field type_name
@@ -2689,6 +2700,7 @@ type ConversationClient interface {
 	GetUserConversationIDsHash(ctx context.Context, in *GetUserConversationIDsHashReq, opts ...grpc.CallOption) (*GetUserConversationIDsHashResp, error)
 	GetConversationsByConversationID(ctx context.Context, in *GetConversationsByConversationIDReq, opts ...grpc.CallOption) (*GetConversationsByConversationIDResp, error)
 	GetConversationOfflinePushUserIDs(ctx context.Context, in *GetConversationOfflinePushUserIDsReq, opts ...grpc.CallOption) (*GetConversationOfflinePushUserIDsResp, error)
+	GetConversationsByGroupIDs(ctx context.Context, in *GetConversationsByGroupIDsReq, opts ...grpc.CallOption) (*GetConversationsByGroupIDsResp, error)
 }
 
 type conversationClient struct {
@@ -2825,6 +2837,15 @@ func (c *conversationClient) GetConversationOfflinePushUserIDs(ctx context.Conte
 	return out, nil
 }
 
+func (c *conversationClient) GetConversationsByGroupIDs(ctx context.Context, in *GetConversationsByGroupIDsReq, opts ...grpc.CallOption) (*GetConversationsByGroupIDsResp, error) {
+	out := new(GetConversationsByGroupIDsResp)
+	err := c.cc.Invoke(ctx, "/OpenIMServer.conversation.conversation/GetConversationsByGroupIDs", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // ConversationServer is the server API for Conversation service.
 type ConversationServer interface {
 	GetConversation(context.Context, *GetConversationReq) (*GetConversationResp, error)
@@ -2841,6 +2862,7 @@ type ConversationServer interface {
 	GetUserConversationIDsHash(context.Context, *GetUserConversationIDsHashReq) (*GetUserConversationIDsHashResp, error)
 	GetConversationsByConversationID(context.Context, *GetConversationsByConversationIDReq) (*GetConversationsByConversationIDResp, error)
 	GetConversationOfflinePushUserIDs(context.Context, *GetConversationOfflinePushUserIDsReq) (*GetConversationOfflinePushUserIDsResp, error)
+	GetConversationsByGroupIDs(context.Context, *GetConversationsByGroupIDsReq) (*GetConversationsByGroupIDsResp, error)
 }
 
 // UnimplementedConversationServer can be embedded to have forward compatible implementations.
@@ -2888,6 +2910,9 @@ func (*UnimplementedConversationServer) GetConversationsByConversationID(context
 }
 func (*UnimplementedConversationServer) GetConversationOfflinePushUserIDs(context.Context, *GetConversationOfflinePushUserIDsReq) (*GetConversationOfflinePushUserIDsResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetConversationOfflinePushUserIDs not implemented")
+}
+func (*UnimplementedConversationServer) GetConversationsByGroupIDs(context.Context, *GetConversationsByGroupIDsReq) (*GetConversationsByGroupIDsResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetConversationsByGroupIDs not implemented")
 }
 
 func RegisterConversationServer(s *grpc.Server, srv ConversationServer) {
@@ -3146,6 +3171,24 @@ func _Conversation_GetConversationOfflinePushUserIDs_Handler(srv interface{}, ct
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Conversation_GetConversationsByGroupIDs_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetConversationsByGroupIDsReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ConversationServer).GetConversationsByGroupIDs(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/OpenIMServer.conversation.conversation/GetConversationsByGroupIDs",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ConversationServer).GetConversationsByGroupIDs(ctx, req.(*GetConversationsByGroupIDsReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _Conversation_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "OpenIMServer.conversation.conversation",
 	HandlerType: (*ConversationServer)(nil),
@@ -3205,6 +3248,10 @@ var _Conversation_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetConversationOfflinePushUserIDs",
 			Handler:    _Conversation_GetConversationOfflinePushUserIDs_Handler,
+		},
+		{
+			MethodName: "GetConversationsByGroupIDs",
+			Handler:    _Conversation_GetConversationsByGroupIDs_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
