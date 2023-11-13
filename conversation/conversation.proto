@@ -195,5 +195,4 @@ service conversation {
   rpc GetUserConversationIDsHash(GetUserConversationIDsHashReq) returns(GetUserConversationIDsHashResp);
   rpc GetConversationsByConversationID(GetConversationsByConversationIDReq) returns(GetConversationsByConversationIDResp);
   rpc GetConversationOfflinePushUserIDs(GetConversationOfflinePushUserIDsReq) returns(GetConversationOfflinePushUserIDsResp);
-  rpc GetConversationsByGroupIDs(GetConversationsByGroupIDsReq) returns(GetConversationsByGroupIDsResp);
 }

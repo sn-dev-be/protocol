@@ -191,6 +191,7 @@ message GetServerMemberCacheResp {
   sdkws.ServerMemberFullInfo member = 1;
 }
 
+// group
 message GetJoinedServerGroupListReq {
   sdkws.RequestPagination pagination = 1;
   string fromUserID = 2;
@@ -199,6 +200,15 @@ message GetJoinedServerGroupListResp{
   uint32 total = 1;
   repeated  sdkws.GroupInfo groups = 2;
 }
+
+message GetServerGroupsReq{
+  string serverID = 1;
+}
+message GetServerGroupsResp{
+  repeated sdkws.ServerGroupListInfo groups = 1;
+}
+
+
 message ServerApplicationResponseReq{
   string serverID = 1;
   string fromUserID = 2;  //
@@ -231,6 +241,8 @@ service club {
   //部落主或管理员处理进部落申请
   rpc serverApplicationResponse(ServerApplicationResponseReq) returns(ServerApplicationResponseResp);
 
+  //获取部落群集合
+  rpc GetServerGroups(GetServerGroupsReq) returns(GetServerGroupsResp);
   //获取某个人已加入群
   rpc getJoinedServerGroupList(GetJoinedServerGroupListReq) returns (GetJoinedServerGroupListResp);
 
