@@ -45,14 +45,18 @@ message CreateServerReq {
   string ownerUserID = 11;
   string ex = 12;
 }
-message CreateServerResp {}
+message CreateServerResp {
+    string serverID = 1;
+}
 
 message CreateGroupCategoryReq {
   string serverID = 1;
   string categoryName = 2;
   string ownerUserID = 3;
 }
-message CreateGroupCategoryResp {}
+message CreateGroupCategoryResp {
+    string categoryID = 1;
+}
 
 
 message GetServerRecommendedListReq {
@@ -62,7 +66,11 @@ message GetServerRecommendecListResp {
 }
 
 message GetServerDetailsReq { string serverID = 1; }
-message GetServerDetailsResp { sdkws.ServerFullInfo server = 1; }
+message GetServerDetailsResp { 
+  sdkws.ServerFullInfo server = 1; 
+  repeated sdkws.GroupCategoryListInfo categoryList = 2;
+  bool joined = 3;
+}
 
 message DeleteServerReq { repeated string serverIDList = 1; }
 message DeleteServerResp {}
@@ -191,6 +199,15 @@ message GetJoinedServerGroupListResp{
   uint32 total = 1;
   repeated  sdkws.GroupInfo groups = 2;
 }
+message ServerApplicationResponseReq{
+  string serverID = 1;
+  string fromUserID = 2;  //
+  string handledMsg = 3;
+  int32 handleResult = 4;
+}
+message ServerApplicationResponseResp{
+
+}
 
 
 service club {
@@ -211,6 +228,8 @@ service club {
   // 创建分组
   rpc createGroupCategory(CreateGroupCategoryReq) returns (CreateGroupCategoryResp);
 
+  //部落主或管理员处理进部落申请
+  rpc serverApplicationResponse(ServerApplicationResponseReq) returns(ServerApplicationResponseResp);
 
   //获取某个人已加入群
   rpc getJoinedServerGroupList(GetJoinedServerGroupListReq) returns (GetJoinedServerGroupListResp);
