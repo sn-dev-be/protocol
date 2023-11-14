@@ -208,6 +208,16 @@ message GetServerGroupsResp{
   repeated sdkws.ServerGroupListInfo groups = 1;
 }
 
+message CreateServerGroupReq{
+  sdkws.GroupInfo groupInfo = 1;
+  string ownerUserID = 2; //owner
+  string dappID = 3;
+}
+message CreateServerGroupResp{
+  sdkws.GroupInfo groupInfo = 1;
+}
+
+
 
 message ServerApplicationResponseReq{
   string serverID = 1;
@@ -233,18 +243,21 @@ service club {
   rpc quitServer(QuitServerReq) returns(QuitServerResp);
   //删除部落
   rpc batchDeleteServers(DeleteServerReq) returns (DeleteServerResp);
+  //部落主或管理员处理进部落申请
+  rpc serverApplicationResponse(ServerApplicationResponseReq) returns(ServerApplicationResponseResp);
 
 
   // 创建分组
   rpc createGroupCategory(CreateGroupCategoryReq) returns (CreateGroupCategoryResp);
 
-  //部落主或管理员处理进部落申请
-  rpc serverApplicationResponse(ServerApplicationResponseReq) returns(ServerApplicationResponseResp);
+
 
   //获取部落群集合
-  rpc GetServerGroups(GetServerGroupsReq) returns(GetServerGroupsResp);
+  rpc getServerGroups(GetServerGroupsReq) returns(GetServerGroupsResp);
   //获取某个人已加入群
   rpc getJoinedServerGroupList(GetJoinedServerGroupListReq) returns (GetJoinedServerGroupListResp);
+  //创建部落房间
+  rpc createServerGroup(CreateServerGroupReq) returns(CreateServerGroupResp);
 
 
   //获取某个部落的部落成员

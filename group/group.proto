@@ -30,15 +30,6 @@ message CreateGroupResp{
   sdkws.GroupInfo groupInfo = 1;
 }
 
-
-message CreateServerGroupReq{
-  sdkws.GroupInfo groupInfo = 1;
-  string ownerUserID = 2; //owner
-}
-message CreateServerGroupResp{
-  sdkws.GroupInfo groupInfo = 1;
-}
-
 message GetGroupsInfoReq{
   repeated string groupIDs = 1;
 }
@@ -46,13 +37,11 @@ message GetGroupsInfoResp{
   repeated sdkws.GroupInfo groupInfos = 1;
 }
 
-
 message SetGroupInfoReq{
   sdkws.GroupInfoForSet groupInfoForSet = 1;
 }
 message SetGroupInfoResp{
 }
-
 
 message GetGroupApplicationListReq {
   sdkws.RequestPagination pagination = 1;
@@ -73,7 +62,6 @@ message GetUserReqApplicationListResp{
   repeated sdkws.GroupRequest groupRequests = 2;
 }
 
-
 message TransferGroupOwnerReq {
   string groupID = 1;
   string oldOwnerUserID = 2;
@@ -92,7 +80,6 @@ message JoinGroupReq{
 message JoinGroupResp{
 }
 
-
 message GroupApplicationResponseReq{
   string groupID = 1;
   string fromUserID = 2;  //
@@ -103,8 +90,6 @@ message GroupApplicationResponseResp{
 
 }
 
-
-
 message QuitGroupReq{
   string groupID = 1;
   string userID = 2;
@@ -112,24 +97,20 @@ message QuitGroupReq{
 message QuitGroupResp{
 }
 
-
 message GetGroupMemberListReq {
   sdkws.RequestPagination pagination = 1;
   string groupID = 2;
   int32 filter = 3;
 }
-
 message GetGroupMemberListResp {
   uint32 total = 1;
   repeated sdkws.GroupMemberFullInfo members = 2;
 }
 
-
 message GetGroupMembersInfoReq {
   string groupID = 1;
   repeated string userIDs = 2;
 }
-
 message GetGroupMembersInfoResp {
   repeated sdkws.GroupMemberFullInfo members = 1;
 }
@@ -139,7 +120,6 @@ message KickGroupMemberReq {
   repeated string kickedUserIDs = 2;
   string reason = 3;
 }
-
 message KickGroupMemberResp {
 
 }
@@ -185,7 +165,6 @@ message GetGroupsReq {
   string groupName = 2;
   string groupID = 3;
 }
-
 message GetGroupsResp {
   uint32 total = 1;
   repeated CMSGroup groups = 2;
@@ -200,7 +179,6 @@ message GetGroupMembersCMSReq {
   string groupID = 2;
   string userName = 3;
 }
-
 message GetGroupMembersCMSResp {
   uint32 total = 1;
   repeated sdkws.GroupMemberFullInfo members = 2;
@@ -210,7 +188,6 @@ message DismissGroupReq{
   string groupID = 1;
   bool deleteMember = 2;
 }
-
 message DismissGroupResp{
 }
 
@@ -220,7 +197,6 @@ message MuteGroupMemberReq{
   string userID = 2;
   uint32 mutedSeconds = 3;
 }
-
 message MuteGroupMemberResp{
 }
 
@@ -470,7 +446,4 @@ service group{
   rpc UnsaveGroup(UnsaveGroupReq) returns(UnsaveGroupResp);
   //获取服务端所有保存群组
   rpc getSavedGroupList(GetSavedGroupListReq) returns (GetSavedGroupListResp);
-  //创建部落群
-  rpc createServerGroup(CreateServerGroupReq) returns(CreateServerGroupResp);
-  
 }
