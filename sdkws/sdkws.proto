@@ -673,4 +673,18 @@ message ServerMemberFullInfo {
   int32 appMangerLevel = 12;
   string operatorUserID = 13;
 }
+
+message ServerRequest {
+  PublicUserInfo userInfo = 1;
+  ServerInfo serverInfo = 2;
+  int32 handleResult = 3;
+  string reqMsg = 4;
+  string handleMsg = 5;
+  int64 reqTime = 6;
+  string handleUserID = 7;
+  int64 handleTime = 8;
+  string ex = 9;
+  int32 joinSource = 10;
+  string inviterUserID = 11;
+}
 //////////////////////club end/////////////////////

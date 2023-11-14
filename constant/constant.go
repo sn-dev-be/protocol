@@ -442,11 +442,6 @@ const (
 	ServerRoleAuthDenied  = "denied"
 )
 
-// server status
-const (
-	ServerOk = 1
-)
-
 // join server verification
 const (
 	JoinServerNeedVerification = 0 // 需要审核
@@ -479,4 +474,12 @@ const (
 	ServerOwner         = 100
 	ServerAdmin         = 60
 	ServerOrdinaryUsers = 20
+)
+
+// GroupStatus.
+const (
+	ServerOk              = 0
+	ServerBanChat         = 1
+	ServerStatusDismissed = 2
+	ServerStatusMuted     = 3
 )

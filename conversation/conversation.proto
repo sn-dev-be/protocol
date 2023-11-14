@@ -167,19 +167,6 @@ message GetConversationOfflinePushUserIDsResp {
   repeated string userIDs = 1;
 }
 
-message GetConversationsByGroupIDsReq {
-  repeated GetConversationsByGroupIDReq getConversationsByGroupIDReq = 1;
-}
-
-message GetConversationsByGroupIDReq{
-  string groupID = 1;
-  string userID = 2;
-}
-
-message GetConversationsByGroupIDsResp {
-  repeated Conversation conversations = 1;
-}
-
 service conversation {
   rpc GetConversation(GetConversationReq)returns(GetConversationResp);
   rpc GetAllConversations(GetAllConversationsReq)returns(GetAllConversationsResp);

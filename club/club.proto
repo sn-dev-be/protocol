@@ -141,7 +141,7 @@ message JoinServerReq{
   string reqMessage = 2;
   int32 joinSource = 3;
   string userID = 4;
-  string invitedUserID = 5;
+  string inviterUserID = 5;
 }
 message JoinServerResp{}
 
@@ -201,13 +201,6 @@ message GetJoinedServerGroupListResp{
   repeated  sdkws.GroupInfo groups = 2;
 }
 
-message GetServerGroupsReq{
-  string serverID = 1;
-}
-message GetServerGroupsResp{
-  repeated sdkws.ServerGroupListInfo groups = 1;
-}
-
 message CreateServerGroupReq{
   sdkws.GroupInfo groupInfo = 1;
   string ownerUserID = 2; //owner
@@ -217,18 +210,43 @@ message CreateServerGroupResp{
   sdkws.GroupInfo groupInfo = 1;
 }
 
-
+// serverRequest
 
 message ServerApplicationResponseReq{
   string serverID = 1;
-  string fromUserID = 2;  //
+  string fromUserID = 2;
   string handledMsg = 3;
   int32 handleResult = 4;
 }
 message ServerApplicationResponseResp{
-
 }
 
+message GetServerApplicationListReq {
+  sdkws.RequestPagination pagination = 1;
+  string fromUserID = 2; //owner or admin
+}
+message GetServerApplicationListResp {
+  uint32 total = 1;
+  repeated sdkws.ServerRequest serverRequests = 2;
+}
+
+message GetUserReqApplicationListReq{
+  sdkws.RequestPagination pagination = 1;
+  string userID = 2;
+}
+message GetUserReqApplicationListResp{
+  uint32 total = 1;
+  repeated sdkws.ServerRequest serverRequests = 2;
+}
+
+message getServerUsersReqApplicationListReq {
+  string serverID =1;
+  repeated string userIDs = 2;
+}
+message getServerUsersReqApplicationListResp {
+  int64 total = 1;
+  repeated sdkws.ServerRequest serverRequests = 2;
+}
 
 service club {
   // 创建部落
@@ -241,45 +259,54 @@ service club {
   rpc joinServer(JoinServerReq) returns (JoinServerResp);
   //退出部落
   rpc quitServer(QuitServerReq) returns(QuitServerResp);
-  //删除部落
-  rpc batchDeleteServers(DeleteServerReq) returns (DeleteServerResp);
-  //部落主或管理员处理进部落申请
-  rpc serverApplicationResponse(ServerApplicationResponseReq) returns(ServerApplicationResponseResp);
 
+  // /groupCategory
 
   // 创建分组
   rpc createGroupCategory(CreateGroupCategoryReq) returns (CreateGroupCategoryResp);
 
+  // /serverRequest
+
+  // 部落主或管理员处理进部落申请
+  rpc serverApplicationResponse(ServerApplicationResponseReq) returns(ServerApplicationResponseResp);
+  //（以管理员或群主身份）获取群的加部落申请
+  rpc getServerApplicationList(GetServerApplicationListReq) returns(GetServerApplicationListResp);
+  // 获取用户自己的主动加部落申请
+  rpc getUserReqApplicationList(GetUserReqApplicationListReq) returns(GetUserReqApplicationListResp);
+  // 获取该部落用户的加部落申请
+  rpc getServerUsersReqApplicationList(getServerUsersReqApplicationListReq) returns(getServerUsersReqApplicationListResp);
 
 
-  //获取部落群集合
-  rpc getServerGroups(GetServerGroupsReq) returns(GetServerGroupsResp);
-  //获取某个人已加入群
+  // group
+
+  // 获取某个人已加入群
   rpc getJoinedServerGroupList(GetJoinedServerGroupListReq) returns (GetJoinedServerGroupListResp);
-  //创建部落房间
+  // 创建部落房间
   rpc createServerGroup(CreateServerGroupReq) returns(CreateServerGroupResp);
 
 
-  //获取某个部落的部落成员
+  // serverMember
+
+  // 获取某个部落的部落成员
   rpc getServerMemberList(GetServerMemberListReq) returns(GetServerMemberListResp);
-  //获取某个部落的指定部落成员
+  // 获取某个部落的指定部落成员
   rpc getServerMembersInfo(GetServerMembersInfoReq) returns(GetServerMembersInfoResp);
-  //踢出部落
+  // 踢出部落
   rpc kickServerMember(KickServerMemberReq) returns (KickServerMemberResp);
-  //获取某个人已加入部落
+  // 获取某个人已加入部落
   rpc getJoinedServerList(GetJoinedServerListReq) returns (GetJoinedServerListResp);
   rpc getServerMembersCMS(GetServerMembersCMSReq) returns(GetServerMembersCMSResp);
-  //对某个部落成员禁言
+  // 对某个部落成员禁言
   rpc muteServerMember(MuteServerMemberReq) returns(MuteServerMemberResp);
-  //对某个部落成员取消禁言
+  // 对某个部落成员取消禁言
   rpc cancelMuteServerMember(CancelMuteServerMemberReq) returns(CancelMuteServerMemberResp);
-  //设置部落成员信息
+  // 设置部落成员信息
   rpc setServerMemberInfo(SetServerMemberInfoReq) returns (SetServerMemberInfoResp);
-  //获取某个用户在指定部落中的信息
+  // 获取某个用户在指定部落中的信息
   rpc getUserInServerMembers(GetUserInServerMembersReq) returns (GetUserInServerMembersResp);
-  //获取部落成员用户ID
+  // 获取部落成员用户ID
   rpc getServerMemberUserIDs(GetServerMemberUserIDsReq) returns (GetServerMemberUserIDsResp);
-  //查询部落组中对应级别的成员
+  // 查询部落组中对应级别的成员
   rpc GetServerMemberRoleLevel(GetServerMemberRoleLevelReq)returns (GetServerMemberRoleLevelResp);
   rpc GetServerMemberCache(GetServerMemberCacheReq) returns (GetServerMemberCacheResp);
 }
