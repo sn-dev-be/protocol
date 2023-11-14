@@ -433,8 +433,8 @@ const (
 )
 
 const (
-	ChatChannelType = 1
-	AppChannelType  = 2
+	ChatGroupMode = 1
+	AppGroupMode  = 2
 )
 
 const (

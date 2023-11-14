@@ -42,8 +42,9 @@ message GroupInfo {
   int32 syncMode = 20;
   int32 visitorMode = 21;
   int32 viewMode = 22;
-  string groupCategoryID = 23;
-  string serverID = 24;
+  int32 groupMode = 23;
+  string groupCategoryID = 24;
+  string serverID = 25;
 }
 
 message GroupInfoForSet {
@@ -615,10 +616,10 @@ message ServerGroupListInfo{
  	int32 conversationType = 7;     
   string GroupCategoryID = 8;
 	string ServerID= 9;
+  int32 GroupMode = 10;
+  GroupDappFullInfo dapp = 11;
 }
 
-
-//////////////////////club/////////////////////
 message ServerFullInfo {
   string serverID = 1;
   string serverName = 2;
@@ -686,5 +687,12 @@ message ServerRequest {
   string ex = 9;
   int32 joinSource = 10;
   string inviterUserID = 11;
+}
+
+message GroupDappFullInfo {
+  int64 id = 1;
+  string groupID = 2;
+  string dappID = 3;
+  int64 createTime = 4;
 }
 //////////////////////club end/////////////////////
