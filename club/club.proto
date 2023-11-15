@@ -42,7 +42,7 @@ message CreateGroupCategoryReq {
   string ownerUserID = 3;
 }
 message CreateGroupCategoryResp {
-    sdkws.GroupCategory groupCategory = 1;
+    sdkws.GroupCategoryInfo groupCategory = 1;
 }
 
 
@@ -76,6 +76,15 @@ message SetServerInfoReq{
   sdkws.ServerInfoForSet serverInfoForSet = 1;
 }
 message SetServerInfoResp{}
+
+message SearchServerReq {
+  sdkws.RequestPagination pagination = 1;
+  string keyword = 2;
+}
+message SearchServerResp {
+  uint32 total = 1;
+  repeated sdkws.ServerInfo serverInfos = 2;
+}
 ///////////////////////serverMember///////////////////////////////
 message GetServerMemberListReq {
   sdkws.RequestPagination pagination = 1;
@@ -295,7 +304,7 @@ service club {
   //获取部落列表
   rpc getServerRecommendedList(GetServerRecommendedListReq) returns (GetServerRecommendecListResp);
   //获取部落详情
-  rpc getServersInfo(GetServersInfoReq ) returns (GetServersInfoResp);
+  rpc getServersInfo(GetServersInfoReq) returns (GetServersInfoResp);
   //加入部落
   rpc joinServer(JoinServerReq) returns (JoinServerResp);
   //退出部落
@@ -304,6 +313,8 @@ service club {
   rpc dismissServer(DismissServerReq) returns(DismissServerResp);
   //设置部落信息
   rpc setServerInfo(SetServerInfoReq) returns(SetServerInfoResp);
+  // 搜索部落
+  rpc searchServer(SearchServerReq) returns(SearchServerResp);
 
   //groupCategory
 

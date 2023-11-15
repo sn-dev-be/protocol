@@ -582,7 +582,7 @@ message RequestPagination {
 
 ////////////////////club///////////////////////
 
-message GroupCategory {
+message GroupCategoryInfo {
   string categoryID = 1;
   string categoryName = 2;
   int32 reorderWeight = 3;
@@ -592,18 +592,9 @@ message GroupCategory {
   string ex = 7;
 }
 
-message ServersListInfo {
-  string serverID = 1;
-  string serverName = 2;
-  string icon = 3;
-}
-
 message GroupCategoryListInfo {
-  string categoryID = 1;
-  string categoryName = 2;
-  int32 reorderWeight = 3;
-  int32 categoryType = 4;
-  repeated ServerGroupListInfo groupList = 5;
+  GroupCategoryInfo categoryInfo = 1;
+  repeated ServerGroupListInfo groupList = 2;
 }
 
 message ServerGroupListInfo {
@@ -632,7 +623,7 @@ message ServerInfo {
   string description = 4;
   string banner = 5;
   string ownerUserID = 6;
-  int32 memberNumber = 7;
+  uint32 memberNumber = 7;
   int32 applyMode = 8;
   int32 inviteMode = 9;
   int32 searchable = 10;
@@ -688,16 +679,16 @@ message ServerRequest {
 }
 
 message GroupDappFullInfo {
-  int64 id = 1;
+  int64 ID = 1;
   string groupID = 2;
   string dappID = 3;
   int64 createTime = 4;
 }
 
-message ServerBlackFullInfo{
+message ServerBlackFullInfo {
   string serverID = 1;
   string blockUserID = 2;
-	int64 createTime = 3;
+  int64 createTime = 3;
   int32 addSource = 4;
   string operatorUserID = 5;
   string ex = 6;
