@@ -52,8 +52,8 @@ message GetServerRecommendecListResp {
   repeated sdkws.ServerFullInfo servers = 1;
 }
 
-message GetServerDetailsReq { string serverID = 1; }
-message GetServerDetailsResp { 
+message GetServersInfoReq { string serverID = 1; }
+message GetServersInfoResp { 
   sdkws.ServerInfo server = 1; 
   repeated sdkws.GroupCategoryListInfo categoryList = 2;
   bool joined = 3;
@@ -261,7 +261,7 @@ service club {
   //获取部落列表
   rpc getServerRecommendedList(GetServerRecommendedListReq) returns (GetServerRecommendecListResp);
   //获取部落详情
-  rpc getServerDetails(GetServerDetailsReq) returns (GetServerDetailsResp);
+  rpc getServersInfo(GetServersInfoReq ) returns (GetServersInfoResp);
   //加入部落
   rpc joinServer(JoinServerReq) returns (JoinServerResp);
   //退出部落
