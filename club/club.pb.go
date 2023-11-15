@@ -290,7 +290,7 @@ type CreateGroupCategoryResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	CategoryID string `protobuf:"bytes,1,opt,name=categoryID,proto3" json:"categoryID,omitempty"`
+	GroupCategory *sdkws.GroupCategory `protobuf:"bytes,1,opt,name=groupCategory,proto3" json:"groupCategory,omitempty"`
 }
 
 func (x *CreateGroupCategoryResp) Reset() {
@@ -325,11 +325,11 @@ func (*CreateGroupCategoryResp) Descriptor() ([]byte, []int) {
 	return file_club_club_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *CreateGroupCategoryResp) GetCategoryID() string {
+func (x *CreateGroupCategoryResp) GetGroupCategory() *sdkws.GroupCategory {
 	if x != nil {
-		return x.CategoryID
+		return x.GroupCategory
 	}
-	return ""
+	return nil
 }
 
 type GetServerRecommendedListReq struct {
@@ -422,7 +422,7 @@ type GetServersInfoReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ServerID string `protobuf:"bytes,1,opt,name=serverID,proto3" json:"serverID,omitempty"`
+	ServerIDs []string `protobuf:"bytes,1,rep,name=serverIDs,proto3" json:"serverIDs,omitempty"`
 }
 
 func (x *GetServersInfoReq) Reset() {
@@ -457,11 +457,11 @@ func (*GetServersInfoReq) Descriptor() ([]byte, []int) {
 	return file_club_club_proto_rawDescGZIP(), []int{6}
 }
 
-func (x *GetServersInfoReq) GetServerID() string {
+func (x *GetServersInfoReq) GetServerIDs() []string {
 	if x != nil {
-		return x.ServerID
+		return x.ServerIDs
 	}
-	return ""
+	return nil
 }
 
 type GetServersInfoResp struct {
@@ -469,9 +469,7 @@ type GetServersInfoResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Server       *sdkws.ServerInfo              `protobuf:"bytes,1,opt,name=server,proto3" json:"server,omitempty"`
-	CategoryList []*sdkws.GroupCategoryListInfo `protobuf:"bytes,2,rep,name=categoryList,proto3" json:"categoryList,omitempty"`
-	Joined       bool                           `protobuf:"varint,3,opt,name=joined,proto3" json:"joined,omitempty"`
+	Servers []*GetServerInfoResp `protobuf:"bytes,1,rep,name=servers,proto3" json:"servers,omitempty"`
 }
 
 func (x *GetServersInfoResp) Reset() {
@@ -506,21 +504,70 @@ func (*GetServersInfoResp) Descriptor() ([]byte, []int) {
 	return file_club_club_proto_rawDescGZIP(), []int{7}
 }
 
-func (x *GetServersInfoResp) GetServer() *sdkws.ServerInfo {
+func (x *GetServersInfoResp) GetServers() []*GetServerInfoResp {
+	if x != nil {
+		return x.Servers
+	}
+	return nil
+}
+
+type GetServerInfoResp struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Server       *sdkws.ServerInfo              `protobuf:"bytes,1,opt,name=server,proto3" json:"server,omitempty"`
+	CategoryList []*sdkws.GroupCategoryListInfo `protobuf:"bytes,2,rep,name=categoryList,proto3" json:"categoryList,omitempty"`
+	Joined       bool                           `protobuf:"varint,3,opt,name=joined,proto3" json:"joined,omitempty"`
+}
+
+func (x *GetServerInfoResp) Reset() {
+	*x = GetServerInfoResp{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_club_club_proto_msgTypes[8]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GetServerInfoResp) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetServerInfoResp) ProtoMessage() {}
+
+func (x *GetServerInfoResp) ProtoReflect() protoreflect.Message {
+	mi := &file_club_club_proto_msgTypes[8]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetServerInfoResp.ProtoReflect.Descriptor instead.
+func (*GetServerInfoResp) Descriptor() ([]byte, []int) {
+	return file_club_club_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *GetServerInfoResp) GetServer() *sdkws.ServerInfo {
 	if x != nil {
 		return x.Server
 	}
 	return nil
 }
 
-func (x *GetServersInfoResp) GetCategoryList() []*sdkws.GroupCategoryListInfo {
+func (x *GetServerInfoResp) GetCategoryList() []*sdkws.GroupCategoryListInfo {
 	if x != nil {
 		return x.CategoryList
 	}
 	return nil
 }
 
-func (x *GetServersInfoResp) GetJoined() bool {
+func (x *GetServerInfoResp) GetJoined() bool {
 	if x != nil {
 		return x.Joined
 	}
@@ -538,7 +585,7 @@ type DeleteServerReq struct {
 func (x *DeleteServerReq) Reset() {
 	*x = DeleteServerReq{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_club_club_proto_msgTypes[8]
+		mi := &file_club_club_proto_msgTypes[9]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -551,7 +598,7 @@ func (x *DeleteServerReq) String() string {
 func (*DeleteServerReq) ProtoMessage() {}
 
 func (x *DeleteServerReq) ProtoReflect() protoreflect.Message {
-	mi := &file_club_club_proto_msgTypes[8]
+	mi := &file_club_club_proto_msgTypes[9]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -564,7 +611,7 @@ func (x *DeleteServerReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteServerReq.ProtoReflect.Descriptor instead.
 func (*DeleteServerReq) Descriptor() ([]byte, []int) {
-	return file_club_club_proto_rawDescGZIP(), []int{8}
+	return file_club_club_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *DeleteServerReq) GetServerIDList() []string {
@@ -583,7 +630,7 @@ type DeleteServerResp struct {
 func (x *DeleteServerResp) Reset() {
 	*x = DeleteServerResp{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_club_club_proto_msgTypes[9]
+		mi := &file_club_club_proto_msgTypes[10]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -596,7 +643,7 @@ func (x *DeleteServerResp) String() string {
 func (*DeleteServerResp) ProtoMessage() {}
 
 func (x *DeleteServerResp) ProtoReflect() protoreflect.Message {
-	mi := &file_club_club_proto_msgTypes[9]
+	mi := &file_club_club_proto_msgTypes[10]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -609,7 +656,7 @@ func (x *DeleteServerResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteServerResp.ProtoReflect.Descriptor instead.
 func (*DeleteServerResp) Descriptor() ([]byte, []int) {
-	return file_club_club_proto_rawDescGZIP(), []int{9}
+	return file_club_club_proto_rawDescGZIP(), []int{10}
 }
 
 type DismissServerReq struct {
@@ -624,7 +671,7 @@ type DismissServerReq struct {
 func (x *DismissServerReq) Reset() {
 	*x = DismissServerReq{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_club_club_proto_msgTypes[10]
+		mi := &file_club_club_proto_msgTypes[11]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -637,7 +684,7 @@ func (x *DismissServerReq) String() string {
 func (*DismissServerReq) ProtoMessage() {}
 
 func (x *DismissServerReq) ProtoReflect() protoreflect.Message {
-	mi := &file_club_club_proto_msgTypes[10]
+	mi := &file_club_club_proto_msgTypes[11]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -650,7 +697,7 @@ func (x *DismissServerReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DismissServerReq.ProtoReflect.Descriptor instead.
 func (*DismissServerReq) Descriptor() ([]byte, []int) {
-	return file_club_club_proto_rawDescGZIP(), []int{10}
+	return file_club_club_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *DismissServerReq) GetServerID() string {
@@ -676,7 +723,7 @@ type DismissServerResp struct {
 func (x *DismissServerResp) Reset() {
 	*x = DismissServerResp{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_club_club_proto_msgTypes[11]
+		mi := &file_club_club_proto_msgTypes[12]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -689,7 +736,7 @@ func (x *DismissServerResp) String() string {
 func (*DismissServerResp) ProtoMessage() {}
 
 func (x *DismissServerResp) ProtoReflect() protoreflect.Message {
-	mi := &file_club_club_proto_msgTypes[11]
+	mi := &file_club_club_proto_msgTypes[12]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -702,7 +749,7 @@ func (x *DismissServerResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DismissServerResp.ProtoReflect.Descriptor instead.
 func (*DismissServerResp) Descriptor() ([]byte, []int) {
-	return file_club_club_proto_rawDescGZIP(), []int{11}
+	return file_club_club_proto_rawDescGZIP(), []int{12}
 }
 
 type SetServerInfoReq struct {
@@ -716,7 +763,7 @@ type SetServerInfoReq struct {
 func (x *SetServerInfoReq) Reset() {
 	*x = SetServerInfoReq{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_club_club_proto_msgTypes[12]
+		mi := &file_club_club_proto_msgTypes[13]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -729,7 +776,7 @@ func (x *SetServerInfoReq) String() string {
 func (*SetServerInfoReq) ProtoMessage() {}
 
 func (x *SetServerInfoReq) ProtoReflect() protoreflect.Message {
-	mi := &file_club_club_proto_msgTypes[12]
+	mi := &file_club_club_proto_msgTypes[13]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -742,7 +789,7 @@ func (x *SetServerInfoReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SetServerInfoReq.ProtoReflect.Descriptor instead.
 func (*SetServerInfoReq) Descriptor() ([]byte, []int) {
-	return file_club_club_proto_rawDescGZIP(), []int{12}
+	return file_club_club_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *SetServerInfoReq) GetServerInfoForSet() *sdkws.ServerInfoForSet {
@@ -761,7 +808,7 @@ type SetServerInfoResp struct {
 func (x *SetServerInfoResp) Reset() {
 	*x = SetServerInfoResp{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_club_club_proto_msgTypes[13]
+		mi := &file_club_club_proto_msgTypes[14]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -774,7 +821,7 @@ func (x *SetServerInfoResp) String() string {
 func (*SetServerInfoResp) ProtoMessage() {}
 
 func (x *SetServerInfoResp) ProtoReflect() protoreflect.Message {
-	mi := &file_club_club_proto_msgTypes[13]
+	mi := &file_club_club_proto_msgTypes[14]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -787,7 +834,7 @@ func (x *SetServerInfoResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SetServerInfoResp.ProtoReflect.Descriptor instead.
 func (*SetServerInfoResp) Descriptor() ([]byte, []int) {
-	return file_club_club_proto_rawDescGZIP(), []int{13}
+	return file_club_club_proto_rawDescGZIP(), []int{14}
 }
 
 // /////////////////////serverMember///////////////////////////////
@@ -804,7 +851,7 @@ type GetServerMemberListReq struct {
 func (x *GetServerMemberListReq) Reset() {
 	*x = GetServerMemberListReq{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_club_club_proto_msgTypes[14]
+		mi := &file_club_club_proto_msgTypes[15]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -817,7 +864,7 @@ func (x *GetServerMemberListReq) String() string {
 func (*GetServerMemberListReq) ProtoMessage() {}
 
 func (x *GetServerMemberListReq) ProtoReflect() protoreflect.Message {
-	mi := &file_club_club_proto_msgTypes[14]
+	mi := &file_club_club_proto_msgTypes[15]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -830,7 +877,7 @@ func (x *GetServerMemberListReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetServerMemberListReq.ProtoReflect.Descriptor instead.
 func (*GetServerMemberListReq) Descriptor() ([]byte, []int) {
-	return file_club_club_proto_rawDescGZIP(), []int{14}
+	return file_club_club_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *GetServerMemberListReq) GetPagination() *sdkws.RequestPagination {
@@ -866,7 +913,7 @@ type GetServerMemberListResp struct {
 func (x *GetServerMemberListResp) Reset() {
 	*x = GetServerMemberListResp{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_club_club_proto_msgTypes[15]
+		mi := &file_club_club_proto_msgTypes[16]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -879,7 +926,7 @@ func (x *GetServerMemberListResp) String() string {
 func (*GetServerMemberListResp) ProtoMessage() {}
 
 func (x *GetServerMemberListResp) ProtoReflect() protoreflect.Message {
-	mi := &file_club_club_proto_msgTypes[15]
+	mi := &file_club_club_proto_msgTypes[16]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -892,7 +939,7 @@ func (x *GetServerMemberListResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetServerMemberListResp.ProtoReflect.Descriptor instead.
 func (*GetServerMemberListResp) Descriptor() ([]byte, []int) {
-	return file_club_club_proto_rawDescGZIP(), []int{15}
+	return file_club_club_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *GetServerMemberListResp) GetTotal() uint32 {
@@ -921,7 +968,7 @@ type GetServerMembersInfoReq struct {
 func (x *GetServerMembersInfoReq) Reset() {
 	*x = GetServerMembersInfoReq{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_club_club_proto_msgTypes[16]
+		mi := &file_club_club_proto_msgTypes[17]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -934,7 +981,7 @@ func (x *GetServerMembersInfoReq) String() string {
 func (*GetServerMembersInfoReq) ProtoMessage() {}
 
 func (x *GetServerMembersInfoReq) ProtoReflect() protoreflect.Message {
-	mi := &file_club_club_proto_msgTypes[16]
+	mi := &file_club_club_proto_msgTypes[17]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -947,7 +994,7 @@ func (x *GetServerMembersInfoReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetServerMembersInfoReq.ProtoReflect.Descriptor instead.
 func (*GetServerMembersInfoReq) Descriptor() ([]byte, []int) {
-	return file_club_club_proto_rawDescGZIP(), []int{16}
+	return file_club_club_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *GetServerMembersInfoReq) GetServerID() string {
@@ -975,7 +1022,7 @@ type GetServerMembersInfoResp struct {
 func (x *GetServerMembersInfoResp) Reset() {
 	*x = GetServerMembersInfoResp{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_club_club_proto_msgTypes[17]
+		mi := &file_club_club_proto_msgTypes[18]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -988,7 +1035,7 @@ func (x *GetServerMembersInfoResp) String() string {
 func (*GetServerMembersInfoResp) ProtoMessage() {}
 
 func (x *GetServerMembersInfoResp) ProtoReflect() protoreflect.Message {
-	mi := &file_club_club_proto_msgTypes[17]
+	mi := &file_club_club_proto_msgTypes[18]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1001,7 +1048,7 @@ func (x *GetServerMembersInfoResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetServerMembersInfoResp.ProtoReflect.Descriptor instead.
 func (*GetServerMembersInfoResp) Descriptor() ([]byte, []int) {
-	return file_club_club_proto_rawDescGZIP(), []int{17}
+	return file_club_club_proto_rawDescGZIP(), []int{18}
 }
 
 func (x *GetServerMembersInfoResp) GetMembers() []*sdkws.ServerMemberFullInfo {
@@ -1024,7 +1071,7 @@ type KickServerMemberReq struct {
 func (x *KickServerMemberReq) Reset() {
 	*x = KickServerMemberReq{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_club_club_proto_msgTypes[18]
+		mi := &file_club_club_proto_msgTypes[19]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1037,7 +1084,7 @@ func (x *KickServerMemberReq) String() string {
 func (*KickServerMemberReq) ProtoMessage() {}
 
 func (x *KickServerMemberReq) ProtoReflect() protoreflect.Message {
-	mi := &file_club_club_proto_msgTypes[18]
+	mi := &file_club_club_proto_msgTypes[19]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1050,7 +1097,7 @@ func (x *KickServerMemberReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use KickServerMemberReq.ProtoReflect.Descriptor instead.
 func (*KickServerMemberReq) Descriptor() ([]byte, []int) {
-	return file_club_club_proto_rawDescGZIP(), []int{18}
+	return file_club_club_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *KickServerMemberReq) GetServerID() string {
@@ -1083,7 +1130,7 @@ type KickServerMemberResp struct {
 func (x *KickServerMemberResp) Reset() {
 	*x = KickServerMemberResp{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_club_club_proto_msgTypes[19]
+		mi := &file_club_club_proto_msgTypes[20]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1096,7 +1143,7 @@ func (x *KickServerMemberResp) String() string {
 func (*KickServerMemberResp) ProtoMessage() {}
 
 func (x *KickServerMemberResp) ProtoReflect() protoreflect.Message {
-	mi := &file_club_club_proto_msgTypes[19]
+	mi := &file_club_club_proto_msgTypes[20]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1109,7 +1156,7 @@ func (x *KickServerMemberResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use KickServerMemberResp.ProtoReflect.Descriptor instead.
 func (*KickServerMemberResp) Descriptor() ([]byte, []int) {
-	return file_club_club_proto_rawDescGZIP(), []int{19}
+	return file_club_club_proto_rawDescGZIP(), []int{20}
 }
 
 type GetJoinedServerListReq struct {
@@ -1124,7 +1171,7 @@ type GetJoinedServerListReq struct {
 func (x *GetJoinedServerListReq) Reset() {
 	*x = GetJoinedServerListReq{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_club_club_proto_msgTypes[20]
+		mi := &file_club_club_proto_msgTypes[21]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1137,7 +1184,7 @@ func (x *GetJoinedServerListReq) String() string {
 func (*GetJoinedServerListReq) ProtoMessage() {}
 
 func (x *GetJoinedServerListReq) ProtoReflect() protoreflect.Message {
-	mi := &file_club_club_proto_msgTypes[20]
+	mi := &file_club_club_proto_msgTypes[21]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1150,7 +1197,7 @@ func (x *GetJoinedServerListReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetJoinedServerListReq.ProtoReflect.Descriptor instead.
 func (*GetJoinedServerListReq) Descriptor() ([]byte, []int) {
-	return file_club_club_proto_rawDescGZIP(), []int{20}
+	return file_club_club_proto_rawDescGZIP(), []int{21}
 }
 
 func (x *GetJoinedServerListReq) GetPagination() *sdkws.RequestPagination {
@@ -1179,7 +1226,7 @@ type GetJoinedServerListResp struct {
 func (x *GetJoinedServerListResp) Reset() {
 	*x = GetJoinedServerListResp{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_club_club_proto_msgTypes[21]
+		mi := &file_club_club_proto_msgTypes[22]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1192,7 +1239,7 @@ func (x *GetJoinedServerListResp) String() string {
 func (*GetJoinedServerListResp) ProtoMessage() {}
 
 func (x *GetJoinedServerListResp) ProtoReflect() protoreflect.Message {
-	mi := &file_club_club_proto_msgTypes[21]
+	mi := &file_club_club_proto_msgTypes[22]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1205,7 +1252,7 @@ func (x *GetJoinedServerListResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetJoinedServerListResp.ProtoReflect.Descriptor instead.
 func (*GetJoinedServerListResp) Descriptor() ([]byte, []int) {
-	return file_club_club_proto_rawDescGZIP(), []int{21}
+	return file_club_club_proto_rawDescGZIP(), []int{22}
 }
 
 func (x *GetJoinedServerListResp) GetTotal() uint32 {
@@ -1235,7 +1282,7 @@ type GetServerMembersCMSReq struct {
 func (x *GetServerMembersCMSReq) Reset() {
 	*x = GetServerMembersCMSReq{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_club_club_proto_msgTypes[22]
+		mi := &file_club_club_proto_msgTypes[23]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1248,7 +1295,7 @@ func (x *GetServerMembersCMSReq) String() string {
 func (*GetServerMembersCMSReq) ProtoMessage() {}
 
 func (x *GetServerMembersCMSReq) ProtoReflect() protoreflect.Message {
-	mi := &file_club_club_proto_msgTypes[22]
+	mi := &file_club_club_proto_msgTypes[23]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1261,7 +1308,7 @@ func (x *GetServerMembersCMSReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetServerMembersCMSReq.ProtoReflect.Descriptor instead.
 func (*GetServerMembersCMSReq) Descriptor() ([]byte, []int) {
-	return file_club_club_proto_rawDescGZIP(), []int{22}
+	return file_club_club_proto_rawDescGZIP(), []int{23}
 }
 
 func (x *GetServerMembersCMSReq) GetPagination() *sdkws.RequestPagination {
@@ -1297,7 +1344,7 @@ type GetServerMembersCMSResp struct {
 func (x *GetServerMembersCMSResp) Reset() {
 	*x = GetServerMembersCMSResp{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_club_club_proto_msgTypes[23]
+		mi := &file_club_club_proto_msgTypes[24]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1310,7 +1357,7 @@ func (x *GetServerMembersCMSResp) String() string {
 func (*GetServerMembersCMSResp) ProtoMessage() {}
 
 func (x *GetServerMembersCMSResp) ProtoReflect() protoreflect.Message {
-	mi := &file_club_club_proto_msgTypes[23]
+	mi := &file_club_club_proto_msgTypes[24]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1323,7 +1370,7 @@ func (x *GetServerMembersCMSResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetServerMembersCMSResp.ProtoReflect.Descriptor instead.
 func (*GetServerMembersCMSResp) Descriptor() ([]byte, []int) {
-	return file_club_club_proto_rawDescGZIP(), []int{23}
+	return file_club_club_proto_rawDescGZIP(), []int{24}
 }
 
 func (x *GetServerMembersCMSResp) GetTotal() uint32 {
@@ -1353,7 +1400,7 @@ type MuteServerMemberReq struct {
 func (x *MuteServerMemberReq) Reset() {
 	*x = MuteServerMemberReq{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_club_club_proto_msgTypes[24]
+		mi := &file_club_club_proto_msgTypes[25]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1366,7 +1413,7 @@ func (x *MuteServerMemberReq) String() string {
 func (*MuteServerMemberReq) ProtoMessage() {}
 
 func (x *MuteServerMemberReq) ProtoReflect() protoreflect.Message {
-	mi := &file_club_club_proto_msgTypes[24]
+	mi := &file_club_club_proto_msgTypes[25]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1379,7 +1426,7 @@ func (x *MuteServerMemberReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MuteServerMemberReq.ProtoReflect.Descriptor instead.
 func (*MuteServerMemberReq) Descriptor() ([]byte, []int) {
-	return file_club_club_proto_rawDescGZIP(), []int{24}
+	return file_club_club_proto_rawDescGZIP(), []int{25}
 }
 
 func (x *MuteServerMemberReq) GetServerID() string {
@@ -1412,7 +1459,7 @@ type MuteServerMemberResp struct {
 func (x *MuteServerMemberResp) Reset() {
 	*x = MuteServerMemberResp{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_club_club_proto_msgTypes[25]
+		mi := &file_club_club_proto_msgTypes[26]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1425,7 +1472,7 @@ func (x *MuteServerMemberResp) String() string {
 func (*MuteServerMemberResp) ProtoMessage() {}
 
 func (x *MuteServerMemberResp) ProtoReflect() protoreflect.Message {
-	mi := &file_club_club_proto_msgTypes[25]
+	mi := &file_club_club_proto_msgTypes[26]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1438,7 +1485,7 @@ func (x *MuteServerMemberResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MuteServerMemberResp.ProtoReflect.Descriptor instead.
 func (*MuteServerMemberResp) Descriptor() ([]byte, []int) {
-	return file_club_club_proto_rawDescGZIP(), []int{25}
+	return file_club_club_proto_rawDescGZIP(), []int{26}
 }
 
 type CancelMuteServerMemberReq struct {
@@ -1453,7 +1500,7 @@ type CancelMuteServerMemberReq struct {
 func (x *CancelMuteServerMemberReq) Reset() {
 	*x = CancelMuteServerMemberReq{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_club_club_proto_msgTypes[26]
+		mi := &file_club_club_proto_msgTypes[27]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1466,7 +1513,7 @@ func (x *CancelMuteServerMemberReq) String() string {
 func (*CancelMuteServerMemberReq) ProtoMessage() {}
 
 func (x *CancelMuteServerMemberReq) ProtoReflect() protoreflect.Message {
-	mi := &file_club_club_proto_msgTypes[26]
+	mi := &file_club_club_proto_msgTypes[27]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1479,7 +1526,7 @@ func (x *CancelMuteServerMemberReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CancelMuteServerMemberReq.ProtoReflect.Descriptor instead.
 func (*CancelMuteServerMemberReq) Descriptor() ([]byte, []int) {
-	return file_club_club_proto_rawDescGZIP(), []int{26}
+	return file_club_club_proto_rawDescGZIP(), []int{27}
 }
 
 func (x *CancelMuteServerMemberReq) GetServerID() string {
@@ -1505,7 +1552,7 @@ type CancelMuteServerMemberResp struct {
 func (x *CancelMuteServerMemberResp) Reset() {
 	*x = CancelMuteServerMemberResp{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_club_club_proto_msgTypes[27]
+		mi := &file_club_club_proto_msgTypes[28]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1518,7 +1565,7 @@ func (x *CancelMuteServerMemberResp) String() string {
 func (*CancelMuteServerMemberResp) ProtoMessage() {}
 
 func (x *CancelMuteServerMemberResp) ProtoReflect() protoreflect.Message {
-	mi := &file_club_club_proto_msgTypes[27]
+	mi := &file_club_club_proto_msgTypes[28]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1531,7 +1578,7 @@ func (x *CancelMuteServerMemberResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CancelMuteServerMemberResp.ProtoReflect.Descriptor instead.
 func (*CancelMuteServerMemberResp) Descriptor() ([]byte, []int) {
-	return file_club_club_proto_rawDescGZIP(), []int{27}
+	return file_club_club_proto_rawDescGZIP(), []int{28}
 }
 
 type JoinServerReq struct {
@@ -1549,7 +1596,7 @@ type JoinServerReq struct {
 func (x *JoinServerReq) Reset() {
 	*x = JoinServerReq{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_club_club_proto_msgTypes[28]
+		mi := &file_club_club_proto_msgTypes[29]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1562,7 +1609,7 @@ func (x *JoinServerReq) String() string {
 func (*JoinServerReq) ProtoMessage() {}
 
 func (x *JoinServerReq) ProtoReflect() protoreflect.Message {
-	mi := &file_club_club_proto_msgTypes[28]
+	mi := &file_club_club_proto_msgTypes[29]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1575,7 +1622,7 @@ func (x *JoinServerReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use JoinServerReq.ProtoReflect.Descriptor instead.
 func (*JoinServerReq) Descriptor() ([]byte, []int) {
-	return file_club_club_proto_rawDescGZIP(), []int{28}
+	return file_club_club_proto_rawDescGZIP(), []int{29}
 }
 
 func (x *JoinServerReq) GetServerID() string {
@@ -1622,7 +1669,7 @@ type JoinServerResp struct {
 func (x *JoinServerResp) Reset() {
 	*x = JoinServerResp{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_club_club_proto_msgTypes[29]
+		mi := &file_club_club_proto_msgTypes[30]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1635,7 +1682,7 @@ func (x *JoinServerResp) String() string {
 func (*JoinServerResp) ProtoMessage() {}
 
 func (x *JoinServerResp) ProtoReflect() protoreflect.Message {
-	mi := &file_club_club_proto_msgTypes[29]
+	mi := &file_club_club_proto_msgTypes[30]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1648,7 +1695,7 @@ func (x *JoinServerResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use JoinServerResp.ProtoReflect.Descriptor instead.
 func (*JoinServerResp) Descriptor() ([]byte, []int) {
-	return file_club_club_proto_rawDescGZIP(), []int{29}
+	return file_club_club_proto_rawDescGZIP(), []int{30}
 }
 
 type QuitServerReq struct {
@@ -1663,7 +1710,7 @@ type QuitServerReq struct {
 func (x *QuitServerReq) Reset() {
 	*x = QuitServerReq{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_club_club_proto_msgTypes[30]
+		mi := &file_club_club_proto_msgTypes[31]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1676,7 +1723,7 @@ func (x *QuitServerReq) String() string {
 func (*QuitServerReq) ProtoMessage() {}
 
 func (x *QuitServerReq) ProtoReflect() protoreflect.Message {
-	mi := &file_club_club_proto_msgTypes[30]
+	mi := &file_club_club_proto_msgTypes[31]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1689,7 +1736,7 @@ func (x *QuitServerReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use QuitServerReq.ProtoReflect.Descriptor instead.
 func (*QuitServerReq) Descriptor() ([]byte, []int) {
-	return file_club_club_proto_rawDescGZIP(), []int{30}
+	return file_club_club_proto_rawDescGZIP(), []int{31}
 }
 
 func (x *QuitServerReq) GetServerID() string {
@@ -1715,7 +1762,7 @@ type QuitServerResp struct {
 func (x *QuitServerResp) Reset() {
 	*x = QuitServerResp{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_club_club_proto_msgTypes[31]
+		mi := &file_club_club_proto_msgTypes[32]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1728,7 +1775,7 @@ func (x *QuitServerResp) String() string {
 func (*QuitServerResp) ProtoMessage() {}
 
 func (x *QuitServerResp) ProtoReflect() protoreflect.Message {
-	mi := &file_club_club_proto_msgTypes[31]
+	mi := &file_club_club_proto_msgTypes[32]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1741,7 +1788,7 @@ func (x *QuitServerResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use QuitServerResp.ProtoReflect.Descriptor instead.
 func (*QuitServerResp) Descriptor() ([]byte, []int) {
-	return file_club_club_proto_rawDescGZIP(), []int{31}
+	return file_club_club_proto_rawDescGZIP(), []int{32}
 }
 
 type SetServerMemberInfo struct {
@@ -1760,7 +1807,7 @@ type SetServerMemberInfo struct {
 func (x *SetServerMemberInfo) Reset() {
 	*x = SetServerMemberInfo{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_club_club_proto_msgTypes[32]
+		mi := &file_club_club_proto_msgTypes[33]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1773,7 +1820,7 @@ func (x *SetServerMemberInfo) String() string {
 func (*SetServerMemberInfo) ProtoMessage() {}
 
 func (x *SetServerMemberInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_club_club_proto_msgTypes[32]
+	mi := &file_club_club_proto_msgTypes[33]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1786,7 +1833,7 @@ func (x *SetServerMemberInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SetServerMemberInfo.ProtoReflect.Descriptor instead.
 func (*SetServerMemberInfo) Descriptor() ([]byte, []int) {
-	return file_club_club_proto_rawDescGZIP(), []int{32}
+	return file_club_club_proto_rawDescGZIP(), []int{33}
 }
 
 func (x *SetServerMemberInfo) GetServerID() string {
@@ -1842,7 +1889,7 @@ type SetServerMemberInfoReq struct {
 func (x *SetServerMemberInfoReq) Reset() {
 	*x = SetServerMemberInfoReq{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_club_club_proto_msgTypes[33]
+		mi := &file_club_club_proto_msgTypes[34]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1855,7 +1902,7 @@ func (x *SetServerMemberInfoReq) String() string {
 func (*SetServerMemberInfoReq) ProtoMessage() {}
 
 func (x *SetServerMemberInfoReq) ProtoReflect() protoreflect.Message {
-	mi := &file_club_club_proto_msgTypes[33]
+	mi := &file_club_club_proto_msgTypes[34]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1868,7 +1915,7 @@ func (x *SetServerMemberInfoReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SetServerMemberInfoReq.ProtoReflect.Descriptor instead.
 func (*SetServerMemberInfoReq) Descriptor() ([]byte, []int) {
-	return file_club_club_proto_rawDescGZIP(), []int{33}
+	return file_club_club_proto_rawDescGZIP(), []int{34}
 }
 
 func (x *SetServerMemberInfoReq) GetMembers() []*SetServerMemberInfo {
@@ -1887,7 +1934,7 @@ type SetServerMemberInfoResp struct {
 func (x *SetServerMemberInfoResp) Reset() {
 	*x = SetServerMemberInfoResp{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_club_club_proto_msgTypes[34]
+		mi := &file_club_club_proto_msgTypes[35]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1900,7 +1947,7 @@ func (x *SetServerMemberInfoResp) String() string {
 func (*SetServerMemberInfoResp) ProtoMessage() {}
 
 func (x *SetServerMemberInfoResp) ProtoReflect() protoreflect.Message {
-	mi := &file_club_club_proto_msgTypes[34]
+	mi := &file_club_club_proto_msgTypes[35]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1913,7 +1960,7 @@ func (x *SetServerMemberInfoResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SetServerMemberInfoResp.ProtoReflect.Descriptor instead.
 func (*SetServerMemberInfoResp) Descriptor() ([]byte, []int) {
-	return file_club_club_proto_rawDescGZIP(), []int{34}
+	return file_club_club_proto_rawDescGZIP(), []int{35}
 }
 
 type GetServerMemberUserIDsReq struct {
@@ -1927,7 +1974,7 @@ type GetServerMemberUserIDsReq struct {
 func (x *GetServerMemberUserIDsReq) Reset() {
 	*x = GetServerMemberUserIDsReq{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_club_club_proto_msgTypes[35]
+		mi := &file_club_club_proto_msgTypes[36]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1940,7 +1987,7 @@ func (x *GetServerMemberUserIDsReq) String() string {
 func (*GetServerMemberUserIDsReq) ProtoMessage() {}
 
 func (x *GetServerMemberUserIDsReq) ProtoReflect() protoreflect.Message {
-	mi := &file_club_club_proto_msgTypes[35]
+	mi := &file_club_club_proto_msgTypes[36]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1953,7 +2000,7 @@ func (x *GetServerMemberUserIDsReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetServerMemberUserIDsReq.ProtoReflect.Descriptor instead.
 func (*GetServerMemberUserIDsReq) Descriptor() ([]byte, []int) {
-	return file_club_club_proto_rawDescGZIP(), []int{35}
+	return file_club_club_proto_rawDescGZIP(), []int{36}
 }
 
 func (x *GetServerMemberUserIDsReq) GetServerID() string {
@@ -1974,7 +2021,7 @@ type GetServerMemberUserIDsResp struct {
 func (x *GetServerMemberUserIDsResp) Reset() {
 	*x = GetServerMemberUserIDsResp{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_club_club_proto_msgTypes[36]
+		mi := &file_club_club_proto_msgTypes[37]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1987,7 +2034,7 @@ func (x *GetServerMemberUserIDsResp) String() string {
 func (*GetServerMemberUserIDsResp) ProtoMessage() {}
 
 func (x *GetServerMemberUserIDsResp) ProtoReflect() protoreflect.Message {
-	mi := &file_club_club_proto_msgTypes[36]
+	mi := &file_club_club_proto_msgTypes[37]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2000,7 +2047,7 @@ func (x *GetServerMemberUserIDsResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetServerMemberUserIDsResp.ProtoReflect.Descriptor instead.
 func (*GetServerMemberUserIDsResp) Descriptor() ([]byte, []int) {
-	return file_club_club_proto_rawDescGZIP(), []int{36}
+	return file_club_club_proto_rawDescGZIP(), []int{37}
 }
 
 func (x *GetServerMemberUserIDsResp) GetUserIDs() []string {
@@ -2022,7 +2069,7 @@ type GetUserInServerMembersReq struct {
 func (x *GetUserInServerMembersReq) Reset() {
 	*x = GetUserInServerMembersReq{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_club_club_proto_msgTypes[37]
+		mi := &file_club_club_proto_msgTypes[38]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2035,7 +2082,7 @@ func (x *GetUserInServerMembersReq) String() string {
 func (*GetUserInServerMembersReq) ProtoMessage() {}
 
 func (x *GetUserInServerMembersReq) ProtoReflect() protoreflect.Message {
-	mi := &file_club_club_proto_msgTypes[37]
+	mi := &file_club_club_proto_msgTypes[38]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2048,7 +2095,7 @@ func (x *GetUserInServerMembersReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetUserInServerMembersReq.ProtoReflect.Descriptor instead.
 func (*GetUserInServerMembersReq) Descriptor() ([]byte, []int) {
-	return file_club_club_proto_rawDescGZIP(), []int{37}
+	return file_club_club_proto_rawDescGZIP(), []int{38}
 }
 
 func (x *GetUserInServerMembersReq) GetUserID() string {
@@ -2076,7 +2123,7 @@ type GetUserInServerMembersResp struct {
 func (x *GetUserInServerMembersResp) Reset() {
 	*x = GetUserInServerMembersResp{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_club_club_proto_msgTypes[38]
+		mi := &file_club_club_proto_msgTypes[39]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2089,7 +2136,7 @@ func (x *GetUserInServerMembersResp) String() string {
 func (*GetUserInServerMembersResp) ProtoMessage() {}
 
 func (x *GetUserInServerMembersResp) ProtoReflect() protoreflect.Message {
-	mi := &file_club_club_proto_msgTypes[38]
+	mi := &file_club_club_proto_msgTypes[39]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2102,7 +2149,7 @@ func (x *GetUserInServerMembersResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetUserInServerMembersResp.ProtoReflect.Descriptor instead.
 func (*GetUserInServerMembersResp) Descriptor() ([]byte, []int) {
-	return file_club_club_proto_rawDescGZIP(), []int{38}
+	return file_club_club_proto_rawDescGZIP(), []int{39}
 }
 
 func (x *GetUserInServerMembersResp) GetMembers() []*sdkws.ServerMemberFullInfo {
@@ -2124,7 +2171,7 @@ type GetServerMemberRoleLevelReq struct {
 func (x *GetServerMemberRoleLevelReq) Reset() {
 	*x = GetServerMemberRoleLevelReq{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_club_club_proto_msgTypes[39]
+		mi := &file_club_club_proto_msgTypes[40]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2137,7 +2184,7 @@ func (x *GetServerMemberRoleLevelReq) String() string {
 func (*GetServerMemberRoleLevelReq) ProtoMessage() {}
 
 func (x *GetServerMemberRoleLevelReq) ProtoReflect() protoreflect.Message {
-	mi := &file_club_club_proto_msgTypes[39]
+	mi := &file_club_club_proto_msgTypes[40]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2150,7 +2197,7 @@ func (x *GetServerMemberRoleLevelReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetServerMemberRoleLevelReq.ProtoReflect.Descriptor instead.
 func (*GetServerMemberRoleLevelReq) Descriptor() ([]byte, []int) {
-	return file_club_club_proto_rawDescGZIP(), []int{39}
+	return file_club_club_proto_rawDescGZIP(), []int{40}
 }
 
 func (x *GetServerMemberRoleLevelReq) GetServerID() string {
@@ -2178,7 +2225,7 @@ type GetServerMemberRoleLevelResp struct {
 func (x *GetServerMemberRoleLevelResp) Reset() {
 	*x = GetServerMemberRoleLevelResp{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_club_club_proto_msgTypes[40]
+		mi := &file_club_club_proto_msgTypes[41]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2191,7 +2238,7 @@ func (x *GetServerMemberRoleLevelResp) String() string {
 func (*GetServerMemberRoleLevelResp) ProtoMessage() {}
 
 func (x *GetServerMemberRoleLevelResp) ProtoReflect() protoreflect.Message {
-	mi := &file_club_club_proto_msgTypes[40]
+	mi := &file_club_club_proto_msgTypes[41]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2204,7 +2251,7 @@ func (x *GetServerMemberRoleLevelResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetServerMemberRoleLevelResp.ProtoReflect.Descriptor instead.
 func (*GetServerMemberRoleLevelResp) Descriptor() ([]byte, []int) {
-	return file_club_club_proto_rawDescGZIP(), []int{40}
+	return file_club_club_proto_rawDescGZIP(), []int{41}
 }
 
 func (x *GetServerMemberRoleLevelResp) GetMembers() []*sdkws.ServerMemberFullInfo {
@@ -2226,7 +2273,7 @@ type GetServerMemberCacheReq struct {
 func (x *GetServerMemberCacheReq) Reset() {
 	*x = GetServerMemberCacheReq{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_club_club_proto_msgTypes[41]
+		mi := &file_club_club_proto_msgTypes[42]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2239,7 +2286,7 @@ func (x *GetServerMemberCacheReq) String() string {
 func (*GetServerMemberCacheReq) ProtoMessage() {}
 
 func (x *GetServerMemberCacheReq) ProtoReflect() protoreflect.Message {
-	mi := &file_club_club_proto_msgTypes[41]
+	mi := &file_club_club_proto_msgTypes[42]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2252,7 +2299,7 @@ func (x *GetServerMemberCacheReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetServerMemberCacheReq.ProtoReflect.Descriptor instead.
 func (*GetServerMemberCacheReq) Descriptor() ([]byte, []int) {
-	return file_club_club_proto_rawDescGZIP(), []int{41}
+	return file_club_club_proto_rawDescGZIP(), []int{42}
 }
 
 func (x *GetServerMemberCacheReq) GetServerID() string {
@@ -2280,7 +2327,7 @@ type GetServerMemberCacheResp struct {
 func (x *GetServerMemberCacheResp) Reset() {
 	*x = GetServerMemberCacheResp{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_club_club_proto_msgTypes[42]
+		mi := &file_club_club_proto_msgTypes[43]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2293,7 +2340,7 @@ func (x *GetServerMemberCacheResp) String() string {
 func (*GetServerMemberCacheResp) ProtoMessage() {}
 
 func (x *GetServerMemberCacheResp) ProtoReflect() protoreflect.Message {
-	mi := &file_club_club_proto_msgTypes[42]
+	mi := &file_club_club_proto_msgTypes[43]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2306,7 +2353,7 @@ func (x *GetServerMemberCacheResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetServerMemberCacheResp.ProtoReflect.Descriptor instead.
 func (*GetServerMemberCacheResp) Descriptor() ([]byte, []int) {
-	return file_club_club_proto_rawDescGZIP(), []int{42}
+	return file_club_club_proto_rawDescGZIP(), []int{43}
 }
 
 func (x *GetServerMemberCacheResp) GetMember() *sdkws.ServerMemberFullInfo {
@@ -2329,7 +2376,7 @@ type TransferServerOwnerReq struct {
 func (x *TransferServerOwnerReq) Reset() {
 	*x = TransferServerOwnerReq{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_club_club_proto_msgTypes[43]
+		mi := &file_club_club_proto_msgTypes[44]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2342,7 +2389,7 @@ func (x *TransferServerOwnerReq) String() string {
 func (*TransferServerOwnerReq) ProtoMessage() {}
 
 func (x *TransferServerOwnerReq) ProtoReflect() protoreflect.Message {
-	mi := &file_club_club_proto_msgTypes[43]
+	mi := &file_club_club_proto_msgTypes[44]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2355,7 +2402,7 @@ func (x *TransferServerOwnerReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TransferServerOwnerReq.ProtoReflect.Descriptor instead.
 func (*TransferServerOwnerReq) Descriptor() ([]byte, []int) {
-	return file_club_club_proto_rawDescGZIP(), []int{43}
+	return file_club_club_proto_rawDescGZIP(), []int{44}
 }
 
 func (x *TransferServerOwnerReq) GetServerID() string {
@@ -2388,7 +2435,7 @@ type TransferServerOwnerResp struct {
 func (x *TransferServerOwnerResp) Reset() {
 	*x = TransferServerOwnerResp{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_club_club_proto_msgTypes[44]
+		mi := &file_club_club_proto_msgTypes[45]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2401,7 +2448,7 @@ func (x *TransferServerOwnerResp) String() string {
 func (*TransferServerOwnerResp) ProtoMessage() {}
 
 func (x *TransferServerOwnerResp) ProtoReflect() protoreflect.Message {
-	mi := &file_club_club_proto_msgTypes[44]
+	mi := &file_club_club_proto_msgTypes[45]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2414,7 +2461,7 @@ func (x *TransferServerOwnerResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TransferServerOwnerResp.ProtoReflect.Descriptor instead.
 func (*TransferServerOwnerResp) Descriptor() ([]byte, []int) {
-	return file_club_club_proto_rawDescGZIP(), []int{44}
+	return file_club_club_proto_rawDescGZIP(), []int{45}
 }
 
 // group
@@ -2430,7 +2477,7 @@ type GetJoinedServerGroupListReq struct {
 func (x *GetJoinedServerGroupListReq) Reset() {
 	*x = GetJoinedServerGroupListReq{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_club_club_proto_msgTypes[45]
+		mi := &file_club_club_proto_msgTypes[46]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2443,7 +2490,7 @@ func (x *GetJoinedServerGroupListReq) String() string {
 func (*GetJoinedServerGroupListReq) ProtoMessage() {}
 
 func (x *GetJoinedServerGroupListReq) ProtoReflect() protoreflect.Message {
-	mi := &file_club_club_proto_msgTypes[45]
+	mi := &file_club_club_proto_msgTypes[46]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2456,7 +2503,7 @@ func (x *GetJoinedServerGroupListReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetJoinedServerGroupListReq.ProtoReflect.Descriptor instead.
 func (*GetJoinedServerGroupListReq) Descriptor() ([]byte, []int) {
-	return file_club_club_proto_rawDescGZIP(), []int{45}
+	return file_club_club_proto_rawDescGZIP(), []int{46}
 }
 
 func (x *GetJoinedServerGroupListReq) GetPagination() *sdkws.RequestPagination {
@@ -2485,7 +2532,7 @@ type GetJoinedServerGroupListResp struct {
 func (x *GetJoinedServerGroupListResp) Reset() {
 	*x = GetJoinedServerGroupListResp{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_club_club_proto_msgTypes[46]
+		mi := &file_club_club_proto_msgTypes[47]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2498,7 +2545,7 @@ func (x *GetJoinedServerGroupListResp) String() string {
 func (*GetJoinedServerGroupListResp) ProtoMessage() {}
 
 func (x *GetJoinedServerGroupListResp) ProtoReflect() protoreflect.Message {
-	mi := &file_club_club_proto_msgTypes[46]
+	mi := &file_club_club_proto_msgTypes[47]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2511,7 +2558,7 @@ func (x *GetJoinedServerGroupListResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetJoinedServerGroupListResp.ProtoReflect.Descriptor instead.
 func (*GetJoinedServerGroupListResp) Descriptor() ([]byte, []int) {
-	return file_club_club_proto_rawDescGZIP(), []int{46}
+	return file_club_club_proto_rawDescGZIP(), []int{47}
 }
 
 func (x *GetJoinedServerGroupListResp) GetTotal() uint32 {
@@ -2541,7 +2588,7 @@ type CreateServerGroupReq struct {
 func (x *CreateServerGroupReq) Reset() {
 	*x = CreateServerGroupReq{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_club_club_proto_msgTypes[47]
+		mi := &file_club_club_proto_msgTypes[48]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2554,7 +2601,7 @@ func (x *CreateServerGroupReq) String() string {
 func (*CreateServerGroupReq) ProtoMessage() {}
 
 func (x *CreateServerGroupReq) ProtoReflect() protoreflect.Message {
-	mi := &file_club_club_proto_msgTypes[47]
+	mi := &file_club_club_proto_msgTypes[48]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2567,7 +2614,7 @@ func (x *CreateServerGroupReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateServerGroupReq.ProtoReflect.Descriptor instead.
 func (*CreateServerGroupReq) Descriptor() ([]byte, []int) {
-	return file_club_club_proto_rawDescGZIP(), []int{47}
+	return file_club_club_proto_rawDescGZIP(), []int{48}
 }
 
 func (x *CreateServerGroupReq) GetGroupInfo() *sdkws.GroupInfo {
@@ -2602,7 +2649,7 @@ type CreateServerGroupResp struct {
 func (x *CreateServerGroupResp) Reset() {
 	*x = CreateServerGroupResp{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_club_club_proto_msgTypes[48]
+		mi := &file_club_club_proto_msgTypes[49]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2615,7 +2662,7 @@ func (x *CreateServerGroupResp) String() string {
 func (*CreateServerGroupResp) ProtoMessage() {}
 
 func (x *CreateServerGroupResp) ProtoReflect() protoreflect.Message {
-	mi := &file_club_club_proto_msgTypes[48]
+	mi := &file_club_club_proto_msgTypes[49]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2628,7 +2675,7 @@ func (x *CreateServerGroupResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateServerGroupResp.ProtoReflect.Descriptor instead.
 func (*CreateServerGroupResp) Descriptor() ([]byte, []int) {
-	return file_club_club_proto_rawDescGZIP(), []int{48}
+	return file_club_club_proto_rawDescGZIP(), []int{49}
 }
 
 func (x *CreateServerGroupResp) GetGroupInfo() *sdkws.GroupInfo {
@@ -2652,7 +2699,7 @@ type ServerApplicationResponseReq struct {
 func (x *ServerApplicationResponseReq) Reset() {
 	*x = ServerApplicationResponseReq{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_club_club_proto_msgTypes[49]
+		mi := &file_club_club_proto_msgTypes[50]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2665,7 +2712,7 @@ func (x *ServerApplicationResponseReq) String() string {
 func (*ServerApplicationResponseReq) ProtoMessage() {}
 
 func (x *ServerApplicationResponseReq) ProtoReflect() protoreflect.Message {
-	mi := &file_club_club_proto_msgTypes[49]
+	mi := &file_club_club_proto_msgTypes[50]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2678,7 +2725,7 @@ func (x *ServerApplicationResponseReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ServerApplicationResponseReq.ProtoReflect.Descriptor instead.
 func (*ServerApplicationResponseReq) Descriptor() ([]byte, []int) {
-	return file_club_club_proto_rawDescGZIP(), []int{49}
+	return file_club_club_proto_rawDescGZIP(), []int{50}
 }
 
 func (x *ServerApplicationResponseReq) GetServerID() string {
@@ -2718,7 +2765,7 @@ type ServerApplicationResponseResp struct {
 func (x *ServerApplicationResponseResp) Reset() {
 	*x = ServerApplicationResponseResp{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_club_club_proto_msgTypes[50]
+		mi := &file_club_club_proto_msgTypes[51]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2731,7 +2778,7 @@ func (x *ServerApplicationResponseResp) String() string {
 func (*ServerApplicationResponseResp) ProtoMessage() {}
 
 func (x *ServerApplicationResponseResp) ProtoReflect() protoreflect.Message {
-	mi := &file_club_club_proto_msgTypes[50]
+	mi := &file_club_club_proto_msgTypes[51]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2744,7 +2791,7 @@ func (x *ServerApplicationResponseResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ServerApplicationResponseResp.ProtoReflect.Descriptor instead.
 func (*ServerApplicationResponseResp) Descriptor() ([]byte, []int) {
-	return file_club_club_proto_rawDescGZIP(), []int{50}
+	return file_club_club_proto_rawDescGZIP(), []int{51}
 }
 
 type GetServerApplicationListReq struct {
@@ -2759,7 +2806,7 @@ type GetServerApplicationListReq struct {
 func (x *GetServerApplicationListReq) Reset() {
 	*x = GetServerApplicationListReq{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_club_club_proto_msgTypes[51]
+		mi := &file_club_club_proto_msgTypes[52]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2772,7 +2819,7 @@ func (x *GetServerApplicationListReq) String() string {
 func (*GetServerApplicationListReq) ProtoMessage() {}
 
 func (x *GetServerApplicationListReq) ProtoReflect() protoreflect.Message {
-	mi := &file_club_club_proto_msgTypes[51]
+	mi := &file_club_club_proto_msgTypes[52]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2785,7 +2832,7 @@ func (x *GetServerApplicationListReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetServerApplicationListReq.ProtoReflect.Descriptor instead.
 func (*GetServerApplicationListReq) Descriptor() ([]byte, []int) {
-	return file_club_club_proto_rawDescGZIP(), []int{51}
+	return file_club_club_proto_rawDescGZIP(), []int{52}
 }
 
 func (x *GetServerApplicationListReq) GetPagination() *sdkws.RequestPagination {
@@ -2814,7 +2861,7 @@ type GetServerApplicationListResp struct {
 func (x *GetServerApplicationListResp) Reset() {
 	*x = GetServerApplicationListResp{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_club_club_proto_msgTypes[52]
+		mi := &file_club_club_proto_msgTypes[53]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2827,7 +2874,7 @@ func (x *GetServerApplicationListResp) String() string {
 func (*GetServerApplicationListResp) ProtoMessage() {}
 
 func (x *GetServerApplicationListResp) ProtoReflect() protoreflect.Message {
-	mi := &file_club_club_proto_msgTypes[52]
+	mi := &file_club_club_proto_msgTypes[53]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2840,7 +2887,7 @@ func (x *GetServerApplicationListResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetServerApplicationListResp.ProtoReflect.Descriptor instead.
 func (*GetServerApplicationListResp) Descriptor() ([]byte, []int) {
-	return file_club_club_proto_rawDescGZIP(), []int{52}
+	return file_club_club_proto_rawDescGZIP(), []int{53}
 }
 
 func (x *GetServerApplicationListResp) GetTotal() uint32 {
@@ -2869,7 +2916,7 @@ type GetUserReqApplicationListReq struct {
 func (x *GetUserReqApplicationListReq) Reset() {
 	*x = GetUserReqApplicationListReq{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_club_club_proto_msgTypes[53]
+		mi := &file_club_club_proto_msgTypes[54]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2882,7 +2929,7 @@ func (x *GetUserReqApplicationListReq) String() string {
 func (*GetUserReqApplicationListReq) ProtoMessage() {}
 
 func (x *GetUserReqApplicationListReq) ProtoReflect() protoreflect.Message {
-	mi := &file_club_club_proto_msgTypes[53]
+	mi := &file_club_club_proto_msgTypes[54]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2895,7 +2942,7 @@ func (x *GetUserReqApplicationListReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetUserReqApplicationListReq.ProtoReflect.Descriptor instead.
 func (*GetUserReqApplicationListReq) Descriptor() ([]byte, []int) {
-	return file_club_club_proto_rawDescGZIP(), []int{53}
+	return file_club_club_proto_rawDescGZIP(), []int{54}
 }
 
 func (x *GetUserReqApplicationListReq) GetPagination() *sdkws.RequestPagination {
@@ -2924,7 +2971,7 @@ type GetUserReqApplicationListResp struct {
 func (x *GetUserReqApplicationListResp) Reset() {
 	*x = GetUserReqApplicationListResp{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_club_club_proto_msgTypes[54]
+		mi := &file_club_club_proto_msgTypes[55]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2937,7 +2984,7 @@ func (x *GetUserReqApplicationListResp) String() string {
 func (*GetUserReqApplicationListResp) ProtoMessage() {}
 
 func (x *GetUserReqApplicationListResp) ProtoReflect() protoreflect.Message {
-	mi := &file_club_club_proto_msgTypes[54]
+	mi := &file_club_club_proto_msgTypes[55]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2950,7 +2997,7 @@ func (x *GetUserReqApplicationListResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetUserReqApplicationListResp.ProtoReflect.Descriptor instead.
 func (*GetUserReqApplicationListResp) Descriptor() ([]byte, []int) {
-	return file_club_club_proto_rawDescGZIP(), []int{54}
+	return file_club_club_proto_rawDescGZIP(), []int{55}
 }
 
 func (x *GetUserReqApplicationListResp) GetTotal() uint32 {
@@ -2979,7 +3026,7 @@ type GetServerUsersReqApplicationListReq struct {
 func (x *GetServerUsersReqApplicationListReq) Reset() {
 	*x = GetServerUsersReqApplicationListReq{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_club_club_proto_msgTypes[55]
+		mi := &file_club_club_proto_msgTypes[56]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2992,7 +3039,7 @@ func (x *GetServerUsersReqApplicationListReq) String() string {
 func (*GetServerUsersReqApplicationListReq) ProtoMessage() {}
 
 func (x *GetServerUsersReqApplicationListReq) ProtoReflect() protoreflect.Message {
-	mi := &file_club_club_proto_msgTypes[55]
+	mi := &file_club_club_proto_msgTypes[56]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3005,7 +3052,7 @@ func (x *GetServerUsersReqApplicationListReq) ProtoReflect() protoreflect.Messag
 
 // Deprecated: Use GetServerUsersReqApplicationListReq.ProtoReflect.Descriptor instead.
 func (*GetServerUsersReqApplicationListReq) Descriptor() ([]byte, []int) {
-	return file_club_club_proto_rawDescGZIP(), []int{55}
+	return file_club_club_proto_rawDescGZIP(), []int{56}
 }
 
 func (x *GetServerUsersReqApplicationListReq) GetServerID() string {
@@ -3034,7 +3081,7 @@ type GetServerUsersReqApplicationListResp struct {
 func (x *GetServerUsersReqApplicationListResp) Reset() {
 	*x = GetServerUsersReqApplicationListResp{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_club_club_proto_msgTypes[56]
+		mi := &file_club_club_proto_msgTypes[57]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -3047,7 +3094,7 @@ func (x *GetServerUsersReqApplicationListResp) String() string {
 func (*GetServerUsersReqApplicationListResp) ProtoMessage() {}
 
 func (x *GetServerUsersReqApplicationListResp) ProtoReflect() protoreflect.Message {
-	mi := &file_club_club_proto_msgTypes[56]
+	mi := &file_club_club_proto_msgTypes[57]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3060,7 +3107,7 @@ func (x *GetServerUsersReqApplicationListResp) ProtoReflect() protoreflect.Messa
 
 // Deprecated: Use GetServerUsersReqApplicationListResp.ProtoReflect.Descriptor instead.
 func (*GetServerUsersReqApplicationListResp) Descriptor() ([]byte, []int) {
-	return file_club_club_proto_rawDescGZIP(), []int{56}
+	return file_club_club_proto_rawDescGZIP(), []int{57}
 }
 
 func (x *GetServerUsersReqApplicationListResp) GetTotal() int64 {
@@ -3073,6 +3120,328 @@ func (x *GetServerUsersReqApplicationListResp) GetTotal() int64 {
 func (x *GetServerUsersReqApplicationListResp) GetServerRequests() []*sdkws.ServerRequest {
 	if x != nil {
 		return x.ServerRequests
+	}
+	return nil
+}
+
+// ////////server_black////////////////
+type BanServerMemberReq struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	ServerID       string `protobuf:"bytes,1,opt,name=serverID,proto3" json:"serverID,omitempty"`
+	BlockUserID    string `protobuf:"bytes,2,opt,name=blockUserID,proto3" json:"blockUserID,omitempty"`
+	OperatorUserID string `protobuf:"bytes,3,opt,name=operatorUserID,proto3" json:"operatorUserID,omitempty"`
+	Ex             string `protobuf:"bytes,4,opt,name=ex,proto3" json:"ex,omitempty"`
+}
+
+func (x *BanServerMemberReq) Reset() {
+	*x = BanServerMemberReq{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_club_club_proto_msgTypes[58]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *BanServerMemberReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*BanServerMemberReq) ProtoMessage() {}
+
+func (x *BanServerMemberReq) ProtoReflect() protoreflect.Message {
+	mi := &file_club_club_proto_msgTypes[58]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use BanServerMemberReq.ProtoReflect.Descriptor instead.
+func (*BanServerMemberReq) Descriptor() ([]byte, []int) {
+	return file_club_club_proto_rawDescGZIP(), []int{58}
+}
+
+func (x *BanServerMemberReq) GetServerID() string {
+	if x != nil {
+		return x.ServerID
+	}
+	return ""
+}
+
+func (x *BanServerMemberReq) GetBlockUserID() string {
+	if x != nil {
+		return x.BlockUserID
+	}
+	return ""
+}
+
+func (x *BanServerMemberReq) GetOperatorUserID() string {
+	if x != nil {
+		return x.OperatorUserID
+	}
+	return ""
+}
+
+func (x *BanServerMemberReq) GetEx() string {
+	if x != nil {
+		return x.Ex
+	}
+	return ""
+}
+
+type BanServerMemberResp struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Black *sdkws.ServerBlackFullInfo `protobuf:"bytes,1,opt,name=black,proto3" json:"black,omitempty"`
+}
+
+func (x *BanServerMemberResp) Reset() {
+	*x = BanServerMemberResp{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_club_club_proto_msgTypes[59]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *BanServerMemberResp) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*BanServerMemberResp) ProtoMessage() {}
+
+func (x *BanServerMemberResp) ProtoReflect() protoreflect.Message {
+	mi := &file_club_club_proto_msgTypes[59]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use BanServerMemberResp.ProtoReflect.Descriptor instead.
+func (*BanServerMemberResp) Descriptor() ([]byte, []int) {
+	return file_club_club_proto_rawDescGZIP(), []int{59}
+}
+
+func (x *BanServerMemberResp) GetBlack() *sdkws.ServerBlackFullInfo {
+	if x != nil {
+		return x.Black
+	}
+	return nil
+}
+
+type CancelBanServerMemberReq struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	ServerID       string `protobuf:"bytes,1,opt,name=serverID,proto3" json:"serverID,omitempty"`
+	BlockUserID    string `protobuf:"bytes,2,opt,name=blockUserID,proto3" json:"blockUserID,omitempty"`
+	OperatorUserID string `protobuf:"bytes,3,opt,name=operatorUserID,proto3" json:"operatorUserID,omitempty"`
+	Ex             string `protobuf:"bytes,4,opt,name=ex,proto3" json:"ex,omitempty"`
+}
+
+func (x *CancelBanServerMemberReq) Reset() {
+	*x = CancelBanServerMemberReq{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_club_club_proto_msgTypes[60]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *CancelBanServerMemberReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CancelBanServerMemberReq) ProtoMessage() {}
+
+func (x *CancelBanServerMemberReq) ProtoReflect() protoreflect.Message {
+	mi := &file_club_club_proto_msgTypes[60]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CancelBanServerMemberReq.ProtoReflect.Descriptor instead.
+func (*CancelBanServerMemberReq) Descriptor() ([]byte, []int) {
+	return file_club_club_proto_rawDescGZIP(), []int{60}
+}
+
+func (x *CancelBanServerMemberReq) GetServerID() string {
+	if x != nil {
+		return x.ServerID
+	}
+	return ""
+}
+
+func (x *CancelBanServerMemberReq) GetBlockUserID() string {
+	if x != nil {
+		return x.BlockUserID
+	}
+	return ""
+}
+
+func (x *CancelBanServerMemberReq) GetOperatorUserID() string {
+	if x != nil {
+		return x.OperatorUserID
+	}
+	return ""
+}
+
+func (x *CancelBanServerMemberReq) GetEx() string {
+	if x != nil {
+		return x.Ex
+	}
+	return ""
+}
+
+type CancelBanServerMemberResp struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+}
+
+func (x *CancelBanServerMemberResp) Reset() {
+	*x = CancelBanServerMemberResp{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_club_club_proto_msgTypes[61]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *CancelBanServerMemberResp) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CancelBanServerMemberResp) ProtoMessage() {}
+
+func (x *CancelBanServerMemberResp) ProtoReflect() protoreflect.Message {
+	mi := &file_club_club_proto_msgTypes[61]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CancelBanServerMemberResp.ProtoReflect.Descriptor instead.
+func (*CancelBanServerMemberResp) Descriptor() ([]byte, []int) {
+	return file_club_club_proto_rawDescGZIP(), []int{61}
+}
+
+type GetServerBlackListReq struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	ServerID string `protobuf:"bytes,1,opt,name=serverID,proto3" json:"serverID,omitempty"`
+}
+
+func (x *GetServerBlackListReq) Reset() {
+	*x = GetServerBlackListReq{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_club_club_proto_msgTypes[62]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GetServerBlackListReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetServerBlackListReq) ProtoMessage() {}
+
+func (x *GetServerBlackListReq) ProtoReflect() protoreflect.Message {
+	mi := &file_club_club_proto_msgTypes[62]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetServerBlackListReq.ProtoReflect.Descriptor instead.
+func (*GetServerBlackListReq) Descriptor() ([]byte, []int) {
+	return file_club_club_proto_rawDescGZIP(), []int{62}
+}
+
+func (x *GetServerBlackListReq) GetServerID() string {
+	if x != nil {
+		return x.ServerID
+	}
+	return ""
+}
+
+type GetServerBlackListResp struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Blacks []*sdkws.ServerBlackFullInfo `protobuf:"bytes,1,rep,name=blacks,proto3" json:"blacks,omitempty"`
+}
+
+func (x *GetServerBlackListResp) Reset() {
+	*x = GetServerBlackListResp{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_club_club_proto_msgTypes[63]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GetServerBlackListResp) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetServerBlackListResp) ProtoMessage() {}
+
+func (x *GetServerBlackListResp) ProtoReflect() protoreflect.Message {
+	mi := &file_club_club_proto_msgTypes[63]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetServerBlackListResp.ProtoReflect.Descriptor instead.
+func (*GetServerBlackListResp) Descriptor() ([]byte, []int) {
+	return file_club_club_proto_rawDescGZIP(), []int{63}
+}
+
+func (x *GetServerBlackListResp) GetBlacks() []*sdkws.ServerBlackFullInfo {
+	if x != nil {
+		return x.Blacks
 	}
 	return nil
 }
@@ -3119,23 +3488,31 @@ var file_club_club_proto_rawDesc = []byte{
 	0x4e, 0x61, 0x6d, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0c, 0x63, 0x61, 0x74, 0x65,
 	0x67, 0x6f, 0x72, 0x79, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x20, 0x0a, 0x0b, 0x6f, 0x77, 0x6e, 0x65,
 	0x72, 0x55, 0x73, 0x65, 0x72, 0x49, 0x44, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x6f,
-	0x77, 0x6e, 0x65, 0x72, 0x55, 0x73, 0x65, 0x72, 0x49, 0x44, 0x22, 0x39, 0x0a, 0x17, 0x43, 0x72,
+	0x77, 0x6e, 0x65, 0x72, 0x55, 0x73, 0x65, 0x72, 0x49, 0x44, 0x22, 0x62, 0x0a, 0x17, 0x43, 0x72,
 	0x65, 0x61, 0x74, 0x65, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x43, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72,
-	0x79, 0x52, 0x65, 0x73, 0x70, 0x12, 0x1e, 0x0a, 0x0a, 0x63, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72,
-	0x79, 0x49, 0x44, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0a, 0x63, 0x61, 0x74, 0x65, 0x67,
-	0x6f, 0x72, 0x79, 0x49, 0x44, 0x22, 0x1d, 0x0a, 0x1b, 0x47, 0x65, 0x74, 0x53, 0x65, 0x72, 0x76,
-	0x65, 0x72, 0x52, 0x65, 0x63, 0x6f, 0x6d, 0x6d, 0x65, 0x6e, 0x64, 0x65, 0x64, 0x4c, 0x69, 0x73,
-	0x74, 0x52, 0x65, 0x71, 0x22, 0x5c, 0x0a, 0x1c, 0x47, 0x65, 0x74, 0x53, 0x65, 0x72, 0x76, 0x65,
-	0x72, 0x52, 0x65, 0x63, 0x6f, 0x6d, 0x6d, 0x65, 0x6e, 0x64, 0x65, 0x63, 0x4c, 0x69, 0x73, 0x74,
-	0x52, 0x65, 0x73, 0x70, 0x12, 0x3c, 0x0a, 0x07, 0x73, 0x65, 0x72, 0x76, 0x65, 0x72, 0x73, 0x18,
-	0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x22, 0x2e, 0x4f, 0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53, 0x65,
-	0x72, 0x76, 0x65, 0x72, 0x2e, 0x73, 0x64, 0x6b, 0x77, 0x73, 0x2e, 0x53, 0x65, 0x72, 0x76, 0x65,
-	0x72, 0x46, 0x75, 0x6c, 0x6c, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x07, 0x73, 0x65, 0x72, 0x76, 0x65,
-	0x72, 0x73, 0x22, 0x2f, 0x0a, 0x11, 0x47, 0x65, 0x74, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x73,
-	0x49, 0x6e, 0x66, 0x6f, 0x52, 0x65, 0x71, 0x12, 0x1a, 0x0a, 0x08, 0x73, 0x65, 0x72, 0x76, 0x65,
-	0x72, 0x49, 0x44, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x73, 0x65, 0x72, 0x76, 0x65,
-	0x72, 0x49, 0x44, 0x22, 0xb3, 0x01, 0x0a, 0x12, 0x47, 0x65, 0x74, 0x53, 0x65, 0x72, 0x76, 0x65,
-	0x72, 0x73, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x65, 0x73, 0x70, 0x12, 0x36, 0x0a, 0x06, 0x73, 0x65,
+	0x79, 0x52, 0x65, 0x73, 0x70, 0x12, 0x47, 0x0a, 0x0d, 0x67, 0x72, 0x6f, 0x75, 0x70, 0x43, 0x61,
+	0x74, 0x65, 0x67, 0x6f, 0x72, 0x79, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x21, 0x2e, 0x4f,
+	0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x2e, 0x73, 0x64, 0x6b, 0x77,
+	0x73, 0x2e, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x43, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x79, 0x52,
+	0x0d, 0x67, 0x72, 0x6f, 0x75, 0x70, 0x43, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x79, 0x22, 0x1d,
+	0x0a, 0x1b, 0x47, 0x65, 0x74, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x52, 0x65, 0x63, 0x6f, 0x6d,
+	0x6d, 0x65, 0x6e, 0x64, 0x65, 0x64, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x71, 0x22, 0x5c, 0x0a,
+	0x1c, 0x47, 0x65, 0x74, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x52, 0x65, 0x63, 0x6f, 0x6d, 0x6d,
+	0x65, 0x6e, 0x64, 0x65, 0x63, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x73, 0x70, 0x12, 0x3c, 0x0a,
+	0x07, 0x73, 0x65, 0x72, 0x76, 0x65, 0x72, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x22,
+	0x2e, 0x4f, 0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x2e, 0x73, 0x64,
+	0x6b, 0x77, 0x73, 0x2e, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x46, 0x75, 0x6c, 0x6c, 0x49, 0x6e,
+	0x66, 0x6f, 0x52, 0x07, 0x73, 0x65, 0x72, 0x76, 0x65, 0x72, 0x73, 0x22, 0x31, 0x0a, 0x11, 0x47,
+	0x65, 0x74, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x73, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x65, 0x71,
+	0x12, 0x1c, 0x0a, 0x09, 0x73, 0x65, 0x72, 0x76, 0x65, 0x72, 0x49, 0x44, 0x73, 0x18, 0x01, 0x20,
+	0x03, 0x28, 0x09, 0x52, 0x09, 0x73, 0x65, 0x72, 0x76, 0x65, 0x72, 0x49, 0x44, 0x73, 0x22, 0x54,
+	0x0a, 0x12, 0x47, 0x65, 0x74, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x73, 0x49, 0x6e, 0x66, 0x6f,
+	0x52, 0x65, 0x73, 0x70, 0x12, 0x3e, 0x0a, 0x07, 0x73, 0x65, 0x72, 0x76, 0x65, 0x72, 0x73, 0x18,
+	0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x24, 0x2e, 0x4f, 0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53, 0x65,
+	0x72, 0x76, 0x65, 0x72, 0x2e, 0x63, 0x6c, 0x75, 0x62, 0x2e, 0x47, 0x65, 0x74, 0x53, 0x65, 0x72,
+	0x76, 0x65, 0x72, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x65, 0x73, 0x70, 0x52, 0x07, 0x73, 0x65, 0x72,
+	0x76, 0x65, 0x72, 0x73, 0x22, 0xb2, 0x01, 0x0a, 0x11, 0x47, 0x65, 0x74, 0x53, 0x65, 0x72, 0x76,
+	0x65, 0x72, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x65, 0x73, 0x70, 0x12, 0x36, 0x0a, 0x06, 0x73, 0x65,
 	0x72, 0x76, 0x65, 0x72, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1e, 0x2e, 0x4f, 0x70, 0x65,
 	0x6e, 0x49, 0x4d, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x2e, 0x73, 0x64, 0x6b, 0x77, 0x73, 0x2e,
 	0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x06, 0x73, 0x65, 0x72, 0x76,
@@ -3433,197 +3810,252 @@ var file_club_club_proto_rawDesc = []byte{
 	0x73, 0x18, 0x02, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x21, 0x2e, 0x4f, 0x70, 0x65, 0x6e, 0x49, 0x4d,
 	0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x2e, 0x73, 0x64, 0x6b, 0x77, 0x73, 0x2e, 0x53, 0x65, 0x72,
 	0x76, 0x65, 0x72, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x52, 0x0e, 0x73, 0x65, 0x72, 0x76,
-	0x65, 0x72, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x73, 0x32, 0xb3, 0x17, 0x0a, 0x04, 0x63,
-	0x6c, 0x75, 0x62, 0x12, 0x57, 0x0a, 0x0c, 0x63, 0x72, 0x65, 0x61, 0x74, 0x65, 0x53, 0x65, 0x72,
-	0x76, 0x65, 0x72, 0x12, 0x22, 0x2e, 0x4f, 0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53, 0x65, 0x72, 0x76,
-	0x65, 0x72, 0x2e, 0x63, 0x6c, 0x75, 0x62, 0x2e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x53, 0x65,
-	0x72, 0x76, 0x65, 0x72, 0x52, 0x65, 0x71, 0x1a, 0x23, 0x2e, 0x4f, 0x70, 0x65, 0x6e, 0x49, 0x4d,
-	0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x2e, 0x63, 0x6c, 0x75, 0x62, 0x2e, 0x43, 0x72, 0x65, 0x61,
-	0x74, 0x65, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x52, 0x65, 0x73, 0x70, 0x12, 0x7b, 0x0a, 0x18,
-	0x67, 0x65, 0x74, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x52, 0x65, 0x63, 0x6f, 0x6d, 0x6d, 0x65,
-	0x6e, 0x64, 0x65, 0x64, 0x4c, 0x69, 0x73, 0x74, 0x12, 0x2e, 0x2e, 0x4f, 0x70, 0x65, 0x6e, 0x49,
-	0x4d, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x2e, 0x63, 0x6c, 0x75, 0x62, 0x2e, 0x47, 0x65, 0x74,
-	0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x52, 0x65, 0x63, 0x6f, 0x6d, 0x6d, 0x65, 0x6e, 0x64, 0x65,
-	0x64, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x71, 0x1a, 0x2f, 0x2e, 0x4f, 0x70, 0x65, 0x6e, 0x49,
-	0x4d, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x2e, 0x63, 0x6c, 0x75, 0x62, 0x2e, 0x47, 0x65, 0x74,
-	0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x52, 0x65, 0x63, 0x6f, 0x6d, 0x6d, 0x65, 0x6e, 0x64, 0x65,
-	0x63, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x73, 0x70, 0x12, 0x5d, 0x0a, 0x0e, 0x67, 0x65, 0x74,
-	0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x73, 0x49, 0x6e, 0x66, 0x6f, 0x12, 0x24, 0x2e, 0x4f, 0x70,
+	0x65, 0x72, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x73, 0x22, 0x8a, 0x01, 0x0a, 0x12, 0x42,
+	0x61, 0x6e, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x4d, 0x65, 0x6d, 0x62, 0x65, 0x72, 0x52, 0x65,
+	0x71, 0x12, 0x1a, 0x0a, 0x08, 0x73, 0x65, 0x72, 0x76, 0x65, 0x72, 0x49, 0x44, 0x18, 0x01, 0x20,
+	0x01, 0x28, 0x09, 0x52, 0x08, 0x73, 0x65, 0x72, 0x76, 0x65, 0x72, 0x49, 0x44, 0x12, 0x20, 0x0a,
+	0x0b, 0x62, 0x6c, 0x6f, 0x63, 0x6b, 0x55, 0x73, 0x65, 0x72, 0x49, 0x44, 0x18, 0x02, 0x20, 0x01,
+	0x28, 0x09, 0x52, 0x0b, 0x62, 0x6c, 0x6f, 0x63, 0x6b, 0x55, 0x73, 0x65, 0x72, 0x49, 0x44, 0x12,
+	0x26, 0x0a, 0x0e, 0x6f, 0x70, 0x65, 0x72, 0x61, 0x74, 0x6f, 0x72, 0x55, 0x73, 0x65, 0x72, 0x49,
+	0x44, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0e, 0x6f, 0x70, 0x65, 0x72, 0x61, 0x74, 0x6f,
+	0x72, 0x55, 0x73, 0x65, 0x72, 0x49, 0x44, 0x12, 0x0e, 0x0a, 0x02, 0x65, 0x78, 0x18, 0x04, 0x20,
+	0x01, 0x28, 0x09, 0x52, 0x02, 0x65, 0x78, 0x22, 0x54, 0x0a, 0x13, 0x42, 0x61, 0x6e, 0x53, 0x65,
+	0x72, 0x76, 0x65, 0x72, 0x4d, 0x65, 0x6d, 0x62, 0x65, 0x72, 0x52, 0x65, 0x73, 0x70, 0x12, 0x3d,
+	0x0a, 0x05, 0x62, 0x6c, 0x61, 0x63, 0x6b, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x27, 0x2e,
+	0x4f, 0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x2e, 0x73, 0x64, 0x6b,
+	0x77, 0x73, 0x2e, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x42, 0x6c, 0x61, 0x63, 0x6b, 0x46, 0x75,
+	0x6c, 0x6c, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x05, 0x62, 0x6c, 0x61, 0x63, 0x6b, 0x22, 0x90, 0x01,
+	0x0a, 0x18, 0x43, 0x61, 0x6e, 0x63, 0x65, 0x6c, 0x42, 0x61, 0x6e, 0x53, 0x65, 0x72, 0x76, 0x65,
+	0x72, 0x4d, 0x65, 0x6d, 0x62, 0x65, 0x72, 0x52, 0x65, 0x71, 0x12, 0x1a, 0x0a, 0x08, 0x73, 0x65,
+	0x72, 0x76, 0x65, 0x72, 0x49, 0x44, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x73, 0x65,
+	0x72, 0x76, 0x65, 0x72, 0x49, 0x44, 0x12, 0x20, 0x0a, 0x0b, 0x62, 0x6c, 0x6f, 0x63, 0x6b, 0x55,
+	0x73, 0x65, 0x72, 0x49, 0x44, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x62, 0x6c, 0x6f,
+	0x63, 0x6b, 0x55, 0x73, 0x65, 0x72, 0x49, 0x44, 0x12, 0x26, 0x0a, 0x0e, 0x6f, 0x70, 0x65, 0x72,
+	0x61, 0x74, 0x6f, 0x72, 0x55, 0x73, 0x65, 0x72, 0x49, 0x44, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09,
+	0x52, 0x0e, 0x6f, 0x70, 0x65, 0x72, 0x61, 0x74, 0x6f, 0x72, 0x55, 0x73, 0x65, 0x72, 0x49, 0x44,
+	0x12, 0x0e, 0x0a, 0x02, 0x65, 0x78, 0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x02, 0x65, 0x78,
+	0x22, 0x1b, 0x0a, 0x19, 0x43, 0x61, 0x6e, 0x63, 0x65, 0x6c, 0x42, 0x61, 0x6e, 0x53, 0x65, 0x72,
+	0x76, 0x65, 0x72, 0x4d, 0x65, 0x6d, 0x62, 0x65, 0x72, 0x52, 0x65, 0x73, 0x70, 0x22, 0x33, 0x0a,
+	0x15, 0x47, 0x65, 0x74, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x42, 0x6c, 0x61, 0x63, 0x6b, 0x4c,
+	0x69, 0x73, 0x74, 0x52, 0x65, 0x71, 0x12, 0x1a, 0x0a, 0x08, 0x73, 0x65, 0x72, 0x76, 0x65, 0x72,
+	0x49, 0x44, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x73, 0x65, 0x72, 0x76, 0x65, 0x72,
+	0x49, 0x44, 0x22, 0x59, 0x0a, 0x16, 0x47, 0x65, 0x74, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x42,
+	0x6c, 0x61, 0x63, 0x6b, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x73, 0x70, 0x12, 0x3f, 0x0a, 0x06,
+	0x62, 0x6c, 0x61, 0x63, 0x6b, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x27, 0x2e, 0x4f,
+	0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x2e, 0x73, 0x64, 0x6b, 0x77,
+	0x73, 0x2e, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x42, 0x6c, 0x61, 0x63, 0x6b, 0x46, 0x75, 0x6c,
+	0x6c, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x06, 0x62, 0x6c, 0x61, 0x63, 0x6b, 0x73, 0x32, 0xf4, 0x19,
+	0x0a, 0x04, 0x63, 0x6c, 0x75, 0x62, 0x12, 0x57, 0x0a, 0x0c, 0x63, 0x72, 0x65, 0x61, 0x74, 0x65,
+	0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x12, 0x22, 0x2e, 0x4f, 0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53,
+	0x65, 0x72, 0x76, 0x65, 0x72, 0x2e, 0x63, 0x6c, 0x75, 0x62, 0x2e, 0x43, 0x72, 0x65, 0x61, 0x74,
+	0x65, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x52, 0x65, 0x71, 0x1a, 0x23, 0x2e, 0x4f, 0x70, 0x65,
+	0x6e, 0x49, 0x4d, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x2e, 0x63, 0x6c, 0x75, 0x62, 0x2e, 0x43,
+	0x72, 0x65, 0x61, 0x74, 0x65, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x52, 0x65, 0x73, 0x70, 0x12,
+	0x7b, 0x0a, 0x18, 0x67, 0x65, 0x74, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x52, 0x65, 0x63, 0x6f,
+	0x6d, 0x6d, 0x65, 0x6e, 0x64, 0x65, 0x64, 0x4c, 0x69, 0x73, 0x74, 0x12, 0x2e, 0x2e, 0x4f, 0x70,
 	0x65, 0x6e, 0x49, 0x4d, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x2e, 0x63, 0x6c, 0x75, 0x62, 0x2e,
-	0x47, 0x65, 0x74, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x73, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x65,
-	0x71, 0x1a, 0x25, 0x2e, 0x4f, 0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72,
-	0x2e, 0x63, 0x6c, 0x75, 0x62, 0x2e, 0x47, 0x65, 0x74, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x73,
-	0x49, 0x6e, 0x66, 0x6f, 0x52, 0x65, 0x73, 0x70, 0x12, 0x51, 0x0a, 0x0a, 0x6a, 0x6f, 0x69, 0x6e,
-	0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x12, 0x20, 0x2e, 0x4f, 0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53,
-	0x65, 0x72, 0x76, 0x65, 0x72, 0x2e, 0x63, 0x6c, 0x75, 0x62, 0x2e, 0x4a, 0x6f, 0x69, 0x6e, 0x53,
-	0x65, 0x72, 0x76, 0x65, 0x72, 0x52, 0x65, 0x71, 0x1a, 0x21, 0x2e, 0x4f, 0x70, 0x65, 0x6e, 0x49,
-	0x4d, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x2e, 0x63, 0x6c, 0x75, 0x62, 0x2e, 0x4a, 0x6f, 0x69,
-	0x6e, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x52, 0x65, 0x73, 0x70, 0x12, 0x51, 0x0a, 0x0a, 0x71,
-	0x75, 0x69, 0x74, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x12, 0x20, 0x2e, 0x4f, 0x70, 0x65, 0x6e,
-	0x49, 0x4d, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x2e, 0x63, 0x6c, 0x75, 0x62, 0x2e, 0x51, 0x75,
-	0x69, 0x74, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x52, 0x65, 0x71, 0x1a, 0x21, 0x2e, 0x4f, 0x70,
+	0x47, 0x65, 0x74, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x52, 0x65, 0x63, 0x6f, 0x6d, 0x6d, 0x65,
+	0x6e, 0x64, 0x65, 0x64, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x71, 0x1a, 0x2f, 0x2e, 0x4f, 0x70,
 	0x65, 0x6e, 0x49, 0x4d, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x2e, 0x63, 0x6c, 0x75, 0x62, 0x2e,
-	0x51, 0x75, 0x69, 0x74, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x52, 0x65, 0x73, 0x70, 0x12, 0x5a,
-	0x0a, 0x0d, 0x64, 0x69, 0x73, 0x6d, 0x69, 0x73, 0x73, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x12,
-	0x23, 0x2e, 0x4f, 0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x2e, 0x63,
-	0x6c, 0x75, 0x62, 0x2e, 0x44, 0x69, 0x73, 0x6d, 0x69, 0x73, 0x73, 0x53, 0x65, 0x72, 0x76, 0x65,
-	0x72, 0x52, 0x65, 0x71, 0x1a, 0x24, 0x2e, 0x4f, 0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53, 0x65, 0x72,
-	0x76, 0x65, 0x72, 0x2e, 0x63, 0x6c, 0x75, 0x62, 0x2e, 0x44, 0x69, 0x73, 0x6d, 0x69, 0x73, 0x73,
-	0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x52, 0x65, 0x73, 0x70, 0x12, 0x5a, 0x0a, 0x0d, 0x73, 0x65,
-	0x74, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x49, 0x6e, 0x66, 0x6f, 0x12, 0x23, 0x2e, 0x4f, 0x70,
+	0x47, 0x65, 0x74, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x52, 0x65, 0x63, 0x6f, 0x6d, 0x6d, 0x65,
+	0x6e, 0x64, 0x65, 0x63, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x73, 0x70, 0x12, 0x5d, 0x0a, 0x0e,
+	0x67, 0x65, 0x74, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x73, 0x49, 0x6e, 0x66, 0x6f, 0x12, 0x24,
+	0x2e, 0x4f, 0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x2e, 0x63, 0x6c,
+	0x75, 0x62, 0x2e, 0x47, 0x65, 0x74, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x73, 0x49, 0x6e, 0x66,
+	0x6f, 0x52, 0x65, 0x71, 0x1a, 0x25, 0x2e, 0x4f, 0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53, 0x65, 0x72,
+	0x76, 0x65, 0x72, 0x2e, 0x63, 0x6c, 0x75, 0x62, 0x2e, 0x47, 0x65, 0x74, 0x53, 0x65, 0x72, 0x76,
+	0x65, 0x72, 0x73, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x65, 0x73, 0x70, 0x12, 0x51, 0x0a, 0x0a, 0x6a,
+	0x6f, 0x69, 0x6e, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x12, 0x20, 0x2e, 0x4f, 0x70, 0x65, 0x6e,
+	0x49, 0x4d, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x2e, 0x63, 0x6c, 0x75, 0x62, 0x2e, 0x4a, 0x6f,
+	0x69, 0x6e, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x52, 0x65, 0x71, 0x1a, 0x21, 0x2e, 0x4f, 0x70,
 	0x65, 0x6e, 0x49, 0x4d, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x2e, 0x63, 0x6c, 0x75, 0x62, 0x2e,
-	0x53, 0x65, 0x74, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x65, 0x71,
-	0x1a, 0x24, 0x2e, 0x4f, 0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x2e,
-	0x63, 0x6c, 0x75, 0x62, 0x2e, 0x53, 0x65, 0x74, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x49, 0x6e,
-	0x66, 0x6f, 0x52, 0x65, 0x73, 0x70, 0x12, 0x6c, 0x0a, 0x13, 0x63, 0x72, 0x65, 0x61, 0x74, 0x65,
-	0x47, 0x72, 0x6f, 0x75, 0x70, 0x43, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x79, 0x12, 0x29, 0x2e,
-	0x4f, 0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x2e, 0x63, 0x6c, 0x75,
-	0x62, 0x2e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x43, 0x61, 0x74,
-	0x65, 0x67, 0x6f, 0x72, 0x79, 0x52, 0x65, 0x71, 0x1a, 0x2a, 0x2e, 0x4f, 0x70, 0x65, 0x6e, 0x49,
-	0x4d, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x2e, 0x63, 0x6c, 0x75, 0x62, 0x2e, 0x43, 0x72, 0x65,
+	0x4a, 0x6f, 0x69, 0x6e, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x52, 0x65, 0x73, 0x70, 0x12, 0x51,
+	0x0a, 0x0a, 0x71, 0x75, 0x69, 0x74, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x12, 0x20, 0x2e, 0x4f,
+	0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x2e, 0x63, 0x6c, 0x75, 0x62,
+	0x2e, 0x51, 0x75, 0x69, 0x74, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x52, 0x65, 0x71, 0x1a, 0x21,
+	0x2e, 0x4f, 0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x2e, 0x63, 0x6c,
+	0x75, 0x62, 0x2e, 0x51, 0x75, 0x69, 0x74, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x52, 0x65, 0x73,
+	0x70, 0x12, 0x5a, 0x0a, 0x0d, 0x64, 0x69, 0x73, 0x6d, 0x69, 0x73, 0x73, 0x53, 0x65, 0x72, 0x76,
+	0x65, 0x72, 0x12, 0x23, 0x2e, 0x4f, 0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53, 0x65, 0x72, 0x76, 0x65,
+	0x72, 0x2e, 0x63, 0x6c, 0x75, 0x62, 0x2e, 0x44, 0x69, 0x73, 0x6d, 0x69, 0x73, 0x73, 0x53, 0x65,
+	0x72, 0x76, 0x65, 0x72, 0x52, 0x65, 0x71, 0x1a, 0x24, 0x2e, 0x4f, 0x70, 0x65, 0x6e, 0x49, 0x4d,
+	0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x2e, 0x63, 0x6c, 0x75, 0x62, 0x2e, 0x44, 0x69, 0x73, 0x6d,
+	0x69, 0x73, 0x73, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x52, 0x65, 0x73, 0x70, 0x12, 0x5a, 0x0a,
+	0x0d, 0x73, 0x65, 0x74, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x49, 0x6e, 0x66, 0x6f, 0x12, 0x23,
+	0x2e, 0x4f, 0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x2e, 0x63, 0x6c,
+	0x75, 0x62, 0x2e, 0x53, 0x65, 0x74, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x49, 0x6e, 0x66, 0x6f,
+	0x52, 0x65, 0x71, 0x1a, 0x24, 0x2e, 0x4f, 0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53, 0x65, 0x72, 0x76,
+	0x65, 0x72, 0x2e, 0x63, 0x6c, 0x75, 0x62, 0x2e, 0x53, 0x65, 0x74, 0x53, 0x65, 0x72, 0x76, 0x65,
+	0x72, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x65, 0x73, 0x70, 0x12, 0x6c, 0x0a, 0x13, 0x63, 0x72, 0x65,
 	0x61, 0x74, 0x65, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x43, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x79,
-	0x52, 0x65, 0x73, 0x70, 0x12, 0x7e, 0x0a, 0x19, 0x73, 0x65, 0x72, 0x76, 0x65, 0x72, 0x41, 0x70,
-	0x70, 0x6c, 0x69, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73,
-	0x65, 0x12, 0x2f, 0x2e, 0x4f, 0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72,
-	0x2e, 0x63, 0x6c, 0x75, 0x62, 0x2e, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x41, 0x70, 0x70, 0x6c,
-	0x69, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x52,
-	0x65, 0x71, 0x1a, 0x30, 0x2e, 0x4f, 0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53, 0x65, 0x72, 0x76, 0x65,
-	0x72, 0x2e, 0x63, 0x6c, 0x75, 0x62, 0x2e, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x41, 0x70, 0x70,
-	0x6c, 0x69, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65,
-	0x52, 0x65, 0x73, 0x70, 0x12, 0x7b, 0x0a, 0x18, 0x67, 0x65, 0x74, 0x53, 0x65, 0x72, 0x76, 0x65,
-	0x72, 0x41, 0x70, 0x70, 0x6c, 0x69, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x4c, 0x69, 0x73, 0x74,
-	0x12, 0x2e, 0x2e, 0x4f, 0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x2e,
-	0x63, 0x6c, 0x75, 0x62, 0x2e, 0x47, 0x65, 0x74, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x41, 0x70,
-	0x70, 0x6c, 0x69, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x71,
-	0x1a, 0x2f, 0x2e, 0x4f, 0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x2e,
-	0x63, 0x6c, 0x75, 0x62, 0x2e, 0x47, 0x65, 0x74, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x41, 0x70,
-	0x70, 0x6c, 0x69, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x73,
-	0x70, 0x12, 0x7e, 0x0a, 0x19, 0x67, 0x65, 0x74, 0x55, 0x73, 0x65, 0x72, 0x52, 0x65, 0x71, 0x41,
-	0x70, 0x70, 0x6c, 0x69, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x4c, 0x69, 0x73, 0x74, 0x12, 0x2f,
-	0x2e, 0x4f, 0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x2e, 0x63, 0x6c,
-	0x75, 0x62, 0x2e, 0x47, 0x65, 0x74, 0x55, 0x73, 0x65, 0x72, 0x52, 0x65, 0x71, 0x41, 0x70, 0x70,
-	0x6c, 0x69, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x71, 0x1a,
-	0x30, 0x2e, 0x4f, 0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x2e, 0x63,
-	0x6c, 0x75, 0x62, 0x2e, 0x47, 0x65, 0x74, 0x55, 0x73, 0x65, 0x72, 0x52, 0x65, 0x71, 0x41, 0x70,
-	0x70, 0x6c, 0x69, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x73,
-	0x70, 0x12, 0x93, 0x01, 0x0a, 0x20, 0x67, 0x65, 0x74, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x55,
-	0x73, 0x65, 0x72, 0x73, 0x52, 0x65, 0x71, 0x41, 0x70, 0x70, 0x6c, 0x69, 0x63, 0x61, 0x74, 0x69,
-	0x6f, 0x6e, 0x4c, 0x69, 0x73, 0x74, 0x12, 0x36, 0x2e, 0x4f, 0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53,
-	0x65, 0x72, 0x76, 0x65, 0x72, 0x2e, 0x63, 0x6c, 0x75, 0x62, 0x2e, 0x67, 0x65, 0x74, 0x53, 0x65,
-	0x72, 0x76, 0x65, 0x72, 0x55, 0x73, 0x65, 0x72, 0x73, 0x52, 0x65, 0x71, 0x41, 0x70, 0x70, 0x6c,
-	0x69, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x71, 0x1a, 0x37,
-	0x2e, 0x4f, 0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x2e, 0x63, 0x6c,
-	0x75, 0x62, 0x2e, 0x67, 0x65, 0x74, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x55, 0x73, 0x65, 0x72,
-	0x73, 0x52, 0x65, 0x71, 0x41, 0x70, 0x70, 0x6c, 0x69, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x4c,
-	0x69, 0x73, 0x74, 0x52, 0x65, 0x73, 0x70, 0x12, 0x7b, 0x0a, 0x18, 0x67, 0x65, 0x74, 0x4a, 0x6f,
-	0x69, 0x6e, 0x65, 0x64, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x4c,
-	0x69, 0x73, 0x74, 0x12, 0x2e, 0x2e, 0x4f, 0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53, 0x65, 0x72, 0x76,
-	0x65, 0x72, 0x2e, 0x63, 0x6c, 0x75, 0x62, 0x2e, 0x47, 0x65, 0x74, 0x4a, 0x6f, 0x69, 0x6e, 0x65,
-	0x64, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x4c, 0x69, 0x73, 0x74,
-	0x52, 0x65, 0x71, 0x1a, 0x2f, 0x2e, 0x4f, 0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53, 0x65, 0x72, 0x76,
-	0x65, 0x72, 0x2e, 0x63, 0x6c, 0x75, 0x62, 0x2e, 0x47, 0x65, 0x74, 0x4a, 0x6f, 0x69, 0x6e, 0x65,
-	0x64, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x4c, 0x69, 0x73, 0x74,
-	0x52, 0x65, 0x73, 0x70, 0x12, 0x66, 0x0a, 0x11, 0x63, 0x72, 0x65, 0x61, 0x74, 0x65, 0x53, 0x65,
-	0x72, 0x76, 0x65, 0x72, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x12, 0x27, 0x2e, 0x4f, 0x70, 0x65, 0x6e,
-	0x49, 0x4d, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x2e, 0x63, 0x6c, 0x75, 0x62, 0x2e, 0x43, 0x72,
-	0x65, 0x61, 0x74, 0x65, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x52,
-	0x65, 0x71, 0x1a, 0x28, 0x2e, 0x4f, 0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53, 0x65, 0x72, 0x76, 0x65,
-	0x72, 0x2e, 0x63, 0x6c, 0x75, 0x62, 0x2e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x53, 0x65, 0x72,
-	0x76, 0x65, 0x72, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x52, 0x65, 0x73, 0x70, 0x12, 0x6c, 0x0a, 0x13,
-	0x67, 0x65, 0x74, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x4d, 0x65, 0x6d, 0x62, 0x65, 0x72, 0x4c,
-	0x69, 0x73, 0x74, 0x12, 0x29, 0x2e, 0x4f, 0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53, 0x65, 0x72, 0x76,
-	0x65, 0x72, 0x2e, 0x63, 0x6c, 0x75, 0x62, 0x2e, 0x47, 0x65, 0x74, 0x53, 0x65, 0x72, 0x76, 0x65,
-	0x72, 0x4d, 0x65, 0x6d, 0x62, 0x65, 0x72, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x71, 0x1a, 0x2a,
-	0x2e, 0x4f, 0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x2e, 0x63, 0x6c,
-	0x75, 0x62, 0x2e, 0x47, 0x65, 0x74, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x4d, 0x65, 0x6d, 0x62,
-	0x65, 0x72, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x73, 0x70, 0x12, 0x6f, 0x0a, 0x14, 0x67, 0x65,
-	0x74, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x4d, 0x65, 0x6d, 0x62, 0x65, 0x72, 0x73, 0x49, 0x6e,
-	0x66, 0x6f, 0x12, 0x2a, 0x2e, 0x4f, 0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53, 0x65, 0x72, 0x76, 0x65,
-	0x72, 0x2e, 0x63, 0x6c, 0x75, 0x62, 0x2e, 0x47, 0x65, 0x74, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72,
-	0x4d, 0x65, 0x6d, 0x62, 0x65, 0x72, 0x73, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x65, 0x71, 0x1a, 0x2b,
-	0x2e, 0x4f, 0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x2e, 0x63, 0x6c,
-	0x75, 0x62, 0x2e, 0x47, 0x65, 0x74, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x4d, 0x65, 0x6d, 0x62,
-	0x65, 0x72, 0x73, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x65, 0x73, 0x70, 0x12, 0x63, 0x0a, 0x10, 0x6b,
-	0x69, 0x63, 0x6b, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x4d, 0x65, 0x6d, 0x62, 0x65, 0x72, 0x12,
-	0x26, 0x2e, 0x4f, 0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x2e, 0x63,
-	0x6c, 0x75, 0x62, 0x2e, 0x4b, 0x69, 0x63, 0x6b, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x4d, 0x65,
-	0x6d, 0x62, 0x65, 0x72, 0x52, 0x65, 0x71, 0x1a, 0x27, 0x2e, 0x4f, 0x70, 0x65, 0x6e, 0x49, 0x4d,
-	0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x2e, 0x63, 0x6c, 0x75, 0x62, 0x2e, 0x4b, 0x69, 0x63, 0x6b,
-	0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x4d, 0x65, 0x6d, 0x62, 0x65, 0x72, 0x52, 0x65, 0x73, 0x70,
-	0x12, 0x6c, 0x0a, 0x13, 0x67, 0x65, 0x74, 0x4a, 0x6f, 0x69, 0x6e, 0x65, 0x64, 0x53, 0x65, 0x72,
-	0x76, 0x65, 0x72, 0x4c, 0x69, 0x73, 0x74, 0x12, 0x29, 0x2e, 0x4f, 0x70, 0x65, 0x6e, 0x49, 0x4d,
-	0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x2e, 0x63, 0x6c, 0x75, 0x62, 0x2e, 0x47, 0x65, 0x74, 0x4a,
-	0x6f, 0x69, 0x6e, 0x65, 0x64, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x4c, 0x69, 0x73, 0x74, 0x52,
-	0x65, 0x71, 0x1a, 0x2a, 0x2e, 0x4f, 0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53, 0x65, 0x72, 0x76, 0x65,
-	0x72, 0x2e, 0x63, 0x6c, 0x75, 0x62, 0x2e, 0x47, 0x65, 0x74, 0x4a, 0x6f, 0x69, 0x6e, 0x65, 0x64,
-	0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x73, 0x70, 0x12, 0x6c,
-	0x0a, 0x13, 0x67, 0x65, 0x74, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x4d, 0x65, 0x6d, 0x62, 0x65,
-	0x72, 0x73, 0x43, 0x4d, 0x53, 0x12, 0x29, 0x2e, 0x4f, 0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53, 0x65,
-	0x72, 0x76, 0x65, 0x72, 0x2e, 0x63, 0x6c, 0x75, 0x62, 0x2e, 0x47, 0x65, 0x74, 0x53, 0x65, 0x72,
-	0x76, 0x65, 0x72, 0x4d, 0x65, 0x6d, 0x62, 0x65, 0x72, 0x73, 0x43, 0x4d, 0x53, 0x52, 0x65, 0x71,
-	0x1a, 0x2a, 0x2e, 0x4f, 0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x2e,
-	0x63, 0x6c, 0x75, 0x62, 0x2e, 0x47, 0x65, 0x74, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x4d, 0x65,
-	0x6d, 0x62, 0x65, 0x72, 0x73, 0x43, 0x4d, 0x53, 0x52, 0x65, 0x73, 0x70, 0x12, 0x63, 0x0a, 0x10,
-	0x6d, 0x75, 0x74, 0x65, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x4d, 0x65, 0x6d, 0x62, 0x65, 0x72,
-	0x12, 0x26, 0x2e, 0x4f, 0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x2e,
-	0x63, 0x6c, 0x75, 0x62, 0x2e, 0x4d, 0x75, 0x74, 0x65, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x4d,
-	0x65, 0x6d, 0x62, 0x65, 0x72, 0x52, 0x65, 0x71, 0x1a, 0x27, 0x2e, 0x4f, 0x70, 0x65, 0x6e, 0x49,
-	0x4d, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x2e, 0x63, 0x6c, 0x75, 0x62, 0x2e, 0x4d, 0x75, 0x74,
-	0x65, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x4d, 0x65, 0x6d, 0x62, 0x65, 0x72, 0x52, 0x65, 0x73,
-	0x70, 0x12, 0x75, 0x0a, 0x16, 0x63, 0x61, 0x6e, 0x63, 0x65, 0x6c, 0x4d, 0x75, 0x74, 0x65, 0x53,
-	0x65, 0x72, 0x76, 0x65, 0x72, 0x4d, 0x65, 0x6d, 0x62, 0x65, 0x72, 0x12, 0x2c, 0x2e, 0x4f, 0x70,
+	0x12, 0x29, 0x2e, 0x4f, 0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x2e,
+	0x63, 0x6c, 0x75, 0x62, 0x2e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x47, 0x72, 0x6f, 0x75, 0x70,
+	0x43, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x79, 0x52, 0x65, 0x71, 0x1a, 0x2a, 0x2e, 0x4f, 0x70,
 	0x65, 0x6e, 0x49, 0x4d, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x2e, 0x63, 0x6c, 0x75, 0x62, 0x2e,
-	0x43, 0x61, 0x6e, 0x63, 0x65, 0x6c, 0x4d, 0x75, 0x74, 0x65, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72,
-	0x4d, 0x65, 0x6d, 0x62, 0x65, 0x72, 0x52, 0x65, 0x71, 0x1a, 0x2d, 0x2e, 0x4f, 0x70, 0x65, 0x6e,
-	0x49, 0x4d, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x2e, 0x63, 0x6c, 0x75, 0x62, 0x2e, 0x43, 0x61,
-	0x6e, 0x63, 0x65, 0x6c, 0x4d, 0x75, 0x74, 0x65, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x4d, 0x65,
-	0x6d, 0x62, 0x65, 0x72, 0x52, 0x65, 0x73, 0x70, 0x12, 0x6c, 0x0a, 0x13, 0x73, 0x65, 0x74, 0x53,
-	0x65, 0x72, 0x76, 0x65, 0x72, 0x4d, 0x65, 0x6d, 0x62, 0x65, 0x72, 0x49, 0x6e, 0x66, 0x6f, 0x12,
-	0x29, 0x2e, 0x4f, 0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x2e, 0x63,
-	0x6c, 0x75, 0x62, 0x2e, 0x53, 0x65, 0x74, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x4d, 0x65, 0x6d,
-	0x62, 0x65, 0x72, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x65, 0x71, 0x1a, 0x2a, 0x2e, 0x4f, 0x70, 0x65,
-	0x6e, 0x49, 0x4d, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x2e, 0x63, 0x6c, 0x75, 0x62, 0x2e, 0x53,
-	0x65, 0x74, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x4d, 0x65, 0x6d, 0x62, 0x65, 0x72, 0x49, 0x6e,
-	0x66, 0x6f, 0x52, 0x65, 0x73, 0x70, 0x12, 0x75, 0x0a, 0x16, 0x67, 0x65, 0x74, 0x55, 0x73, 0x65,
-	0x72, 0x49, 0x6e, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x4d, 0x65, 0x6d, 0x62, 0x65, 0x72, 0x73,
-	0x12, 0x2c, 0x2e, 0x4f, 0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x2e,
-	0x63, 0x6c, 0x75, 0x62, 0x2e, 0x47, 0x65, 0x74, 0x55, 0x73, 0x65, 0x72, 0x49, 0x6e, 0x53, 0x65,
-	0x72, 0x76, 0x65, 0x72, 0x4d, 0x65, 0x6d, 0x62, 0x65, 0x72, 0x73, 0x52, 0x65, 0x71, 0x1a, 0x2d,
+	0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x43, 0x61, 0x74, 0x65, 0x67,
+	0x6f, 0x72, 0x79, 0x52, 0x65, 0x73, 0x70, 0x12, 0x7e, 0x0a, 0x19, 0x73, 0x65, 0x72, 0x76, 0x65,
+	0x72, 0x41, 0x70, 0x70, 0x6c, 0x69, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x73, 0x70,
+	0x6f, 0x6e, 0x73, 0x65, 0x12, 0x2f, 0x2e, 0x4f, 0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53, 0x65, 0x72,
+	0x76, 0x65, 0x72, 0x2e, 0x63, 0x6c, 0x75, 0x62, 0x2e, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x41,
+	0x70, 0x70, 0x6c, 0x69, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e,
+	0x73, 0x65, 0x52, 0x65, 0x71, 0x1a, 0x30, 0x2e, 0x4f, 0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53, 0x65,
+	0x72, 0x76, 0x65, 0x72, 0x2e, 0x63, 0x6c, 0x75, 0x62, 0x2e, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72,
+	0x41, 0x70, 0x70, 0x6c, 0x69, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x6f,
+	0x6e, 0x73, 0x65, 0x52, 0x65, 0x73, 0x70, 0x12, 0x7b, 0x0a, 0x18, 0x67, 0x65, 0x74, 0x53, 0x65,
+	0x72, 0x76, 0x65, 0x72, 0x41, 0x70, 0x70, 0x6c, 0x69, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x4c,
+	0x69, 0x73, 0x74, 0x12, 0x2e, 0x2e, 0x4f, 0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53, 0x65, 0x72, 0x76,
+	0x65, 0x72, 0x2e, 0x63, 0x6c, 0x75, 0x62, 0x2e, 0x47, 0x65, 0x74, 0x53, 0x65, 0x72, 0x76, 0x65,
+	0x72, 0x41, 0x70, 0x70, 0x6c, 0x69, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x4c, 0x69, 0x73, 0x74,
+	0x52, 0x65, 0x71, 0x1a, 0x2f, 0x2e, 0x4f, 0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53, 0x65, 0x72, 0x76,
+	0x65, 0x72, 0x2e, 0x63, 0x6c, 0x75, 0x62, 0x2e, 0x47, 0x65, 0x74, 0x53, 0x65, 0x72, 0x76, 0x65,
+	0x72, 0x41, 0x70, 0x70, 0x6c, 0x69, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x4c, 0x69, 0x73, 0x74,
+	0x52, 0x65, 0x73, 0x70, 0x12, 0x7e, 0x0a, 0x19, 0x67, 0x65, 0x74, 0x55, 0x73, 0x65, 0x72, 0x52,
+	0x65, 0x71, 0x41, 0x70, 0x70, 0x6c, 0x69, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x4c, 0x69, 0x73,
+	0x74, 0x12, 0x2f, 0x2e, 0x4f, 0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72,
+	0x2e, 0x63, 0x6c, 0x75, 0x62, 0x2e, 0x47, 0x65, 0x74, 0x55, 0x73, 0x65, 0x72, 0x52, 0x65, 0x71,
+	0x41, 0x70, 0x70, 0x6c, 0x69, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x4c, 0x69, 0x73, 0x74, 0x52,
+	0x65, 0x71, 0x1a, 0x30, 0x2e, 0x4f, 0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53, 0x65, 0x72, 0x76, 0x65,
+	0x72, 0x2e, 0x63, 0x6c, 0x75, 0x62, 0x2e, 0x47, 0x65, 0x74, 0x55, 0x73, 0x65, 0x72, 0x52, 0x65,
+	0x71, 0x41, 0x70, 0x70, 0x6c, 0x69, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x4c, 0x69, 0x73, 0x74,
+	0x52, 0x65, 0x73, 0x70, 0x12, 0x93, 0x01, 0x0a, 0x20, 0x67, 0x65, 0x74, 0x53, 0x65, 0x72, 0x76,
+	0x65, 0x72, 0x55, 0x73, 0x65, 0x72, 0x73, 0x52, 0x65, 0x71, 0x41, 0x70, 0x70, 0x6c, 0x69, 0x63,
+	0x61, 0x74, 0x69, 0x6f, 0x6e, 0x4c, 0x69, 0x73, 0x74, 0x12, 0x36, 0x2e, 0x4f, 0x70, 0x65, 0x6e,
+	0x49, 0x4d, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x2e, 0x63, 0x6c, 0x75, 0x62, 0x2e, 0x67, 0x65,
+	0x74, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x55, 0x73, 0x65, 0x72, 0x73, 0x52, 0x65, 0x71, 0x41,
+	0x70, 0x70, 0x6c, 0x69, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65,
+	0x71, 0x1a, 0x37, 0x2e, 0x4f, 0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72,
+	0x2e, 0x63, 0x6c, 0x75, 0x62, 0x2e, 0x67, 0x65, 0x74, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x55,
+	0x73, 0x65, 0x72, 0x73, 0x52, 0x65, 0x71, 0x41, 0x70, 0x70, 0x6c, 0x69, 0x63, 0x61, 0x74, 0x69,
+	0x6f, 0x6e, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x73, 0x70, 0x12, 0x7b, 0x0a, 0x18, 0x67, 0x65,
+	0x74, 0x4a, 0x6f, 0x69, 0x6e, 0x65, 0x64, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x47, 0x72, 0x6f,
+	0x75, 0x70, 0x4c, 0x69, 0x73, 0x74, 0x12, 0x2e, 0x2e, 0x4f, 0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53,
+	0x65, 0x72, 0x76, 0x65, 0x72, 0x2e, 0x63, 0x6c, 0x75, 0x62, 0x2e, 0x47, 0x65, 0x74, 0x4a, 0x6f,
+	0x69, 0x6e, 0x65, 0x64, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x4c,
+	0x69, 0x73, 0x74, 0x52, 0x65, 0x71, 0x1a, 0x2f, 0x2e, 0x4f, 0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53,
+	0x65, 0x72, 0x76, 0x65, 0x72, 0x2e, 0x63, 0x6c, 0x75, 0x62, 0x2e, 0x47, 0x65, 0x74, 0x4a, 0x6f,
+	0x69, 0x6e, 0x65, 0x64, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x4c,
+	0x69, 0x73, 0x74, 0x52, 0x65, 0x73, 0x70, 0x12, 0x66, 0x0a, 0x11, 0x63, 0x72, 0x65, 0x61, 0x74,
+	0x65, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x12, 0x27, 0x2e, 0x4f,
+	0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x2e, 0x63, 0x6c, 0x75, 0x62,
+	0x2e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x47, 0x72, 0x6f,
+	0x75, 0x70, 0x52, 0x65, 0x71, 0x1a, 0x28, 0x2e, 0x4f, 0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53, 0x65,
+	0x72, 0x76, 0x65, 0x72, 0x2e, 0x63, 0x6c, 0x75, 0x62, 0x2e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65,
+	0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x52, 0x65, 0x73, 0x70, 0x12,
+	0x6c, 0x0a, 0x13, 0x67, 0x65, 0x74, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x4d, 0x65, 0x6d, 0x62,
+	0x65, 0x72, 0x4c, 0x69, 0x73, 0x74, 0x12, 0x29, 0x2e, 0x4f, 0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53,
+	0x65, 0x72, 0x76, 0x65, 0x72, 0x2e, 0x63, 0x6c, 0x75, 0x62, 0x2e, 0x47, 0x65, 0x74, 0x53, 0x65,
+	0x72, 0x76, 0x65, 0x72, 0x4d, 0x65, 0x6d, 0x62, 0x65, 0x72, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65,
+	0x71, 0x1a, 0x2a, 0x2e, 0x4f, 0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72,
+	0x2e, 0x63, 0x6c, 0x75, 0x62, 0x2e, 0x47, 0x65, 0x74, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x4d,
+	0x65, 0x6d, 0x62, 0x65, 0x72, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x73, 0x70, 0x12, 0x6f, 0x0a,
+	0x14, 0x67, 0x65, 0x74, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x4d, 0x65, 0x6d, 0x62, 0x65, 0x72,
+	0x73, 0x49, 0x6e, 0x66, 0x6f, 0x12, 0x2a, 0x2e, 0x4f, 0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53, 0x65,
+	0x72, 0x76, 0x65, 0x72, 0x2e, 0x63, 0x6c, 0x75, 0x62, 0x2e, 0x47, 0x65, 0x74, 0x53, 0x65, 0x72,
+	0x76, 0x65, 0x72, 0x4d, 0x65, 0x6d, 0x62, 0x65, 0x72, 0x73, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x65,
+	0x71, 0x1a, 0x2b, 0x2e, 0x4f, 0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72,
+	0x2e, 0x63, 0x6c, 0x75, 0x62, 0x2e, 0x47, 0x65, 0x74, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x4d,
+	0x65, 0x6d, 0x62, 0x65, 0x72, 0x73, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x65, 0x73, 0x70, 0x12, 0x63,
+	0x0a, 0x10, 0x6b, 0x69, 0x63, 0x6b, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x4d, 0x65, 0x6d, 0x62,
+	0x65, 0x72, 0x12, 0x26, 0x2e, 0x4f, 0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53, 0x65, 0x72, 0x76, 0x65,
+	0x72, 0x2e, 0x63, 0x6c, 0x75, 0x62, 0x2e, 0x4b, 0x69, 0x63, 0x6b, 0x53, 0x65, 0x72, 0x76, 0x65,
+	0x72, 0x4d, 0x65, 0x6d, 0x62, 0x65, 0x72, 0x52, 0x65, 0x71, 0x1a, 0x27, 0x2e, 0x4f, 0x70, 0x65,
+	0x6e, 0x49, 0x4d, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x2e, 0x63, 0x6c, 0x75, 0x62, 0x2e, 0x4b,
+	0x69, 0x63, 0x6b, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x4d, 0x65, 0x6d, 0x62, 0x65, 0x72, 0x52,
+	0x65, 0x73, 0x70, 0x12, 0x6c, 0x0a, 0x13, 0x67, 0x65, 0x74, 0x4a, 0x6f, 0x69, 0x6e, 0x65, 0x64,
+	0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x4c, 0x69, 0x73, 0x74, 0x12, 0x29, 0x2e, 0x4f, 0x70, 0x65,
+	0x6e, 0x49, 0x4d, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x2e, 0x63, 0x6c, 0x75, 0x62, 0x2e, 0x47,
+	0x65, 0x74, 0x4a, 0x6f, 0x69, 0x6e, 0x65, 0x64, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x4c, 0x69,
+	0x73, 0x74, 0x52, 0x65, 0x71, 0x1a, 0x2a, 0x2e, 0x4f, 0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53, 0x65,
+	0x72, 0x76, 0x65, 0x72, 0x2e, 0x63, 0x6c, 0x75, 0x62, 0x2e, 0x47, 0x65, 0x74, 0x4a, 0x6f, 0x69,
+	0x6e, 0x65, 0x64, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x73,
+	0x70, 0x12, 0x6c, 0x0a, 0x13, 0x67, 0x65, 0x74, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x4d, 0x65,
+	0x6d, 0x62, 0x65, 0x72, 0x73, 0x43, 0x4d, 0x53, 0x12, 0x29, 0x2e, 0x4f, 0x70, 0x65, 0x6e, 0x49,
+	0x4d, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x2e, 0x63, 0x6c, 0x75, 0x62, 0x2e, 0x47, 0x65, 0x74,
+	0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x4d, 0x65, 0x6d, 0x62, 0x65, 0x72, 0x73, 0x43, 0x4d, 0x53,
+	0x52, 0x65, 0x71, 0x1a, 0x2a, 0x2e, 0x4f, 0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53, 0x65, 0x72, 0x76,
+	0x65, 0x72, 0x2e, 0x63, 0x6c, 0x75, 0x62, 0x2e, 0x47, 0x65, 0x74, 0x53, 0x65, 0x72, 0x76, 0x65,
+	0x72, 0x4d, 0x65, 0x6d, 0x62, 0x65, 0x72, 0x73, 0x43, 0x4d, 0x53, 0x52, 0x65, 0x73, 0x70, 0x12,
+	0x63, 0x0a, 0x10, 0x6d, 0x75, 0x74, 0x65, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x4d, 0x65, 0x6d,
+	0x62, 0x65, 0x72, 0x12, 0x26, 0x2e, 0x4f, 0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53, 0x65, 0x72, 0x76,
+	0x65, 0x72, 0x2e, 0x63, 0x6c, 0x75, 0x62, 0x2e, 0x4d, 0x75, 0x74, 0x65, 0x53, 0x65, 0x72, 0x76,
+	0x65, 0x72, 0x4d, 0x65, 0x6d, 0x62, 0x65, 0x72, 0x52, 0x65, 0x71, 0x1a, 0x27, 0x2e, 0x4f, 0x70,
+	0x65, 0x6e, 0x49, 0x4d, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x2e, 0x63, 0x6c, 0x75, 0x62, 0x2e,
+	0x4d, 0x75, 0x74, 0x65, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x4d, 0x65, 0x6d, 0x62, 0x65, 0x72,
+	0x52, 0x65, 0x73, 0x70, 0x12, 0x75, 0x0a, 0x16, 0x63, 0x61, 0x6e, 0x63, 0x65, 0x6c, 0x4d, 0x75,
+	0x74, 0x65, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x4d, 0x65, 0x6d, 0x62, 0x65, 0x72, 0x12, 0x2c,
 	0x2e, 0x4f, 0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x2e, 0x63, 0x6c,
-	0x75, 0x62, 0x2e, 0x47, 0x65, 0x74, 0x55, 0x73, 0x65, 0x72, 0x49, 0x6e, 0x53, 0x65, 0x72, 0x76,
-	0x65, 0x72, 0x4d, 0x65, 0x6d, 0x62, 0x65, 0x72, 0x73, 0x52, 0x65, 0x73, 0x70, 0x12, 0x75, 0x0a,
-	0x16, 0x67, 0x65, 0x74, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x4d, 0x65, 0x6d, 0x62, 0x65, 0x72,
-	0x55, 0x73, 0x65, 0x72, 0x49, 0x44, 0x73, 0x12, 0x2c, 0x2e, 0x4f, 0x70, 0x65, 0x6e, 0x49, 0x4d,
-	0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x2e, 0x63, 0x6c, 0x75, 0x62, 0x2e, 0x47, 0x65, 0x74, 0x53,
-	0x65, 0x72, 0x76, 0x65, 0x72, 0x4d, 0x65, 0x6d, 0x62, 0x65, 0x72, 0x55, 0x73, 0x65, 0x72, 0x49,
-	0x44, 0x73, 0x52, 0x65, 0x71, 0x1a, 0x2d, 0x2e, 0x4f, 0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53, 0x65,
-	0x72, 0x76, 0x65, 0x72, 0x2e, 0x63, 0x6c, 0x75, 0x62, 0x2e, 0x47, 0x65, 0x74, 0x53, 0x65, 0x72,
-	0x76, 0x65, 0x72, 0x4d, 0x65, 0x6d, 0x62, 0x65, 0x72, 0x55, 0x73, 0x65, 0x72, 0x49, 0x44, 0x73,
-	0x52, 0x65, 0x73, 0x70, 0x12, 0x7b, 0x0a, 0x18, 0x47, 0x65, 0x74, 0x53, 0x65, 0x72, 0x76, 0x65,
+	0x75, 0x62, 0x2e, 0x43, 0x61, 0x6e, 0x63, 0x65, 0x6c, 0x4d, 0x75, 0x74, 0x65, 0x53, 0x65, 0x72,
+	0x76, 0x65, 0x72, 0x4d, 0x65, 0x6d, 0x62, 0x65, 0x72, 0x52, 0x65, 0x71, 0x1a, 0x2d, 0x2e, 0x4f,
+	0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x2e, 0x63, 0x6c, 0x75, 0x62,
+	0x2e, 0x43, 0x61, 0x6e, 0x63, 0x65, 0x6c, 0x4d, 0x75, 0x74, 0x65, 0x53, 0x65, 0x72, 0x76, 0x65,
+	0x72, 0x4d, 0x65, 0x6d, 0x62, 0x65, 0x72, 0x52, 0x65, 0x73, 0x70, 0x12, 0x6c, 0x0a, 0x13, 0x73,
+	0x65, 0x74, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x4d, 0x65, 0x6d, 0x62, 0x65, 0x72, 0x49, 0x6e,
+	0x66, 0x6f, 0x12, 0x29, 0x2e, 0x4f, 0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53, 0x65, 0x72, 0x76, 0x65,
+	0x72, 0x2e, 0x63, 0x6c, 0x75, 0x62, 0x2e, 0x53, 0x65, 0x74, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72,
+	0x4d, 0x65, 0x6d, 0x62, 0x65, 0x72, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x65, 0x71, 0x1a, 0x2a, 0x2e,
+	0x4f, 0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x2e, 0x63, 0x6c, 0x75,
+	0x62, 0x2e, 0x53, 0x65, 0x74, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x4d, 0x65, 0x6d, 0x62, 0x65,
+	0x72, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x65, 0x73, 0x70, 0x12, 0x75, 0x0a, 0x16, 0x67, 0x65, 0x74,
+	0x55, 0x73, 0x65, 0x72, 0x49, 0x6e, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x4d, 0x65, 0x6d, 0x62,
+	0x65, 0x72, 0x73, 0x12, 0x2c, 0x2e, 0x4f, 0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53, 0x65, 0x72, 0x76,
+	0x65, 0x72, 0x2e, 0x63, 0x6c, 0x75, 0x62, 0x2e, 0x47, 0x65, 0x74, 0x55, 0x73, 0x65, 0x72, 0x49,
+	0x6e, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x4d, 0x65, 0x6d, 0x62, 0x65, 0x72, 0x73, 0x52, 0x65,
+	0x71, 0x1a, 0x2d, 0x2e, 0x4f, 0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72,
+	0x2e, 0x63, 0x6c, 0x75, 0x62, 0x2e, 0x47, 0x65, 0x74, 0x55, 0x73, 0x65, 0x72, 0x49, 0x6e, 0x53,
+	0x65, 0x72, 0x76, 0x65, 0x72, 0x4d, 0x65, 0x6d, 0x62, 0x65, 0x72, 0x73, 0x52, 0x65, 0x73, 0x70,
+	0x12, 0x75, 0x0a, 0x16, 0x67, 0x65, 0x74, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x4d, 0x65, 0x6d,
+	0x62, 0x65, 0x72, 0x55, 0x73, 0x65, 0x72, 0x49, 0x44, 0x73, 0x12, 0x2c, 0x2e, 0x4f, 0x70, 0x65,
+	0x6e, 0x49, 0x4d, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x2e, 0x63, 0x6c, 0x75, 0x62, 0x2e, 0x47,
+	0x65, 0x74, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x4d, 0x65, 0x6d, 0x62, 0x65, 0x72, 0x55, 0x73,
+	0x65, 0x72, 0x49, 0x44, 0x73, 0x52, 0x65, 0x71, 0x1a, 0x2d, 0x2e, 0x4f, 0x70, 0x65, 0x6e, 0x49,
+	0x4d, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x2e, 0x63, 0x6c, 0x75, 0x62, 0x2e, 0x47, 0x65, 0x74,
+	0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x4d, 0x65, 0x6d, 0x62, 0x65, 0x72, 0x55, 0x73, 0x65, 0x72,
+	0x49, 0x44, 0x73, 0x52, 0x65, 0x73, 0x70, 0x12, 0x7b, 0x0a, 0x18, 0x47, 0x65, 0x74, 0x53, 0x65,
+	0x72, 0x76, 0x65, 0x72, 0x4d, 0x65, 0x6d, 0x62, 0x65, 0x72, 0x52, 0x6f, 0x6c, 0x65, 0x4c, 0x65,
+	0x76, 0x65, 0x6c, 0x12, 0x2e, 0x2e, 0x4f, 0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53, 0x65, 0x72, 0x76,
+	0x65, 0x72, 0x2e, 0x63, 0x6c, 0x75, 0x62, 0x2e, 0x47, 0x65, 0x74, 0x53, 0x65, 0x72, 0x76, 0x65,
 	0x72, 0x4d, 0x65, 0x6d, 0x62, 0x65, 0x72, 0x52, 0x6f, 0x6c, 0x65, 0x4c, 0x65, 0x76, 0x65, 0x6c,
-	0x12, 0x2e, 0x2e, 0x4f, 0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x2e,
-	0x63, 0x6c, 0x75, 0x62, 0x2e, 0x47, 0x65, 0x74, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x4d, 0x65,
-	0x6d, 0x62, 0x65, 0x72, 0x52, 0x6f, 0x6c, 0x65, 0x4c, 0x65, 0x76, 0x65, 0x6c, 0x52, 0x65, 0x71,
-	0x1a, 0x2f, 0x2e, 0x4f, 0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x2e,
-	0x63, 0x6c, 0x75, 0x62, 0x2e, 0x47, 0x65, 0x74, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x4d, 0x65,
-	0x6d, 0x62, 0x65, 0x72, 0x52, 0x6f, 0x6c, 0x65, 0x4c, 0x65, 0x76, 0x65, 0x6c, 0x52, 0x65, 0x73,
-	0x70, 0x12, 0x6f, 0x0a, 0x14, 0x47, 0x65, 0x74, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x4d, 0x65,
-	0x6d, 0x62, 0x65, 0x72, 0x43, 0x61, 0x63, 0x68, 0x65, 0x12, 0x2a, 0x2e, 0x4f, 0x70, 0x65, 0x6e,
+	0x52, 0x65, 0x71, 0x1a, 0x2f, 0x2e, 0x4f, 0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53, 0x65, 0x72, 0x76,
+	0x65, 0x72, 0x2e, 0x63, 0x6c, 0x75, 0x62, 0x2e, 0x47, 0x65, 0x74, 0x53, 0x65, 0x72, 0x76, 0x65,
+	0x72, 0x4d, 0x65, 0x6d, 0x62, 0x65, 0x72, 0x52, 0x6f, 0x6c, 0x65, 0x4c, 0x65, 0x76, 0x65, 0x6c,
+	0x52, 0x65, 0x73, 0x70, 0x12, 0x6f, 0x0a, 0x14, 0x47, 0x65, 0x74, 0x53, 0x65, 0x72, 0x76, 0x65,
+	0x72, 0x4d, 0x65, 0x6d, 0x62, 0x65, 0x72, 0x43, 0x61, 0x63, 0x68, 0x65, 0x12, 0x2a, 0x2e, 0x4f,
+	0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x2e, 0x63, 0x6c, 0x75, 0x62,
+	0x2e, 0x47, 0x65, 0x74, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x4d, 0x65, 0x6d, 0x62, 0x65, 0x72,
+	0x43, 0x61, 0x63, 0x68, 0x65, 0x52, 0x65, 0x71, 0x1a, 0x2b, 0x2e, 0x4f, 0x70, 0x65, 0x6e, 0x49,
+	0x4d, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x2e, 0x63, 0x6c, 0x75, 0x62, 0x2e, 0x47, 0x65, 0x74,
+	0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x4d, 0x65, 0x6d, 0x62, 0x65, 0x72, 0x43, 0x61, 0x63, 0x68,
+	0x65, 0x52, 0x65, 0x73, 0x70, 0x12, 0x6c, 0x0a, 0x13, 0x74, 0x72, 0x61, 0x6e, 0x73, 0x66, 0x65,
+	0x72, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x4f, 0x77, 0x6e, 0x65, 0x72, 0x12, 0x29, 0x2e, 0x4f,
+	0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x2e, 0x63, 0x6c, 0x75, 0x62,
+	0x2e, 0x54, 0x72, 0x61, 0x6e, 0x73, 0x66, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x4f,
+	0x77, 0x6e, 0x65, 0x72, 0x52, 0x65, 0x71, 0x1a, 0x2a, 0x2e, 0x4f, 0x70, 0x65, 0x6e, 0x49, 0x4d,
+	0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x2e, 0x63, 0x6c, 0x75, 0x62, 0x2e, 0x54, 0x72, 0x61, 0x6e,
+	0x73, 0x66, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x4f, 0x77, 0x6e, 0x65, 0x72, 0x52,
+	0x65, 0x73, 0x70, 0x12, 0x60, 0x0a, 0x0f, 0x62, 0x61, 0x6e, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72,
+	0x4d, 0x65, 0x6d, 0x62, 0x65, 0x72, 0x12, 0x25, 0x2e, 0x4f, 0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53,
+	0x65, 0x72, 0x76, 0x65, 0x72, 0x2e, 0x63, 0x6c, 0x75, 0x62, 0x2e, 0x42, 0x61, 0x6e, 0x53, 0x65,
+	0x72, 0x76, 0x65, 0x72, 0x4d, 0x65, 0x6d, 0x62, 0x65, 0x72, 0x52, 0x65, 0x71, 0x1a, 0x26, 0x2e,
+	0x4f, 0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x2e, 0x63, 0x6c, 0x75,
+	0x62, 0x2e, 0x42, 0x61, 0x6e, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x4d, 0x65, 0x6d, 0x62, 0x65,
+	0x72, 0x52, 0x65, 0x73, 0x70, 0x12, 0x72, 0x0a, 0x15, 0x63, 0x61, 0x6e, 0x63, 0x65, 0x6c, 0x42,
+	0x61, 0x6e, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x4d, 0x65, 0x6d, 0x62, 0x65, 0x72, 0x12, 0x2b,
+	0x2e, 0x4f, 0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x2e, 0x63, 0x6c,
+	0x75, 0x62, 0x2e, 0x43, 0x61, 0x6e, 0x63, 0x65, 0x6c, 0x42, 0x61, 0x6e, 0x53, 0x65, 0x72, 0x76,
+	0x65, 0x72, 0x4d, 0x65, 0x6d, 0x62, 0x65, 0x72, 0x52, 0x65, 0x71, 0x1a, 0x2c, 0x2e, 0x4f, 0x70,
+	0x65, 0x6e, 0x49, 0x4d, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x2e, 0x63, 0x6c, 0x75, 0x62, 0x2e,
+	0x43, 0x61, 0x6e, 0x63, 0x65, 0x6c, 0x42, 0x61, 0x6e, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x4d,
+	0x65, 0x6d, 0x62, 0x65, 0x72, 0x52, 0x65, 0x73, 0x70, 0x12, 0x69, 0x0a, 0x12, 0x67, 0x65, 0x74,
+	0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x42, 0x6c, 0x61, 0x63, 0x6b, 0x4c, 0x69, 0x73, 0x74, 0x12,
+	0x28, 0x2e, 0x4f, 0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x2e, 0x63,
+	0x6c, 0x75, 0x62, 0x2e, 0x47, 0x65, 0x74, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x42, 0x6c, 0x61,
+	0x63, 0x6b, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x71, 0x1a, 0x29, 0x2e, 0x4f, 0x70, 0x65, 0x6e,
 	0x49, 0x4d, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x2e, 0x63, 0x6c, 0x75, 0x62, 0x2e, 0x47, 0x65,
-	0x74, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x4d, 0x65, 0x6d, 0x62, 0x65, 0x72, 0x43, 0x61, 0x63,
-	0x68, 0x65, 0x52, 0x65, 0x71, 0x1a, 0x2b, 0x2e, 0x4f, 0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53, 0x65,
-	0x72, 0x76, 0x65, 0x72, 0x2e, 0x63, 0x6c, 0x75, 0x62, 0x2e, 0x47, 0x65, 0x74, 0x53, 0x65, 0x72,
-	0x76, 0x65, 0x72, 0x4d, 0x65, 0x6d, 0x62, 0x65, 0x72, 0x43, 0x61, 0x63, 0x68, 0x65, 0x52, 0x65,
-	0x73, 0x70, 0x12, 0x6c, 0x0a, 0x13, 0x74, 0x72, 0x61, 0x6e, 0x73, 0x66, 0x65, 0x72, 0x53, 0x65,
-	0x72, 0x76, 0x65, 0x72, 0x4f, 0x77, 0x6e, 0x65, 0x72, 0x12, 0x29, 0x2e, 0x4f, 0x70, 0x65, 0x6e,
-	0x49, 0x4d, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x2e, 0x63, 0x6c, 0x75, 0x62, 0x2e, 0x54, 0x72,
-	0x61, 0x6e, 0x73, 0x66, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x4f, 0x77, 0x6e, 0x65,
-	0x72, 0x52, 0x65, 0x71, 0x1a, 0x2a, 0x2e, 0x4f, 0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53, 0x65, 0x72,
-	0x76, 0x65, 0x72, 0x2e, 0x63, 0x6c, 0x75, 0x62, 0x2e, 0x54, 0x72, 0x61, 0x6e, 0x73, 0x66, 0x65,
-	0x72, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x4f, 0x77, 0x6e, 0x65, 0x72, 0x52, 0x65, 0x73, 0x70,
-	0x42, 0x24, 0x5a, 0x22, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x4f,
-	0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53, 0x44, 0x4b, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x63, 0x6f,
-	0x6c, 0x2f, 0x63, 0x6c, 0x75, 0x62, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x74, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x42, 0x6c, 0x61, 0x63, 0x6b, 0x4c, 0x69, 0x73, 0x74,
+	0x52, 0x65, 0x73, 0x70, 0x42, 0x24, 0x5a, 0x22, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63,
+	0x6f, 0x6d, 0x2f, 0x4f, 0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53, 0x44, 0x4b, 0x2f, 0x70, 0x72, 0x6f,
+	0x74, 0x6f, 0x63, 0x6f, 0x6c, 0x2f, 0x63, 0x6c, 0x75, 0x62, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74,
+	0x6f, 0x33,
 }
 
 var (
@@ -3638,7 +4070,7 @@ func file_club_club_proto_rawDescGZIP() []byte {
 	return file_club_club_proto_rawDescData
 }
 
-var file_club_club_proto_msgTypes = make([]protoimpl.MessageInfo, 57)
+var file_club_club_proto_msgTypes = make([]protoimpl.MessageInfo, 64)
 var file_club_club_proto_goTypes = []interface{}{
 	(*CreateServerReq)(nil),                      // 0: OpenIMServer.club.CreateServerReq
 	(*CreateServerResp)(nil),                     // 1: OpenIMServer.club.CreateServerResp
@@ -3648,154 +4080,173 @@ var file_club_club_proto_goTypes = []interface{}{
 	(*GetServerRecommendecListResp)(nil),         // 5: OpenIMServer.club.GetServerRecommendecListResp
 	(*GetServersInfoReq)(nil),                    // 6: OpenIMServer.club.GetServersInfoReq
 	(*GetServersInfoResp)(nil),                   // 7: OpenIMServer.club.GetServersInfoResp
-	(*DeleteServerReq)(nil),                      // 8: OpenIMServer.club.DeleteServerReq
-	(*DeleteServerResp)(nil),                     // 9: OpenIMServer.club.DeleteServerResp
-	(*DismissServerReq)(nil),                     // 10: OpenIMServer.club.DismissServerReq
-	(*DismissServerResp)(nil),                    // 11: OpenIMServer.club.DismissServerResp
-	(*SetServerInfoReq)(nil),                     // 12: OpenIMServer.club.SetServerInfoReq
-	(*SetServerInfoResp)(nil),                    // 13: OpenIMServer.club.SetServerInfoResp
-	(*GetServerMemberListReq)(nil),               // 14: OpenIMServer.club.GetServerMemberListReq
-	(*GetServerMemberListResp)(nil),              // 15: OpenIMServer.club.GetServerMemberListResp
-	(*GetServerMembersInfoReq)(nil),              // 16: OpenIMServer.club.GetServerMembersInfoReq
-	(*GetServerMembersInfoResp)(nil),             // 17: OpenIMServer.club.GetServerMembersInfoResp
-	(*KickServerMemberReq)(nil),                  // 18: OpenIMServer.club.KickServerMemberReq
-	(*KickServerMemberResp)(nil),                 // 19: OpenIMServer.club.KickServerMemberResp
-	(*GetJoinedServerListReq)(nil),               // 20: OpenIMServer.club.GetJoinedServerListReq
-	(*GetJoinedServerListResp)(nil),              // 21: OpenIMServer.club.GetJoinedServerListResp
-	(*GetServerMembersCMSReq)(nil),               // 22: OpenIMServer.club.GetServerMembersCMSReq
-	(*GetServerMembersCMSResp)(nil),              // 23: OpenIMServer.club.GetServerMembersCMSResp
-	(*MuteServerMemberReq)(nil),                  // 24: OpenIMServer.club.MuteServerMemberReq
-	(*MuteServerMemberResp)(nil),                 // 25: OpenIMServer.club.MuteServerMemberResp
-	(*CancelMuteServerMemberReq)(nil),            // 26: OpenIMServer.club.CancelMuteServerMemberReq
-	(*CancelMuteServerMemberResp)(nil),           // 27: OpenIMServer.club.CancelMuteServerMemberResp
-	(*JoinServerReq)(nil),                        // 28: OpenIMServer.club.JoinServerReq
-	(*JoinServerResp)(nil),                       // 29: OpenIMServer.club.JoinServerResp
-	(*QuitServerReq)(nil),                        // 30: OpenIMServer.club.QuitServerReq
-	(*QuitServerResp)(nil),                       // 31: OpenIMServer.club.QuitServerResp
-	(*SetServerMemberInfo)(nil),                  // 32: OpenIMServer.club.SetServerMemberInfo
-	(*SetServerMemberInfoReq)(nil),               // 33: OpenIMServer.club.SetServerMemberInfoReq
-	(*SetServerMemberInfoResp)(nil),              // 34: OpenIMServer.club.SetServerMemberInfoResp
-	(*GetServerMemberUserIDsReq)(nil),            // 35: OpenIMServer.club.GetServerMemberUserIDsReq
-	(*GetServerMemberUserIDsResp)(nil),           // 36: OpenIMServer.club.GetServerMemberUserIDsResp
-	(*GetUserInServerMembersReq)(nil),            // 37: OpenIMServer.club.GetUserInServerMembersReq
-	(*GetUserInServerMembersResp)(nil),           // 38: OpenIMServer.club.GetUserInServerMembersResp
-	(*GetServerMemberRoleLevelReq)(nil),          // 39: OpenIMServer.club.GetServerMemberRoleLevelReq
-	(*GetServerMemberRoleLevelResp)(nil),         // 40: OpenIMServer.club.GetServerMemberRoleLevelResp
-	(*GetServerMemberCacheReq)(nil),              // 41: OpenIMServer.club.GetServerMemberCacheReq
-	(*GetServerMemberCacheResp)(nil),             // 42: OpenIMServer.club.GetServerMemberCacheResp
-	(*TransferServerOwnerReq)(nil),               // 43: OpenIMServer.club.TransferServerOwnerReq
-	(*TransferServerOwnerResp)(nil),              // 44: OpenIMServer.club.TransferServerOwnerResp
-	(*GetJoinedServerGroupListReq)(nil),          // 45: OpenIMServer.club.GetJoinedServerGroupListReq
-	(*GetJoinedServerGroupListResp)(nil),         // 46: OpenIMServer.club.GetJoinedServerGroupListResp
-	(*CreateServerGroupReq)(nil),                 // 47: OpenIMServer.club.CreateServerGroupReq
-	(*CreateServerGroupResp)(nil),                // 48: OpenIMServer.club.CreateServerGroupResp
-	(*ServerApplicationResponseReq)(nil),         // 49: OpenIMServer.club.ServerApplicationResponseReq
-	(*ServerApplicationResponseResp)(nil),        // 50: OpenIMServer.club.ServerApplicationResponseResp
-	(*GetServerApplicationListReq)(nil),          // 51: OpenIMServer.club.GetServerApplicationListReq
-	(*GetServerApplicationListResp)(nil),         // 52: OpenIMServer.club.GetServerApplicationListResp
-	(*GetUserReqApplicationListReq)(nil),         // 53: OpenIMServer.club.GetUserReqApplicationListReq
-	(*GetUserReqApplicationListResp)(nil),        // 54: OpenIMServer.club.GetUserReqApplicationListResp
-	(*GetServerUsersReqApplicationListReq)(nil),  // 55: OpenIMServer.club.getServerUsersReqApplicationListReq
-	(*GetServerUsersReqApplicationListResp)(nil), // 56: OpenIMServer.club.getServerUsersReqApplicationListResp
-	(*sdkws.ServerFullInfo)(nil),                 // 57: OpenIMServer.sdkws.ServerFullInfo
-	(*sdkws.ServerInfo)(nil),                     // 58: OpenIMServer.sdkws.ServerInfo
-	(*sdkws.GroupCategoryListInfo)(nil),          // 59: OpenIMServer.sdkws.GroupCategoryListInfo
-	(*sdkws.ServerInfoForSet)(nil),               // 60: OpenIMServer.sdkws.ServerInfoForSet
-	(*sdkws.RequestPagination)(nil),              // 61: OpenIMServer.sdkws.RequestPagination
-	(*sdkws.ServerMemberFullInfo)(nil),           // 62: OpenIMServer.sdkws.ServerMemberFullInfo
-	(*wrapperspb.StringValue)(nil),               // 63: OpenIMServer.protobuf.StringValue
-	(*wrapperspb.Int32Value)(nil),                // 64: OpenIMServer.protobuf.Int32Value
-	(*sdkws.GroupInfo)(nil),                      // 65: OpenIMServer.sdkws.GroupInfo
-	(*sdkws.ServerRequest)(nil),                  // 66: OpenIMServer.sdkws.ServerRequest
+	(*GetServerInfoResp)(nil),                    // 8: OpenIMServer.club.GetServerInfoResp
+	(*DeleteServerReq)(nil),                      // 9: OpenIMServer.club.DeleteServerReq
+	(*DeleteServerResp)(nil),                     // 10: OpenIMServer.club.DeleteServerResp
+	(*DismissServerReq)(nil),                     // 11: OpenIMServer.club.DismissServerReq
+	(*DismissServerResp)(nil),                    // 12: OpenIMServer.club.DismissServerResp
+	(*SetServerInfoReq)(nil),                     // 13: OpenIMServer.club.SetServerInfoReq
+	(*SetServerInfoResp)(nil),                    // 14: OpenIMServer.club.SetServerInfoResp
+	(*GetServerMemberListReq)(nil),               // 15: OpenIMServer.club.GetServerMemberListReq
+	(*GetServerMemberListResp)(nil),              // 16: OpenIMServer.club.GetServerMemberListResp
+	(*GetServerMembersInfoReq)(nil),              // 17: OpenIMServer.club.GetServerMembersInfoReq
+	(*GetServerMembersInfoResp)(nil),             // 18: OpenIMServer.club.GetServerMembersInfoResp
+	(*KickServerMemberReq)(nil),                  // 19: OpenIMServer.club.KickServerMemberReq
+	(*KickServerMemberResp)(nil),                 // 20: OpenIMServer.club.KickServerMemberResp
+	(*GetJoinedServerListReq)(nil),               // 21: OpenIMServer.club.GetJoinedServerListReq
+	(*GetJoinedServerListResp)(nil),              // 22: OpenIMServer.club.GetJoinedServerListResp
+	(*GetServerMembersCMSReq)(nil),               // 23: OpenIMServer.club.GetServerMembersCMSReq
+	(*GetServerMembersCMSResp)(nil),              // 24: OpenIMServer.club.GetServerMembersCMSResp
+	(*MuteServerMemberReq)(nil),                  // 25: OpenIMServer.club.MuteServerMemberReq
+	(*MuteServerMemberResp)(nil),                 // 26: OpenIMServer.club.MuteServerMemberResp
+	(*CancelMuteServerMemberReq)(nil),            // 27: OpenIMServer.club.CancelMuteServerMemberReq
+	(*CancelMuteServerMemberResp)(nil),           // 28: OpenIMServer.club.CancelMuteServerMemberResp
+	(*JoinServerReq)(nil),                        // 29: OpenIMServer.club.JoinServerReq
+	(*JoinServerResp)(nil),                       // 30: OpenIMServer.club.JoinServerResp
+	(*QuitServerReq)(nil),                        // 31: OpenIMServer.club.QuitServerReq
+	(*QuitServerResp)(nil),                       // 32: OpenIMServer.club.QuitServerResp
+	(*SetServerMemberInfo)(nil),                  // 33: OpenIMServer.club.SetServerMemberInfo
+	(*SetServerMemberInfoReq)(nil),               // 34: OpenIMServer.club.SetServerMemberInfoReq
+	(*SetServerMemberInfoResp)(nil),              // 35: OpenIMServer.club.SetServerMemberInfoResp
+	(*GetServerMemberUserIDsReq)(nil),            // 36: OpenIMServer.club.GetServerMemberUserIDsReq
+	(*GetServerMemberUserIDsResp)(nil),           // 37: OpenIMServer.club.GetServerMemberUserIDsResp
+	(*GetUserInServerMembersReq)(nil),            // 38: OpenIMServer.club.GetUserInServerMembersReq
+	(*GetUserInServerMembersResp)(nil),           // 39: OpenIMServer.club.GetUserInServerMembersResp
+	(*GetServerMemberRoleLevelReq)(nil),          // 40: OpenIMServer.club.GetServerMemberRoleLevelReq
+	(*GetServerMemberRoleLevelResp)(nil),         // 41: OpenIMServer.club.GetServerMemberRoleLevelResp
+	(*GetServerMemberCacheReq)(nil),              // 42: OpenIMServer.club.GetServerMemberCacheReq
+	(*GetServerMemberCacheResp)(nil),             // 43: OpenIMServer.club.GetServerMemberCacheResp
+	(*TransferServerOwnerReq)(nil),               // 44: OpenIMServer.club.TransferServerOwnerReq
+	(*TransferServerOwnerResp)(nil),              // 45: OpenIMServer.club.TransferServerOwnerResp
+	(*GetJoinedServerGroupListReq)(nil),          // 46: OpenIMServer.club.GetJoinedServerGroupListReq
+	(*GetJoinedServerGroupListResp)(nil),         // 47: OpenIMServer.club.GetJoinedServerGroupListResp
+	(*CreateServerGroupReq)(nil),                 // 48: OpenIMServer.club.CreateServerGroupReq
+	(*CreateServerGroupResp)(nil),                // 49: OpenIMServer.club.CreateServerGroupResp
+	(*ServerApplicationResponseReq)(nil),         // 50: OpenIMServer.club.ServerApplicationResponseReq
+	(*ServerApplicationResponseResp)(nil),        // 51: OpenIMServer.club.ServerApplicationResponseResp
+	(*GetServerApplicationListReq)(nil),          // 52: OpenIMServer.club.GetServerApplicationListReq
+	(*GetServerApplicationListResp)(nil),         // 53: OpenIMServer.club.GetServerApplicationListResp
+	(*GetUserReqApplicationListReq)(nil),         // 54: OpenIMServer.club.GetUserReqApplicationListReq
+	(*GetUserReqApplicationListResp)(nil),        // 55: OpenIMServer.club.GetUserReqApplicationListResp
+	(*GetServerUsersReqApplicationListReq)(nil),  // 56: OpenIMServer.club.getServerUsersReqApplicationListReq
+	(*GetServerUsersReqApplicationListResp)(nil), // 57: OpenIMServer.club.getServerUsersReqApplicationListResp
+	(*BanServerMemberReq)(nil),                   // 58: OpenIMServer.club.BanServerMemberReq
+	(*BanServerMemberResp)(nil),                  // 59: OpenIMServer.club.BanServerMemberResp
+	(*CancelBanServerMemberReq)(nil),             // 60: OpenIMServer.club.CancelBanServerMemberReq
+	(*CancelBanServerMemberResp)(nil),            // 61: OpenIMServer.club.CancelBanServerMemberResp
+	(*GetServerBlackListReq)(nil),                // 62: OpenIMServer.club.GetServerBlackListReq
+	(*GetServerBlackListResp)(nil),               // 63: OpenIMServer.club.GetServerBlackListResp
+	(*sdkws.GroupCategory)(nil),                  // 64: OpenIMServer.sdkws.GroupCategory
+	(*sdkws.ServerFullInfo)(nil),                 // 65: OpenIMServer.sdkws.ServerFullInfo
+	(*sdkws.ServerInfo)(nil),                     // 66: OpenIMServer.sdkws.ServerInfo
+	(*sdkws.GroupCategoryListInfo)(nil),          // 67: OpenIMServer.sdkws.GroupCategoryListInfo
+	(*sdkws.ServerInfoForSet)(nil),               // 68: OpenIMServer.sdkws.ServerInfoForSet
+	(*sdkws.RequestPagination)(nil),              // 69: OpenIMServer.sdkws.RequestPagination
+	(*sdkws.ServerMemberFullInfo)(nil),           // 70: OpenIMServer.sdkws.ServerMemberFullInfo
+	(*wrapperspb.StringValue)(nil),               // 71: OpenIMServer.protobuf.StringValue
+	(*wrapperspb.Int32Value)(nil),                // 72: OpenIMServer.protobuf.Int32Value
+	(*sdkws.GroupInfo)(nil),                      // 73: OpenIMServer.sdkws.GroupInfo
+	(*sdkws.ServerRequest)(nil),                  // 74: OpenIMServer.sdkws.ServerRequest
+	(*sdkws.ServerBlackFullInfo)(nil),            // 75: OpenIMServer.sdkws.ServerBlackFullInfo
 }
 var file_club_club_proto_depIdxs = []int32{
-	57, // 0: OpenIMServer.club.GetServerRecommendecListResp.servers:type_name -> OpenIMServer.sdkws.ServerFullInfo
-	58, // 1: OpenIMServer.club.GetServersInfoResp.server:type_name -> OpenIMServer.sdkws.ServerInfo
-	59, // 2: OpenIMServer.club.GetServersInfoResp.categoryList:type_name -> OpenIMServer.sdkws.GroupCategoryListInfo
-	60, // 3: OpenIMServer.club.SetServerInfoReq.serverInfoForSet:type_name -> OpenIMServer.sdkws.ServerInfoForSet
-	61, // 4: OpenIMServer.club.GetServerMemberListReq.pagination:type_name -> OpenIMServer.sdkws.RequestPagination
-	62, // 5: OpenIMServer.club.GetServerMemberListResp.members:type_name -> OpenIMServer.sdkws.ServerMemberFullInfo
-	62, // 6: OpenIMServer.club.GetServerMembersInfoResp.members:type_name -> OpenIMServer.sdkws.ServerMemberFullInfo
-	61, // 7: OpenIMServer.club.GetJoinedServerListReq.pagination:type_name -> OpenIMServer.sdkws.RequestPagination
-	58, // 8: OpenIMServer.club.GetJoinedServerListResp.servers:type_name -> OpenIMServer.sdkws.ServerInfo
-	61, // 9: OpenIMServer.club.GetServerMembersCMSReq.pagination:type_name -> OpenIMServer.sdkws.RequestPagination
-	62, // 10: OpenIMServer.club.GetServerMembersCMSResp.members:type_name -> OpenIMServer.sdkws.ServerMemberFullInfo
-	63, // 11: OpenIMServer.club.SetServerMemberInfo.nickname:type_name -> OpenIMServer.protobuf.StringValue
-	63, // 12: OpenIMServer.club.SetServerMemberInfo.faceURL:type_name -> OpenIMServer.protobuf.StringValue
-	64, // 13: OpenIMServer.club.SetServerMemberInfo.roleLevel:type_name -> OpenIMServer.protobuf.Int32Value
-	63, // 14: OpenIMServer.club.SetServerMemberInfo.ex:type_name -> OpenIMServer.protobuf.StringValue
-	32, // 15: OpenIMServer.club.SetServerMemberInfoReq.members:type_name -> OpenIMServer.club.SetServerMemberInfo
-	62, // 16: OpenIMServer.club.GetUserInServerMembersResp.members:type_name -> OpenIMServer.sdkws.ServerMemberFullInfo
-	62, // 17: OpenIMServer.club.GetServerMemberRoleLevelResp.members:type_name -> OpenIMServer.sdkws.ServerMemberFullInfo
-	62, // 18: OpenIMServer.club.GetServerMemberCacheResp.member:type_name -> OpenIMServer.sdkws.ServerMemberFullInfo
-	61, // 19: OpenIMServer.club.GetJoinedServerGroupListReq.pagination:type_name -> OpenIMServer.sdkws.RequestPagination
-	65, // 20: OpenIMServer.club.GetJoinedServerGroupListResp.groups:type_name -> OpenIMServer.sdkws.GroupInfo
-	65, // 21: OpenIMServer.club.CreateServerGroupReq.groupInfo:type_name -> OpenIMServer.sdkws.GroupInfo
-	65, // 22: OpenIMServer.club.CreateServerGroupResp.groupInfo:type_name -> OpenIMServer.sdkws.GroupInfo
-	61, // 23: OpenIMServer.club.GetServerApplicationListReq.pagination:type_name -> OpenIMServer.sdkws.RequestPagination
-	66, // 24: OpenIMServer.club.GetServerApplicationListResp.serverRequests:type_name -> OpenIMServer.sdkws.ServerRequest
-	61, // 25: OpenIMServer.club.GetUserReqApplicationListReq.pagination:type_name -> OpenIMServer.sdkws.RequestPagination
-	66, // 26: OpenIMServer.club.GetUserReqApplicationListResp.serverRequests:type_name -> OpenIMServer.sdkws.ServerRequest
-	66, // 27: OpenIMServer.club.getServerUsersReqApplicationListResp.serverRequests:type_name -> OpenIMServer.sdkws.ServerRequest
-	0,  // 28: OpenIMServer.club.club.createServer:input_type -> OpenIMServer.club.CreateServerReq
-	4,  // 29: OpenIMServer.club.club.getServerRecommendedList:input_type -> OpenIMServer.club.GetServerRecommendedListReq
-	6,  // 30: OpenIMServer.club.club.getServersInfo:input_type -> OpenIMServer.club.GetServersInfoReq
-	28, // 31: OpenIMServer.club.club.joinServer:input_type -> OpenIMServer.club.JoinServerReq
-	30, // 32: OpenIMServer.club.club.quitServer:input_type -> OpenIMServer.club.QuitServerReq
-	10, // 33: OpenIMServer.club.club.dismissServer:input_type -> OpenIMServer.club.DismissServerReq
-	12, // 34: OpenIMServer.club.club.setServerInfo:input_type -> OpenIMServer.club.SetServerInfoReq
-	2,  // 35: OpenIMServer.club.club.createGroupCategory:input_type -> OpenIMServer.club.CreateGroupCategoryReq
-	49, // 36: OpenIMServer.club.club.serverApplicationResponse:input_type -> OpenIMServer.club.ServerApplicationResponseReq
-	51, // 37: OpenIMServer.club.club.getServerApplicationList:input_type -> OpenIMServer.club.GetServerApplicationListReq
-	53, // 38: OpenIMServer.club.club.getUserReqApplicationList:input_type -> OpenIMServer.club.GetUserReqApplicationListReq
-	55, // 39: OpenIMServer.club.club.getServerUsersReqApplicationList:input_type -> OpenIMServer.club.getServerUsersReqApplicationListReq
-	45, // 40: OpenIMServer.club.club.getJoinedServerGroupList:input_type -> OpenIMServer.club.GetJoinedServerGroupListReq
-	47, // 41: OpenIMServer.club.club.createServerGroup:input_type -> OpenIMServer.club.CreateServerGroupReq
-	14, // 42: OpenIMServer.club.club.getServerMemberList:input_type -> OpenIMServer.club.GetServerMemberListReq
-	16, // 43: OpenIMServer.club.club.getServerMembersInfo:input_type -> OpenIMServer.club.GetServerMembersInfoReq
-	18, // 44: OpenIMServer.club.club.kickServerMember:input_type -> OpenIMServer.club.KickServerMemberReq
-	20, // 45: OpenIMServer.club.club.getJoinedServerList:input_type -> OpenIMServer.club.GetJoinedServerListReq
-	22, // 46: OpenIMServer.club.club.getServerMembersCMS:input_type -> OpenIMServer.club.GetServerMembersCMSReq
-	24, // 47: OpenIMServer.club.club.muteServerMember:input_type -> OpenIMServer.club.MuteServerMemberReq
-	26, // 48: OpenIMServer.club.club.cancelMuteServerMember:input_type -> OpenIMServer.club.CancelMuteServerMemberReq
-	33, // 49: OpenIMServer.club.club.setServerMemberInfo:input_type -> OpenIMServer.club.SetServerMemberInfoReq
-	37, // 50: OpenIMServer.club.club.getUserInServerMembers:input_type -> OpenIMServer.club.GetUserInServerMembersReq
-	35, // 51: OpenIMServer.club.club.getServerMemberUserIDs:input_type -> OpenIMServer.club.GetServerMemberUserIDsReq
-	39, // 52: OpenIMServer.club.club.GetServerMemberRoleLevel:input_type -> OpenIMServer.club.GetServerMemberRoleLevelReq
-	41, // 53: OpenIMServer.club.club.GetServerMemberCache:input_type -> OpenIMServer.club.GetServerMemberCacheReq
-	43, // 54: OpenIMServer.club.club.transferServerOwner:input_type -> OpenIMServer.club.TransferServerOwnerReq
-	1,  // 55: OpenIMServer.club.club.createServer:output_type -> OpenIMServer.club.CreateServerResp
-	5,  // 56: OpenIMServer.club.club.getServerRecommendedList:output_type -> OpenIMServer.club.GetServerRecommendecListResp
-	7,  // 57: OpenIMServer.club.club.getServersInfo:output_type -> OpenIMServer.club.GetServersInfoResp
-	29, // 58: OpenIMServer.club.club.joinServer:output_type -> OpenIMServer.club.JoinServerResp
-	31, // 59: OpenIMServer.club.club.quitServer:output_type -> OpenIMServer.club.QuitServerResp
-	11, // 60: OpenIMServer.club.club.dismissServer:output_type -> OpenIMServer.club.DismissServerResp
-	13, // 61: OpenIMServer.club.club.setServerInfo:output_type -> OpenIMServer.club.SetServerInfoResp
-	3,  // 62: OpenIMServer.club.club.createGroupCategory:output_type -> OpenIMServer.club.CreateGroupCategoryResp
-	50, // 63: OpenIMServer.club.club.serverApplicationResponse:output_type -> OpenIMServer.club.ServerApplicationResponseResp
-	52, // 64: OpenIMServer.club.club.getServerApplicationList:output_type -> OpenIMServer.club.GetServerApplicationListResp
-	54, // 65: OpenIMServer.club.club.getUserReqApplicationList:output_type -> OpenIMServer.club.GetUserReqApplicationListResp
-	56, // 66: OpenIMServer.club.club.getServerUsersReqApplicationList:output_type -> OpenIMServer.club.getServerUsersReqApplicationListResp
-	46, // 67: OpenIMServer.club.club.getJoinedServerGroupList:output_type -> OpenIMServer.club.GetJoinedServerGroupListResp
-	48, // 68: OpenIMServer.club.club.createServerGroup:output_type -> OpenIMServer.club.CreateServerGroupResp
-	15, // 69: OpenIMServer.club.club.getServerMemberList:output_type -> OpenIMServer.club.GetServerMemberListResp
-	17, // 70: OpenIMServer.club.club.getServerMembersInfo:output_type -> OpenIMServer.club.GetServerMembersInfoResp
-	19, // 71: OpenIMServer.club.club.kickServerMember:output_type -> OpenIMServer.club.KickServerMemberResp
-	21, // 72: OpenIMServer.club.club.getJoinedServerList:output_type -> OpenIMServer.club.GetJoinedServerListResp
-	23, // 73: OpenIMServer.club.club.getServerMembersCMS:output_type -> OpenIMServer.club.GetServerMembersCMSResp
-	25, // 74: OpenIMServer.club.club.muteServerMember:output_type -> OpenIMServer.club.MuteServerMemberResp
-	27, // 75: OpenIMServer.club.club.cancelMuteServerMember:output_type -> OpenIMServer.club.CancelMuteServerMemberResp
-	34, // 76: OpenIMServer.club.club.setServerMemberInfo:output_type -> OpenIMServer.club.SetServerMemberInfoResp
-	38, // 77: OpenIMServer.club.club.getUserInServerMembers:output_type -> OpenIMServer.club.GetUserInServerMembersResp
-	36, // 78: OpenIMServer.club.club.getServerMemberUserIDs:output_type -> OpenIMServer.club.GetServerMemberUserIDsResp
-	40, // 79: OpenIMServer.club.club.GetServerMemberRoleLevel:output_type -> OpenIMServer.club.GetServerMemberRoleLevelResp
-	42, // 80: OpenIMServer.club.club.GetServerMemberCache:output_type -> OpenIMServer.club.GetServerMemberCacheResp
-	44, // 81: OpenIMServer.club.club.transferServerOwner:output_type -> OpenIMServer.club.TransferServerOwnerResp
-	55, // [55:82] is the sub-list for method output_type
-	28, // [28:55] is the sub-list for method input_type
-	28, // [28:28] is the sub-list for extension type_name
-	28, // [28:28] is the sub-list for extension extendee
-	0,  // [0:28] is the sub-list for field type_name
+	64, // 0: OpenIMServer.club.CreateGroupCategoryResp.groupCategory:type_name -> OpenIMServer.sdkws.GroupCategory
+	65, // 1: OpenIMServer.club.GetServerRecommendecListResp.servers:type_name -> OpenIMServer.sdkws.ServerFullInfo
+	8,  // 2: OpenIMServer.club.GetServersInfoResp.servers:type_name -> OpenIMServer.club.GetServerInfoResp
+	66, // 3: OpenIMServer.club.GetServerInfoResp.server:type_name -> OpenIMServer.sdkws.ServerInfo
+	67, // 4: OpenIMServer.club.GetServerInfoResp.categoryList:type_name -> OpenIMServer.sdkws.GroupCategoryListInfo
+	68, // 5: OpenIMServer.club.SetServerInfoReq.serverInfoForSet:type_name -> OpenIMServer.sdkws.ServerInfoForSet
+	69, // 6: OpenIMServer.club.GetServerMemberListReq.pagination:type_name -> OpenIMServer.sdkws.RequestPagination
+	70, // 7: OpenIMServer.club.GetServerMemberListResp.members:type_name -> OpenIMServer.sdkws.ServerMemberFullInfo
+	70, // 8: OpenIMServer.club.GetServerMembersInfoResp.members:type_name -> OpenIMServer.sdkws.ServerMemberFullInfo
+	69, // 9: OpenIMServer.club.GetJoinedServerListReq.pagination:type_name -> OpenIMServer.sdkws.RequestPagination
+	66, // 10: OpenIMServer.club.GetJoinedServerListResp.servers:type_name -> OpenIMServer.sdkws.ServerInfo
+	69, // 11: OpenIMServer.club.GetServerMembersCMSReq.pagination:type_name -> OpenIMServer.sdkws.RequestPagination
+	70, // 12: OpenIMServer.club.GetServerMembersCMSResp.members:type_name -> OpenIMServer.sdkws.ServerMemberFullInfo
+	71, // 13: OpenIMServer.club.SetServerMemberInfo.nickname:type_name -> OpenIMServer.protobuf.StringValue
+	71, // 14: OpenIMServer.club.SetServerMemberInfo.faceURL:type_name -> OpenIMServer.protobuf.StringValue
+	72, // 15: OpenIMServer.club.SetServerMemberInfo.roleLevel:type_name -> OpenIMServer.protobuf.Int32Value
+	71, // 16: OpenIMServer.club.SetServerMemberInfo.ex:type_name -> OpenIMServer.protobuf.StringValue
+	33, // 17: OpenIMServer.club.SetServerMemberInfoReq.members:type_name -> OpenIMServer.club.SetServerMemberInfo
+	70, // 18: OpenIMServer.club.GetUserInServerMembersResp.members:type_name -> OpenIMServer.sdkws.ServerMemberFullInfo
+	70, // 19: OpenIMServer.club.GetServerMemberRoleLevelResp.members:type_name -> OpenIMServer.sdkws.ServerMemberFullInfo
+	70, // 20: OpenIMServer.club.GetServerMemberCacheResp.member:type_name -> OpenIMServer.sdkws.ServerMemberFullInfo
+	69, // 21: OpenIMServer.club.GetJoinedServerGroupListReq.pagination:type_name -> OpenIMServer.sdkws.RequestPagination
+	73, // 22: OpenIMServer.club.GetJoinedServerGroupListResp.groups:type_name -> OpenIMServer.sdkws.GroupInfo
+	73, // 23: OpenIMServer.club.CreateServerGroupReq.groupInfo:type_name -> OpenIMServer.sdkws.GroupInfo
+	73, // 24: OpenIMServer.club.CreateServerGroupResp.groupInfo:type_name -> OpenIMServer.sdkws.GroupInfo
+	69, // 25: OpenIMServer.club.GetServerApplicationListReq.pagination:type_name -> OpenIMServer.sdkws.RequestPagination
+	74, // 26: OpenIMServer.club.GetServerApplicationListResp.serverRequests:type_name -> OpenIMServer.sdkws.ServerRequest
+	69, // 27: OpenIMServer.club.GetUserReqApplicationListReq.pagination:type_name -> OpenIMServer.sdkws.RequestPagination
+	74, // 28: OpenIMServer.club.GetUserReqApplicationListResp.serverRequests:type_name -> OpenIMServer.sdkws.ServerRequest
+	74, // 29: OpenIMServer.club.getServerUsersReqApplicationListResp.serverRequests:type_name -> OpenIMServer.sdkws.ServerRequest
+	75, // 30: OpenIMServer.club.BanServerMemberResp.black:type_name -> OpenIMServer.sdkws.ServerBlackFullInfo
+	75, // 31: OpenIMServer.club.GetServerBlackListResp.blacks:type_name -> OpenIMServer.sdkws.ServerBlackFullInfo
+	0,  // 32: OpenIMServer.club.club.createServer:input_type -> OpenIMServer.club.CreateServerReq
+	4,  // 33: OpenIMServer.club.club.getServerRecommendedList:input_type -> OpenIMServer.club.GetServerRecommendedListReq
+	6,  // 34: OpenIMServer.club.club.getServersInfo:input_type -> OpenIMServer.club.GetServersInfoReq
+	29, // 35: OpenIMServer.club.club.joinServer:input_type -> OpenIMServer.club.JoinServerReq
+	31, // 36: OpenIMServer.club.club.quitServer:input_type -> OpenIMServer.club.QuitServerReq
+	11, // 37: OpenIMServer.club.club.dismissServer:input_type -> OpenIMServer.club.DismissServerReq
+	13, // 38: OpenIMServer.club.club.setServerInfo:input_type -> OpenIMServer.club.SetServerInfoReq
+	2,  // 39: OpenIMServer.club.club.createGroupCategory:input_type -> OpenIMServer.club.CreateGroupCategoryReq
+	50, // 40: OpenIMServer.club.club.serverApplicationResponse:input_type -> OpenIMServer.club.ServerApplicationResponseReq
+	52, // 41: OpenIMServer.club.club.getServerApplicationList:input_type -> OpenIMServer.club.GetServerApplicationListReq
+	54, // 42: OpenIMServer.club.club.getUserReqApplicationList:input_type -> OpenIMServer.club.GetUserReqApplicationListReq
+	56, // 43: OpenIMServer.club.club.getServerUsersReqApplicationList:input_type -> OpenIMServer.club.getServerUsersReqApplicationListReq
+	46, // 44: OpenIMServer.club.club.getJoinedServerGroupList:input_type -> OpenIMServer.club.GetJoinedServerGroupListReq
+	48, // 45: OpenIMServer.club.club.createServerGroup:input_type -> OpenIMServer.club.CreateServerGroupReq
+	15, // 46: OpenIMServer.club.club.getServerMemberList:input_type -> OpenIMServer.club.GetServerMemberListReq
+	17, // 47: OpenIMServer.club.club.getServerMembersInfo:input_type -> OpenIMServer.club.GetServerMembersInfoReq
+	19, // 48: OpenIMServer.club.club.kickServerMember:input_type -> OpenIMServer.club.KickServerMemberReq
+	21, // 49: OpenIMServer.club.club.getJoinedServerList:input_type -> OpenIMServer.club.GetJoinedServerListReq
+	23, // 50: OpenIMServer.club.club.getServerMembersCMS:input_type -> OpenIMServer.club.GetServerMembersCMSReq
+	25, // 51: OpenIMServer.club.club.muteServerMember:input_type -> OpenIMServer.club.MuteServerMemberReq
+	27, // 52: OpenIMServer.club.club.cancelMuteServerMember:input_type -> OpenIMServer.club.CancelMuteServerMemberReq
+	34, // 53: OpenIMServer.club.club.setServerMemberInfo:input_type -> OpenIMServer.club.SetServerMemberInfoReq
+	38, // 54: OpenIMServer.club.club.getUserInServerMembers:input_type -> OpenIMServer.club.GetUserInServerMembersReq
+	36, // 55: OpenIMServer.club.club.getServerMemberUserIDs:input_type -> OpenIMServer.club.GetServerMemberUserIDsReq
+	40, // 56: OpenIMServer.club.club.GetServerMemberRoleLevel:input_type -> OpenIMServer.club.GetServerMemberRoleLevelReq
+	42, // 57: OpenIMServer.club.club.GetServerMemberCache:input_type -> OpenIMServer.club.GetServerMemberCacheReq
+	44, // 58: OpenIMServer.club.club.transferServerOwner:input_type -> OpenIMServer.club.TransferServerOwnerReq
+	58, // 59: OpenIMServer.club.club.banServerMember:input_type -> OpenIMServer.club.BanServerMemberReq
+	60, // 60: OpenIMServer.club.club.cancelBanServerMember:input_type -> OpenIMServer.club.CancelBanServerMemberReq
+	62, // 61: OpenIMServer.club.club.getServerBlackList:input_type -> OpenIMServer.club.GetServerBlackListReq
+	1,  // 62: OpenIMServer.club.club.createServer:output_type -> OpenIMServer.club.CreateServerResp
+	5,  // 63: OpenIMServer.club.club.getServerRecommendedList:output_type -> OpenIMServer.club.GetServerRecommendecListResp
+	7,  // 64: OpenIMServer.club.club.getServersInfo:output_type -> OpenIMServer.club.GetServersInfoResp
+	30, // 65: OpenIMServer.club.club.joinServer:output_type -> OpenIMServer.club.JoinServerResp
+	32, // 66: OpenIMServer.club.club.quitServer:output_type -> OpenIMServer.club.QuitServerResp
+	12, // 67: OpenIMServer.club.club.dismissServer:output_type -> OpenIMServer.club.DismissServerResp
+	14, // 68: OpenIMServer.club.club.setServerInfo:output_type -> OpenIMServer.club.SetServerInfoResp
+	3,  // 69: OpenIMServer.club.club.createGroupCategory:output_type -> OpenIMServer.club.CreateGroupCategoryResp
+	51, // 70: OpenIMServer.club.club.serverApplicationResponse:output_type -> OpenIMServer.club.ServerApplicationResponseResp
+	53, // 71: OpenIMServer.club.club.getServerApplicationList:output_type -> OpenIMServer.club.GetServerApplicationListResp
+	55, // 72: OpenIMServer.club.club.getUserReqApplicationList:output_type -> OpenIMServer.club.GetUserReqApplicationListResp
+	57, // 73: OpenIMServer.club.club.getServerUsersReqApplicationList:output_type -> OpenIMServer.club.getServerUsersReqApplicationListResp
+	47, // 74: OpenIMServer.club.club.getJoinedServerGroupList:output_type -> OpenIMServer.club.GetJoinedServerGroupListResp
+	49, // 75: OpenIMServer.club.club.createServerGroup:output_type -> OpenIMServer.club.CreateServerGroupResp
+	16, // 76: OpenIMServer.club.club.getServerMemberList:output_type -> OpenIMServer.club.GetServerMemberListResp
+	18, // 77: OpenIMServer.club.club.getServerMembersInfo:output_type -> OpenIMServer.club.GetServerMembersInfoResp
+	20, // 78: OpenIMServer.club.club.kickServerMember:output_type -> OpenIMServer.club.KickServerMemberResp
+	22, // 79: OpenIMServer.club.club.getJoinedServerList:output_type -> OpenIMServer.club.GetJoinedServerListResp
+	24, // 80: OpenIMServer.club.club.getServerMembersCMS:output_type -> OpenIMServer.club.GetServerMembersCMSResp
+	26, // 81: OpenIMServer.club.club.muteServerMember:output_type -> OpenIMServer.club.MuteServerMemberResp
+	28, // 82: OpenIMServer.club.club.cancelMuteServerMember:output_type -> OpenIMServer.club.CancelMuteServerMemberResp
+	35, // 83: OpenIMServer.club.club.setServerMemberInfo:output_type -> OpenIMServer.club.SetServerMemberInfoResp
+	39, // 84: OpenIMServer.club.club.getUserInServerMembers:output_type -> OpenIMServer.club.GetUserInServerMembersResp
+	37, // 85: OpenIMServer.club.club.getServerMemberUserIDs:output_type -> OpenIMServer.club.GetServerMemberUserIDsResp
+	41, // 86: OpenIMServer.club.club.GetServerMemberRoleLevel:output_type -> OpenIMServer.club.GetServerMemberRoleLevelResp
+	43, // 87: OpenIMServer.club.club.GetServerMemberCache:output_type -> OpenIMServer.club.GetServerMemberCacheResp
+	45, // 88: OpenIMServer.club.club.transferServerOwner:output_type -> OpenIMServer.club.TransferServerOwnerResp
+	59, // 89: OpenIMServer.club.club.banServerMember:output_type -> OpenIMServer.club.BanServerMemberResp
+	61, // 90: OpenIMServer.club.club.cancelBanServerMember:output_type -> OpenIMServer.club.CancelBanServerMemberResp
+	63, // 91: OpenIMServer.club.club.getServerBlackList:output_type -> OpenIMServer.club.GetServerBlackListResp
+	62, // [62:92] is the sub-list for method output_type
+	32, // [32:62] is the sub-list for method input_type
+	32, // [32:32] is the sub-list for extension type_name
+	32, // [32:32] is the sub-list for extension extendee
+	0,  // [0:32] is the sub-list for field type_name
 }
 
 func init() { file_club_club_proto_init() }
@@ -3901,7 +4352,7 @@ func file_club_club_proto_init() {
 			}
 		}
 		file_club_club_proto_msgTypes[8].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*DeleteServerReq); i {
+			switch v := v.(*GetServerInfoResp); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -3913,7 +4364,7 @@ func file_club_club_proto_init() {
 			}
 		}
 		file_club_club_proto_msgTypes[9].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*DeleteServerResp); i {
+			switch v := v.(*DeleteServerReq); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -3925,7 +4376,7 @@ func file_club_club_proto_init() {
 			}
 		}
 		file_club_club_proto_msgTypes[10].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*DismissServerReq); i {
+			switch v := v.(*DeleteServerResp); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -3937,7 +4388,7 @@ func file_club_club_proto_init() {
 			}
 		}
 		file_club_club_proto_msgTypes[11].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*DismissServerResp); i {
+			switch v := v.(*DismissServerReq); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -3949,7 +4400,7 @@ func file_club_club_proto_init() {
 			}
 		}
 		file_club_club_proto_msgTypes[12].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SetServerInfoReq); i {
+			switch v := v.(*DismissServerResp); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -3961,7 +4412,7 @@ func file_club_club_proto_init() {
 			}
 		}
 		file_club_club_proto_msgTypes[13].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SetServerInfoResp); i {
+			switch v := v.(*SetServerInfoReq); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -3973,7 +4424,7 @@ func file_club_club_proto_init() {
 			}
 		}
 		file_club_club_proto_msgTypes[14].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetServerMemberListReq); i {
+			switch v := v.(*SetServerInfoResp); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -3985,7 +4436,7 @@ func file_club_club_proto_init() {
 			}
 		}
 		file_club_club_proto_msgTypes[15].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetServerMemberListResp); i {
+			switch v := v.(*GetServerMemberListReq); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -3997,7 +4448,7 @@ func file_club_club_proto_init() {
 			}
 		}
 		file_club_club_proto_msgTypes[16].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetServerMembersInfoReq); i {
+			switch v := v.(*GetServerMemberListResp); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4009,7 +4460,7 @@ func file_club_club_proto_init() {
 			}
 		}
 		file_club_club_proto_msgTypes[17].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetServerMembersInfoResp); i {
+			switch v := v.(*GetServerMembersInfoReq); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4021,7 +4472,7 @@ func file_club_club_proto_init() {
 			}
 		}
 		file_club_club_proto_msgTypes[18].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*KickServerMemberReq); i {
+			switch v := v.(*GetServerMembersInfoResp); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4033,7 +4484,7 @@ func file_club_club_proto_init() {
 			}
 		}
 		file_club_club_proto_msgTypes[19].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*KickServerMemberResp); i {
+			switch v := v.(*KickServerMemberReq); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4045,7 +4496,7 @@ func file_club_club_proto_init() {
 			}
 		}
 		file_club_club_proto_msgTypes[20].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetJoinedServerListReq); i {
+			switch v := v.(*KickServerMemberResp); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4057,7 +4508,7 @@ func file_club_club_proto_init() {
 			}
 		}
 		file_club_club_proto_msgTypes[21].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetJoinedServerListResp); i {
+			switch v := v.(*GetJoinedServerListReq); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4069,7 +4520,7 @@ func file_club_club_proto_init() {
 			}
 		}
 		file_club_club_proto_msgTypes[22].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetServerMembersCMSReq); i {
+			switch v := v.(*GetJoinedServerListResp); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4081,7 +4532,7 @@ func file_club_club_proto_init() {
 			}
 		}
 		file_club_club_proto_msgTypes[23].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetServerMembersCMSResp); i {
+			switch v := v.(*GetServerMembersCMSReq); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4093,7 +4544,7 @@ func file_club_club_proto_init() {
 			}
 		}
 		file_club_club_proto_msgTypes[24].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*MuteServerMemberReq); i {
+			switch v := v.(*GetServerMembersCMSResp); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4105,7 +4556,7 @@ func file_club_club_proto_init() {
 			}
 		}
 		file_club_club_proto_msgTypes[25].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*MuteServerMemberResp); i {
+			switch v := v.(*MuteServerMemberReq); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4117,7 +4568,7 @@ func file_club_club_proto_init() {
 			}
 		}
 		file_club_club_proto_msgTypes[26].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*CancelMuteServerMemberReq); i {
+			switch v := v.(*MuteServerMemberResp); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4129,7 +4580,7 @@ func file_club_club_proto_init() {
 			}
 		}
 		file_club_club_proto_msgTypes[27].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*CancelMuteServerMemberResp); i {
+			switch v := v.(*CancelMuteServerMemberReq); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4141,7 +4592,7 @@ func file_club_club_proto_init() {
 			}
 		}
 		file_club_club_proto_msgTypes[28].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*JoinServerReq); i {
+			switch v := v.(*CancelMuteServerMemberResp); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4153,7 +4604,7 @@ func file_club_club_proto_init() {
 			}
 		}
 		file_club_club_proto_msgTypes[29].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*JoinServerResp); i {
+			switch v := v.(*JoinServerReq); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4165,7 +4616,7 @@ func file_club_club_proto_init() {
 			}
 		}
 		file_club_club_proto_msgTypes[30].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*QuitServerReq); i {
+			switch v := v.(*JoinServerResp); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4177,7 +4628,7 @@ func file_club_club_proto_init() {
 			}
 		}
 		file_club_club_proto_msgTypes[31].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*QuitServerResp); i {
+			switch v := v.(*QuitServerReq); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4189,7 +4640,7 @@ func file_club_club_proto_init() {
 			}
 		}
 		file_club_club_proto_msgTypes[32].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SetServerMemberInfo); i {
+			switch v := v.(*QuitServerResp); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4201,7 +4652,7 @@ func file_club_club_proto_init() {
 			}
 		}
 		file_club_club_proto_msgTypes[33].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SetServerMemberInfoReq); i {
+			switch v := v.(*SetServerMemberInfo); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4213,7 +4664,7 @@ func file_club_club_proto_init() {
 			}
 		}
 		file_club_club_proto_msgTypes[34].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SetServerMemberInfoResp); i {
+			switch v := v.(*SetServerMemberInfoReq); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4225,7 +4676,7 @@ func file_club_club_proto_init() {
 			}
 		}
 		file_club_club_proto_msgTypes[35].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetServerMemberUserIDsReq); i {
+			switch v := v.(*SetServerMemberInfoResp); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4237,7 +4688,7 @@ func file_club_club_proto_init() {
 			}
 		}
 		file_club_club_proto_msgTypes[36].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetServerMemberUserIDsResp); i {
+			switch v := v.(*GetServerMemberUserIDsReq); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4249,7 +4700,7 @@ func file_club_club_proto_init() {
 			}
 		}
 		file_club_club_proto_msgTypes[37].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetUserInServerMembersReq); i {
+			switch v := v.(*GetServerMemberUserIDsResp); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4261,7 +4712,7 @@ func file_club_club_proto_init() {
 			}
 		}
 		file_club_club_proto_msgTypes[38].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetUserInServerMembersResp); i {
+			switch v := v.(*GetUserInServerMembersReq); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4273,7 +4724,7 @@ func file_club_club_proto_init() {
 			}
 		}
 		file_club_club_proto_msgTypes[39].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetServerMemberRoleLevelReq); i {
+			switch v := v.(*GetUserInServerMembersResp); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4285,7 +4736,7 @@ func file_club_club_proto_init() {
 			}
 		}
 		file_club_club_proto_msgTypes[40].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetServerMemberRoleLevelResp); i {
+			switch v := v.(*GetServerMemberRoleLevelReq); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4297,7 +4748,7 @@ func file_club_club_proto_init() {
 			}
 		}
 		file_club_club_proto_msgTypes[41].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetServerMemberCacheReq); i {
+			switch v := v.(*GetServerMemberRoleLevelResp); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4309,7 +4760,7 @@ func file_club_club_proto_init() {
 			}
 		}
 		file_club_club_proto_msgTypes[42].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetServerMemberCacheResp); i {
+			switch v := v.(*GetServerMemberCacheReq); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4321,7 +4772,7 @@ func file_club_club_proto_init() {
 			}
 		}
 		file_club_club_proto_msgTypes[43].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*TransferServerOwnerReq); i {
+			switch v := v.(*GetServerMemberCacheResp); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4333,7 +4784,7 @@ func file_club_club_proto_init() {
 			}
 		}
 		file_club_club_proto_msgTypes[44].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*TransferServerOwnerResp); i {
+			switch v := v.(*TransferServerOwnerReq); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4345,7 +4796,7 @@ func file_club_club_proto_init() {
 			}
 		}
 		file_club_club_proto_msgTypes[45].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetJoinedServerGroupListReq); i {
+			switch v := v.(*TransferServerOwnerResp); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4357,7 +4808,7 @@ func file_club_club_proto_init() {
 			}
 		}
 		file_club_club_proto_msgTypes[46].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetJoinedServerGroupListResp); i {
+			switch v := v.(*GetJoinedServerGroupListReq); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4369,7 +4820,7 @@ func file_club_club_proto_init() {
 			}
 		}
 		file_club_club_proto_msgTypes[47].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*CreateServerGroupReq); i {
+			switch v := v.(*GetJoinedServerGroupListResp); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4381,7 +4832,7 @@ func file_club_club_proto_init() {
 			}
 		}
 		file_club_club_proto_msgTypes[48].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*CreateServerGroupResp); i {
+			switch v := v.(*CreateServerGroupReq); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4393,7 +4844,7 @@ func file_club_club_proto_init() {
 			}
 		}
 		file_club_club_proto_msgTypes[49].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ServerApplicationResponseReq); i {
+			switch v := v.(*CreateServerGroupResp); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4405,7 +4856,7 @@ func file_club_club_proto_init() {
 			}
 		}
 		file_club_club_proto_msgTypes[50].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ServerApplicationResponseResp); i {
+			switch v := v.(*ServerApplicationResponseReq); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4417,7 +4868,7 @@ func file_club_club_proto_init() {
 			}
 		}
 		file_club_club_proto_msgTypes[51].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetServerApplicationListReq); i {
+			switch v := v.(*ServerApplicationResponseResp); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4429,7 +4880,7 @@ func file_club_club_proto_init() {
 			}
 		}
 		file_club_club_proto_msgTypes[52].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetServerApplicationListResp); i {
+			switch v := v.(*GetServerApplicationListReq); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4441,7 +4892,7 @@ func file_club_club_proto_init() {
 			}
 		}
 		file_club_club_proto_msgTypes[53].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetUserReqApplicationListReq); i {
+			switch v := v.(*GetServerApplicationListResp); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4453,7 +4904,7 @@ func file_club_club_proto_init() {
 			}
 		}
 		file_club_club_proto_msgTypes[54].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetUserReqApplicationListResp); i {
+			switch v := v.(*GetUserReqApplicationListReq); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4465,7 +4916,7 @@ func file_club_club_proto_init() {
 			}
 		}
 		file_club_club_proto_msgTypes[55].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetServerUsersReqApplicationListReq); i {
+			switch v := v.(*GetUserReqApplicationListResp); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4477,7 +4928,91 @@ func file_club_club_proto_init() {
 			}
 		}
 		file_club_club_proto_msgTypes[56].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*GetServerUsersReqApplicationListReq); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_club_club_proto_msgTypes[57].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*GetServerUsersReqApplicationListResp); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_club_club_proto_msgTypes[58].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*BanServerMemberReq); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_club_club_proto_msgTypes[59].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*BanServerMemberResp); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_club_club_proto_msgTypes[60].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*CancelBanServerMemberReq); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_club_club_proto_msgTypes[61].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*CancelBanServerMemberResp); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_club_club_proto_msgTypes[62].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*GetServerBlackListReq); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_club_club_proto_msgTypes[63].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*GetServerBlackListResp); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4495,7 +5030,7 @@ func file_club_club_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_club_club_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   57,
+			NumMessages:   64,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
@@ -4573,6 +5108,10 @@ type ClubClient interface {
 	GetServerMemberCache(ctx context.Context, in *GetServerMemberCacheReq, opts ...grpc.CallOption) (*GetServerMemberCacheResp, error)
 	// 转让群主
 	TransferServerOwner(ctx context.Context, in *TransferServerOwnerReq, opts ...grpc.CallOption) (*TransferServerOwnerResp, error)
+	// server_black
+	BanServerMember(ctx context.Context, in *BanServerMemberReq, opts ...grpc.CallOption) (*BanServerMemberResp, error)
+	CancelBanServerMember(ctx context.Context, in *CancelBanServerMemberReq, opts ...grpc.CallOption) (*CancelBanServerMemberResp, error)
+	GetServerBlackList(ctx context.Context, in *GetServerBlackListReq, opts ...grpc.CallOption) (*GetServerBlackListResp, error)
 }
 
 type clubClient struct {
@@ -4826,6 +5365,33 @@ func (c *clubClient) TransferServerOwner(ctx context.Context, in *TransferServer
 	return out, nil
 }
 
+func (c *clubClient) BanServerMember(ctx context.Context, in *BanServerMemberReq, opts ...grpc.CallOption) (*BanServerMemberResp, error) {
+	out := new(BanServerMemberResp)
+	err := c.cc.Invoke(ctx, "/OpenIMServer.club.club/banServerMember", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *clubClient) CancelBanServerMember(ctx context.Context, in *CancelBanServerMemberReq, opts ...grpc.CallOption) (*CancelBanServerMemberResp, error) {
+	out := new(CancelBanServerMemberResp)
+	err := c.cc.Invoke(ctx, "/OpenIMServer.club.club/cancelBanServerMember", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *clubClient) GetServerBlackList(ctx context.Context, in *GetServerBlackListReq, opts ...grpc.CallOption) (*GetServerBlackListResp, error) {
+	out := new(GetServerBlackListResp)
+	err := c.cc.Invoke(ctx, "/OpenIMServer.club.club/getServerBlackList", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // ClubServer is the server API for Club service.
 type ClubServer interface {
 	// 创建部落
@@ -4880,6 +5446,10 @@ type ClubServer interface {
 	GetServerMemberCache(context.Context, *GetServerMemberCacheReq) (*GetServerMemberCacheResp, error)
 	// 转让群主
 	TransferServerOwner(context.Context, *TransferServerOwnerReq) (*TransferServerOwnerResp, error)
+	// server_black
+	BanServerMember(context.Context, *BanServerMemberReq) (*BanServerMemberResp, error)
+	CancelBanServerMember(context.Context, *CancelBanServerMemberReq) (*CancelBanServerMemberResp, error)
+	GetServerBlackList(context.Context, *GetServerBlackListReq) (*GetServerBlackListResp, error)
 }
 
 // UnimplementedClubServer can be embedded to have forward compatible implementations.
@@ -4966,6 +5536,15 @@ func (*UnimplementedClubServer) GetServerMemberCache(context.Context, *GetServer
 }
 func (*UnimplementedClubServer) TransferServerOwner(context.Context, *TransferServerOwnerReq) (*TransferServerOwnerResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method TransferServerOwner not implemented")
+}
+func (*UnimplementedClubServer) BanServerMember(context.Context, *BanServerMemberReq) (*BanServerMemberResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method BanServerMember not implemented")
+}
+func (*UnimplementedClubServer) CancelBanServerMember(context.Context, *CancelBanServerMemberReq) (*CancelBanServerMemberResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CancelBanServerMember not implemented")
+}
+func (*UnimplementedClubServer) GetServerBlackList(context.Context, *GetServerBlackListReq) (*GetServerBlackListResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetServerBlackList not implemented")
 }
 
 func RegisterClubServer(s *grpc.Server, srv ClubServer) {
@@ -5458,6 +6037,60 @@ func _Club_TransferServerOwner_Handler(srv interface{}, ctx context.Context, dec
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Club_BanServerMember_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(BanServerMemberReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ClubServer).BanServerMember(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/OpenIMServer.club.club/BanServerMember",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ClubServer).BanServerMember(ctx, req.(*BanServerMemberReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Club_CancelBanServerMember_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CancelBanServerMemberReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ClubServer).CancelBanServerMember(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/OpenIMServer.club.club/CancelBanServerMember",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ClubServer).CancelBanServerMember(ctx, req.(*CancelBanServerMemberReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Club_GetServerBlackList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetServerBlackListReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ClubServer).GetServerBlackList(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/OpenIMServer.club.club/GetServerBlackList",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ClubServer).GetServerBlackList(ctx, req.(*GetServerBlackListReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _Club_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "OpenIMServer.club.club",
 	HandlerType: (*ClubServer)(nil),
@@ -5569,6 +6202,18 @@ var _Club_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "transferServerOwner",
 			Handler:    _Club_TransferServerOwner_Handler,
+		},
+		{
+			MethodName: "banServerMember",
+			Handler:    _Club_BanServerMember_Handler,
+		},
+		{
+			MethodName: "cancelBanServerMember",
+			Handler:    _Club_CancelBanServerMember_Handler,
+		},
+		{
+			MethodName: "getServerBlackList",
+			Handler:    _Club_GetServerBlackList_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

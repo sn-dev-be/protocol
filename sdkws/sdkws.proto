@@ -693,4 +693,13 @@ message GroupDappFullInfo {
   string dappID = 3;
   int64 createTime = 4;
 }
+
+message ServerBlackFullInfo{
+  string serverID = 1;
+  string blockUserID = 2;
+	int64 createTime = 3;
+  int32 addSource = 4;
+  string operatorUserID = 5;
+  string ex = 6;
+}
 //////////////////////club end/////////////////////

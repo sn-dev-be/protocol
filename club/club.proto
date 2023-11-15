@@ -42,7 +42,7 @@ message CreateGroupCategoryReq {
   string ownerUserID = 3;
 }
 message CreateGroupCategoryResp {
-    string categoryID = 1;
+    sdkws.GroupCategory groupCategory = 1;
 }
 
 
@@ -52,8 +52,11 @@ message GetServerRecommendecListResp {
   repeated sdkws.ServerFullInfo servers = 1;
 }
 
-message GetServersInfoReq { string serverID = 1; }
+message GetServersInfoReq { repeated string serverIDs = 1; }
 message GetServersInfoResp { 
+  repeated GetServerInfoResp servers = 1;
+}
+message GetServerInfoResp { 
   sdkws.ServerInfo server = 1; 
   repeated sdkws.GroupCategoryListInfo categoryList = 2;
   bool joined = 3;
@@ -255,6 +258,37 @@ message getServerUsersReqApplicationListResp {
   repeated sdkws.ServerRequest serverRequests = 2;
 }
 
+
+//////////server_black////////////////
+message BanServerMemberReq{
+  string serverID = 1;
+  string blockUserID = 2;
+  string operatorUserID = 3;
+  string ex = 4;
+}
+message BanServerMemberResp{
+  sdkws.ServerBlackFullInfo black = 1;
+}
+
+message CancelBanServerMemberReq{
+  string serverID = 1;
+  string blockUserID = 2;
+  string operatorUserID = 3;
+  string ex = 4;
+}
+message CancelBanServerMemberResp{
+
+}
+
+message GetServerBlackListReq{
+  string serverID = 1;
+}
+message GetServerBlackListResp{
+  repeated sdkws.ServerBlackFullInfo blacks = 1;
+}
+
+
+
 service club {
   // 创建部落
   rpc createServer(CreateServerReq) returns (CreateServerResp);
@@ -322,4 +356,9 @@ service club {
   rpc GetServerMemberCache(GetServerMemberCacheReq) returns (GetServerMemberCacheResp);
     //转让群主
   rpc transferServerOwner(TransferServerOwnerReq) returns(TransferServerOwnerResp);
+
+  //server_black
+  rpc banServerMember(BanServerMemberReq) returns(BanServerMemberResp);
+  rpc cancelBanServerMember(CancelBanServerMemberReq) returns(CancelBanServerMemberResp);
+  rpc getServerBlackList(GetServerBlackListReq) returns(GetServerBlackListResp);
 }
