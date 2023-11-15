@@ -67,13 +67,20 @@ message GetServerRecommendecListResp {
 
 message GetServerDetailsReq { string serverID = 1; }
 message GetServerDetailsResp { 
-  sdkws.ServerFullInfo server = 1; 
+  sdkws.ServerInfo server = 1; 
   repeated sdkws.GroupCategoryListInfo categoryList = 2;
   bool joined = 3;
 }
 
 message DeleteServerReq { repeated string serverIDList = 1; }
 message DeleteServerResp {}
+
+message DismissServerReq{
+  string serverID = 1;
+  bool deleteMember = 2;
+}
+message DismissServerResp{
+}
 
 ///////////////////////serverMember///////////////////////////////
 message GetServerMemberListReq {
@@ -191,6 +198,15 @@ message GetServerMemberCacheResp {
   sdkws.ServerMemberFullInfo member = 1;
 }
 
+message TransferServerOwnerReq {
+  string serverID = 1;
+  string oldOwnerUserID = 2;
+  string newOwnerUserID = 3;
+}
+message TransferServerOwnerResp{
+
+}
+
 // group
 message GetJoinedServerGroupListReq {
   sdkws.RequestPagination pagination = 1;
@@ -259,8 +275,10 @@ service club {
   rpc joinServer(JoinServerReq) returns (JoinServerResp);
   //退出部落
   rpc quitServer(QuitServerReq) returns(QuitServerResp);
+  //解散部落
+  rpc dismissServer(DismissServerReq) returns(DismissServerResp);
 
-  // /groupCategory
+  //groupCategory
 
   // 创建分组
   rpc createGroupCategory(CreateGroupCategoryReq) returns (CreateGroupCategoryResp);
@@ -309,4 +327,6 @@ service club {
   // 查询部落组中对应级别的成员
   rpc GetServerMemberRoleLevel(GetServerMemberRoleLevelReq)returns (GetServerMemberRoleLevelResp);
   rpc GetServerMemberCache(GetServerMemberCacheReq) returns (GetServerMemberCacheResp);
+    //转让群主
+  rpc transferServerOwner(TransferServerOwnerReq) returns(TransferServerOwnerResp);
 }

@@ -472,6 +472,7 @@ const (
 // club
 const (
 	ServerOwner         = 100
+	ServerSuperAdmin    = 80
 	ServerAdmin         = 60
 	ServerOrdinaryUsers = 20
 )

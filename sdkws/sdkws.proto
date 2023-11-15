@@ -614,30 +614,15 @@ message ServerGroupListInfo{
   int32  groupType = 5;      
   string conversationID = 6;        
  	int32 conversationType = 7;     
-  string GroupCategoryID = 8;
-	string ServerID= 9;
-  int32 GroupMode = 10;
+  string groupCategoryID = 8;
+	string serverID= 9;
+  int32 groupMode = 10;
   GroupDappFullInfo dapp = 11;
 }
 
 message ServerFullInfo {
-  string serverID = 1;
-  string serverName = 2;
-  string icon = 3;
-  string description = 4;
-  string banner = 5;
-  string ownerUserID = 6;
-  int32 memberNumber = 7;
-  int32 applyMode = 8;
-  int32 inviteMode = 9;
-  int32 searchable = 10;
-  int32 userMutualAccessible = 11;
-  int32 status = 12;
-  int32 categoryNumber = 13;
-  int32 channelNumber = 14;
-  string ex = 15;
-  string createTime = 16;
-  repeated string memberAvatarList = 17;
+  ServerInfo serverInfo = 1;
+  repeated string memberAvatarList = 2;
 }
 
 message ServerInfo {
@@ -657,6 +642,7 @@ message ServerInfo {
   int32 channelNumber = 14;
   string ex = 15;
   int64 createTime = 16;
+  string dappID = 17;
 }
 
 message ServerMemberFullInfo {
