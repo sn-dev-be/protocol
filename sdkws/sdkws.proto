@@ -582,40 +582,40 @@ message RequestPagination {
 
 ////////////////////club///////////////////////
 
-message GroupCategory{
-  string	categoryID = 1;      
-  string	categoryName = 2;       
-  int32	  reorderWeight = 3;     
-  int32	  viewMode = 4;         
-  int32	  categoryType = 5;      
-  string	serverID = 6;         
-  string	ex = 7;             
+message GroupCategory {
+  string categoryID = 1;
+  string categoryName = 2;
+  int32 reorderWeight = 3;
+  int32 viewMode = 4;
+  int32 categoryType = 5;
+  string serverID = 6;
+  string ex = 7;
 }
 
-message ServersListInfo{
+message ServersListInfo {
   string serverID = 1;
   string serverName = 2;
   string icon = 3;
 }
 
-message GroupCategoryListInfo{
-  string	categoryID = 1;      
-  string	categoryName = 2;       
-  int32	  reorderWeight = 3;     
-  int32	  categoryType = 4;    
+message GroupCategoryListInfo {
+  string categoryID = 1;
+  string categoryName = 2;
+  int32 reorderWeight = 3;
+  int32 categoryType = 4;
   repeated ServerGroupListInfo groupList = 5;
 }
 
-message ServerGroupListInfo{
+message ServerGroupListInfo {
   string groupID = 1;
   string groupName = 2;
   string introduction = 3;
   string faceURL = 4;
-  int32  groupType = 5;      
-  string conversationID = 6;        
- 	int32 conversationType = 7;     
+  int32 groupType = 5;
+  string conversationID = 6;
+  int32 conversationType = 7;
   string groupCategoryID = 8;
-	string serverID= 9;
+  string serverID = 9;
   int32 groupMode = 10;
   GroupDappFullInfo dapp = 11;
 }
@@ -643,6 +643,18 @@ message ServerInfo {
   string ex = 15;
   int64 createTime = 16;
   string dappID = 17;
+}
+
+message ServerInfoForSet {
+  string serverID = 1;
+  string serverName = 2;
+  string icon = 3;
+  string description = 4;
+  string banner = 5;
+  OpenIMServer.protobuf.StringValue ex = 6;
+  OpenIMServer.protobuf.Int32Value applyMode = 7;
+  OpenIMServer.protobuf.Int32Value searchable = 8;
+  OpenIMServer.protobuf.Int32Value userMutualAccessible = 9;
 }
 
 message ServerMemberFullInfo {

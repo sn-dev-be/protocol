@@ -437,11 +437,6 @@ const (
 	AppGroupMode  = 2
 )
 
-const (
-	ServerRoleAuthAllowed = "allowed"
-	ServerRoleAuthDenied  = "denied"
-)
-
 // join server verification
 const (
 	JoinServerNeedVerification = 0 // 需要审核
@@ -477,7 +472,7 @@ const (
 	ServerOrdinaryUsers = 20
 )
 
-// GroupStatus.
+// serverStatus
 const (
 	ServerOk              = 0
 	ServerBanChat         = 1
