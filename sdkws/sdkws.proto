@@ -630,7 +630,7 @@ message ServerInfo {
   int32 userMutualAccessible = 11;
   int32 status = 12;
   int32 categoryNumber = 13;
-  int32 channelNumber = 14;
+  int32 groupNumber = 14;
   string ex = 15;
   int64 createTime = 16;
   string dappID = 17;
@@ -693,4 +693,12 @@ message ServerBlackFullInfo {
   string operatorUserID = 5;
   string ex = 6;
 }
+
+// tips
+message JoinServerApplicationTips {
+  ServerInfo server = 1;
+  PublicUserInfo applicant = 2;
+  string reqMsg = 3;
+}
+
 //////////////////////club end/////////////////////

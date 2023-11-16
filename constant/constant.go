@@ -156,6 +156,30 @@ const (
 
 	BusinessNotificationEnd = 2099
 
+	// server
+	ServerNotificationBegin = 1800
+
+	ServerCreatedNotification                 = 1801
+	ServerInfoSetNotification                 = 1802
+	JoinServerApplicationNotification         = 1803
+	ServerMemberQuitNotification              = 1804
+	ServerApplicationAcceptedNotification     = 1805
+	ServerApplicationRejectedNotification     = 1806
+	ServerOwnerTransferredNotification        = 1807
+	ServerMemberKickedNotification            = 1808
+	ServerMemberInvitedNotification           = 1809
+	ServerMemberEnterNotification             = 1810
+	ServerDismissedNotification               = 1811
+	ServerMemberMutedNotification             = 1812
+	ServerMemberCancelMutedNotification       = 1813
+	ServerMutedNotification                   = 1814
+	ServerCancelMutedNotification             = 1818
+	ServerMemberInfoSetNotification           = 1816
+	ServerMemberSetToAdminNotification        = 1817
+	ServerMemberSetToOrdinaryUserNotification = 1818
+	ServerInfoSetAnnouncementNotification     = 1819
+	ServerInfoSetNameNotification             = 1820
+
 	ClearConversationNotification = 2101
 	DeleteMsgsNotification        = 2102
 
