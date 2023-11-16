@@ -646,6 +646,7 @@ message ServerInfoForSet {
   OpenIMServer.protobuf.Int32Value applyMode = 7;
   OpenIMServer.protobuf.Int32Value searchable = 8;
   OpenIMServer.protobuf.Int32Value userMutualAccessible = 9;
+  OpenIMServer.protobuf.StringValue dappID = 10;
 }
 
 message ServerMemberFullInfo {
@@ -692,6 +693,8 @@ message ServerBlackFullInfo {
   int32 addSource = 4;
   string operatorUserID = 5;
   string ex = 6;
+  string nickname = 7;
+  string faceUrl = 8;
 }
 
 // tips

@@ -45,6 +45,28 @@ message CreateGroupCategoryResp {
     sdkws.GroupCategoryInfo groupCategory = 1;
 }
 
+message DeleteGroupCategoryReq {
+  string serverID = 1;
+  repeated string categoryIDs = 2;
+}
+message DeleteGroupCategoryResp {
+}
+
+message SetGroupCategoryInfoReq {
+  string serverID = 1;
+  string categoryName = 2;
+}
+message SetGroupCategoryInfoResp {
+    sdkws.GroupCategoryInfo groupCategory = 1;
+}
+
+message SetGroupCategoryOrderReq {
+  string serverID = 1;
+  repeated string categoryIDs = 2;
+}
+message SetGroupCategoryOrderResp {
+}
+
 
 message GetServerRecommendedListReq {
 }
@@ -229,6 +251,22 @@ message CreateServerGroupResp{
   sdkws.GroupInfo groupInfo = 1;
 }
 
+message SetServerGroupInfoReq{
+}
+message SetServerGroupInfoResp{
+}
+
+message SetServerGroupOrderReq{
+}
+message SetServerGroupOrderResp{
+}
+
+message DeleteServerGroupReq{
+}
+message DeleteServerGroupResp{
+}
+
+
 // serverRequest
 
 message ServerApplicationResponseReq{
@@ -271,7 +309,7 @@ message getServerUsersReqApplicationListResp {
 //////////server_black////////////////
 message BanServerMemberReq{
   string serverID = 1;
-  string blockUserID = 2;
+  repeated string blockUserIDs = 2;
   string operatorUserID = 3;
   string ex = 4;
 }
@@ -281,7 +319,7 @@ message BanServerMemberResp{
 
 message CancelBanServerMemberReq{
   string serverID = 1;
-  string blockUserID = 2;
+  repeated string blockUserIDs = 2;
   string operatorUserID = 3;
   string ex = 4;
 }
@@ -291,9 +329,11 @@ message CancelBanServerMemberResp{
 
 message GetServerBlackListReq{
   string serverID = 1;
+  sdkws.RequestPagination pagination = 2;
 }
 message GetServerBlackListResp{
   repeated sdkws.ServerBlackFullInfo blacks = 1;
+  int64 total = 2;
 }
 
 
@@ -320,6 +360,9 @@ service club {
 
   // 创建分组
   rpc createGroupCategory(CreateGroupCategoryReq) returns (CreateGroupCategoryResp);
+  rpc deleteGroupCategory(DeleteGroupCategoryReq) returns(DeleteGroupCategoryResp);
+  rpc setGroupCategoryInfo(SetGroupCategoryInfoReq) returns(SetGroupCategoryInfoResp);
+  rpc setGroupCategoryOrder(SetGroupCategoryOrderReq) returns(SetGroupCategoryOrderResp);
 
   // /serverRequest
 
@@ -339,6 +382,9 @@ service club {
   rpc getJoinedServerGroupList(GetJoinedServerGroupListReq) returns (GetJoinedServerGroupListResp);
   // 创建部落房间
   rpc createServerGroup(CreateServerGroupReq) returns(CreateServerGroupResp);
+  rpc setServerGroupInfo(SetServerGroupInfoReq) returns(SetServerGroupInfoResp);
+  rpc setServerGroupOrder(SetServerGroupOrderReq) returns(SetServerGroupOrderResp);
+  rpc deleteServerGroup(DeleteServerGroupReq) returns(DeleteServerGroupResp);
 
 
   // serverMember
