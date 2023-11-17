@@ -88,6 +88,7 @@ const (
 	GroupMemberSetToOrdinaryUserNotification = 1518
 	GroupInfoSetAnnouncementNotification     = 1519
 	GroupInfoSetNameNotification             = 1520
+	ServerNotificationEnd                    = 1899
 
 	// Signaling
 	SignalingNotificationBegin = 1600
