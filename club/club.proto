@@ -107,6 +107,18 @@ message SearchServerResp {
   uint32 total = 1;
   repeated sdkws.ServerInfo serverInfos = 2;
 }
+
+message GetServerAbstractInfoReq{
+  repeated string serverIDs = 1;
+}
+message ServerAbstractInfo{
+  string serverID = 1;
+  uint32 serverMemberNumber = 2;
+  uint64 serverMemberListHash = 3;
+}
+message GetServerAbstractInfoResp{
+  repeated ServerAbstractInfo serverAbstractInfos = 1;
+}
 ///////////////////////serverMember///////////////////////////////
 message GetServerMemberListReq {
   sdkws.RequestPagination pagination = 1;
@@ -355,6 +367,8 @@ service club {
   rpc setServerInfo(SetServerInfoReq) returns(SetServerInfoResp);
   // 搜索部落
   rpc searchServer(SearchServerReq) returns(SearchServerResp);
+  //获取部落信息hash值
+  rpc getServerAbstractInfo(GetServerAbstractInfoReq) returns (GetServerAbstractInfoResp);
 
   //groupCategory
 

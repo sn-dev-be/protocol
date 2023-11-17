@@ -704,4 +704,18 @@ message JoinServerApplicationTips {
   string reqMsg = 3;
 }
 
+message ServerApplicationAcceptedTips {
+  ServerInfo server = 1;
+  ServerMemberFullInfo opUser = 2;
+  string handleMsg = 4;
+  int32 receiverAs = 5; // admin(==1) or applicant(==0)
+}
+
+//	OnApplicationServerRejected()
+message ServerApplicationRejectedTips {
+  ServerInfo server = 1;
+  ServerMemberFullInfo opUser = 2;
+  string handleMsg = 4;
+  int32 receiverAs = 5; // admin(==1) or applicant(==0)
+}
 //////////////////////club end/////////////////////
