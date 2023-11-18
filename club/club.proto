@@ -120,6 +120,20 @@ message ServerAbstractInfo{
 message GetServerAbstractInfoResp{
   repeated ServerAbstractInfo serverAbstractInfos = 1;
 }
+
+message MuteServerReq{
+  string serverID = 1;
+}
+message MuteServerResp{
+}
+
+
+message CancelMuteServerReq{
+  string serverID = 1;
+}
+message CancelMuteServerResp{
+}
+
 ///////////////////////serverMember///////////////////////////////
 message GetServerMemberListReq {
   sdkws.RequestPagination pagination = 1;
@@ -288,7 +302,19 @@ message DeleteServerGroupReq{
 message DeleteServerGroupResp{
 }
 
+message MuteServerGroupReq{
+  string ServerID = 1;
+  string groupID = 2;
+}
+message MuteServerGroupResp{
+}
 
+message CancelMuteServerGroupReq{
+  string ServerID = 1;
+  string groupID = 2;
+}
+message CancelMuteServerGroupResp{
+}
 // serverRequest
 
 message ServerApplicationResponseReq{
@@ -379,6 +405,10 @@ service club {
   rpc searchServer(SearchServerReq) returns(SearchServerResp);
   //获取部落信息hash值
   rpc getServerAbstractInfo(GetServerAbstractInfoReq) returns (GetServerAbstractInfoResp);
+  //对某个部落禁言
+  rpc muteServer(MuteServerReq) returns(MuteServerResp);
+  //对某个部落取消禁言
+  rpc cancelMuteServer(CancelMuteServerReq) returns(CancelMuteServerResp);
 
   //groupCategory
 
@@ -402,6 +432,10 @@ service club {
 
   // group
 
+  //对某个部落禁言
+  rpc muteServerGroup(MuteServerGroupReq) returns(MuteServerGroupResp);
+  //对某个部落取消禁言
+  rpc cancelMuteServerGroup(CancelMuteServerGroupReq) returns(CancelMuteServerGroupResp);
   // 获取某个人已加入群
   rpc getJoinedServerGroupList(GetJoinedServerGroupListReq) returns (GetJoinedServerGroupListResp);
   // 创建部落房间
