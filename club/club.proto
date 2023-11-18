@@ -55,6 +55,7 @@ message DeleteGroupCategoryResp {
 message SetGroupCategoryInfoReq {
   string serverID = 1;
   string categoryName = 2;
+  string categoryID = 3;
 }
 message SetGroupCategoryInfoResp {
     sdkws.GroupCategoryInfo groupCategory = 1;
@@ -264,16 +265,25 @@ message CreateServerGroupResp{
 }
 
 message SetServerGroupInfoReq{
+  sdkws.GroupInfo groupInfo = 1;
+  string dappID = 2;
 }
 message SetServerGroupInfoResp{
+  sdkws.GroupInfo groupInfo = 1;
+  sdkws.GroupDappFullInfo dapp = 2;
 }
 
 message SetServerGroupOrderReq{
+  string serverID = 1;
+  repeated sdkws.GroupCategoryListInfo categoryList = 2;
+
 }
 message SetServerGroupOrderResp{
 }
 
 message DeleteServerGroupReq{
+  string serverID = 1;
+  repeated string groupIDs = 2;
 }
 message DeleteServerGroupResp{
 }
