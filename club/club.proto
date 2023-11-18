@@ -315,6 +315,13 @@ message CancelMuteServerGroupReq{
 }
 message CancelMuteServerGroupResp{
 }
+
+message GetServerGroupMemberUserIDsReq{
+  string groupID = 1;
+}
+message GetServerGroupMemberUserIDsResp{
+  repeated string userIDs = 1;
+}
 // serverRequest
 
 message ServerApplicationResponseReq{
@@ -443,6 +450,8 @@ service club {
   rpc setServerGroupInfo(SetServerGroupInfoReq) returns(SetServerGroupInfoResp);
   rpc setServerGroupOrder(SetServerGroupOrderReq) returns(SetServerGroupOrderResp);
   rpc deleteServerGroup(DeleteServerGroupReq) returns(DeleteServerGroupResp);
+  // 获取某个部落房间所属部落的成员
+  rpc getServerGroupMemberUserIDs(GetServerGroupMemberUserIDsReq) returns(GetServerGroupMemberUserIDsResp);
 
 
   // serverMember
