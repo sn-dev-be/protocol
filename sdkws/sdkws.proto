@@ -697,6 +697,18 @@ message ServerBlackFullInfo {
   string faceUrl = 8;
 }
 
+message ServerRole {
+  string serverID = 1;
+  string roleID = 2;
+  string roleName = 3;
+  int32 colorLevel = 4;
+  string ex = 5;
+  string icon = 6;
+  int32 priority = 7;
+  int64 createTime = 8;
+  string permissions = 9;
+}
+
 // tips
 message JoinServerApplicationTips {
   ServerInfo server = 1;

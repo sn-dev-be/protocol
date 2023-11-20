@@ -322,6 +322,13 @@ message GetServerGroupMemberUserIDsReq{
 message GetServerGroupMemberUserIDsResp{
   repeated string userIDs = 1;
 }
+
+message GetServerGroupsInfoReq{
+  repeated string groupIDs = 1;
+}
+message GetServerGroupsInfoResp{
+  repeated sdkws.GroupInfo groupInfos = 1;
+}
 // serverRequest
 
 message ServerApplicationResponseReq{
@@ -391,8 +398,23 @@ message GetServerBlackListResp{
   int64 total = 2;
 }
 
+//////////serverRole////////////////
+message GetServerRoleListReq {
+  sdkws.RequestPagination pagination = 1;
+  string serverID = 2;
+  int32 filter = 3;
+}
+message GetServerRoleListResp {
+  uint32 total = 1;
+  repeated sdkws.ServerRole roles = 2;
+}
 
-
+message GetServerRolesInfoReq {
+    repeated string roleIDs = 1;
+}
+message GetServerRolesInfoResp {
+  repeated sdkws.ServerRole roles = 2;
+}
 service club {
   // 创建部落
   rpc createServer(CreateServerReq) returns (CreateServerResp);
@@ -452,6 +474,8 @@ service club {
   rpc deleteServerGroup(DeleteServerGroupReq) returns(DeleteServerGroupResp);
   // 获取某个部落房间所属部落的成员
   rpc getServerGroupMemberUserIDs(GetServerGroupMemberUserIDsReq) returns(GetServerGroupMemberUserIDsResp);
+  //获取指定部落群信息
+  rpc getServerGroupsInfo(GetServerGroupsInfoReq) returns(GetServerGroupsInfoResp);
 
 
   // serverMember
@@ -485,4 +509,8 @@ service club {
   rpc banServerMember(BanServerMemberReq) returns(BanServerMemberResp);
   rpc cancelBanServerMember(CancelBanServerMemberReq) returns(CancelBanServerMemberResp);
   rpc getServerBlackList(GetServerBlackListReq) returns(GetServerBlackListResp);
+
+  // serverRole
+  rpc getServerRoleList(GetServerRoleListReq) returns(GetServerRoleListResp);
+  rpc getServerRolesInfo(GetServerRolesInfoReq) returns(GetServerRolesInfoResp);
 }
