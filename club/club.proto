@@ -303,14 +303,14 @@ message DeleteServerGroupResp{
 }
 
 message MuteServerGroupReq{
-  string ServerID = 1;
+  string serverID = 1;
   string groupID = 2;
 }
 message MuteServerGroupResp{
 }
 
 message CancelMuteServerGroupReq{
-  string ServerID = 1;
+  string serverID = 1;
   string groupID = 2;
 }
 message CancelMuteServerGroupResp{
