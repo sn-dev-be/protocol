@@ -608,7 +608,9 @@ message ServerGroupListInfo {
   string groupCategoryID = 8;
   string serverID = 9;
   int32 groupMode = 10;
-  GroupDappFullInfo dapp = 11;
+  int32 conditionType = 11;
+  string condition = 12;
+  GroupDappFullInfo dapp = 13;
 }
 
 message ServerFullInfo {
