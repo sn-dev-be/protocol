@@ -88,7 +88,7 @@ const (
 	GroupMemberSetToOrdinaryUserNotification = 1518
 	GroupInfoSetAnnouncementNotification     = 1519
 	GroupInfoSetNameNotification             = 1520
-	ServerNotificationEnd                    = 1899
+	GroupNotificationEnd                     = 1599
 
 	// Signaling
 	SignalingNotificationBegin = 1600
@@ -180,6 +180,7 @@ const (
 	ServerMemberSetToOrdinaryUserNotification = 1818
 	ServerInfoSetAnnouncementNotification     = 1819
 	ServerInfoSetNameNotification             = 1820
+	ServerNotificationEnd                     = 1899
 
 	ClearConversationNotification = 2101
 	DeleteMsgsNotification        = 2102

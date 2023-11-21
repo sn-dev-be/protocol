@@ -199,7 +199,6 @@ message JoinServerReq{
   string serverID = 1;
   string reqMessage = 2;
   int32 joinSource = 3;
-  string userID = 4;
   string inviterUserID = 5;
 }
 message JoinServerResp{}
