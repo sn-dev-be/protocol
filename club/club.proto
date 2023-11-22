@@ -335,6 +335,8 @@ message ServerApplicationResponseReq{
   string fromUserID = 2;
   string handledMsg = 3;
   int32 handleResult = 4;
+  string conversationID = 5;
+  int64 seq = 6;
 }
 message ServerApplicationResponseResp{
 }

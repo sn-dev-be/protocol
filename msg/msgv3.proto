@@ -90,6 +90,16 @@ message SetRedPacketMsgStatusReq {
 
 message SetRedPacketMsgStatusResp {}
 
+message ModifyMsgReq {
+  string conversationID = 1;
+  int64 seq = 2;
+  string userID = 3;
+  string content = 4;
+  int32 modifyType = 5;
+}
+
+message ModifyMsgResp {}
+
 message MarkMsgsAsReadReq {
   string conversationID = 1;
   repeated int64 seqs = 2;
@@ -310,4 +320,6 @@ service msg {
 
   rpc SetRedPacketMsgStatus(SetRedPacketMsgStatusReq)
       returns (SetRedPacketMsgStatusResp);
+
+  rpc ModifyMsg(ModifyMsgReq) returns (ModifyMsgResp);
 }

@@ -580,6 +580,16 @@ message RequestPagination {
   int32 showNumber = 2;
 }
 
+message ModifyMessageTips {
+  string clientMsgID = 1;
+  int64 seq = 2;
+  string conversationID = 3;
+  string opUser = 4;
+  int64 modifyTime = 5;
+  string content = 6;
+  int32 modifyType = 7;
+}
+
 ////////////////////club///////////////////////
 
 message GroupCategoryInfo {
@@ -716,6 +726,7 @@ message JoinServerApplicationTips {
   ServerInfo server = 1;
   PublicUserInfo applicant = 2;
   string reqMsg = 3;
+  int32 handleResult = 4;
 }
 
 message ServerApplicationAcceptedTips {

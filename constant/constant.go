@@ -184,6 +184,7 @@ const (
 
 	ClearConversationNotification = 2101
 	DeleteMsgsNotification        = 2102
+	ModifyMessageNotification     = 2103
 
 	HasReadReceipt = 2200
 
@@ -317,6 +318,9 @@ const (
 	MsgIsSending      = 1
 	MsgSendSuccessed  = 2
 	MsgSendFailed     = 3
+
+	MsgModifyServerRequestStatus = 1
+	MsgModifyRedPacketStatus     = 2
 )
 
 const (
