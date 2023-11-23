@@ -146,6 +146,16 @@ message GroupSaved {
   int64 createTime = 3;
 }
 
+message MuteRecord {
+  string serverID = 1;
+  string blockUserID = 2;
+  string operatorUserID = 3;
+  int64 createTime = 4;
+  int64 muteEndTime = 5;
+  int32 addSource = 6;
+  string ex = 7;
+}
+
 ///////////////////////////////////base end/////////////////////////////////////
 enum PullOrder {
   PullOrderAsc = 0;
@@ -707,6 +717,7 @@ message ServerBlackFullInfo {
   string ex = 6;
   string nickname = 7;
   string faceUrl = 8;
+  UserInfo operatorUser = 9;
 }
 
 message ServerRole {
@@ -719,6 +730,12 @@ message ServerRole {
   int32 priority = 7;
   int64 createTime = 8;
   string permissions = 9;
+}
+
+message ServerMuteRecord{
+  MuteRecord muteRecord = 1;
+  UserInfo operatorUser = 2;
+  UserInfo blockUser = 3;
 }
 
 // tips

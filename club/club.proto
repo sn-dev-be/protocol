@@ -419,11 +419,23 @@ message GetServerRoleListResp {
 }
 
 message GetServerRolesInfoReq {
-    repeated string roleIDs = 1;
+  repeated string roleIDs = 1;
 }
 message GetServerRolesInfoResp {
   repeated sdkws.ServerRole roles = 2;
 }
+
+
+////////////mute_record////////////
+message GetServerMuteRecordListReq{
+  string serverID = 1;
+  sdkws.RequestPagination pagination = 2;
+}
+message GetServerMuteRecordListResp{
+  uint32 total = 1;
+  repeated sdkws.ServerMuteRecord records = 2;
+}
+
 service club {
   // 创建部落
   rpc createServer(CreateServerReq) returns (CreateServerResp);
@@ -524,4 +536,8 @@ service club {
   // serverRole
   rpc getServerRoleList(GetServerRoleListReq) returns(GetServerRoleListResp);
   rpc getServerRolesInfo(GetServerRolesInfoReq) returns(GetServerRolesInfoResp);
+
+
+  //mute_record
+  rpc getServerMuteRecordList(GetServerMuteRecordListReq) returns (GetServerMuteRecordListResp);
 }
