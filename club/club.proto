@@ -72,7 +72,7 @@ message SetGroupCategoryOrderResp {
 message GetServerRecommendedListReq {
 }
 message GetServerRecommendecListResp {
-  repeated sdkws.ServerFullInfo servers = 1;
+  repeated sdkws.ServerRecommendedInfo servers = 1;
 }
 
 message GetServersInfoReq { repeated string serverIDs = 1; }
@@ -168,6 +168,14 @@ message GetJoinedServerListReq {
 message GetJoinedServerListResp{
   uint32 total = 1;
   repeated  sdkws.ServerInfo servers = 2;
+}
+
+message SetJoinedServersOrderReq{
+  string userID = 1;
+  repeated string serverIDs = 2;
+}
+message SetJoinedServersOrderResp{
+
 }
 
 message GetServerMembersCMSReq {
@@ -427,11 +435,11 @@ message GetServerRolesInfoResp {
 
 
 ////////////mute_record////////////
-message GetServerMuteRecordListReq{
+message GetServerMuteRecordsReq{
   string serverID = 1;
   sdkws.RequestPagination pagination = 2;
 }
-message GetServerMuteRecordListResp{
+message GetServerMuteRecordsResp{
   uint32 total = 1;
   repeated sdkws.ServerMuteRecord records = 2;
 }
@@ -511,6 +519,8 @@ service club {
   rpc kickServerMember(KickServerMemberReq) returns (KickServerMemberResp);
   // 获取某个人已加入部落
   rpc getJoinedServerList(GetJoinedServerListReq) returns (GetJoinedServerListResp);
+    //修改已加入部落顺序
+  rpc setJoinedServersOrder(SetJoinedServersOrderReq) returns(SetJoinedServersOrderResp);
   rpc getServerMembersCMS(GetServerMembersCMSReq) returns(GetServerMembersCMSResp);
   // 对某个部落成员禁言
   rpc muteServerMember(MuteServerMemberReq) returns(MuteServerMemberResp);
@@ -539,5 +549,5 @@ service club {
 
 
   //mute_record
-  rpc getServerMuteRecordList(GetServerMuteRecordListReq) returns (GetServerMuteRecordListResp);
+  rpc getServerMuteRecords(GetServerMuteRecordsReq) returns (GetServerMuteRecordsResp);
 }

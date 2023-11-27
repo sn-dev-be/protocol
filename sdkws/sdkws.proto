@@ -633,7 +633,7 @@ message ServerGroupListInfo {
   GroupDappFullInfo dapp = 13;
 }
 
-message ServerFullInfo {
+message ServerRecommendedInfo {
   ServerInfo serverInfo = 1;
   repeated string memberAvatarList = 2;
 }
