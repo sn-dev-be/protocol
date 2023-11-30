@@ -220,6 +220,7 @@ message MsgData {
   repeated string atUserIDList = 21;
   string attachedInfo = 22;
   string ex = 23;
+  repeated string recvIDList = 24;
 }
 message PushMessages {
   map<string, PullMsgs> msgs = 1;
@@ -732,7 +733,7 @@ message ServerRole {
   string permissions = 9;
 }
 
-message ServerMuteRecord{
+message ServerMuteRecord {
   MuteRecord muteRecord = 1;
   UserInfo operatorUser = 2;
   UserInfo blockUser = 3;
