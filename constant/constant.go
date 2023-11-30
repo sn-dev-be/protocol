@@ -154,6 +154,7 @@ const (
 	TransferReceivedNotification = 2009
 
 	WalletBindChangedNotification = 2010
+	PayNotificationEnd            = 2020
 
 	BusinessNotificationEnd = 2099
 
