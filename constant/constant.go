@@ -32,6 +32,8 @@ const (
 	Revoke           = 111
 	Typing           = 113
 	Quote            = 114
+	Transfer         = 123
+	RedPacket        = 124
 
 	AdvancedText = 117
 
@@ -354,6 +356,22 @@ var ContentType2PushContent = map[int64]string{
 	GroupMsg:  "[GROUPMSG]]",
 	Common:    "[NEWMSG]",
 	SignalMsg: "[SIGNALINVITE]",
+	Transfer:  "[Transfer]",
+	RedPacket: "[RedPacket]",
+}
+
+var ContentType2PushContentI18n = map[int64]string{
+	Picture:   "收到一条图片消息",
+	Voice:     "收到一条语音消息",
+	Video:     "收到一条视频消息",
+	File:      "收到一条文件消息",
+	Text:      "收到一条新消息",
+	AtText:    "有人@了你",
+	GroupMsg:  "收到一条群消息",
+	Common:    "收到一条新消息",
+	SignalMsg: "收到一条新消息",
+	Transfer:  "收到一条转账消息",
+	RedPacket: "收到一条红包消息",
 }
 
 const (
