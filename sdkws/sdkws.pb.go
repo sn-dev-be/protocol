@@ -6267,10 +6267,10 @@ type ServerInfoForSet struct {
 	unknownFields protoimpl.UnknownFields
 
 	ServerID             string                  `protobuf:"bytes,1,opt,name=serverID,proto3" json:"serverID"`
-	ServerName           string                  `protobuf:"bytes,2,opt,name=serverName,proto3" json:"serverName"`
-	Icon                 string                  `protobuf:"bytes,3,opt,name=icon,proto3" json:"icon"`
-	Description          string                  `protobuf:"bytes,4,opt,name=description,proto3" json:"description"`
-	Banner               string                  `protobuf:"bytes,5,opt,name=banner,proto3" json:"banner"`
+	ServerName           *wrapperspb.StringValue `protobuf:"bytes,2,opt,name=serverName,proto3" json:"serverName"`
+	Icon                 *wrapperspb.StringValue `protobuf:"bytes,3,opt,name=icon,proto3" json:"icon"`
+	Description          *wrapperspb.StringValue `protobuf:"bytes,4,opt,name=description,proto3" json:"description"`
+	Banner               *wrapperspb.StringValue `protobuf:"bytes,5,opt,name=banner,proto3" json:"banner"`
 	Ex                   *wrapperspb.StringValue `protobuf:"bytes,6,opt,name=ex,proto3" json:"ex"`
 	ApplyMode            *wrapperspb.Int32Value  `protobuf:"bytes,7,opt,name=applyMode,proto3" json:"applyMode"`
 	Searchable           *wrapperspb.Int32Value  `protobuf:"bytes,8,opt,name=searchable,proto3" json:"searchable"`
@@ -6317,32 +6317,32 @@ func (x *ServerInfoForSet) GetServerID() string {
 	return ""
 }
 
-func (x *ServerInfoForSet) GetServerName() string {
+func (x *ServerInfoForSet) GetServerName() *wrapperspb.StringValue {
 	if x != nil {
 		return x.ServerName
 	}
-	return ""
+	return nil
 }
 
-func (x *ServerInfoForSet) GetIcon() string {
+func (x *ServerInfoForSet) GetIcon() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Icon
 	}
-	return ""
+	return nil
 }
 
-func (x *ServerInfoForSet) GetDescription() string {
+func (x *ServerInfoForSet) GetDescription() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Description
 	}
-	return ""
+	return nil
 }
 
-func (x *ServerInfoForSet) GetBanner() string {
+func (x *ServerInfoForSet) GetBanner() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Banner
 	}
-	return ""
+	return nil
 }
 
 func (x *ServerInfoForSet) GetEx() *wrapperspb.StringValue {
@@ -8284,17 +8284,26 @@ var file_sdkws_sdkws_proto_rawDesc = []byte{
 	0x65, 0x78, 0x12, 0x1e, 0x0a, 0x0a, 0x63, 0x72, 0x65, 0x61, 0x74, 0x65, 0x54, 0x69, 0x6d, 0x65,
 	0x18, 0x10, 0x20, 0x01, 0x28, 0x03, 0x52, 0x0a, 0x63, 0x72, 0x65, 0x61, 0x74, 0x65, 0x54, 0x69,
 	0x6d, 0x65, 0x12, 0x16, 0x0a, 0x06, 0x64, 0x61, 0x70, 0x70, 0x49, 0x44, 0x18, 0x11, 0x20, 0x01,
-	0x28, 0x09, 0x52, 0x06, 0x64, 0x61, 0x70, 0x70, 0x49, 0x44, 0x22, 0xe7, 0x03, 0x0a, 0x10, 0x53,
+	0x28, 0x09, 0x52, 0x06, 0x64, 0x61, 0x70, 0x70, 0x49, 0x44, 0x22, 0xf7, 0x04, 0x0a, 0x10, 0x53,
 	0x65, 0x72, 0x76, 0x65, 0x72, 0x49, 0x6e, 0x66, 0x6f, 0x46, 0x6f, 0x72, 0x53, 0x65, 0x74, 0x12,
 	0x1a, 0x0a, 0x08, 0x73, 0x65, 0x72, 0x76, 0x65, 0x72, 0x49, 0x44, 0x18, 0x01, 0x20, 0x01, 0x28,
-	0x09, 0x52, 0x08, 0x73, 0x65, 0x72, 0x76, 0x65, 0x72, 0x49, 0x44, 0x12, 0x1e, 0x0a, 0x0a, 0x73,
-	0x65, 0x72, 0x76, 0x65, 0x72, 0x4e, 0x61, 0x6d, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52,
-	0x0a, 0x73, 0x65, 0x72, 0x76, 0x65, 0x72, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x12, 0x0a, 0x04, 0x69,
-	0x63, 0x6f, 0x6e, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x69, 0x63, 0x6f, 0x6e, 0x12,
-	0x20, 0x0a, 0x0b, 0x64, 0x65, 0x73, 0x63, 0x72, 0x69, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x18, 0x04,
-	0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x64, 0x65, 0x73, 0x63, 0x72, 0x69, 0x70, 0x74, 0x69, 0x6f,
-	0x6e, 0x12, 0x16, 0x0a, 0x06, 0x62, 0x61, 0x6e, 0x6e, 0x65, 0x72, 0x18, 0x05, 0x20, 0x01, 0x28,
-	0x09, 0x52, 0x06, 0x62, 0x61, 0x6e, 0x6e, 0x65, 0x72, 0x12, 0x32, 0x0a, 0x02, 0x65, 0x78, 0x18,
+	0x09, 0x52, 0x08, 0x73, 0x65, 0x72, 0x76, 0x65, 0x72, 0x49, 0x44, 0x12, 0x42, 0x0a, 0x0a, 0x73,
+	0x65, 0x72, 0x76, 0x65, 0x72, 0x4e, 0x61, 0x6d, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32,
+	0x22, 0x2e, 0x4f, 0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x2e, 0x70,
+	0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x56, 0x61,
+	0x6c, 0x75, 0x65, 0x52, 0x0a, 0x73, 0x65, 0x72, 0x76, 0x65, 0x72, 0x4e, 0x61, 0x6d, 0x65, 0x12,
+	0x36, 0x0a, 0x04, 0x69, 0x63, 0x6f, 0x6e, 0x18, 0x03, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x22, 0x2e,
+	0x4f, 0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x2e, 0x70, 0x72, 0x6f,
+	0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x56, 0x61, 0x6c, 0x75,
+	0x65, 0x52, 0x04, 0x69, 0x63, 0x6f, 0x6e, 0x12, 0x44, 0x0a, 0x0b, 0x64, 0x65, 0x73, 0x63, 0x72,
+	0x69, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x18, 0x04, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x22, 0x2e, 0x4f,
+	0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x2e, 0x70, 0x72, 0x6f, 0x74,
+	0x6f, 0x62, 0x75, 0x66, 0x2e, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x56, 0x61, 0x6c, 0x75, 0x65,
+	0x52, 0x0b, 0x64, 0x65, 0x73, 0x63, 0x72, 0x69, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x12, 0x3a, 0x0a,
+	0x06, 0x62, 0x61, 0x6e, 0x6e, 0x65, 0x72, 0x18, 0x05, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x22, 0x2e,
+	0x4f, 0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x2e, 0x70, 0x72, 0x6f,
+	0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x56, 0x61, 0x6c, 0x75,
+	0x65, 0x52, 0x06, 0x62, 0x61, 0x6e, 0x6e, 0x65, 0x72, 0x12, 0x32, 0x0a, 0x02, 0x65, 0x78, 0x18,
 	0x06, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x22, 0x2e, 0x4f, 0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53, 0x65,
 	0x72, 0x76, 0x65, 0x72, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x53, 0x74,
 	0x72, 0x69, 0x6e, 0x67, 0x56, 0x61, 0x6c, 0x75, 0x65, 0x52, 0x02, 0x65, 0x78, 0x12, 0x3f, 0x0a,
@@ -8670,32 +8679,36 @@ var file_sdkws_sdkws_proto_depIdxs = []int32{
 	78,  // 76: OpenIMServer.sdkws.GroupCategoryListInfo.groupList:type_name -> OpenIMServer.sdkws.ServerGroupListInfo
 	84,  // 77: OpenIMServer.sdkws.ServerGroupListInfo.dapp:type_name -> OpenIMServer.sdkws.GroupDappFullInfo
 	80,  // 78: OpenIMServer.sdkws.ServerRecommendedInfo.serverInfo:type_name -> OpenIMServer.sdkws.ServerInfo
-	98,  // 79: OpenIMServer.sdkws.ServerInfoForSet.ex:type_name -> OpenIMServer.protobuf.StringValue
-	99,  // 80: OpenIMServer.sdkws.ServerInfoForSet.applyMode:type_name -> OpenIMServer.protobuf.Int32Value
-	99,  // 81: OpenIMServer.sdkws.ServerInfoForSet.searchable:type_name -> OpenIMServer.protobuf.Int32Value
-	99,  // 82: OpenIMServer.sdkws.ServerInfoForSet.userMutualAccessible:type_name -> OpenIMServer.protobuf.Int32Value
-	98,  // 83: OpenIMServer.sdkws.ServerInfoForSet.dappID:type_name -> OpenIMServer.protobuf.StringValue
-	4,   // 84: OpenIMServer.sdkws.ServerRequest.userInfo:type_name -> OpenIMServer.sdkws.PublicUserInfo
-	80,  // 85: OpenIMServer.sdkws.ServerRequest.serverInfo:type_name -> OpenIMServer.sdkws.ServerInfo
-	5,   // 86: OpenIMServer.sdkws.ServerBlackFullInfo.operatorUser:type_name -> OpenIMServer.sdkws.UserInfo
-	11,  // 87: OpenIMServer.sdkws.ServerMuteRecord.muteRecord:type_name -> OpenIMServer.sdkws.MuteRecord
-	5,   // 88: OpenIMServer.sdkws.ServerMuteRecord.operatorUser:type_name -> OpenIMServer.sdkws.UserInfo
-	5,   // 89: OpenIMServer.sdkws.ServerMuteRecord.blockUser:type_name -> OpenIMServer.sdkws.UserInfo
-	80,  // 90: OpenIMServer.sdkws.JoinServerApplicationTips.server:type_name -> OpenIMServer.sdkws.ServerInfo
-	4,   // 91: OpenIMServer.sdkws.JoinServerApplicationTips.applicant:type_name -> OpenIMServer.sdkws.PublicUserInfo
-	80,  // 92: OpenIMServer.sdkws.ServerApplicationAcceptedTips.server:type_name -> OpenIMServer.sdkws.ServerInfo
-	82,  // 93: OpenIMServer.sdkws.ServerApplicationAcceptedTips.opUser:type_name -> OpenIMServer.sdkws.ServerMemberFullInfo
-	80,  // 94: OpenIMServer.sdkws.ServerApplicationRejectedTips.server:type_name -> OpenIMServer.sdkws.ServerInfo
-	82,  // 95: OpenIMServer.sdkws.ServerApplicationRejectedTips.opUser:type_name -> OpenIMServer.sdkws.ServerMemberFullInfo
-	14,  // 96: OpenIMServer.sdkws.PullMessageBySeqsResp.MsgsEntry.value:type_name -> OpenIMServer.sdkws.PullMsgs
-	14,  // 97: OpenIMServer.sdkws.PullMessageBySeqsResp.NotificationMsgsEntry.value:type_name -> OpenIMServer.sdkws.PullMsgs
-	14,  // 98: OpenIMServer.sdkws.PushMessages.MsgsEntry.value:type_name -> OpenIMServer.sdkws.PullMsgs
-	14,  // 99: OpenIMServer.sdkws.PushMessages.NotificationMsgsEntry.value:type_name -> OpenIMServer.sdkws.PullMsgs
-	100, // [100:100] is the sub-list for method output_type
-	100, // [100:100] is the sub-list for method input_type
-	100, // [100:100] is the sub-list for extension type_name
-	100, // [100:100] is the sub-list for extension extendee
-	0,   // [0:100] is the sub-list for field type_name
+	98,  // 79: OpenIMServer.sdkws.ServerInfoForSet.serverName:type_name -> OpenIMServer.protobuf.StringValue
+	98,  // 80: OpenIMServer.sdkws.ServerInfoForSet.icon:type_name -> OpenIMServer.protobuf.StringValue
+	98,  // 81: OpenIMServer.sdkws.ServerInfoForSet.description:type_name -> OpenIMServer.protobuf.StringValue
+	98,  // 82: OpenIMServer.sdkws.ServerInfoForSet.banner:type_name -> OpenIMServer.protobuf.StringValue
+	98,  // 83: OpenIMServer.sdkws.ServerInfoForSet.ex:type_name -> OpenIMServer.protobuf.StringValue
+	99,  // 84: OpenIMServer.sdkws.ServerInfoForSet.applyMode:type_name -> OpenIMServer.protobuf.Int32Value
+	99,  // 85: OpenIMServer.sdkws.ServerInfoForSet.searchable:type_name -> OpenIMServer.protobuf.Int32Value
+	99,  // 86: OpenIMServer.sdkws.ServerInfoForSet.userMutualAccessible:type_name -> OpenIMServer.protobuf.Int32Value
+	98,  // 87: OpenIMServer.sdkws.ServerInfoForSet.dappID:type_name -> OpenIMServer.protobuf.StringValue
+	4,   // 88: OpenIMServer.sdkws.ServerRequest.userInfo:type_name -> OpenIMServer.sdkws.PublicUserInfo
+	80,  // 89: OpenIMServer.sdkws.ServerRequest.serverInfo:type_name -> OpenIMServer.sdkws.ServerInfo
+	5,   // 90: OpenIMServer.sdkws.ServerBlackFullInfo.operatorUser:type_name -> OpenIMServer.sdkws.UserInfo
+	11,  // 91: OpenIMServer.sdkws.ServerMuteRecord.muteRecord:type_name -> OpenIMServer.sdkws.MuteRecord
+	5,   // 92: OpenIMServer.sdkws.ServerMuteRecord.operatorUser:type_name -> OpenIMServer.sdkws.UserInfo
+	5,   // 93: OpenIMServer.sdkws.ServerMuteRecord.blockUser:type_name -> OpenIMServer.sdkws.UserInfo
+	80,  // 94: OpenIMServer.sdkws.JoinServerApplicationTips.server:type_name -> OpenIMServer.sdkws.ServerInfo
+	4,   // 95: OpenIMServer.sdkws.JoinServerApplicationTips.applicant:type_name -> OpenIMServer.sdkws.PublicUserInfo
+	80,  // 96: OpenIMServer.sdkws.ServerApplicationAcceptedTips.server:type_name -> OpenIMServer.sdkws.ServerInfo
+	82,  // 97: OpenIMServer.sdkws.ServerApplicationAcceptedTips.opUser:type_name -> OpenIMServer.sdkws.ServerMemberFullInfo
+	80,  // 98: OpenIMServer.sdkws.ServerApplicationRejectedTips.server:type_name -> OpenIMServer.sdkws.ServerInfo
+	82,  // 99: OpenIMServer.sdkws.ServerApplicationRejectedTips.opUser:type_name -> OpenIMServer.sdkws.ServerMemberFullInfo
+	14,  // 100: OpenIMServer.sdkws.PullMessageBySeqsResp.MsgsEntry.value:type_name -> OpenIMServer.sdkws.PullMsgs
+	14,  // 101: OpenIMServer.sdkws.PullMessageBySeqsResp.NotificationMsgsEntry.value:type_name -> OpenIMServer.sdkws.PullMsgs
+	14,  // 102: OpenIMServer.sdkws.PushMessages.MsgsEntry.value:type_name -> OpenIMServer.sdkws.PullMsgs
+	14,  // 103: OpenIMServer.sdkws.PushMessages.NotificationMsgsEntry.value:type_name -> OpenIMServer.sdkws.PullMsgs
+	104, // [104:104] is the sub-list for method output_type
+	104, // [104:104] is the sub-list for method input_type
+	104, // [104:104] is the sub-list for extension type_name
+	104, // [104:104] is the sub-list for extension extendee
+	0,   // [0:104] is the sub-list for field type_name
 }
 
 func init() { file_sdkws_sdkws_proto_init() }

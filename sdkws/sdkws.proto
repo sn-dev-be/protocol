@@ -661,10 +661,10 @@ message ServerInfo {
 
 message ServerInfoForSet {
   string serverID = 1;
-  string serverName = 2;
-  string icon = 3;
-  string description = 4;
-  string banner = 5;
+  OpenIMServer.protobuf.StringValue serverName = 2;
+  OpenIMServer.protobuf.StringValue icon = 3;
+  OpenIMServer.protobuf.StringValue description = 4;
+  OpenIMServer.protobuf.StringValue banner = 5;
   OpenIMServer.protobuf.StringValue ex = 6;
   OpenIMServer.protobuf.Int32Value applyMode = 7;
   OpenIMServer.protobuf.Int32Value searchable = 8;
