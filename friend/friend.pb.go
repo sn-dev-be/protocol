@@ -44,8 +44,8 @@ type GetPaginationFriendsReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Pagination *sdkws.RequestPagination `protobuf:"bytes,1,opt,name=pagination,proto3" json:"pagination,omitempty"`
-	UserID     string                   `protobuf:"bytes,2,opt,name=userID,proto3" json:"userID,omitempty"`
+	Pagination *sdkws.RequestPagination `protobuf:"bytes,1,opt,name=pagination,proto3" json:"pagination"`
+	UserID     string                   `protobuf:"bytes,2,opt,name=userID,proto3" json:"userID"`
 }
 
 func (x *GetPaginationFriendsReq) Reset() {
@@ -99,8 +99,8 @@ type GetPaginationFriendsResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	FriendsInfo []*sdkws.FriendInfo `protobuf:"bytes,1,rep,name=friendsInfo,proto3" json:"friendsInfo,omitempty"`
-	Total       int32               `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
+	FriendsInfo []*sdkws.FriendInfo `protobuf:"bytes,1,rep,name=friendsInfo,proto3" json:"friendsInfo"`
+	Total       int32               `protobuf:"varint,2,opt,name=total,proto3" json:"total"`
 }
 
 func (x *GetPaginationFriendsResp) Reset() {
@@ -154,10 +154,10 @@ type ApplyToAddFriendReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	FromUserID string `protobuf:"bytes,1,opt,name=fromUserID,proto3" json:"fromUserID,omitempty"`
-	ToUserID   string `protobuf:"bytes,2,opt,name=toUserID,proto3" json:"toUserID,omitempty"`
-	ReqMsg     string `protobuf:"bytes,3,opt,name=reqMsg,proto3" json:"reqMsg,omitempty"`
-	Ex         string `protobuf:"bytes,4,opt,name=ex,proto3" json:"ex,omitempty"`
+	FromUserID string `protobuf:"bytes,1,opt,name=fromUserID,proto3" json:"fromUserID"`
+	ToUserID   string `protobuf:"bytes,2,opt,name=toUserID,proto3" json:"toUserID"`
+	ReqMsg     string `protobuf:"bytes,3,opt,name=reqMsg,proto3" json:"reqMsg"`
+	Ex         string `protobuf:"bytes,4,opt,name=ex,proto3" json:"ex"`
 }
 
 func (x *ApplyToAddFriendReq) Reset() {
@@ -263,8 +263,8 @@ type ImportFriendReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	OwnerUserID   string   `protobuf:"bytes,1,opt,name=ownerUserID,proto3" json:"ownerUserID,omitempty"`
-	FriendUserIDs []string `protobuf:"bytes,2,rep,name=friendUserIDs,proto3" json:"friendUserIDs,omitempty"`
+	OwnerUserID   string   `protobuf:"bytes,1,opt,name=ownerUserID,proto3" json:"ownerUserID"`
+	FriendUserIDs []string `protobuf:"bytes,2,rep,name=friendUserIDs,proto3" json:"friendUserIDs"`
 }
 
 func (x *ImportFriendReq) Reset() {
@@ -356,8 +356,8 @@ type GetPaginationFriendsApplyToReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	UserID     string                   `protobuf:"bytes,1,opt,name=userID,proto3" json:"userID,omitempty"`
-	Pagination *sdkws.RequestPagination `protobuf:"bytes,2,opt,name=pagination,proto3" json:"pagination,omitempty"`
+	UserID     string                   `protobuf:"bytes,1,opt,name=userID,proto3" json:"userID"`
+	Pagination *sdkws.RequestPagination `protobuf:"bytes,2,opt,name=pagination,proto3" json:"pagination"`
 }
 
 func (x *GetPaginationFriendsApplyToReq) Reset() {
@@ -411,8 +411,8 @@ type GetPaginationFriendsApplyToResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	FriendRequests []*sdkws.FriendRequest `protobuf:"bytes,1,rep,name=FriendRequests,proto3" json:"FriendRequests,omitempty"`
-	Total          int32                  `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
+	FriendRequests []*sdkws.FriendRequest `protobuf:"bytes,1,rep,name=FriendRequests,proto3" json:"FriendRequests"`
+	Total          int32                  `protobuf:"varint,2,opt,name=total,proto3" json:"total"`
 }
 
 func (x *GetPaginationFriendsApplyToResp) Reset() {
@@ -466,8 +466,8 @@ type GetDesignatedFriendsApplyReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	FromUserID string `protobuf:"bytes,1,opt,name=fromUserID,proto3" json:"fromUserID,omitempty"`
-	ToUserID   string `protobuf:"bytes,2,opt,name=toUserID,proto3" json:"toUserID,omitempty"`
+	FromUserID string `protobuf:"bytes,1,opt,name=fromUserID,proto3" json:"fromUserID"`
+	ToUserID   string `protobuf:"bytes,2,opt,name=toUserID,proto3" json:"toUserID"`
 }
 
 func (x *GetDesignatedFriendsApplyReq) Reset() {
@@ -521,7 +521,7 @@ type GetDesignatedFriendsApplyResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	FriendRequests []*sdkws.FriendRequest `protobuf:"bytes,1,rep,name=friendRequests,proto3" json:"friendRequests,omitempty"`
+	FriendRequests []*sdkws.FriendRequest `protobuf:"bytes,1,rep,name=friendRequests,proto3" json:"friendRequests"`
 }
 
 func (x *GetDesignatedFriendsApplyResp) Reset() {
@@ -568,8 +568,8 @@ type GetDesignatedFriendsReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	OwnerUserID   string   `protobuf:"bytes,1,opt,name=ownerUserID,proto3" json:"ownerUserID,omitempty"`
-	FriendUserIDs []string `protobuf:"bytes,2,rep,name=friendUserIDs,proto3" json:"friendUserIDs,omitempty"`
+	OwnerUserID   string   `protobuf:"bytes,1,opt,name=ownerUserID,proto3" json:"ownerUserID"`
+	FriendUserIDs []string `protobuf:"bytes,2,rep,name=friendUserIDs,proto3" json:"friendUserIDs"`
 }
 
 func (x *GetDesignatedFriendsReq) Reset() {
@@ -623,7 +623,7 @@ type GetDesignatedFriendsResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	FriendsInfo []*sdkws.FriendInfo `protobuf:"bytes,1,rep,name=friendsInfo,proto3" json:"friendsInfo,omitempty"`
+	FriendsInfo []*sdkws.FriendInfo `protobuf:"bytes,1,rep,name=friendsInfo,proto3" json:"friendsInfo"`
 }
 
 func (x *GetDesignatedFriendsResp) Reset() {
@@ -670,8 +670,8 @@ type AddBlackReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	OwnerUserID string `protobuf:"bytes,1,opt,name=ownerUserID,proto3" json:"ownerUserID,omitempty"`
-	BlackUserID string `protobuf:"bytes,2,opt,name=blackUserID,proto3" json:"blackUserID,omitempty"`
+	OwnerUserID string `protobuf:"bytes,1,opt,name=ownerUserID,proto3" json:"ownerUserID"`
+	BlackUserID string `protobuf:"bytes,2,opt,name=blackUserID,proto3" json:"blackUserID"`
 }
 
 func (x *AddBlackReq) Reset() {
@@ -763,8 +763,8 @@ type RemoveBlackReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	OwnerUserID string `protobuf:"bytes,1,opt,name=ownerUserID,proto3" json:"ownerUserID,omitempty"`
-	BlackUserID string `protobuf:"bytes,2,opt,name=blackUserID,proto3" json:"blackUserID,omitempty"`
+	OwnerUserID string `protobuf:"bytes,1,opt,name=ownerUserID,proto3" json:"ownerUserID"`
+	BlackUserID string `protobuf:"bytes,2,opt,name=blackUserID,proto3" json:"blackUserID"`
 }
 
 func (x *RemoveBlackReq) Reset() {
@@ -856,8 +856,8 @@ type GetPaginationBlacksReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	UserID     string                   `protobuf:"bytes,1,opt,name=userID,proto3" json:"userID,omitempty"`
-	Pagination *sdkws.RequestPagination `protobuf:"bytes,2,opt,name=pagination,proto3" json:"pagination,omitempty"`
+	UserID     string                   `protobuf:"bytes,1,opt,name=userID,proto3" json:"userID"`
+	Pagination *sdkws.RequestPagination `protobuf:"bytes,2,opt,name=pagination,proto3" json:"pagination"`
 }
 
 func (x *GetPaginationBlacksReq) Reset() {
@@ -911,8 +911,8 @@ type GetPaginationBlacksResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Blacks []*sdkws.BlackInfo `protobuf:"bytes,1,rep,name=blacks,proto3" json:"blacks,omitempty"`
-	Total  int32              `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
+	Blacks []*sdkws.BlackInfo `protobuf:"bytes,1,rep,name=blacks,proto3" json:"blacks"`
+	Total  int32              `protobuf:"varint,2,opt,name=total,proto3" json:"total"`
 }
 
 func (x *GetPaginationBlacksResp) Reset() {
@@ -966,8 +966,8 @@ type IsFriendReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	UserID1 string `protobuf:"bytes,1,opt,name=userID1,proto3" json:"userID1,omitempty"`
-	UserID2 string `protobuf:"bytes,2,opt,name=userID2,proto3" json:"userID2,omitempty"`
+	UserID1 string `protobuf:"bytes,1,opt,name=userID1,proto3" json:"userID1"`
+	UserID2 string `protobuf:"bytes,2,opt,name=userID2,proto3" json:"userID2"`
 }
 
 func (x *IsFriendReq) Reset() {
@@ -1021,8 +1021,8 @@ type IsFriendResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	InUser1Friends bool `protobuf:"varint,1,opt,name=inUser1Friends,proto3" json:"inUser1Friends,omitempty"` //如果userID2在userID1的好友列表中 true
-	InUser2Friends bool `protobuf:"varint,2,opt,name=inUser2Friends,proto3" json:"inUser2Friends,omitempty"` //如果userID1在userID2的好友列表中 true
+	InUser1Friends bool `protobuf:"varint,1,opt,name=inUser1Friends,proto3" json:"inUser1Friends"` //如果userID2在userID1的好友列表中 true
+	InUser2Friends bool `protobuf:"varint,2,opt,name=inUser2Friends,proto3" json:"inUser2Friends"` //如果userID1在userID2的好友列表中 true
 }
 
 func (x *IsFriendResp) Reset() {
@@ -1076,8 +1076,8 @@ type IsBlackReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	UserID1 string `protobuf:"bytes,1,opt,name=userID1,proto3" json:"userID1,omitempty"`
-	UserID2 string `protobuf:"bytes,2,opt,name=userID2,proto3" json:"userID2,omitempty"`
+	UserID1 string `protobuf:"bytes,1,opt,name=userID1,proto3" json:"userID1"`
+	UserID2 string `protobuf:"bytes,2,opt,name=userID2,proto3" json:"userID2"`
 }
 
 func (x *IsBlackReq) Reset() {
@@ -1131,8 +1131,8 @@ type IsBlackResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	InUser1Blacks bool `protobuf:"varint,1,opt,name=inUser1Blacks,proto3" json:"inUser1Blacks,omitempty"` //如果userID2在userID1的黑名单列表中 true
-	InUser2Blacks bool `protobuf:"varint,2,opt,name=inUser2Blacks,proto3" json:"inUser2Blacks,omitempty"` //如果userID1在userID2的黑名单列表中 true
+	InUser1Blacks bool `protobuf:"varint,1,opt,name=inUser1Blacks,proto3" json:"inUser1Blacks"` //如果userID2在userID1的黑名单列表中 true
+	InUser2Blacks bool `protobuf:"varint,2,opt,name=inUser2Blacks,proto3" json:"inUser2Blacks"` //如果userID1在userID2的黑名单列表中 true
 }
 
 func (x *IsBlackResp) Reset() {
@@ -1186,8 +1186,8 @@ type DeleteFriendReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	OwnerUserID  string `protobuf:"bytes,1,opt,name=ownerUserID,proto3" json:"ownerUserID,omitempty"`
-	FriendUserID string `protobuf:"bytes,2,opt,name=friendUserID,proto3" json:"friendUserID,omitempty"`
+	OwnerUserID  string `protobuf:"bytes,1,opt,name=ownerUserID,proto3" json:"ownerUserID"`
+	FriendUserID string `protobuf:"bytes,2,opt,name=friendUserID,proto3" json:"friendUserID"`
 }
 
 func (x *DeleteFriendReq) Reset() {
@@ -1280,10 +1280,10 @@ type RespondFriendApplyReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	FromUserID   string `protobuf:"bytes,1,opt,name=fromUserID,proto3" json:"fromUserID,omitempty"` //主动发起的申请者
-	ToUserID     string `protobuf:"bytes,2,opt,name=toUserID,proto3" json:"toUserID,omitempty"`     //被动添加者
-	HandleResult int32  `protobuf:"varint,3,opt,name=handleResult,proto3" json:"handleResult,omitempty"`
-	HandleMsg    string `protobuf:"bytes,4,opt,name=handleMsg,proto3" json:"handleMsg,omitempty"`
+	FromUserID   string `protobuf:"bytes,1,opt,name=fromUserID,proto3" json:"fromUserID"` //主动发起的申请者
+	ToUserID     string `protobuf:"bytes,2,opt,name=toUserID,proto3" json:"toUserID"`     //被动添加者
+	HandleResult int32  `protobuf:"varint,3,opt,name=handleResult,proto3" json:"handleResult"`
+	HandleMsg    string `protobuf:"bytes,4,opt,name=handleMsg,proto3" json:"handleMsg"`
 }
 
 func (x *RespondFriendApplyReq) Reset() {
@@ -1389,9 +1389,9 @@ type SetFriendRemarkReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	OwnerUserID  string `protobuf:"bytes,1,opt,name=ownerUserID,proto3" json:"ownerUserID,omitempty"`
-	FriendUserID string `protobuf:"bytes,2,opt,name=friendUserID,proto3" json:"friendUserID,omitempty"`
-	Remark       string `protobuf:"bytes,3,opt,name=remark,proto3" json:"remark,omitempty"`
+	OwnerUserID  string `protobuf:"bytes,1,opt,name=ownerUserID,proto3" json:"ownerUserID"`
+	FriendUserID string `protobuf:"bytes,2,opt,name=friendUserID,proto3" json:"friendUserID"`
+	Remark       string `protobuf:"bytes,3,opt,name=remark,proto3" json:"remark"`
 }
 
 func (x *SetFriendRemarkReq) Reset() {
@@ -1490,8 +1490,8 @@ type GetPaginationFriendsApplyFromReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	UserID     string                   `protobuf:"bytes,1,opt,name=userID,proto3" json:"userID,omitempty"`
-	Pagination *sdkws.RequestPagination `protobuf:"bytes,2,opt,name=pagination,proto3" json:"pagination,omitempty"`
+	UserID     string                   `protobuf:"bytes,1,opt,name=userID,proto3" json:"userID"`
+	Pagination *sdkws.RequestPagination `protobuf:"bytes,2,opt,name=pagination,proto3" json:"pagination"`
 }
 
 func (x *GetPaginationFriendsApplyFromReq) Reset() {
@@ -1545,8 +1545,8 @@ type GetPaginationFriendsApplyFromResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	FriendRequests []*sdkws.FriendRequest `protobuf:"bytes,1,rep,name=friendRequests,proto3" json:"friendRequests,omitempty"`
-	Total          int32                  `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
+	FriendRequests []*sdkws.FriendRequest `protobuf:"bytes,1,rep,name=friendRequests,proto3" json:"friendRequests"`
+	Total          int32                  `protobuf:"varint,2,opt,name=total,proto3" json:"total"`
 }
 
 func (x *GetPaginationFriendsApplyFromResp) Reset() {
@@ -1600,7 +1600,7 @@ type GetFriendIDsReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	UserID string `protobuf:"bytes,1,opt,name=userID,proto3" json:"userID,omitempty"`
+	UserID string `protobuf:"bytes,1,opt,name=userID,proto3" json:"userID"`
 }
 
 func (x *GetFriendIDsReq) Reset() {
@@ -1647,7 +1647,7 @@ type GetFriendIDsResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	FriendIDs []string `protobuf:"bytes,1,rep,name=friendIDs,proto3" json:"friendIDs,omitempty"`
+	FriendIDs []string `protobuf:"bytes,1,rep,name=friendIDs,proto3" json:"friendIDs"`
 }
 
 func (x *GetFriendIDsResp) Reset() {
@@ -1694,8 +1694,8 @@ type GetSpecifiedFriendsInfoReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	OwnerUserID string   `protobuf:"bytes,1,opt,name=ownerUserID,proto3" json:"ownerUserID,omitempty"`
-	UserIDList  []string `protobuf:"bytes,2,rep,name=userIDList,proto3" json:"userIDList,omitempty"`
+	OwnerUserID string   `protobuf:"bytes,1,opt,name=ownerUserID,proto3" json:"ownerUserID"`
+	UserIDList  []string `protobuf:"bytes,2,rep,name=userIDList,proto3" json:"userIDList"`
 }
 
 func (x *GetSpecifiedFriendsInfoReq) Reset() {
@@ -1749,9 +1749,9 @@ type GetSpecifiedFriendsInfoInfo struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	UserInfo   *sdkws.UserInfo   `protobuf:"bytes,1,opt,name=userInfo,proto3" json:"userInfo,omitempty"`
-	FriendInfo *sdkws.FriendInfo `protobuf:"bytes,2,opt,name=friendInfo,proto3" json:"friendInfo,omitempty"`
-	BlackInfo  *sdkws.BlackInfo  `protobuf:"bytes,3,opt,name=blackInfo,proto3" json:"blackInfo,omitempty"`
+	UserInfo   *sdkws.UserInfo   `protobuf:"bytes,1,opt,name=userInfo,proto3" json:"userInfo"`
+	FriendInfo *sdkws.FriendInfo `protobuf:"bytes,2,opt,name=friendInfo,proto3" json:"friendInfo"`
+	BlackInfo  *sdkws.BlackInfo  `protobuf:"bytes,3,opt,name=blackInfo,proto3" json:"blackInfo"`
 }
 
 func (x *GetSpecifiedFriendsInfoInfo) Reset() {
@@ -1812,7 +1812,7 @@ type GetSpecifiedFriendsInfoResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Infos []*GetSpecifiedFriendsInfoInfo `protobuf:"bytes,1,rep,name=infos,proto3" json:"infos,omitempty"`
+	Infos []*GetSpecifiedFriendsInfoInfo `protobuf:"bytes,1,rep,name=infos,proto3" json:"infos"`
 }
 
 func (x *GetSpecifiedFriendsInfoResp) Reset() {

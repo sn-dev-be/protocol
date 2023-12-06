@@ -43,9 +43,9 @@ type UserTokenReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Secret     string `protobuf:"bytes,1,opt,name=secret,proto3" json:"secret,omitempty"`
-	PlatformID int32  `protobuf:"varint,2,opt,name=platformID,proto3" json:"platformID,omitempty"`
-	UserID     string `protobuf:"bytes,3,opt,name=userID,proto3" json:"userID,omitempty"`
+	Secret     string `protobuf:"bytes,1,opt,name=secret,proto3" json:"secret"`
+	PlatformID int32  `protobuf:"varint,2,opt,name=platformID,proto3" json:"platformID"`
+	UserID     string `protobuf:"bytes,3,opt,name=userID,proto3" json:"userID"`
 }
 
 func (x *UserTokenReq) Reset() {
@@ -106,8 +106,8 @@ type UserTokenResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Token             string `protobuf:"bytes,2,opt,name=token,proto3" json:"token,omitempty"`
-	ExpireTimeSeconds int64  `protobuf:"varint,3,opt,name=expireTimeSeconds,proto3" json:"expireTimeSeconds,omitempty"`
+	Token             string `protobuf:"bytes,2,opt,name=token,proto3" json:"token"`
+	ExpireTimeSeconds int64  `protobuf:"varint,3,opt,name=expireTimeSeconds,proto3" json:"expireTimeSeconds"`
 }
 
 func (x *UserTokenResp) Reset() {
@@ -161,8 +161,8 @@ type ForceLogoutReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	PlatformID int32  `protobuf:"varint,1,opt,name=platformID,proto3" json:"platformID,omitempty"`
-	UserID     string `protobuf:"bytes,2,opt,name=userID,proto3" json:"userID,omitempty"`
+	PlatformID int32  `protobuf:"varint,1,opt,name=platformID,proto3" json:"platformID"`
+	UserID     string `protobuf:"bytes,2,opt,name=userID,proto3" json:"userID"`
 }
 
 func (x *ForceLogoutReq) Reset() {
@@ -254,7 +254,7 @@ type ParseTokenReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Token string `protobuf:"bytes,1,opt,name=token,proto3" json:"token,omitempty"`
+	Token string `protobuf:"bytes,1,opt,name=token,proto3" json:"token"`
 }
 
 func (x *ParseTokenReq) Reset() {
@@ -301,9 +301,9 @@ type ParseTokenResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	UserID            string `protobuf:"bytes,1,opt,name=userID,proto3" json:"userID,omitempty"`
-	Platform          string `protobuf:"bytes,2,opt,name=platform,proto3" json:"platform,omitempty"`
-	ExpireTimeSeconds int64  `protobuf:"varint,4,opt,name=expireTimeSeconds,proto3" json:"expireTimeSeconds,omitempty"`
+	UserID            string `protobuf:"bytes,1,opt,name=userID,proto3" json:"userID"`
+	Platform          string `protobuf:"bytes,2,opt,name=platform,proto3" json:"platform"`
+	ExpireTimeSeconds int64  `protobuf:"varint,4,opt,name=expireTimeSeconds,proto3" json:"expireTimeSeconds"`
 }
 
 func (x *ParseTokenResp) Reset() {
