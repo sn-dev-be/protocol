@@ -45,18 +45,18 @@ type CreateServerReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ServerID             string `protobuf:"bytes,1,opt,name=serverID,proto3" json:"serverID"`
-	ServerName           string `protobuf:"bytes,2,opt,name=serverName,proto3" json:"serverName"`
-	Icon                 string `protobuf:"bytes,3,opt,name=icon,proto3" json:"icon"`
-	Description          string `protobuf:"bytes,4,opt,name=description,proto3" json:"description"`
-	Banner               string `protobuf:"bytes,5,opt,name=banner,proto3" json:"banner"`
-	ApplyMode            int32  `protobuf:"varint,6,opt,name=applyMode,proto3" json:"applyMode"`
-	InviteMode           int32  `protobuf:"varint,7,opt,name=inviteMode,proto3" json:"inviteMode"`
-	Searchable           int32  `protobuf:"varint,8,opt,name=searchable,proto3" json:"searchable"`
-	UserMutualAccessible int32  `protobuf:"varint,9,opt,name=userMutualAccessible,proto3" json:"userMutualAccessible"`
-	Status               int32  `protobuf:"varint,10,opt,name=status,proto3" json:"status"`
-	OwnerUserID          string `protobuf:"bytes,11,opt,name=ownerUserID,proto3" json:"ownerUserID"`
-	Ex                   string `protobuf:"bytes,12,opt,name=ex,proto3" json:"ex"`
+	ServerID             string `protobuf:"bytes,1,opt,name=serverID,proto3" json:"serverID,omitempty"`
+	ServerName           string `protobuf:"bytes,2,opt,name=serverName,proto3" json:"serverName,omitempty"`
+	Icon                 string `protobuf:"bytes,3,opt,name=icon,proto3" json:"icon,omitempty"`
+	Description          string `protobuf:"bytes,4,opt,name=description,proto3" json:"description,omitempty"`
+	Banner               string `protobuf:"bytes,5,opt,name=banner,proto3" json:"banner,omitempty"`
+	ApplyMode            int32  `protobuf:"varint,6,opt,name=applyMode,proto3" json:"applyMode,omitempty"`
+	InviteMode           int32  `protobuf:"varint,7,opt,name=inviteMode,proto3" json:"inviteMode,omitempty"`
+	Searchable           int32  `protobuf:"varint,8,opt,name=searchable,proto3" json:"searchable,omitempty"`
+	UserMutualAccessible int32  `protobuf:"varint,9,opt,name=userMutualAccessible,proto3" json:"userMutualAccessible,omitempty"`
+	Status               int32  `protobuf:"varint,10,opt,name=status,proto3" json:"status,omitempty"`
+	OwnerUserID          string `protobuf:"bytes,11,opt,name=ownerUserID,proto3" json:"ownerUserID,omitempty"`
+	Ex                   string `protobuf:"bytes,12,opt,name=ex,proto3" json:"ex,omitempty"`
 }
 
 func (x *CreateServerReq) Reset() {
@@ -180,7 +180,7 @@ type CreateServerResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ServerID string `protobuf:"bytes,1,opt,name=serverID,proto3" json:"serverID"`
+	ServerID string `protobuf:"bytes,1,opt,name=serverID,proto3" json:"serverID,omitempty"`
 }
 
 func (x *CreateServerResp) Reset() {
@@ -227,9 +227,9 @@ type CreateGroupCategoryReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ServerID     string `protobuf:"bytes,1,opt,name=serverID,proto3" json:"serverID"`
-	CategoryName string `protobuf:"bytes,2,opt,name=categoryName,proto3" json:"categoryName"`
-	OwnerUserID  string `protobuf:"bytes,3,opt,name=ownerUserID,proto3" json:"ownerUserID"`
+	ServerID     string `protobuf:"bytes,1,opt,name=serverID,proto3" json:"serverID,omitempty"`
+	CategoryName string `protobuf:"bytes,2,opt,name=categoryName,proto3" json:"categoryName,omitempty"`
+	OwnerUserID  string `protobuf:"bytes,3,opt,name=ownerUserID,proto3" json:"ownerUserID,omitempty"`
 }
 
 func (x *CreateGroupCategoryReq) Reset() {
@@ -290,7 +290,7 @@ type CreateGroupCategoryResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	GroupCategory *sdkws.GroupCategoryInfo `protobuf:"bytes,1,opt,name=groupCategory,proto3" json:"groupCategory"`
+	GroupCategory *sdkws.GroupCategoryInfo `protobuf:"bytes,1,opt,name=groupCategory,proto3" json:"groupCategory,omitempty"`
 }
 
 func (x *CreateGroupCategoryResp) Reset() {
@@ -337,8 +337,8 @@ type DeleteGroupCategoryReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ServerID    string   `protobuf:"bytes,1,opt,name=serverID,proto3" json:"serverID"`
-	CategoryIDs []string `protobuf:"bytes,2,rep,name=categoryIDs,proto3" json:"categoryIDs"`
+	ServerID    string   `protobuf:"bytes,1,opt,name=serverID,proto3" json:"serverID,omitempty"`
+	CategoryIDs []string `protobuf:"bytes,2,rep,name=categoryIDs,proto3" json:"categoryIDs,omitempty"`
 }
 
 func (x *DeleteGroupCategoryReq) Reset() {
@@ -430,9 +430,9 @@ type SetGroupCategoryInfoReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ServerID     string `protobuf:"bytes,1,opt,name=serverID,proto3" json:"serverID"`
-	CategoryName string `protobuf:"bytes,2,opt,name=categoryName,proto3" json:"categoryName"`
-	CategoryID   string `protobuf:"bytes,3,opt,name=categoryID,proto3" json:"categoryID"`
+	ServerID     string `protobuf:"bytes,1,opt,name=serverID,proto3" json:"serverID,omitempty"`
+	CategoryName string `protobuf:"bytes,2,opt,name=categoryName,proto3" json:"categoryName,omitempty"`
+	CategoryID   string `protobuf:"bytes,3,opt,name=categoryID,proto3" json:"categoryID,omitempty"`
 }
 
 func (x *SetGroupCategoryInfoReq) Reset() {
@@ -493,7 +493,7 @@ type SetGroupCategoryInfoResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	GroupCategory *sdkws.GroupCategoryInfo `protobuf:"bytes,1,opt,name=groupCategory,proto3" json:"groupCategory"`
+	GroupCategory *sdkws.GroupCategoryInfo `protobuf:"bytes,1,opt,name=groupCategory,proto3" json:"groupCategory,omitempty"`
 }
 
 func (x *SetGroupCategoryInfoResp) Reset() {
@@ -540,8 +540,8 @@ type SetGroupCategoryOrderReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ServerID    string   `protobuf:"bytes,1,opt,name=serverID,proto3" json:"serverID"`
-	CategoryIDs []string `protobuf:"bytes,2,rep,name=categoryIDs,proto3" json:"categoryIDs"`
+	ServerID    string   `protobuf:"bytes,1,opt,name=serverID,proto3" json:"serverID,omitempty"`
+	CategoryIDs []string `protobuf:"bytes,2,rep,name=categoryIDs,proto3" json:"categoryIDs,omitempty"`
 }
 
 func (x *SetGroupCategoryOrderReq) Reset() {
@@ -671,7 +671,7 @@ type GetServerRecommendecListResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Servers []*sdkws.ServerRecommendedInfo `protobuf:"bytes,1,rep,name=servers,proto3" json:"servers"`
+	Servers []*sdkws.ServerRecommendedInfo `protobuf:"bytes,1,rep,name=servers,proto3" json:"servers,omitempty"`
 }
 
 func (x *GetServerRecommendecListResp) Reset() {
@@ -718,7 +718,7 @@ type GetServersInfoReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ServerIDs []string `protobuf:"bytes,1,rep,name=serverIDs,proto3" json:"serverIDs"`
+	ServerIDs []string `protobuf:"bytes,1,rep,name=serverIDs,proto3" json:"serverIDs,omitempty"`
 }
 
 func (x *GetServersInfoReq) Reset() {
@@ -765,7 +765,7 @@ type GetServersInfoResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Servers []*GetServerInfoResp `protobuf:"bytes,1,rep,name=servers,proto3" json:"servers"`
+	Servers []*GetServerInfoResp `protobuf:"bytes,1,rep,name=servers,proto3" json:"servers,omitempty"`
 }
 
 func (x *GetServersInfoResp) Reset() {
@@ -812,9 +812,9 @@ type GetServerInfoResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Server       *sdkws.ServerInfo              `protobuf:"bytes,1,opt,name=server,proto3" json:"server"`
-	CategoryList []*sdkws.GroupCategoryListInfo `protobuf:"bytes,2,rep,name=categoryList,proto3" json:"categoryList"`
-	Joined       bool                           `protobuf:"varint,3,opt,name=joined,proto3" json:"joined"`
+	Server       *sdkws.ServerInfo              `protobuf:"bytes,1,opt,name=server,proto3" json:"server,omitempty"`
+	CategoryList []*sdkws.GroupCategoryListInfo `protobuf:"bytes,2,rep,name=categoryList,proto3" json:"categoryList,omitempty"`
+	Joined       bool                           `protobuf:"varint,3,opt,name=joined,proto3" json:"joined,omitempty"`
 }
 
 func (x *GetServerInfoResp) Reset() {
@@ -875,7 +875,7 @@ type DeleteServerReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ServerIDList []string `protobuf:"bytes,1,rep,name=serverIDList,proto3" json:"serverIDList"`
+	ServerIDList []string `protobuf:"bytes,1,rep,name=serverIDList,proto3" json:"serverIDList,omitempty"`
 }
 
 func (x *DeleteServerReq) Reset() {
@@ -960,8 +960,8 @@ type DismissServerReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ServerID     string `protobuf:"bytes,1,opt,name=serverID,proto3" json:"serverID"`
-	DeleteMember bool   `protobuf:"varint,2,opt,name=deleteMember,proto3" json:"deleteMember"`
+	ServerID     string `protobuf:"bytes,1,opt,name=serverID,proto3" json:"serverID,omitempty"`
+	DeleteMember bool   `protobuf:"varint,2,opt,name=deleteMember,proto3" json:"deleteMember,omitempty"`
 }
 
 func (x *DismissServerReq) Reset() {
@@ -1053,7 +1053,7 @@ type SetServerInfoReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ServerInfoForSet *sdkws.ServerInfoForSet `protobuf:"bytes,1,opt,name=serverInfoForSet,proto3" json:"serverInfoForSet"`
+	ServerInfoForSet *sdkws.ServerInfoForSet `protobuf:"bytes,1,opt,name=serverInfoForSet,proto3" json:"serverInfoForSet,omitempty"`
 }
 
 func (x *SetServerInfoReq) Reset() {
@@ -1138,8 +1138,8 @@ type SearchServerReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Pagination *sdkws.RequestPagination `protobuf:"bytes,1,opt,name=pagination,proto3" json:"pagination"`
-	Keyword    string                   `protobuf:"bytes,2,opt,name=keyword,proto3" json:"keyword"`
+	Pagination *sdkws.RequestPagination `protobuf:"bytes,1,opt,name=pagination,proto3" json:"pagination,omitempty"`
+	Keyword    string                   `protobuf:"bytes,2,opt,name=keyword,proto3" json:"keyword,omitempty"`
 }
 
 func (x *SearchServerReq) Reset() {
@@ -1193,8 +1193,8 @@ type SearchServerResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Total       uint32              `protobuf:"varint,1,opt,name=total,proto3" json:"total"`
-	ServerInfos []*sdkws.ServerInfo `protobuf:"bytes,2,rep,name=serverInfos,proto3" json:"serverInfos"`
+	Total       uint32              `protobuf:"varint,1,opt,name=total,proto3" json:"total,omitempty"`
+	ServerInfos []*sdkws.ServerInfo `protobuf:"bytes,2,rep,name=serverInfos,proto3" json:"serverInfos,omitempty"`
 }
 
 func (x *SearchServerResp) Reset() {
@@ -1248,7 +1248,7 @@ type GetServerAbstractInfoReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ServerIDs []string `protobuf:"bytes,1,rep,name=serverIDs,proto3" json:"serverIDs"`
+	ServerIDs []string `protobuf:"bytes,1,rep,name=serverIDs,proto3" json:"serverIDs,omitempty"`
 }
 
 func (x *GetServerAbstractInfoReq) Reset() {
@@ -1295,9 +1295,9 @@ type ServerAbstractInfo struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ServerID             string `protobuf:"bytes,1,opt,name=serverID,proto3" json:"serverID"`
-	ServerMemberNumber   uint32 `protobuf:"varint,2,opt,name=serverMemberNumber,proto3" json:"serverMemberNumber"`
-	ServerMemberListHash uint64 `protobuf:"varint,3,opt,name=serverMemberListHash,proto3" json:"serverMemberListHash"`
+	ServerID             string `protobuf:"bytes,1,opt,name=serverID,proto3" json:"serverID,omitempty"`
+	ServerMemberNumber   uint32 `protobuf:"varint,2,opt,name=serverMemberNumber,proto3" json:"serverMemberNumber,omitempty"`
+	ServerMemberListHash uint64 `protobuf:"varint,3,opt,name=serverMemberListHash,proto3" json:"serverMemberListHash,omitempty"`
 }
 
 func (x *ServerAbstractInfo) Reset() {
@@ -1358,7 +1358,7 @@ type GetServerAbstractInfoResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ServerAbstractInfos []*ServerAbstractInfo `protobuf:"bytes,1,rep,name=serverAbstractInfos,proto3" json:"serverAbstractInfos"`
+	ServerAbstractInfos []*ServerAbstractInfo `protobuf:"bytes,1,rep,name=serverAbstractInfos,proto3" json:"serverAbstractInfos,omitempty"`
 }
 
 func (x *GetServerAbstractInfoResp) Reset() {
@@ -1405,7 +1405,7 @@ type MuteServerReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ServerID string `protobuf:"bytes,1,opt,name=serverID,proto3" json:"serverID"`
+	ServerID string `protobuf:"bytes,1,opt,name=serverID,proto3" json:"serverID,omitempty"`
 }
 
 func (x *MuteServerReq) Reset() {
@@ -1490,7 +1490,7 @@ type CancelMuteServerReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ServerID string `protobuf:"bytes,1,opt,name=serverID,proto3" json:"serverID"`
+	ServerID string `protobuf:"bytes,1,opt,name=serverID,proto3" json:"serverID,omitempty"`
 }
 
 func (x *CancelMuteServerReq) Reset() {
@@ -1576,9 +1576,9 @@ type GetServerMemberListReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Pagination *sdkws.RequestPagination `protobuf:"bytes,1,opt,name=pagination,proto3" json:"pagination"`
-	ServerID   string                   `protobuf:"bytes,2,opt,name=serverID,proto3" json:"serverID"`
-	Filter     int32                    `protobuf:"varint,3,opt,name=filter,proto3" json:"filter"`
+	Pagination *sdkws.RequestPagination `protobuf:"bytes,1,opt,name=pagination,proto3" json:"pagination,omitempty"`
+	ServerID   string                   `protobuf:"bytes,2,opt,name=serverID,proto3" json:"serverID,omitempty"`
+	Filter     int32                    `protobuf:"varint,3,opt,name=filter,proto3" json:"filter,omitempty"`
 }
 
 func (x *GetServerMemberListReq) Reset() {
@@ -1639,8 +1639,8 @@ type GetServerMemberListResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Total   uint32                        `protobuf:"varint,1,opt,name=total,proto3" json:"total"`
-	Members []*sdkws.ServerMemberFullInfo `protobuf:"bytes,2,rep,name=members,proto3" json:"members"`
+	Total   uint32                        `protobuf:"varint,1,opt,name=total,proto3" json:"total,omitempty"`
+	Members []*sdkws.ServerMemberFullInfo `protobuf:"bytes,2,rep,name=members,proto3" json:"members,omitempty"`
 }
 
 func (x *GetServerMemberListResp) Reset() {
@@ -1694,8 +1694,8 @@ type GetServerMembersInfoReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ServerID string   `protobuf:"bytes,1,opt,name=serverID,proto3" json:"serverID"`
-	UserIDs  []string `protobuf:"bytes,2,rep,name=userIDs,proto3" json:"userIDs"`
+	ServerID string   `protobuf:"bytes,1,opt,name=serverID,proto3" json:"serverID,omitempty"`
+	UserIDs  []string `protobuf:"bytes,2,rep,name=userIDs,proto3" json:"userIDs,omitempty"`
 }
 
 func (x *GetServerMembersInfoReq) Reset() {
@@ -1749,7 +1749,7 @@ type GetServerMembersInfoResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Members []*sdkws.ServerMemberFullInfo `protobuf:"bytes,1,rep,name=members,proto3" json:"members"`
+	Members []*sdkws.ServerMemberFullInfo `protobuf:"bytes,1,rep,name=members,proto3" json:"members,omitempty"`
 }
 
 func (x *GetServerMembersInfoResp) Reset() {
@@ -1796,9 +1796,9 @@ type KickServerMemberReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ServerID      string   `protobuf:"bytes,1,opt,name=serverID,proto3" json:"serverID"`
-	KickedUserIDs []string `protobuf:"bytes,2,rep,name=kickedUserIDs,proto3" json:"kickedUserIDs"`
-	Reason        string   `protobuf:"bytes,3,opt,name=reason,proto3" json:"reason"`
+	ServerID      string   `protobuf:"bytes,1,opt,name=serverID,proto3" json:"serverID,omitempty"`
+	KickedUserIDs []string `protobuf:"bytes,2,rep,name=kickedUserIDs,proto3" json:"kickedUserIDs,omitempty"`
+	Reason        string   `protobuf:"bytes,3,opt,name=reason,proto3" json:"reason,omitempty"`
 }
 
 func (x *KickServerMemberReq) Reset() {
@@ -1897,8 +1897,8 @@ type GetJoinedServerListReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Pagination *sdkws.RequestPagination `protobuf:"bytes,1,opt,name=pagination,proto3" json:"pagination"`
-	FromUserID string                   `protobuf:"bytes,2,opt,name=fromUserID,proto3" json:"fromUserID"`
+	Pagination *sdkws.RequestPagination `protobuf:"bytes,1,opt,name=pagination,proto3" json:"pagination,omitempty"`
+	FromUserID string                   `protobuf:"bytes,2,opt,name=fromUserID,proto3" json:"fromUserID,omitempty"`
 }
 
 func (x *GetJoinedServerListReq) Reset() {
@@ -1952,8 +1952,8 @@ type GetJoinedServerListResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Total   uint32              `protobuf:"varint,1,opt,name=total,proto3" json:"total"`
-	Servers []*sdkws.ServerInfo `protobuf:"bytes,2,rep,name=servers,proto3" json:"servers"`
+	Total   uint32              `protobuf:"varint,1,opt,name=total,proto3" json:"total,omitempty"`
+	Servers []*sdkws.ServerInfo `protobuf:"bytes,2,rep,name=servers,proto3" json:"servers,omitempty"`
 }
 
 func (x *GetJoinedServerListResp) Reset() {
@@ -2007,8 +2007,8 @@ type SetJoinedServersOrderReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	UserID    string   `protobuf:"bytes,1,opt,name=userID,proto3" json:"userID"`
-	ServerIDs []string `protobuf:"bytes,2,rep,name=serverIDs,proto3" json:"serverIDs"`
+	UserID    string   `protobuf:"bytes,1,opt,name=userID,proto3" json:"userID,omitempty"`
+	ServerIDs []string `protobuf:"bytes,2,rep,name=serverIDs,proto3" json:"serverIDs,omitempty"`
 }
 
 func (x *SetJoinedServersOrderReq) Reset() {
@@ -2100,9 +2100,9 @@ type GetServerMembersCMSReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Pagination *sdkws.RequestPagination `protobuf:"bytes,1,opt,name=pagination,proto3" json:"pagination"`
-	ServerID   string                   `protobuf:"bytes,2,opt,name=serverID,proto3" json:"serverID"`
-	UserName   string                   `protobuf:"bytes,3,opt,name=userName,proto3" json:"userName"`
+	Pagination *sdkws.RequestPagination `protobuf:"bytes,1,opt,name=pagination,proto3" json:"pagination,omitempty"`
+	ServerID   string                   `protobuf:"bytes,2,opt,name=serverID,proto3" json:"serverID,omitempty"`
+	UserName   string                   `protobuf:"bytes,3,opt,name=userName,proto3" json:"userName,omitempty"`
 }
 
 func (x *GetServerMembersCMSReq) Reset() {
@@ -2163,8 +2163,8 @@ type GetServerMembersCMSResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Total   uint32                        `protobuf:"varint,1,opt,name=total,proto3" json:"total"`
-	Members []*sdkws.ServerMemberFullInfo `protobuf:"bytes,2,rep,name=members,proto3" json:"members"`
+	Total   uint32                        `protobuf:"varint,1,opt,name=total,proto3" json:"total,omitempty"`
+	Members []*sdkws.ServerMemberFullInfo `protobuf:"bytes,2,rep,name=members,proto3" json:"members,omitempty"`
 }
 
 func (x *GetServerMembersCMSResp) Reset() {
@@ -2218,9 +2218,9 @@ type MuteServerMemberReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ServerID     string `protobuf:"bytes,1,opt,name=serverID,proto3" json:"serverID"`
-	UserID       string `protobuf:"bytes,2,opt,name=userID,proto3" json:"userID"`
-	MutedSeconds uint32 `protobuf:"varint,3,opt,name=mutedSeconds,proto3" json:"mutedSeconds"`
+	ServerID     string `protobuf:"bytes,1,opt,name=serverID,proto3" json:"serverID,omitempty"`
+	UserID       string `protobuf:"bytes,2,opt,name=userID,proto3" json:"userID,omitempty"`
+	MutedSeconds uint32 `protobuf:"varint,3,opt,name=mutedSeconds,proto3" json:"mutedSeconds,omitempty"`
 }
 
 func (x *MuteServerMemberReq) Reset() {
@@ -2319,8 +2319,8 @@ type CancelMuteServerMemberReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ServerID string `protobuf:"bytes,1,opt,name=serverID,proto3" json:"serverID"`
-	UserID   string `protobuf:"bytes,2,opt,name=userID,proto3" json:"userID"`
+	ServerID string `protobuf:"bytes,1,opt,name=serverID,proto3" json:"serverID,omitempty"`
+	UserID   string `protobuf:"bytes,2,opt,name=userID,proto3" json:"userID,omitempty"`
 }
 
 func (x *CancelMuteServerMemberReq) Reset() {
@@ -2412,10 +2412,10 @@ type JoinServerReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ServerID      string `protobuf:"bytes,1,opt,name=serverID,proto3" json:"serverID"`
-	ReqMessage    string `protobuf:"bytes,2,opt,name=reqMessage,proto3" json:"reqMessage"`
-	JoinSource    int32  `protobuf:"varint,3,opt,name=joinSource,proto3" json:"joinSource"`
-	InviterUserID string `protobuf:"bytes,5,opt,name=inviterUserID,proto3" json:"inviterUserID"`
+	ServerID      string `protobuf:"bytes,1,opt,name=serverID,proto3" json:"serverID,omitempty"`
+	ReqMessage    string `protobuf:"bytes,2,opt,name=reqMessage,proto3" json:"reqMessage,omitempty"`
+	JoinSource    int32  `protobuf:"varint,3,opt,name=joinSource,proto3" json:"joinSource,omitempty"`
+	InviterUserID string `protobuf:"bytes,5,opt,name=inviterUserID,proto3" json:"inviterUserID,omitempty"`
 }
 
 func (x *JoinServerReq) Reset() {
@@ -2521,8 +2521,8 @@ type QuitServerReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ServerID string `protobuf:"bytes,1,opt,name=serverID,proto3" json:"serverID"`
-	UserID   string `protobuf:"bytes,2,opt,name=userID,proto3" json:"userID"`
+	ServerID string `protobuf:"bytes,1,opt,name=serverID,proto3" json:"serverID,omitempty"`
+	UserID   string `protobuf:"bytes,2,opt,name=userID,proto3" json:"userID,omitempty"`
 }
 
 func (x *QuitServerReq) Reset() {
@@ -2614,12 +2614,12 @@ type SetServerMemberInfo struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ServerID  string                  `protobuf:"bytes,1,opt,name=serverID,proto3" json:"serverID"`
-	UserID    string                  `protobuf:"bytes,2,opt,name=userID,proto3" json:"userID"`
-	Nickname  *wrapperspb.StringValue `protobuf:"bytes,3,opt,name=nickname,proto3" json:"nickname"`
-	FaceURL   *wrapperspb.StringValue `protobuf:"bytes,4,opt,name=faceURL,proto3" json:"faceURL"`
-	RoleLevel *wrapperspb.Int32Value  `protobuf:"bytes,5,opt,name=roleLevel,proto3" json:"roleLevel"`
-	Ex        *wrapperspb.StringValue `protobuf:"bytes,6,opt,name=ex,proto3" json:"ex"`
+	ServerID  string                  `protobuf:"bytes,1,opt,name=serverID,proto3" json:"serverID,omitempty"`
+	UserID    string                  `protobuf:"bytes,2,opt,name=userID,proto3" json:"userID,omitempty"`
+	Nickname  *wrapperspb.StringValue `protobuf:"bytes,3,opt,name=nickname,proto3" json:"nickname,omitempty"`
+	FaceURL   *wrapperspb.StringValue `protobuf:"bytes,4,opt,name=faceURL,proto3" json:"faceURL,omitempty"`
+	RoleLevel *wrapperspb.Int32Value  `protobuf:"bytes,5,opt,name=roleLevel,proto3" json:"roleLevel,omitempty"`
+	Ex        *wrapperspb.StringValue `protobuf:"bytes,6,opt,name=ex,proto3" json:"ex,omitempty"`
 }
 
 func (x *SetServerMemberInfo) Reset() {
@@ -2701,7 +2701,7 @@ type SetServerMemberInfoReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Members []*SetServerMemberInfo `protobuf:"bytes,1,rep,name=members,proto3" json:"members"`
+	Members []*SetServerMemberInfo `protobuf:"bytes,1,rep,name=members,proto3" json:"members,omitempty"`
 }
 
 func (x *SetServerMemberInfoReq) Reset() {
@@ -2786,7 +2786,7 @@ type GetServerMemberUserIDsReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ServerID string `protobuf:"bytes,1,opt,name=serverID,proto3" json:"serverID"`
+	ServerID string `protobuf:"bytes,1,opt,name=serverID,proto3" json:"serverID,omitempty"`
 }
 
 func (x *GetServerMemberUserIDsReq) Reset() {
@@ -2833,7 +2833,7 @@ type GetServerMemberUserIDsResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	UserIDs []string `protobuf:"bytes,1,rep,name=userIDs,proto3" json:"userIDs"`
+	UserIDs []string `protobuf:"bytes,1,rep,name=userIDs,proto3" json:"userIDs,omitempty"`
 }
 
 func (x *GetServerMemberUserIDsResp) Reset() {
@@ -2880,8 +2880,8 @@ type GetUserInServerMembersReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	UserID    string   `protobuf:"bytes,1,opt,name=userID,proto3" json:"userID"`
-	ServerIDs []string `protobuf:"bytes,2,rep,name=serverIDs,proto3" json:"serverIDs"`
+	UserID    string   `protobuf:"bytes,1,opt,name=userID,proto3" json:"userID,omitempty"`
+	ServerIDs []string `protobuf:"bytes,2,rep,name=serverIDs,proto3" json:"serverIDs,omitempty"`
 }
 
 func (x *GetUserInServerMembersReq) Reset() {
@@ -2935,7 +2935,7 @@ type GetUserInServerMembersResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Members []*sdkws.ServerMemberFullInfo `protobuf:"bytes,1,rep,name=members,proto3" json:"members"`
+	Members []*sdkws.ServerMemberFullInfo `protobuf:"bytes,1,rep,name=members,proto3" json:"members,omitempty"`
 }
 
 func (x *GetUserInServerMembersResp) Reset() {
@@ -2982,8 +2982,8 @@ type GetServerMemberRoleLevelReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ServerID   string  `protobuf:"bytes,1,opt,name=serverID,proto3" json:"serverID"`
-	RoleLevels []int32 `protobuf:"varint,2,rep,packed,name=roleLevels,proto3" json:"roleLevels"`
+	ServerID   string  `protobuf:"bytes,1,opt,name=serverID,proto3" json:"serverID,omitempty"`
+	RoleLevels []int32 `protobuf:"varint,2,rep,packed,name=roleLevels,proto3" json:"roleLevels,omitempty"`
 }
 
 func (x *GetServerMemberRoleLevelReq) Reset() {
@@ -3037,7 +3037,7 @@ type GetServerMemberRoleLevelResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Members []*sdkws.ServerMemberFullInfo `protobuf:"bytes,1,rep,name=members,proto3" json:"members"`
+	Members []*sdkws.ServerMemberFullInfo `protobuf:"bytes,1,rep,name=members,proto3" json:"members,omitempty"`
 }
 
 func (x *GetServerMemberRoleLevelResp) Reset() {
@@ -3084,8 +3084,8 @@ type GetServerMemberCacheReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ServerID       string `protobuf:"bytes,1,opt,name=serverID,proto3" json:"serverID"`
-	ServerMemberID string `protobuf:"bytes,2,opt,name=serverMemberID,proto3" json:"serverMemberID"`
+	ServerID       string `protobuf:"bytes,1,opt,name=serverID,proto3" json:"serverID,omitempty"`
+	ServerMemberID string `protobuf:"bytes,2,opt,name=serverMemberID,proto3" json:"serverMemberID,omitempty"`
 }
 
 func (x *GetServerMemberCacheReq) Reset() {
@@ -3139,7 +3139,7 @@ type GetServerMemberCacheResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Member *sdkws.ServerMemberFullInfo `protobuf:"bytes,1,opt,name=member,proto3" json:"member"`
+	Member *sdkws.ServerMemberFullInfo `protobuf:"bytes,1,opt,name=member,proto3" json:"member,omitempty"`
 }
 
 func (x *GetServerMemberCacheResp) Reset() {
@@ -3186,9 +3186,9 @@ type TransferServerOwnerReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ServerID       string `protobuf:"bytes,1,opt,name=serverID,proto3" json:"serverID"`
-	OldOwnerUserID string `protobuf:"bytes,2,opt,name=oldOwnerUserID,proto3" json:"oldOwnerUserID"`
-	NewOwnerUserID string `protobuf:"bytes,3,opt,name=newOwnerUserID,proto3" json:"newOwnerUserID"`
+	ServerID       string `protobuf:"bytes,1,opt,name=serverID,proto3" json:"serverID,omitempty"`
+	OldOwnerUserID string `protobuf:"bytes,2,opt,name=oldOwnerUserID,proto3" json:"oldOwnerUserID,omitempty"`
+	NewOwnerUserID string `protobuf:"bytes,3,opt,name=newOwnerUserID,proto3" json:"newOwnerUserID,omitempty"`
 }
 
 func (x *TransferServerOwnerReq) Reset() {
@@ -3288,8 +3288,8 @@ type GetJoinedServerGroupListReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Pagination *sdkws.RequestPagination `protobuf:"bytes,1,opt,name=pagination,proto3" json:"pagination"`
-	FromUserID string                   `protobuf:"bytes,2,opt,name=fromUserID,proto3" json:"fromUserID"`
+	Pagination *sdkws.RequestPagination `protobuf:"bytes,1,opt,name=pagination,proto3" json:"pagination,omitempty"`
+	FromUserID string                   `protobuf:"bytes,2,opt,name=fromUserID,proto3" json:"fromUserID,omitempty"`
 }
 
 func (x *GetJoinedServerGroupListReq) Reset() {
@@ -3343,8 +3343,8 @@ type GetJoinedServerGroupListResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Total  uint32             `protobuf:"varint,1,opt,name=total,proto3" json:"total"`
-	Groups []*sdkws.GroupInfo `protobuf:"bytes,2,rep,name=groups,proto3" json:"groups"`
+	Total  uint32             `protobuf:"varint,1,opt,name=total,proto3" json:"total,omitempty"`
+	Groups []*sdkws.GroupInfo `protobuf:"bytes,2,rep,name=groups,proto3" json:"groups,omitempty"`
 }
 
 func (x *GetJoinedServerGroupListResp) Reset() {
@@ -3398,9 +3398,9 @@ type CreateServerGroupReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	GroupInfo   *sdkws.GroupInfo `protobuf:"bytes,1,opt,name=groupInfo,proto3" json:"groupInfo"`
-	OwnerUserID string           `protobuf:"bytes,2,opt,name=ownerUserID,proto3" json:"ownerUserID"` //owner
-	DappID      string           `protobuf:"bytes,3,opt,name=dappID,proto3" json:"dappID"`
+	GroupInfo   *sdkws.GroupInfo `protobuf:"bytes,1,opt,name=groupInfo,proto3" json:"groupInfo,omitempty"`
+	OwnerUserID string           `protobuf:"bytes,2,opt,name=ownerUserID,proto3" json:"ownerUserID,omitempty"` //owner
+	DappID      string           `protobuf:"bytes,3,opt,name=dappID,proto3" json:"dappID,omitempty"`
 }
 
 func (x *CreateServerGroupReq) Reset() {
@@ -3461,7 +3461,7 @@ type CreateServerGroupResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	GroupInfo *sdkws.GroupInfo `protobuf:"bytes,1,opt,name=groupInfo,proto3" json:"groupInfo"`
+	GroupInfo *sdkws.GroupInfo `protobuf:"bytes,1,opt,name=groupInfo,proto3" json:"groupInfo,omitempty"`
 }
 
 func (x *CreateServerGroupResp) Reset() {
@@ -3508,8 +3508,8 @@ type SetServerGroupInfoReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	GroupInfo *sdkws.GroupInfo `protobuf:"bytes,1,opt,name=groupInfo,proto3" json:"groupInfo"`
-	DappID    string           `protobuf:"bytes,2,opt,name=dappID,proto3" json:"dappID"`
+	GroupInfo *sdkws.GroupInfo `protobuf:"bytes,1,opt,name=groupInfo,proto3" json:"groupInfo,omitempty"`
+	DappID    string           `protobuf:"bytes,2,opt,name=dappID,proto3" json:"dappID,omitempty"`
 }
 
 func (x *SetServerGroupInfoReq) Reset() {
@@ -3563,8 +3563,8 @@ type SetServerGroupInfoResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	GroupInfo *sdkws.GroupInfo         `protobuf:"bytes,1,opt,name=groupInfo,proto3" json:"groupInfo"`
-	Dapp      *sdkws.GroupDappFullInfo `protobuf:"bytes,2,opt,name=dapp,proto3" json:"dapp"`
+	GroupInfo *sdkws.GroupInfo         `protobuf:"bytes,1,opt,name=groupInfo,proto3" json:"groupInfo,omitempty"`
+	Dapp      *sdkws.GroupDappFullInfo `protobuf:"bytes,2,opt,name=dapp,proto3" json:"dapp,omitempty"`
 }
 
 func (x *SetServerGroupInfoResp) Reset() {
@@ -3618,8 +3618,8 @@ type SetServerGroupOrderReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ServerID     string                         `protobuf:"bytes,1,opt,name=serverID,proto3" json:"serverID"`
-	CategoryList []*sdkws.GroupCategoryListInfo `protobuf:"bytes,2,rep,name=categoryList,proto3" json:"categoryList"`
+	ServerID     string                         `protobuf:"bytes,1,opt,name=serverID,proto3" json:"serverID,omitempty"`
+	CategoryList []*sdkws.GroupCategoryListInfo `protobuf:"bytes,2,rep,name=categoryList,proto3" json:"categoryList,omitempty"`
 }
 
 func (x *SetServerGroupOrderReq) Reset() {
@@ -3711,8 +3711,8 @@ type DeleteServerGroupReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ServerID string   `protobuf:"bytes,1,opt,name=serverID,proto3" json:"serverID"`
-	GroupIDs []string `protobuf:"bytes,2,rep,name=groupIDs,proto3" json:"groupIDs"`
+	ServerID string   `protobuf:"bytes,1,opt,name=serverID,proto3" json:"serverID,omitempty"`
+	GroupIDs []string `protobuf:"bytes,2,rep,name=groupIDs,proto3" json:"groupIDs,omitempty"`
 }
 
 func (x *DeleteServerGroupReq) Reset() {
@@ -3804,8 +3804,8 @@ type MuteServerGroupReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ServerID string `protobuf:"bytes,1,opt,name=serverID,proto3" json:"serverID"`
-	GroupID  string `protobuf:"bytes,2,opt,name=groupID,proto3" json:"groupID"`
+	ServerID string `protobuf:"bytes,1,opt,name=serverID,proto3" json:"serverID,omitempty"`
+	GroupID  string `protobuf:"bytes,2,opt,name=groupID,proto3" json:"groupID,omitempty"`
 }
 
 func (x *MuteServerGroupReq) Reset() {
@@ -3897,8 +3897,8 @@ type CancelMuteServerGroupReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ServerID string `protobuf:"bytes,1,opt,name=serverID,proto3" json:"serverID"`
-	GroupID  string `protobuf:"bytes,2,opt,name=groupID,proto3" json:"groupID"`
+	ServerID string `protobuf:"bytes,1,opt,name=serverID,proto3" json:"serverID,omitempty"`
+	GroupID  string `protobuf:"bytes,2,opt,name=groupID,proto3" json:"groupID,omitempty"`
 }
 
 func (x *CancelMuteServerGroupReq) Reset() {
@@ -3990,7 +3990,7 @@ type GetServerGroupMemberUserIDsReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	GroupID string `protobuf:"bytes,1,opt,name=groupID,proto3" json:"groupID"`
+	GroupID string `protobuf:"bytes,1,opt,name=groupID,proto3" json:"groupID,omitempty"`
 }
 
 func (x *GetServerGroupMemberUserIDsReq) Reset() {
@@ -4037,7 +4037,7 @@ type GetServerGroupMemberUserIDsResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	UserIDs []string `protobuf:"bytes,1,rep,name=userIDs,proto3" json:"userIDs"`
+	UserIDs []string `protobuf:"bytes,1,rep,name=userIDs,proto3" json:"userIDs,omitempty"`
 }
 
 func (x *GetServerGroupMemberUserIDsResp) Reset() {
@@ -4084,7 +4084,7 @@ type GetServerGroupsInfoReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	GroupIDs []string `protobuf:"bytes,1,rep,name=groupIDs,proto3" json:"groupIDs"`
+	GroupIDs []string `protobuf:"bytes,1,rep,name=groupIDs,proto3" json:"groupIDs,omitempty"`
 }
 
 func (x *GetServerGroupsInfoReq) Reset() {
@@ -4131,7 +4131,7 @@ type GetServerGroupsInfoResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	GroupInfos []*sdkws.GroupInfo `protobuf:"bytes,1,rep,name=groupInfos,proto3" json:"groupInfos"`
+	GroupInfos []*sdkws.GroupInfo `protobuf:"bytes,1,rep,name=groupInfos,proto3" json:"groupInfos,omitempty"`
 }
 
 func (x *GetServerGroupsInfoResp) Reset() {
@@ -4178,8 +4178,8 @@ type GetServerGroupMembersInfoReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	GroupID string   `protobuf:"bytes,1,opt,name=groupID,proto3" json:"groupID"`
-	UserIDs []string `protobuf:"bytes,2,rep,name=userIDs,proto3" json:"userIDs"`
+	GroupID string   `protobuf:"bytes,1,opt,name=groupID,proto3" json:"groupID,omitempty"`
+	UserIDs []string `protobuf:"bytes,2,rep,name=userIDs,proto3" json:"userIDs,omitempty"`
 }
 
 func (x *GetServerGroupMembersInfoReq) Reset() {
@@ -4233,7 +4233,7 @@ type GetServerGroupMembersInfoResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Members []*sdkws.ServerMemberFullInfo `protobuf:"bytes,1,rep,name=members,proto3" json:"members"`
+	Members []*sdkws.ServerMemberFullInfo `protobuf:"bytes,1,rep,name=members,proto3" json:"members,omitempty"`
 }
 
 func (x *GetServerGroupMembersInfoResp) Reset() {
@@ -4280,12 +4280,12 @@ type ServerApplicationResponseReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ServerID       string `protobuf:"bytes,1,opt,name=serverID,proto3" json:"serverID"`
-	FromUserID     string `protobuf:"bytes,2,opt,name=fromUserID,proto3" json:"fromUserID"`
-	HandledMsg     string `protobuf:"bytes,3,opt,name=handledMsg,proto3" json:"handledMsg"`
-	HandleResult   int32  `protobuf:"varint,4,opt,name=handleResult,proto3" json:"handleResult"`
-	ConversationID string `protobuf:"bytes,5,opt,name=conversationID,proto3" json:"conversationID"`
-	Seq            int64  `protobuf:"varint,6,opt,name=seq,proto3" json:"seq"`
+	ServerID       string `protobuf:"bytes,1,opt,name=serverID,proto3" json:"serverID,omitempty"`
+	FromUserID     string `protobuf:"bytes,2,opt,name=fromUserID,proto3" json:"fromUserID,omitempty"`
+	HandledMsg     string `protobuf:"bytes,3,opt,name=handledMsg,proto3" json:"handledMsg,omitempty"`
+	HandleResult   int32  `protobuf:"varint,4,opt,name=handleResult,proto3" json:"handleResult,omitempty"`
+	ConversationID string `protobuf:"bytes,5,opt,name=conversationID,proto3" json:"conversationID,omitempty"`
+	Seq            int64  `protobuf:"varint,6,opt,name=seq,proto3" json:"seq,omitempty"`
 }
 
 func (x *ServerApplicationResponseReq) Reset() {
@@ -4405,8 +4405,8 @@ type GetServerApplicationListReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Pagination *sdkws.RequestPagination `protobuf:"bytes,1,opt,name=pagination,proto3" json:"pagination"`
-	FromUserID string                   `protobuf:"bytes,2,opt,name=fromUserID,proto3" json:"fromUserID"` //owner or admin
+	Pagination *sdkws.RequestPagination `protobuf:"bytes,1,opt,name=pagination,proto3" json:"pagination,omitempty"`
+	FromUserID string                   `protobuf:"bytes,2,opt,name=fromUserID,proto3" json:"fromUserID,omitempty"` //owner or admin
 }
 
 func (x *GetServerApplicationListReq) Reset() {
@@ -4460,8 +4460,8 @@ type GetServerApplicationListResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Total          uint32                 `protobuf:"varint,1,opt,name=total,proto3" json:"total"`
-	ServerRequests []*sdkws.ServerRequest `protobuf:"bytes,2,rep,name=serverRequests,proto3" json:"serverRequests"`
+	Total          uint32                 `protobuf:"varint,1,opt,name=total,proto3" json:"total,omitempty"`
+	ServerRequests []*sdkws.ServerRequest `protobuf:"bytes,2,rep,name=serverRequests,proto3" json:"serverRequests,omitempty"`
 }
 
 func (x *GetServerApplicationListResp) Reset() {
@@ -4515,8 +4515,8 @@ type GetUserReqApplicationListReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Pagination *sdkws.RequestPagination `protobuf:"bytes,1,opt,name=pagination,proto3" json:"pagination"`
-	UserID     string                   `protobuf:"bytes,2,opt,name=userID,proto3" json:"userID"`
+	Pagination *sdkws.RequestPagination `protobuf:"bytes,1,opt,name=pagination,proto3" json:"pagination,omitempty"`
+	UserID     string                   `protobuf:"bytes,2,opt,name=userID,proto3" json:"userID,omitempty"`
 }
 
 func (x *GetUserReqApplicationListReq) Reset() {
@@ -4570,8 +4570,8 @@ type GetUserReqApplicationListResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Total          uint32                 `protobuf:"varint,1,opt,name=total,proto3" json:"total"`
-	ServerRequests []*sdkws.ServerRequest `protobuf:"bytes,2,rep,name=serverRequests,proto3" json:"serverRequests"`
+	Total          uint32                 `protobuf:"varint,1,opt,name=total,proto3" json:"total,omitempty"`
+	ServerRequests []*sdkws.ServerRequest `protobuf:"bytes,2,rep,name=serverRequests,proto3" json:"serverRequests,omitempty"`
 }
 
 func (x *GetUserReqApplicationListResp) Reset() {
@@ -4625,8 +4625,8 @@ type GetServerUsersReqApplicationListReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ServerID string   `protobuf:"bytes,1,opt,name=serverID,proto3" json:"serverID"`
-	UserIDs  []string `protobuf:"bytes,2,rep,name=userIDs,proto3" json:"userIDs"`
+	ServerID string   `protobuf:"bytes,1,opt,name=serverID,proto3" json:"serverID,omitempty"`
+	UserIDs  []string `protobuf:"bytes,2,rep,name=userIDs,proto3" json:"userIDs,omitempty"`
 }
 
 func (x *GetServerUsersReqApplicationListReq) Reset() {
@@ -4680,8 +4680,8 @@ type GetServerUsersReqApplicationListResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Total          int64                  `protobuf:"varint,1,opt,name=total,proto3" json:"total"`
-	ServerRequests []*sdkws.ServerRequest `protobuf:"bytes,2,rep,name=serverRequests,proto3" json:"serverRequests"`
+	Total          int64                  `protobuf:"varint,1,opt,name=total,proto3" json:"total,omitempty"`
+	ServerRequests []*sdkws.ServerRequest `protobuf:"bytes,2,rep,name=serverRequests,proto3" json:"serverRequests,omitempty"`
 }
 
 func (x *GetServerUsersReqApplicationListResp) Reset() {
@@ -4736,10 +4736,10 @@ type BanServerMemberReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ServerID       string   `protobuf:"bytes,1,opt,name=serverID,proto3" json:"serverID"`
-	BlockUserIDs   []string `protobuf:"bytes,2,rep,name=blockUserIDs,proto3" json:"blockUserIDs"`
-	OperatorUserID string   `protobuf:"bytes,3,opt,name=operatorUserID,proto3" json:"operatorUserID"`
-	Ex             string   `protobuf:"bytes,4,opt,name=ex,proto3" json:"ex"`
+	ServerID       string   `protobuf:"bytes,1,opt,name=serverID,proto3" json:"serverID,omitempty"`
+	BlockUserIDs   []string `protobuf:"bytes,2,rep,name=blockUserIDs,proto3" json:"blockUserIDs,omitempty"`
+	OperatorUserID string   `protobuf:"bytes,3,opt,name=operatorUserID,proto3" json:"operatorUserID,omitempty"`
+	Ex             string   `protobuf:"bytes,4,opt,name=ex,proto3" json:"ex,omitempty"`
 }
 
 func (x *BanServerMemberReq) Reset() {
@@ -4807,7 +4807,7 @@ type BanServerMemberResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Black *sdkws.ServerBlackFullInfo `protobuf:"bytes,1,opt,name=black,proto3" json:"black"`
+	Black *sdkws.ServerBlackFullInfo `protobuf:"bytes,1,opt,name=black,proto3" json:"black,omitempty"`
 }
 
 func (x *BanServerMemberResp) Reset() {
@@ -4854,10 +4854,10 @@ type CancelBanServerMemberReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ServerID       string   `protobuf:"bytes,1,opt,name=serverID,proto3" json:"serverID"`
-	BlockUserIDs   []string `protobuf:"bytes,2,rep,name=blockUserIDs,proto3" json:"blockUserIDs"`
-	OperatorUserID string   `protobuf:"bytes,3,opt,name=operatorUserID,proto3" json:"operatorUserID"`
-	Ex             string   `protobuf:"bytes,4,opt,name=ex,proto3" json:"ex"`
+	ServerID       string   `protobuf:"bytes,1,opt,name=serverID,proto3" json:"serverID,omitempty"`
+	BlockUserIDs   []string `protobuf:"bytes,2,rep,name=blockUserIDs,proto3" json:"blockUserIDs,omitempty"`
+	OperatorUserID string   `protobuf:"bytes,3,opt,name=operatorUserID,proto3" json:"operatorUserID,omitempty"`
+	Ex             string   `protobuf:"bytes,4,opt,name=ex,proto3" json:"ex,omitempty"`
 }
 
 func (x *CancelBanServerMemberReq) Reset() {
@@ -4963,8 +4963,8 @@ type GetServerBlackListReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ServerID   string                   `protobuf:"bytes,1,opt,name=serverID,proto3" json:"serverID"`
-	Pagination *sdkws.RequestPagination `protobuf:"bytes,2,opt,name=pagination,proto3" json:"pagination"`
+	ServerID   string                   `protobuf:"bytes,1,opt,name=serverID,proto3" json:"serverID,omitempty"`
+	Pagination *sdkws.RequestPagination `protobuf:"bytes,2,opt,name=pagination,proto3" json:"pagination,omitempty"`
 }
 
 func (x *GetServerBlackListReq) Reset() {
@@ -5018,8 +5018,8 @@ type GetServerBlackListResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Blacks []*sdkws.ServerBlackFullInfo `protobuf:"bytes,1,rep,name=blacks,proto3" json:"blacks"`
-	Total  int64                        `protobuf:"varint,2,opt,name=total,proto3" json:"total"`
+	Blacks []*sdkws.ServerBlackFullInfo `protobuf:"bytes,1,rep,name=blacks,proto3" json:"blacks,omitempty"`
+	Total  int64                        `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
 }
 
 func (x *GetServerBlackListResp) Reset() {
@@ -5074,9 +5074,9 @@ type GetServerRoleListReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Pagination *sdkws.RequestPagination `protobuf:"bytes,1,opt,name=pagination,proto3" json:"pagination"`
-	ServerID   string                   `protobuf:"bytes,2,opt,name=serverID,proto3" json:"serverID"`
-	Filter     int32                    `protobuf:"varint,3,opt,name=filter,proto3" json:"filter"`
+	Pagination *sdkws.RequestPagination `protobuf:"bytes,1,opt,name=pagination,proto3" json:"pagination,omitempty"`
+	ServerID   string                   `protobuf:"bytes,2,opt,name=serverID,proto3" json:"serverID,omitempty"`
+	Filter     int32                    `protobuf:"varint,3,opt,name=filter,proto3" json:"filter,omitempty"`
 }
 
 func (x *GetServerRoleListReq) Reset() {
@@ -5137,8 +5137,8 @@ type GetServerRoleListResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Total uint32              `protobuf:"varint,1,opt,name=total,proto3" json:"total"`
-	Roles []*sdkws.ServerRole `protobuf:"bytes,2,rep,name=roles,proto3" json:"roles"`
+	Total uint32              `protobuf:"varint,1,opt,name=total,proto3" json:"total,omitempty"`
+	Roles []*sdkws.ServerRole `protobuf:"bytes,2,rep,name=roles,proto3" json:"roles,omitempty"`
 }
 
 func (x *GetServerRoleListResp) Reset() {
@@ -5192,7 +5192,7 @@ type GetServerRolesInfoReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	RoleIDs []string `protobuf:"bytes,1,rep,name=roleIDs,proto3" json:"roleIDs"`
+	RoleIDs []string `protobuf:"bytes,1,rep,name=roleIDs,proto3" json:"roleIDs,omitempty"`
 }
 
 func (x *GetServerRolesInfoReq) Reset() {
@@ -5239,7 +5239,7 @@ type GetServerRolesInfoResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Roles []*sdkws.ServerRole `protobuf:"bytes,2,rep,name=roles,proto3" json:"roles"`
+	Roles []*sdkws.ServerRole `protobuf:"bytes,2,rep,name=roles,proto3" json:"roles,omitempty"`
 }
 
 func (x *GetServerRolesInfoResp) Reset() {
@@ -5287,8 +5287,8 @@ type GetServerMuteRecordsReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ServerID   string                   `protobuf:"bytes,1,opt,name=serverID,proto3" json:"serverID"`
-	Pagination *sdkws.RequestPagination `protobuf:"bytes,2,opt,name=pagination,proto3" json:"pagination"`
+	ServerID   string                   `protobuf:"bytes,1,opt,name=serverID,proto3" json:"serverID,omitempty"`
+	Pagination *sdkws.RequestPagination `protobuf:"bytes,2,opt,name=pagination,proto3" json:"pagination,omitempty"`
 }
 
 func (x *GetServerMuteRecordsReq) Reset() {
@@ -5342,8 +5342,8 @@ type GetServerMuteRecordsResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Total   uint32                    `protobuf:"varint,1,opt,name=total,proto3" json:"total"`
-	Records []*sdkws.ServerMuteRecord `protobuf:"bytes,2,rep,name=records,proto3" json:"records"`
+	Total   uint32                    `protobuf:"varint,1,opt,name=total,proto3" json:"total,omitempty"`
+	Records []*sdkws.ServerMuteRecord `protobuf:"bytes,2,rep,name=records,proto3" json:"records,omitempty"`
 }
 
 func (x *GetServerMuteRecordsResp) Reset() {
