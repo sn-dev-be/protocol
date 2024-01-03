@@ -531,3 +531,10 @@ const (
 	ServerStatusDismissed = 2
 	ServerStatusMuted     = 3
 )
+
+const (
+	CrontabDay       = 0
+	CrontabWeek      = 1
+	CrontabHalfMonth = 2
+	CrontabMonth     = 3
+)
