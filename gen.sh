@@ -26,6 +26,7 @@ protoc --go_out=plugins=grpc:./user --go_opt=module=github.com/OpenIMSDK/protoco
 protoc --go_out=plugins=grpc:./wrapperspb --go_opt=module=github.com/OpenIMSDK/protocol/wrapperspb wrapperspb/wrapperspb.proto
 protoc --go_out=plugins=grpc:./statistics --go_opt=module=github.com/OpenIMSDK/protocol/statistics statistics/statistics.proto
 protoc --go_out=plugins=grpc:./club --go_opt=module=github.com/OpenIMSDK/protocol/club club/club.proto
+protoc --go_out=plugins=grpc:./cron --go_opt=module=github.com/OpenIMSDK/protocol/cron cron/cron.proto
 
 # sed -i "" -e "s/,omitempty//g" ./sdkws/*pb.go
 # sed -i "" -e "s/,omitempty//g" ./auth/*pb.go
