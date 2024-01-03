@@ -45,6 +45,7 @@ message GroupInfo {
   int32 groupMode = 23;
   string groupCategoryID = 24;
   string serverID = 25;
+  int32 reorderWeight = 26;
 }
 
 message GroupInfoForSet {
@@ -89,6 +90,10 @@ message UserInfo {
   int64 createTime = 5;
   int32 appMangerLevel = 6;
   int32 globalRecvMsgOpt = 7;
+  int32 allowBeep = 8;
+  int32 allowVibration = 9;
+  int32 allowPushContent = 10;
+  int32 allowOnlinePush = 11;
 }
 
 message FriendInfo {
@@ -155,7 +160,6 @@ message MuteRecord {
   int32 addSource = 6;
   string ex = 7;
 }
-
 ///////////////////////////////////base end/////////////////////////////////////
 enum PullOrder {
   PullOrderAsc = 0;
@@ -603,6 +607,15 @@ message ModifyMessageTips {
 
 ////////////////////club///////////////////////
 
+//	OnServerCreated()
+message ServerCreatedTips {
+  ServerInfo server = 1;
+  ServerMemberFullInfo opUser = 2;
+  repeated ServerMemberFullInfo memberList = 3;
+  int64 operationTime = 4;
+  repeated GroupInfo serverGroupList = 5;
+}
+
 message GroupCategoryInfo {
   string categoryID = 1;
   string categoryName = 2;
@@ -611,6 +624,7 @@ message GroupCategoryInfo {
   int32 categoryType = 5;
   string serverID = 6;
   string ex = 7;
+  int64 createTime = 8;
 }
 
 message GroupCategoryListInfo {
@@ -657,6 +671,9 @@ message ServerInfo {
   string ex = 15;
   int64 createTime = 16;
   string dappID = 17;
+  string communityName = 18;
+  string communityBanner = 19;
+  int32 communityViewMode = 20;
 }
 
 message ServerInfoForSet {
@@ -670,6 +687,9 @@ message ServerInfoForSet {
   OpenIMServer.protobuf.Int32Value searchable = 8;
   OpenIMServer.protobuf.Int32Value userMutualAccessible = 9;
   OpenIMServer.protobuf.StringValue dappID = 10;
+  OpenIMServer.protobuf.StringValue communityName = 11;
+  OpenIMServer.protobuf.StringValue communityBanner = 12;
+  OpenIMServer.protobuf.Int32Value communityViewMode = 13;
 }
 
 message ServerMemberFullInfo {
@@ -760,5 +780,17 @@ message ServerApplicationRejectedTips {
   ServerMemberFullInfo opUser = 2;
   string handleMsg = 4;
   int32 receiverAs = 5; // admin(==1) or applicant(==0)
+}
+
+message ServerGroupBaseInfo{
+   string groupID = 1;
+   string groupName = 2;
+   string groupFaceUrl = 3;
+   string serverID = 4;
+   string serverName = 5;
+   string serverIconUrl = 6;
+   string serverOwnerUserID = 7;
+   string condition = 8;
+   int32  conditionType = 9;        
 }
 //////////////////////club end/////////////////////

@@ -16,6 +16,7 @@ package user
 
 import (
 	"errors"
+
 	"github.com/OpenIMSDK/protocol/constant"
 )
 
@@ -53,15 +54,15 @@ func (x *UpdateUserInfoReq) Check() error {
 	return nil
 }
 
-func (x *SetGlobalRecvMessageOptReq) Check() error {
-	if x.GlobalRecvMsgOpt > 2 || x.GlobalRecvMsgOpt < 0 {
-		return errors.New("GlobalRecvMsgOpt is invalid")
-	}
-	if x.UserID == "" {
-		return errors.New("UserID is empty")
-	}
-	return nil
-}
+// func (x *SetGlobalRecvMessageOptReq) Check() error {
+// 	if x.GlobalRecvMsgOpt ! x.GlobalRecvMsgOpt.Value > 3 || x.GlobalRecvMsgOpt.Value < 0 {
+// 		return errors.New("GlobalRecvMsgOpt is invalid")
+// 	}
+// 	if x.UserID == "" {
+// 		return errors.New("UserID is empty")
+// 	}
+// 	return nil
+// }
 
 func (x *SetConversationReq) Check() error {
 	if err := x.Conversation.Check(); err != nil {

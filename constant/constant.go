@@ -240,6 +240,10 @@ const (
 	ReceiveMessage          = 0
 	NotReceiveMessage       = 1
 	ReceiveNotNotifyMessage = 2
+	ReceiveNotPushMessage   = 3
+
+	NewMsgPushSettingAllowed = 1
+	NewMsgPushSettingDenied  = 2
 
 	// OptionsKey.
 	IsHistory                  = "history"
@@ -361,20 +365,17 @@ var ContentType2PushContent = map[int64]string{
 }
 
 var ContentType2PushContentI18n = map[int64]string{
-	Picture:                               "收到一条图片消息",
-	Voice:                                 "收到一条语音消息",
-	Video:                                 "收到一条视频消息",
-	File:                                  "收到一条文件消息",
-	Text:                                  "收到一条新消息",
-	AtText:                                "有人@了你",
-	GroupMsg:                              "收到一条群消息",
-	Common:                                "收到一条新消息",
-	SignalMsg:                             "收到一条新消息",
-	Transfer:                              "收到一条转账消息",
-	RedPacket:                             "收到一条红包消息",
-	JoinServerApplicationNotification:     "收到一个部落申请",
-	ServerApplicationAcceptedNotification: "你的部落申请被通过了",
-	ServerApplicationRejectedNotification: "你的部落申请被拒绝了",
+	Picture:   "收到一条图片消息",
+	Voice:     "收到一条语音消息",
+	Video:     "收到一条视频消息",
+	File:      "收到一条文件消息",
+	Text:      "收到一条新消息",
+	AtText:    "有人@了你",
+	GroupMsg:  "收到一条群消息",
+	Common:    "收到一条新消息",
+	SignalMsg: "收到一条新消息",
+	Transfer:  "收到一条转账消息",
+	RedPacket: "收到一条红包消息",
 }
 
 const (
@@ -507,6 +508,11 @@ const (
 const (
 	ServerInvitedDenied  = 0 // 不可以邀请
 	ServerInvitedAllowed = 1 // 可以邀请
+)
+
+const (
+	ServerCommunityPrivate = 0 // 部落社区私密
+	ServerCommunityPublic  = 1 // 部落社区公开
 )
 
 const (

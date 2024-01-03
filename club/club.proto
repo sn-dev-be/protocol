@@ -33,7 +33,7 @@ message CreateServerReq {
   string ex = 12;
 }
 message CreateServerResp {
-    string serverID = 1;
+  string serverID = 1;
 }
 
 message CreateGroupCategoryReq {
@@ -42,7 +42,14 @@ message CreateGroupCategoryReq {
   string ownerUserID = 3;
 }
 message CreateGroupCategoryResp {
-    sdkws.GroupCategoryInfo groupCategory = 1;
+  sdkws.GroupCategoryInfo groupCategory = 1;
+}
+
+message GetGroupCategoriesReq{
+  repeated string categoryIDs = 1;
+}
+message GetGroupCategoriesResp{
+  repeated sdkws.GroupCategoryInfo groupCategories = 1;
 }
 
 message DeleteGroupCategoryReq {
@@ -337,12 +344,26 @@ message GetServerGroupsInfoResp{
   repeated sdkws.GroupInfo groupInfos = 1;
 }
 
+message GetGroupsByServerReq{
+  repeated string serverIDs = 1;
+}
+message GetGroupsByServerResp{
+  repeated sdkws.GroupInfo groupInfos = 1;
+}
+
 message GetServerGroupMembersInfoReq {
   string groupID = 1;
   repeated string userIDs = 2;
 }
 message GetServerGroupMembersInfoResp {
   repeated sdkws.ServerMemberFullInfo members = 1;
+}
+
+message getServerGroupBaseInfosReq{
+  repeated string groupIDs = 1;
+}
+message getServerGroupBaseInfosResp{
+  repeated sdkws.ServerGroupBaseInfo serverGroupBaseInfos = 1;
 }
 // serverRequest
 
@@ -472,6 +493,7 @@ service club {
 
   // 创建分组
   rpc createGroupCategory(CreateGroupCategoryReq) returns (CreateGroupCategoryResp);
+  rpc getGroupCategories(GetGroupCategoriesReq) returns (GetGroupCategoriesResp);
   rpc deleteGroupCategory(DeleteGroupCategoryReq) returns(DeleteGroupCategoryResp);
   rpc setGroupCategoryInfo(SetGroupCategoryInfoReq) returns(SetGroupCategoryInfoResp);
   rpc setGroupCategoryOrder(SetGroupCategoryOrderReq) returns(SetGroupCategoryOrderResp);
@@ -505,8 +527,13 @@ service club {
   rpc getServerGroupMemberUserIDs(GetServerGroupMemberUserIDsReq) returns(GetServerGroupMemberUserIDsResp);
   //获取指定部落群信息
   rpc getServerGroupsInfo(GetServerGroupsInfoReq) returns(GetServerGroupsInfoResp);
+  rpc getGroupsByServer(GetGroupsByServerReq) returns(GetGroupsByServerResp);
+
   //获取某个群的指定群成员
   rpc getServerGroupMembersInfo(GetServerGroupMembersInfoReq) returns(GetServerGroupMembersInfoResp);
+
+    //获取某个群的指定群成员
+  rpc getServerGroupBaseInfos(getServerGroupBaseInfosReq) returns(getServerGroupBaseInfosResp);
 
 
   // serverMember

@@ -15,6 +15,7 @@
 syntax = "proto3";
 package OpenIMServer.user;
 import "sdkws/sdkws.proto";
+import "wrapperspb/wrapperspb.proto";
 import "conversation/conversation.proto";
 option go_package = "github.com/OpenIMSDK/protocol/user";
 
@@ -54,7 +55,11 @@ message updateUserInfoResp{
 
 message setGlobalRecvMessageOptReq{
   string userID = 1;
-  int32 globalRecvMsgOpt = 3;
+  OpenIMServer.protobuf.Int32Value globalRecvMsgOpt = 2;
+  OpenIMServer.protobuf.Int32Value allowBeep = 3;
+  OpenIMServer.protobuf.Int32Value allowVibration = 4;
+  OpenIMServer.protobuf.Int32Value allowPushContent = 5;
+  OpenIMServer.protobuf.Int32Value allowOnlinePush = 6;
 }
 message setGlobalRecvMessageOptResp{
 }
@@ -146,6 +151,10 @@ message getGlobalRecvMessageOptReq{
 
 message getGlobalRecvMessageOptResp{
   int32 globalRecvMsgOpt = 1;
+  int32 allowBeep = 2;
+  int32 allowVibration = 3;
+  int32 allowPushContent = 4;
+  int32 allowOnlinePush = 5;
 }
 
 message userRegisterCountReq {
@@ -199,10 +208,8 @@ message setUserStatusReq{
   int32 platformID = 3;
 }
 
-
 message setUserStatusResp {
 }
-
 
 
 service user {
