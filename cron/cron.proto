@@ -16,13 +16,13 @@ syntax = "proto3";
 package OpenIMServer.cron;
 option go_package = "github.com/OpenIMSDK/protocol/cron";
 
-message AddClearMsgJobReq {
+message SetClearMsgJobReq {
   string conversationID = 1;
-  int32 cronCycle = 3;
+  int32 cronCycle = 2;
+  int32 conversationType = 3;
 }
-message AddClearMsgJobResp {}
+message SetClearMsgJobResp {}
 
 service cron {
-  rpc AddClearMsgJob(AddClearMsgJobReq) returns (AddClearMsgJobResp);
-  rpc RemoveClearMsgJob(AddClearMsgJobReq) returns (AddClearMsgJobResp);
+  rpc SetClearMsgJob(SetClearMsgJobReq) returns (SetClearMsgJobResp);
 }

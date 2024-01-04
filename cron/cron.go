@@ -16,7 +16,7 @@ package cron
 
 import "errors"
 
-func (x *AddClearMsgJobReq) Check() error {
+func (x *SetClearMsgJobReq) Check() error {
 	if x.ConversationID == "" {
 		return errors.New("ConversationID is empty")
 	}

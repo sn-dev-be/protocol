@@ -136,6 +136,7 @@ const (
 	SuperGroupNotificationBegin  = 165
 	SuperGroupUpdateNotification = 1651
 	MsgDeleteNotification        = 1652
+	CronMsgClearSetNotification  = 1653
 	SuperGroupNotificationEnd    = 1699
 
 	ConversationPrivateChatNotification = 1701
@@ -539,8 +540,9 @@ const (
 )
 
 const (
-	CrontabDay       = 0
-	CrontabWeek      = 1
-	CrontabHalfMonth = 2
-	CrontabMonth     = 3
+	CrontabDisable   = 0
+	CrontabDay       = 1
+	CrontabWeek      = 2
+	CrontabHalfMonth = 3
+	CrontabMonth     = 4
 )
