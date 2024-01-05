@@ -38,17 +38,18 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-type AddClearMsgJobReq struct {
+type SetClearMsgJobReq struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ConversationID string `protobuf:"bytes,1,opt,name=conversationID,proto3" json:"conversationID,omitempty"`
-	CronCycle      int32  `protobuf:"varint,3,opt,name=cronCycle,proto3" json:"cronCycle,omitempty"`
+	ConversationID   string `protobuf:"bytes,1,opt,name=conversationID,proto3" json:"conversationID,omitempty"`
+	CronCycle        int32  `protobuf:"varint,2,opt,name=cronCycle,proto3" json:"cronCycle,omitempty"`
+	ConversationType int32  `protobuf:"varint,3,opt,name=conversationType,proto3" json:"conversationType,omitempty"`
 }
 
-func (x *AddClearMsgJobReq) Reset() {
-	*x = AddClearMsgJobReq{}
+func (x *SetClearMsgJobReq) Reset() {
+	*x = SetClearMsgJobReq{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_cron_cron_proto_msgTypes[0]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -56,13 +57,13 @@ func (x *AddClearMsgJobReq) Reset() {
 	}
 }
 
-func (x *AddClearMsgJobReq) String() string {
+func (x *SetClearMsgJobReq) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*AddClearMsgJobReq) ProtoMessage() {}
+func (*SetClearMsgJobReq) ProtoMessage() {}
 
-func (x *AddClearMsgJobReq) ProtoReflect() protoreflect.Message {
+func (x *SetClearMsgJobReq) ProtoReflect() protoreflect.Message {
 	mi := &file_cron_cron_proto_msgTypes[0]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -74,33 +75,40 @@ func (x *AddClearMsgJobReq) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use AddClearMsgJobReq.ProtoReflect.Descriptor instead.
-func (*AddClearMsgJobReq) Descriptor() ([]byte, []int) {
+// Deprecated: Use SetClearMsgJobReq.ProtoReflect.Descriptor instead.
+func (*SetClearMsgJobReq) Descriptor() ([]byte, []int) {
 	return file_cron_cron_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *AddClearMsgJobReq) GetConversationID() string {
+func (x *SetClearMsgJobReq) GetConversationID() string {
 	if x != nil {
 		return x.ConversationID
 	}
 	return ""
 }
 
-func (x *AddClearMsgJobReq) GetCronCycle() int32 {
+func (x *SetClearMsgJobReq) GetCronCycle() int32 {
 	if x != nil {
 		return x.CronCycle
 	}
 	return 0
 }
 
-type AddClearMsgJobResp struct {
+func (x *SetClearMsgJobReq) GetConversationType() int32 {
+	if x != nil {
+		return x.ConversationType
+	}
+	return 0
+}
+
+type SetClearMsgJobResp struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 }
 
-func (x *AddClearMsgJobResp) Reset() {
-	*x = AddClearMsgJobResp{}
+func (x *SetClearMsgJobResp) Reset() {
+	*x = SetClearMsgJobResp{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_cron_cron_proto_msgTypes[1]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -108,13 +116,13 @@ func (x *AddClearMsgJobResp) Reset() {
 	}
 }
 
-func (x *AddClearMsgJobResp) String() string {
+func (x *SetClearMsgJobResp) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*AddClearMsgJobResp) ProtoMessage() {}
+func (*SetClearMsgJobResp) ProtoMessage() {}
 
-func (x *AddClearMsgJobResp) ProtoReflect() protoreflect.Message {
+func (x *SetClearMsgJobResp) ProtoReflect() protoreflect.Message {
 	mi := &file_cron_cron_proto_msgTypes[1]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -126,8 +134,8 @@ func (x *AddClearMsgJobResp) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use AddClearMsgJobResp.ProtoReflect.Descriptor instead.
-func (*AddClearMsgJobResp) Descriptor() ([]byte, []int) {
+// Deprecated: Use SetClearMsgJobResp.ProtoReflect.Descriptor instead.
+func (*SetClearMsgJobResp) Descriptor() ([]byte, []int) {
 	return file_cron_cron_proto_rawDescGZIP(), []int{1}
 }
 
@@ -136,29 +144,26 @@ var File_cron_cron_proto protoreflect.FileDescriptor
 var file_cron_cron_proto_rawDesc = []byte{
 	0x0a, 0x0f, 0x63, 0x72, 0x6f, 0x6e, 0x2f, 0x63, 0x72, 0x6f, 0x6e, 0x2e, 0x70, 0x72, 0x6f, 0x74,
 	0x6f, 0x12, 0x11, 0x4f, 0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x2e,
-	0x63, 0x72, 0x6f, 0x6e, 0x22, 0x59, 0x0a, 0x11, 0x41, 0x64, 0x64, 0x43, 0x6c, 0x65, 0x61, 0x72,
-	0x4d, 0x73, 0x67, 0x4a, 0x6f, 0x62, 0x52, 0x65, 0x71, 0x12, 0x26, 0x0a, 0x0e, 0x63, 0x6f, 0x6e,
-	0x76, 0x65, 0x72, 0x73, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x49, 0x44, 0x18, 0x01, 0x20, 0x01, 0x28,
-	0x09, 0x52, 0x0e, 0x63, 0x6f, 0x6e, 0x76, 0x65, 0x72, 0x73, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x49,
-	0x44, 0x12, 0x1c, 0x0a, 0x09, 0x63, 0x72, 0x6f, 0x6e, 0x43, 0x79, 0x63, 0x6c, 0x65, 0x18, 0x03,
-	0x20, 0x01, 0x28, 0x05, 0x52, 0x09, 0x63, 0x72, 0x6f, 0x6e, 0x43, 0x79, 0x63, 0x6c, 0x65, 0x22,
-	0x14, 0x0a, 0x12, 0x41, 0x64, 0x64, 0x43, 0x6c, 0x65, 0x61, 0x72, 0x4d, 0x73, 0x67, 0x4a, 0x6f,
-	0x62, 0x52, 0x65, 0x73, 0x70, 0x32, 0xc7, 0x01, 0x0a, 0x04, 0x63, 0x72, 0x6f, 0x6e, 0x12, 0x5d,
-	0x0a, 0x0e, 0x41, 0x64, 0x64, 0x43, 0x6c, 0x65, 0x61, 0x72, 0x4d, 0x73, 0x67, 0x4a, 0x6f, 0x62,
-	0x12, 0x24, 0x2e, 0x4f, 0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x2e,
-	0x63, 0x72, 0x6f, 0x6e, 0x2e, 0x41, 0x64, 0x64, 0x43, 0x6c, 0x65, 0x61, 0x72, 0x4d, 0x73, 0x67,
-	0x4a, 0x6f, 0x62, 0x52, 0x65, 0x71, 0x1a, 0x25, 0x2e, 0x4f, 0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53,
-	0x65, 0x72, 0x76, 0x65, 0x72, 0x2e, 0x63, 0x72, 0x6f, 0x6e, 0x2e, 0x41, 0x64, 0x64, 0x43, 0x6c,
-	0x65, 0x61, 0x72, 0x4d, 0x73, 0x67, 0x4a, 0x6f, 0x62, 0x52, 0x65, 0x73, 0x70, 0x12, 0x60, 0x0a,
-	0x11, 0x52, 0x65, 0x6d, 0x6f, 0x76, 0x65, 0x43, 0x6c, 0x65, 0x61, 0x72, 0x4d, 0x73, 0x67, 0x4a,
-	0x6f, 0x62, 0x12, 0x24, 0x2e, 0x4f, 0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53, 0x65, 0x72, 0x76, 0x65,
-	0x72, 0x2e, 0x63, 0x72, 0x6f, 0x6e, 0x2e, 0x41, 0x64, 0x64, 0x43, 0x6c, 0x65, 0x61, 0x72, 0x4d,
-	0x73, 0x67, 0x4a, 0x6f, 0x62, 0x52, 0x65, 0x71, 0x1a, 0x25, 0x2e, 0x4f, 0x70, 0x65, 0x6e, 0x49,
-	0x4d, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x2e, 0x63, 0x72, 0x6f, 0x6e, 0x2e, 0x41, 0x64, 0x64,
-	0x43, 0x6c, 0x65, 0x61, 0x72, 0x4d, 0x73, 0x67, 0x4a, 0x6f, 0x62, 0x52, 0x65, 0x73, 0x70, 0x42,
-	0x24, 0x5a, 0x22, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x4f, 0x70,
-	0x65, 0x6e, 0x49, 0x4d, 0x53, 0x44, 0x4b, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x63, 0x6f, 0x6c,
-	0x2f, 0x63, 0x72, 0x6f, 0x6e, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x63, 0x72, 0x6f, 0x6e, 0x22, 0x85, 0x01, 0x0a, 0x11, 0x53, 0x65, 0x74, 0x43, 0x6c, 0x65, 0x61,
+	0x72, 0x4d, 0x73, 0x67, 0x4a, 0x6f, 0x62, 0x52, 0x65, 0x71, 0x12, 0x26, 0x0a, 0x0e, 0x63, 0x6f,
+	0x6e, 0x76, 0x65, 0x72, 0x73, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x49, 0x44, 0x18, 0x01, 0x20, 0x01,
+	0x28, 0x09, 0x52, 0x0e, 0x63, 0x6f, 0x6e, 0x76, 0x65, 0x72, 0x73, 0x61, 0x74, 0x69, 0x6f, 0x6e,
+	0x49, 0x44, 0x12, 0x1c, 0x0a, 0x09, 0x63, 0x72, 0x6f, 0x6e, 0x43, 0x79, 0x63, 0x6c, 0x65, 0x18,
+	0x02, 0x20, 0x01, 0x28, 0x05, 0x52, 0x09, 0x63, 0x72, 0x6f, 0x6e, 0x43, 0x79, 0x63, 0x6c, 0x65,
+	0x12, 0x2a, 0x0a, 0x10, 0x63, 0x6f, 0x6e, 0x76, 0x65, 0x72, 0x73, 0x61, 0x74, 0x69, 0x6f, 0x6e,
+	0x54, 0x79, 0x70, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x05, 0x52, 0x10, 0x63, 0x6f, 0x6e, 0x76,
+	0x65, 0x72, 0x73, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x54, 0x79, 0x70, 0x65, 0x22, 0x14, 0x0a, 0x12,
+	0x53, 0x65, 0x74, 0x43, 0x6c, 0x65, 0x61, 0x72, 0x4d, 0x73, 0x67, 0x4a, 0x6f, 0x62, 0x52, 0x65,
+	0x73, 0x70, 0x32, 0x65, 0x0a, 0x04, 0x63, 0x72, 0x6f, 0x6e, 0x12, 0x5d, 0x0a, 0x0e, 0x53, 0x65,
+	0x74, 0x43, 0x6c, 0x65, 0x61, 0x72, 0x4d, 0x73, 0x67, 0x4a, 0x6f, 0x62, 0x12, 0x24, 0x2e, 0x4f,
+	0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x2e, 0x63, 0x72, 0x6f, 0x6e,
+	0x2e, 0x53, 0x65, 0x74, 0x43, 0x6c, 0x65, 0x61, 0x72, 0x4d, 0x73, 0x67, 0x4a, 0x6f, 0x62, 0x52,
+	0x65, 0x71, 0x1a, 0x25, 0x2e, 0x4f, 0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53, 0x65, 0x72, 0x76, 0x65,
+	0x72, 0x2e, 0x63, 0x72, 0x6f, 0x6e, 0x2e, 0x53, 0x65, 0x74, 0x43, 0x6c, 0x65, 0x61, 0x72, 0x4d,
+	0x73, 0x67, 0x4a, 0x6f, 0x62, 0x52, 0x65, 0x73, 0x70, 0x42, 0x24, 0x5a, 0x22, 0x67, 0x69, 0x74,
+	0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x4f, 0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53, 0x44,
+	0x4b, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x63, 0x6f, 0x6c, 0x2f, 0x63, 0x72, 0x6f, 0x6e, 0x62,
+	0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -175,16 +180,14 @@ func file_cron_cron_proto_rawDescGZIP() []byte {
 
 var file_cron_cron_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
 var file_cron_cron_proto_goTypes = []interface{}{
-	(*AddClearMsgJobReq)(nil),  // 0: OpenIMServer.cron.AddClearMsgJobReq
-	(*AddClearMsgJobResp)(nil), // 1: OpenIMServer.cron.AddClearMsgJobResp
+	(*SetClearMsgJobReq)(nil),  // 0: OpenIMServer.cron.SetClearMsgJobReq
+	(*SetClearMsgJobResp)(nil), // 1: OpenIMServer.cron.SetClearMsgJobResp
 }
 var file_cron_cron_proto_depIdxs = []int32{
-	0, // 0: OpenIMServer.cron.cron.AddClearMsgJob:input_type -> OpenIMServer.cron.AddClearMsgJobReq
-	0, // 1: OpenIMServer.cron.cron.RemoveClearMsgJob:input_type -> OpenIMServer.cron.AddClearMsgJobReq
-	1, // 2: OpenIMServer.cron.cron.AddClearMsgJob:output_type -> OpenIMServer.cron.AddClearMsgJobResp
-	1, // 3: OpenIMServer.cron.cron.RemoveClearMsgJob:output_type -> OpenIMServer.cron.AddClearMsgJobResp
-	2, // [2:4] is the sub-list for method output_type
-	0, // [0:2] is the sub-list for method input_type
+	0, // 0: OpenIMServer.cron.cron.SetClearMsgJob:input_type -> OpenIMServer.cron.SetClearMsgJobReq
+	1, // 1: OpenIMServer.cron.cron.SetClearMsgJob:output_type -> OpenIMServer.cron.SetClearMsgJobResp
+	1, // [1:2] is the sub-list for method output_type
+	0, // [0:1] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
 	0, // [0:0] is the sub-list for extension extendee
 	0, // [0:0] is the sub-list for field type_name
@@ -197,7 +200,7 @@ func file_cron_cron_proto_init() {
 	}
 	if !protoimpl.UnsafeEnabled {
 		file_cron_cron_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AddClearMsgJobReq); i {
+			switch v := v.(*SetClearMsgJobReq); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -209,7 +212,7 @@ func file_cron_cron_proto_init() {
 			}
 		}
 		file_cron_cron_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AddClearMsgJobResp); i {
+			switch v := v.(*SetClearMsgJobResp); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -253,8 +256,7 @@ const _ = grpc.SupportPackageIsVersion6
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type CronClient interface {
-	AddClearMsgJob(ctx context.Context, in *AddClearMsgJobReq, opts ...grpc.CallOption) (*AddClearMsgJobResp, error)
-	RemoveClearMsgJob(ctx context.Context, in *AddClearMsgJobReq, opts ...grpc.CallOption) (*AddClearMsgJobResp, error)
+	SetClearMsgJob(ctx context.Context, in *SetClearMsgJobReq, opts ...grpc.CallOption) (*SetClearMsgJobResp, error)
 }
 
 type cronClient struct {
@@ -265,18 +267,9 @@ func NewCronClient(cc grpc.ClientConnInterface) CronClient {
 	return &cronClient{cc}
 }
 
-func (c *cronClient) AddClearMsgJob(ctx context.Context, in *AddClearMsgJobReq, opts ...grpc.CallOption) (*AddClearMsgJobResp, error) {
-	out := new(AddClearMsgJobResp)
-	err := c.cc.Invoke(ctx, "/OpenIMServer.cron.cron/AddClearMsgJob", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *cronClient) RemoveClearMsgJob(ctx context.Context, in *AddClearMsgJobReq, opts ...grpc.CallOption) (*AddClearMsgJobResp, error) {
-	out := new(AddClearMsgJobResp)
-	err := c.cc.Invoke(ctx, "/OpenIMServer.cron.cron/RemoveClearMsgJob", in, out, opts...)
+func (c *cronClient) SetClearMsgJob(ctx context.Context, in *SetClearMsgJobReq, opts ...grpc.CallOption) (*SetClearMsgJobResp, error) {
+	out := new(SetClearMsgJobResp)
+	err := c.cc.Invoke(ctx, "/OpenIMServer.cron.cron/SetClearMsgJob", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -285,57 +278,35 @@ func (c *cronClient) RemoveClearMsgJob(ctx context.Context, in *AddClearMsgJobRe
 
 // CronServer is the server API for Cron service.
 type CronServer interface {
-	AddClearMsgJob(context.Context, *AddClearMsgJobReq) (*AddClearMsgJobResp, error)
-	RemoveClearMsgJob(context.Context, *AddClearMsgJobReq) (*AddClearMsgJobResp, error)
+	SetClearMsgJob(context.Context, *SetClearMsgJobReq) (*SetClearMsgJobResp, error)
 }
 
 // UnimplementedCronServer can be embedded to have forward compatible implementations.
 type UnimplementedCronServer struct {
 }
 
-func (*UnimplementedCronServer) AddClearMsgJob(context.Context, *AddClearMsgJobReq) (*AddClearMsgJobResp, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method AddClearMsgJob not implemented")
-}
-func (*UnimplementedCronServer) RemoveClearMsgJob(context.Context, *AddClearMsgJobReq) (*AddClearMsgJobResp, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method RemoveClearMsgJob not implemented")
+func (*UnimplementedCronServer) SetClearMsgJob(context.Context, *SetClearMsgJobReq) (*SetClearMsgJobResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SetClearMsgJob not implemented")
 }
 
 func RegisterCronServer(s *grpc.Server, srv CronServer) {
 	s.RegisterService(&_Cron_serviceDesc, srv)
 }
 
-func _Cron_AddClearMsgJob_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(AddClearMsgJobReq)
+func _Cron_SetClearMsgJob_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SetClearMsgJobReq)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(CronServer).AddClearMsgJob(ctx, in)
+		return srv.(CronServer).SetClearMsgJob(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/OpenIMServer.cron.cron/AddClearMsgJob",
+		FullMethod: "/OpenIMServer.cron.cron/SetClearMsgJob",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CronServer).AddClearMsgJob(ctx, req.(*AddClearMsgJobReq))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _Cron_RemoveClearMsgJob_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(AddClearMsgJobReq)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(CronServer).RemoveClearMsgJob(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/OpenIMServer.cron.cron/RemoveClearMsgJob",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CronServer).RemoveClearMsgJob(ctx, req.(*AddClearMsgJobReq))
+		return srv.(CronServer).SetClearMsgJob(ctx, req.(*SetClearMsgJobReq))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -345,12 +316,8 @@ var _Cron_serviceDesc = grpc.ServiceDesc{
 	HandlerType: (*CronServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "AddClearMsgJob",
-			Handler:    _Cron_AddClearMsgJob_Handler,
-		},
-		{
-			MethodName: "RemoveClearMsgJob",
-			Handler:    _Cron_RemoveClearMsgJob_Handler,
+			MethodName: "SetClearMsgJob",
+			Handler:    _Cron_SetClearMsgJob_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
