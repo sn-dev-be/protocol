@@ -540,9 +540,9 @@ const (
 )
 
 const (
-	CrontabDisable   = 0
-	CrontabDay       = 1
-	CrontabWeek      = 2
-	CrontabHalfMonth = 3
-	CrontabMonth     = 4
+	CrontabDisable   = 1
+	CrontabDay       = 2
+	CrontabWeek      = 3
+	CrontabHalfMonth = 4
+	CrontabMonth     = 5
 )
