@@ -23,6 +23,14 @@ message SetClearMsgJobReq {
 }
 message SetClearMsgJobResp {}
 
+message GetClearMsgJobReq { 
+  string conversationID = 1; 
+}
+message GetClearMsgJobResp {
+  int32 cronCycle = 1;
+}
+
 service cron {
   rpc SetClearMsgJob(SetClearMsgJobReq) returns (SetClearMsgJobResp);
+  rpc GetClearMsgJob(GetClearMsgJobReq) returns (GetClearMsgJobResp);
 }
