@@ -115,6 +115,14 @@ message CreateGroupChatConversationsReq {
 message CreateGroupChatConversationsResp {
 }
 
+message CreateServerChatConversationsReq {
+  repeated string userIDs = 1;
+  string serverID = 2;
+}
+
+message CreateServerChatConversationsResp {
+}
+
 message SetConversationMaxSeqReq {
   string conversationID = 1;
   repeated string ownerUserID = 2;
@@ -176,6 +184,7 @@ service conversation {
   rpc CreateSingleChatConversations(CreateSingleChatConversationsReq) returns (CreateSingleChatConversationsResp);
   rpc CreateGroupChatConversations(CreateGroupChatConversationsReq) returns (CreateGroupChatConversationsResp);
   rpc CreateServerGroupChatConversations(CreateGroupChatConversationsReq) returns (CreateGroupChatConversationsResp);
+  rpc CreateServerChatConversations(CreateServerChatConversationsReq) returns (CreateServerChatConversationsResp);
   rpc SetConversationMaxSeq(SetConversationMaxSeqReq) returns(SetConversationMaxSeqResp);
   rpc GetConversationIDs(GetConversationIDsReq) returns(GetConversationIDsResp);
   rpc SetConversations(SetConversationsReq) returns(SetConversationsResp);
