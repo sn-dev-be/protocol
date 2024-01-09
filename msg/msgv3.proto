@@ -15,6 +15,7 @@
 syntax = "proto3";
 package OpenIMServer.msg;
 import "sdkws/sdkws.proto";
+import "common/common.proto";
 // import "wrapperspb/wrapperspb.proto";
 option go_package = "github.com/OpenIMSDK/protocol/msg";
 
@@ -272,6 +273,13 @@ message batchSendMessageResp {}
 message GetServerTimeReq {}
 message GetServerTimeResp { int64 serverTime = 1; }
 
+message SendBusinessEventToMQReq {
+  repeated common.BusinessMQEvent events = 1;
+}
+message SendBusinessEventToMQResp {
+ 
+}
+
 service msg {
   // 获取最小最大seq（包括用户的，以及指定群组的）
   rpc GetMaxSeq(sdkws.GetMaxSeqReq) returns (sdkws.GetMaxSeqResp);
@@ -322,4 +330,7 @@ service msg {
       returns (SetRedPacketMsgStatusResp);
 
   rpc ModifyMsg(ModifyMsgReq) returns (ModifyMsgResp);
+
+  //send event to businessMQ
+  rpc SendBusinessEventToMQ(SendBusinessEventToMQReq) returns (SendBusinessEventToMQResp);
 }

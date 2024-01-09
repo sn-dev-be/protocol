@@ -541,8 +541,25 @@ const (
 
 const (
 	CrontabDisable   = 1
-	CrontabDay       = 2
-	CrontabWeek      = 3
-	CrontabHalfMonth = 4
-	CrontabMonth     = 5
+	CrontabDayOne    = 2
+	CrontabDayTwo    = 3
+	CrontabDayThree  = 4
+	CrontabDayFour   = 5
+	CrontabDayFive   = 6
+	CrontabDaySix    = 7
+	CrontabWeekOne   = 8
+	CrontabWeekTwo   = 9
+	CrontabWeekThree = 10
+	CrontabMonth     = 11
+)
+
+const (
+	ClubServerMQEventType   = "create-club-server"
+	DeleteServerMQEventType = "delete-club-server"
+
+	ClubServerUserMQEventType       = "create-club-server-user"
+	DeleteClubServerUserMQEventType = "delete-club-server-user"
+
+	UserRelationMQEventType       = "create-user-relation"
+	DeleteUserRelationMQEventType = "delete-user-relation"
 )
