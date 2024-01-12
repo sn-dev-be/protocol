@@ -20,6 +20,8 @@ message SetClearMsgJobReq {
   string conversationID = 1;
   int32 cronCycle = 2;
   int32 conversationType = 3;
+  string userID = 4;
+  string groupID = 5;
 }
 message SetClearMsgJobResp {}
 
