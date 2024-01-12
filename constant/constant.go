@@ -184,7 +184,9 @@ const (
 	ServerMemberSetToOrdinaryUserNotification = 1818
 	ServerInfoSetAnnouncementNotification     = 1819
 	ServerInfoSetNameNotification             = 1820
-	ServerNotificationEnd                     = 1899
+	ServerDissmissedNotification              = 1821
+
+	ServerNotificationEnd = 1899
 
 	ClearConversationNotification = 2101
 	DeleteMsgsNotification        = 2102

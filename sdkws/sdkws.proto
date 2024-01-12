@@ -606,16 +606,6 @@ message ModifyMessageTips {
 }
 
 ////////////////////club///////////////////////
-
-//	OnServerCreated()
-message ServerCreatedTips {
-  ServerInfo server = 1;
-  ServerMemberFullInfo opUser = 2;
-  repeated ServerMemberFullInfo memberList = 3;
-  int64 operationTime = 4;
-  repeated GroupInfo serverGroupList = 5;
-}
-
 message GroupCategoryInfo {
   string categoryID = 1;
   string categoryName = 2;
@@ -706,6 +696,7 @@ message ServerMemberFullInfo {
   string inviterUserID = 11;
   int32 appMangerLevel = 12;
   string operatorUserID = 13;
+  int32 reorderWeight = 14;
 }
 
 message ServerRequest {
@@ -759,7 +750,41 @@ message ServerMuteRecord {
   UserInfo blockUser = 3;
 }
 
+message ServerGroupBaseInfo {
+  string groupID = 1;
+  string groupName = 2;
+  string groupFaceUrl = 3;
+  string serverID = 4;
+  string serverName = 5;
+  string serverIconUrl = 6;
+  string serverOwnerUserID = 7;
+  string condition = 8;
+  int32 conditionType = 9;
+}
+
 // tips
+message ServerCreatedTips {
+  ServerInfo server = 1;
+  ServerMemberFullInfo opUser = 2;
+  repeated ServerMemberFullInfo memberList = 3;
+  int64 operationTime = 4;
+  repeated GroupInfo serverGroupList = 5;
+}
+
+message serverInfoSetTips {
+  ServerInfo server = 1;
+  ServerMemberFullInfo opUser = 2;
+  repeated string memberUserIDList = 3;
+  int64 operationTime = 4;
+}
+
+message ServerDissmissedTips {
+  string serverID = 1;
+  ServerMemberFullInfo opUser = 2;
+  repeated string memberUserIDList = 3;
+  int64 operationTime = 4;
+}
+
 message JoinServerApplicationTips {
   ServerInfo server = 1;
   PublicUserInfo applicant = 2;
@@ -782,17 +807,44 @@ message ServerApplicationRejectedTips {
   int32 receiverAs = 5; // admin(==1) or applicant(==0)
 }
 
-message ServerGroupBaseInfo {
-  string groupID = 1;
-  string groupName = 2;
-  string groupFaceUrl = 3;
-  string serverID = 4;
-  string serverName = 5;
-  string serverIconUrl = 6;
-  string serverOwnerUserID = 7;
-  string condition = 8;
-  int32 conditionType = 9;
+message ServerMemberEnterTips{
+  string serverID = 1;
+  ServerMemberFullInfo user = 2;
+  repeated string memberUserIDList = 3;
+  int64 operationTime = 4;
 }
+message ServerMemberQuitTips{
+  string serverID = 1;
+  ServerMemberFullInfo user = 2;
+  repeated string memberUserIDList = 3;
+  int64 operationTime = 4;
+}
+message ServerMemberKickedTips{
+  string serverID = 1;
+  ServerMemberFullInfo user = 2;
+  repeated string memberUserIDList = 3;
+  int64 operationTime = 4;
+}
+message ServerMemberInfoSetTips{
+  string serverID = 1;
+  ServerMemberFullInfo user = 2;
+  repeated string memberUserIDList = 3;
+  int64 operationTime = 4;
+}
+message ServerMemberMutedTips{
+  string serverID = 1;
+  ServerMemberFullInfo opUser = 2;
+  repeated string memberUserIDList = 3;
+  int64 operationTime = 4;
+  uint32 mutedSeconds = 5;
+}
+message ServerMemberCancelMutedTips{
+  string serverID = 1;
+  ServerMemberFullInfo opUser = 2;
+  repeated string memberUserIDList = 3;
+  int64 operationTime = 4;
+}
+
 //////////////////////club end/////////////////////
 
 ////////////////////cron///////////////////////

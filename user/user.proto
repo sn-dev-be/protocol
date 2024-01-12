@@ -239,5 +239,5 @@ service user {
   rpc getUserStatus(getUserStatusReq)returns(getUserStatusResp);
   //The gateway synchronizes the online status of users in redis
   rpc setUserStatus(setUserStatusReq)returns(setUserStatusResp);
-}
+  }
 
