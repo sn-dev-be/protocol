@@ -382,6 +382,11 @@ var ContentType2PushContentI18n = map[int64]string{
 }
 
 const (
+	EN_US = "en_US"
+	ZH_CZ = "zh_CZ"
+)
+
+const (
 	FieldRecvMsgOpt    = 1
 	FieldIsPinned      = 2
 	FieldAttachedInfo  = 3
