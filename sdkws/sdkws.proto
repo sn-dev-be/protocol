@@ -94,6 +94,7 @@ message UserInfo {
   int32 allowVibration = 9;
   int32 allowPushContent = 10;
   int32 allowOnlinePush = 11;
+  string language = 12;
 }
 
 message FriendInfo {

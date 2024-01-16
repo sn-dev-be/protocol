@@ -155,6 +155,7 @@ message getGlobalRecvMessageOptResp{
   int32 allowVibration = 3;
   int32 allowPushContent = 4;
   int32 allowOnlinePush = 5;
+  string language = 6;
 }
 
 message userRegisterCountReq {
