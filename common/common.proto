@@ -30,8 +30,9 @@ message CommonBusinessMQEvent {
 message ClubServer {
 	string club_server_id = 1;
 	string name = 2;
-	string banner = 3;
-	bool   is_public = 4;
+	string icon = 3;
+	string banner = 4;
+	bool   is_public = 5;
 }
 
 message ClubServerUser {
