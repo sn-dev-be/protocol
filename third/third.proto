@@ -36,8 +36,7 @@ message AuthSignParts {
   repeated SignPart parts = 4;
 }
 
-message PartLimitReq {
-}
+message PartLimitReq {}
 
 message PartLimitResp {
   int64 minPartSize = 1;
@@ -45,13 +44,9 @@ message PartLimitResp {
   int32 maxNumSize = 3;
 }
 
-message PartSizeReq {
-  int64 size = 1;
-}
+message PartSizeReq { int64 size = 1; }
 
-message PartSizeResp {
-  int64 size = 2;
-}
+message PartSizeResp { int64 size = 2; }
 
 message InitiateMultipartUploadReq {
   string hash = 1;
@@ -95,9 +90,7 @@ message CompleteMultipartUploadReq {
   string cause = 5;
 }
 
-message CompleteMultipartUploadResp {
-  string url = 1;
-}
+message CompleteMultipartUploadResp { string url = 1; }
 
 message AccessURLReq {
   string name = 1;
@@ -116,22 +109,20 @@ message FcmUpdateTokenReq {
   int64 expireTime = 4;
 }
 
-message FcmUpdateTokenResp {
-}
+message FcmUpdateTokenResp {}
 
 message SetAppBadgeReq {
   string userID = 1;
   int32 appUnreadCount = 2;
 }
 
-message SetAppBadgeResp {
-}
+message SetAppBadgeResp {}
 
-message fileURL{
+message fileURL {
   string filename = 1;
   string URL = 2;
 }
-message UploadLogsReq{
+message UploadLogsReq {
   int32 platform = 1;
   repeated fileURL fileURLs = 2;
   string systemType = 3;
@@ -139,60 +130,60 @@ message UploadLogsReq{
   string ex = 4;
 }
 
-message UploadLogsResp{
-}
+message UploadLogsResp {}
 
-message DeleteLogsReq{
-  repeated string logIDs = 1;
-}
+message DeleteLogsReq { repeated string logIDs = 1; }
 
-message DeleteLogsResp{
-}
+message DeleteLogsResp {}
 
-message SearchLogsReq{
+message SearchLogsReq {
   string keyword = 1;
   int64 startTime = 2;
   int64 endTime = 3;
   sdkws.RequestPagination pagination = 4;
 }
 
-
-message LogInfo{
-  string userID=1;
-  int32 platform=2;
-  string url=3;
-  int64 createTime=4;
-  string nickname=5;
-  string logID=6;
-  string filename=7;
-  string systemType=8;
-  string ex=9;
-  string version=10;
+message LogInfo {
+  string userID = 1;
+  int32 platform = 2;
+  string url = 3;
+  int64 createTime = 4;
+  string nickname = 5;
+  string logID = 6;
+  string filename = 7;
+  string systemType = 8;
+  string ex = 9;
+  string version = 10;
 }
 
-message SearchLogsResp{
+message SearchLogsResp {
   repeated LogInfo logsInfos = 1;
   uint32 total = 2;
 }
 
-service third {
-  rpc PartLimit(PartLimitReq) returns(PartLimitResp);
-  rpc PartSize(PartSizeReq) returns(PartSizeResp);
-  rpc InitiateMultipartUpload(InitiateMultipartUploadReq) returns(InitiateMultipartUploadResp);
-  rpc AuthSign(AuthSignReq) returns(AuthSignResp);
-  rpc CompleteMultipartUpload(CompleteMultipartUploadReq) returns(CompleteMultipartUploadResp);
-  rpc AccessURL(AccessURLReq) returns(AccessURLResp);
+message InitiateRtcTokenReq {
+  string userID = 1;
+  string channelID = 2;
+  int32 roleType = 3;
+}
+message InitiateRtcTokenResp { string token = 1; }
 
-  rpc FcmUpdateToken(FcmUpdateTokenReq) returns(FcmUpdateTokenResp);
-  rpc SetAppBadge(SetAppBadgeReq) returns(SetAppBadgeResp);
-  //日志
+service third {
+  rpc PartLimit(PartLimitReq) returns (PartLimitResp);
+  rpc PartSize(PartSizeReq) returns (PartSizeResp);
+  rpc InitiateMultipartUpload(InitiateMultipartUploadReq)
+      returns (InitiateMultipartUploadResp);
+  rpc AuthSign(AuthSignReq) returns (AuthSignResp);
+  rpc CompleteMultipartUpload(CompleteMultipartUploadReq)
+      returns (CompleteMultipartUploadResp);
+  rpc AccessURL(AccessURLReq) returns (AccessURLResp);
+
+  rpc FcmUpdateToken(FcmUpdateTokenReq) returns (FcmUpdateTokenResp);
+  rpc SetAppBadge(SetAppBadgeReq) returns (SetAppBadgeResp);
+  // 日志
   rpc UploadLogs(UploadLogsReq) returns (UploadLogsResp);
   rpc DeleteLogs(DeleteLogsReq) returns (DeleteLogsResp);
   rpc SearchLogs(SearchLogsReq) returns (SearchLogsResp);
+
+  rpc GetRtcToken(InitiateRtcTokenReq) returns (InitiateRtcTokenResp);
 }
-
-
-
-
-
-

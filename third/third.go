@@ -6,8 +6,7 @@
 //
 //     http://www.apache.org/licenses/LICENSE-2.0
 //
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
+// Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
@@ -32,6 +31,19 @@ func (x *FcmUpdateTokenReq) Check() error {
 func (x *SetAppBadgeReq) Check() error {
 	if x.UserID == "" {
 		return errors.New("UserID is empty")
+	}
+	return nil
+}
+
+func (x *InitiateRtcTokenReq) Check() error {
+	if x.UserID == "" {
+		return errors.New("UserID is empty")
+	}
+	if x.ChannelID == "" {
+		return errors.New("ChannelID is empty")
+	}
+	if x.RoleType < 1 {
+		return errors.New("RoleType is invalid")
 	}
 	return nil
 }
