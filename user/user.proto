@@ -53,15 +53,17 @@ message updateUserInfoReq{
 message updateUserInfoResp{
 }
 
-message setGlobalRecvMessageOptReq{
+message setUserSettingReq{
   string userID = 1;
   OpenIMServer.protobuf.Int32Value globalRecvMsgOpt = 2;
   OpenIMServer.protobuf.Int32Value allowBeep = 3;
   OpenIMServer.protobuf.Int32Value allowVibration = 4;
   OpenIMServer.protobuf.Int32Value allowPushContent = 5;
   OpenIMServer.protobuf.Int32Value allowOnlinePush = 6;
+  OpenIMServer.protobuf.Int32Value allowStrangerMsg = 8;
+  OpenIMServer.protobuf.StringValue language = 7;
 }
-message setGlobalRecvMessageOptResp{
+message setUserSettingResp{
 }
 
 message setConversationReq{
@@ -145,17 +147,18 @@ message userRegisterResp {
 }
 
 
-message getGlobalRecvMessageOptReq{
+message getUserSettingReq{
   string userID = 1;
 }
 
-message getGlobalRecvMessageOptResp{
+message getUserSettingResp{
   int32 globalRecvMsgOpt = 1;
   int32 allowBeep = 2;
   int32 allowVibration = 3;
   int32 allowPushContent = 4;
   int32 allowOnlinePush = 5;
   string language = 6;
+  int32 allowStrangerMsg = 7;
 }
 
 message userRegisterCountReq {
@@ -219,9 +222,9 @@ service user {
   //update user information
   rpc updateUserInfo(updateUserInfoReq) returns(updateUserInfoResp);
   //Set user message receiving options
-  rpc setGlobalRecvMessageOpt(setGlobalRecvMessageOptReq) returns(setGlobalRecvMessageOptResp);
+  rpc setUserSetting(setUserSettingReq) returns(setUserSettingResp);
   //Get the user message receiving option If not found, no error will be returned
-  rpc getGlobalRecvMessageOpt(getGlobalRecvMessageOptReq) returns(getGlobalRecvMessageOptResp);
+  rpc getUserSetting(getUserSettingReq) returns(getUserSettingResp);
   //Check if userID exists
   rpc accountCheck(accountCheckReq) returns (accountCheckResp);
   //Turn the page (or specify userID, nickname) to pull user information Full field

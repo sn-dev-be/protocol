@@ -147,7 +147,7 @@ func (x *UserRegisterReq) Check() error {
 	return nil
 }
 
-func (x *GetGlobalRecvMessageOptReq) Check() error {
+func (x *GetUserSettingReq) Check() error {
 	if x.UserID == "" {
 		return errors.New("UserID is empty")
 	}

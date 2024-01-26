@@ -95,6 +95,7 @@ message UserInfo {
   int32 allowPushContent = 10;
   int32 allowOnlinePush = 11;
   string language = 12;
+  int32 allowStrangerMsg = 13;
 }
 
 message FriendInfo {
