@@ -25,14 +25,20 @@ message SetClearMsgJobReq {
 }
 message SetClearMsgJobResp {}
 
-message GetClearMsgJobReq { 
-  string conversationID = 1; 
+message GetClearMsgJobReq { string conversationID = 1; }
+message GetClearMsgJobResp { int32 cronCycle = 1; }
+
+message SetCloseVoiceChannelJobReq {
+  string channelID = 1;
+  string userID = 2;
+  int32 sessionType = 3;
+  string groupID = 4;
 }
-message GetClearMsgJobResp {
-  int32 cronCycle = 1;
-}
+message SetCloseVoiceChannelJobResp {}
 
 service cron {
   rpc SetClearMsgJob(SetClearMsgJobReq) returns (SetClearMsgJobResp);
   rpc GetClearMsgJob(GetClearMsgJobReq) returns (GetClearMsgJobResp);
+  rpc SetCloseVoiceChannelJob(SetCloseVoiceChannelJobReq)
+      returns (SetCloseVoiceChannelJobResp);
 }

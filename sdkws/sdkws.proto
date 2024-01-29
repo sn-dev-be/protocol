@@ -272,7 +272,7 @@ message SignalVoiceReq {
   repeated string inviteUsersID = 9;
 }
 
-message SignalVoiceGroupTips {
+message SignalGroupVoiceCardTips {
   string channelID = 1;
   repeated PublicUserInfo opUsers = 2;
   int64 createTime = 3;
@@ -281,12 +281,22 @@ message SignalVoiceGroupTips {
 
 message SignalVoiceTips {
   string channelID = 1;
-  PublicUserInfo user = 2;
+  PublicUserInfo opUser = 2;
   int32 remainingSec = 3;
   int32 elapsedSec = 4;
-  int32 micphoneStatus = 5;
+  repeated PublicUserInfo participants = 5;
 }
 
+message SignalVoiceMicphoneStatusTips {
+  string channelID = 1;
+  PublicUserInfo opUser = 2;
+  uint32 micphoneStatus = 3;
+}
+
+message SignalVoiceSpeakStatusTips {
+  string channelID = 1;
+  PublicUserInfo opUser = 2;
+}
 //////////////////////redPacket/////////////////////
 message RedPacketElem {
   string redPacketID = 1;

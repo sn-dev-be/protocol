@@ -126,8 +126,8 @@ const (
 	SignalingSingleChatCanceledNotification    = 1614
 	SignalingSingleChatClosedNotification      = 1615
 
-	VoiceCallRoomEnabled  = 1
-	VoiceCallRoomDisabled = 2
+	VoiceChannelEnabled  = 1
+	VoiceChannelDisabled = 2
 
 	RedPacketClaimedNotification       = 2401
 	RedPacketExpiredNotification       = 2402
