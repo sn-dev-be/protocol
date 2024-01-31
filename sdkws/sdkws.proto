@@ -298,6 +298,8 @@ message SignalVoiceSpeakStatusTips {
   string channelID = 1;
   PublicUserInfo opUser = 2;
 }
+
+message SignalVoiceSingleChatTips { int32 elapsedSec = 1; }
 //////////////////////redPacket/////////////////////
 message RedPacketElem {
   string redPacketID = 1;
@@ -864,7 +866,6 @@ message ServerGroupCreatedTips {
   repeated ServerMemberFullInfo memberList = 4;
   int64 operationTime = 5;
 }
-
 
 //////////////////////club end/////////////////////
 
