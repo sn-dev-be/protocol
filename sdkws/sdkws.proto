@@ -856,6 +856,15 @@ message ServerMemberCancelMutedTips {
   int64 operationTime = 4;
 }
 
+message ServerGroupCreatedTips {
+  string serverID = 1;
+  GroupInfo group = 2;
+  ServerMemberFullInfo opUser = 3;
+  repeated ServerMemberFullInfo memberList = 4;
+  int64 operationTime = 5;
+}
+
+
 //////////////////////club end/////////////////////
 
 ////////////////////cron///////////////////////
