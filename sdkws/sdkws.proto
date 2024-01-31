@@ -285,6 +285,7 @@ message SignalVoiceTips {
   int32 remainingSec = 3;
   int32 elapsedSec = 4;
   repeated PublicUserInfo participants = 5;
+  string conversationID = 6;
 }
 
 message SignalVoiceMicphoneStatusTips {
