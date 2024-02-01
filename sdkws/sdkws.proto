@@ -299,7 +299,10 @@ message SignalVoiceSpeakStatusTips {
   PublicUserInfo opUser = 2;
 }
 
-message SignalVoiceSingleChatTips { int32 elapsedSec = 1; }
+message SignalVoiceSingleChatTips {
+  int32 elapsedSec = 1;
+  string opUserID = 2;
+}
 //////////////////////redPacket/////////////////////
 message RedPacketElem {
   string redPacketID = 1;
