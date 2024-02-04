@@ -7650,6 +7650,7 @@ func (x *ServerDissmissedTips) GetOperationTime() int64 {
 	return 0
 }
 
+// ////////////////////server request/////////////////////
 type JoinServerApplicationTips struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -8377,6 +8378,85 @@ func (x *ServerGroupCreatedTips) GetOperationTime() int64 {
 	return 0
 }
 
+type ServerGroupDismissTips struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	ServerID      string                  `protobuf:"bytes,1,opt,name=serverID,proto3" json:"serverID,omitempty"`
+	GroupID       string                  `protobuf:"bytes,2,opt,name=groupID,proto3" json:"groupID,omitempty"`
+	OpUser        *ServerMemberFullInfo   `protobuf:"bytes,3,opt,name=opUser,proto3" json:"opUser,omitempty"`
+	MemberList    []*ServerMemberFullInfo `protobuf:"bytes,4,rep,name=memberList,proto3" json:"memberList,omitempty"`
+	OperationTime int64                   `protobuf:"varint,5,opt,name=operationTime,proto3" json:"operationTime,omitempty"`
+}
+
+func (x *ServerGroupDismissTips) Reset() {
+	*x = ServerGroupDismissTips{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_sdkws_sdkws_proto_msgTypes[104]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ServerGroupDismissTips) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ServerGroupDismissTips) ProtoMessage() {}
+
+func (x *ServerGroupDismissTips) ProtoReflect() protoreflect.Message {
+	mi := &file_sdkws_sdkws_proto_msgTypes[104]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ServerGroupDismissTips.ProtoReflect.Descriptor instead.
+func (*ServerGroupDismissTips) Descriptor() ([]byte, []int) {
+	return file_sdkws_sdkws_proto_rawDescGZIP(), []int{104}
+}
+
+func (x *ServerGroupDismissTips) GetServerID() string {
+	if x != nil {
+		return x.ServerID
+	}
+	return ""
+}
+
+func (x *ServerGroupDismissTips) GetGroupID() string {
+	if x != nil {
+		return x.GroupID
+	}
+	return ""
+}
+
+func (x *ServerGroupDismissTips) GetOpUser() *ServerMemberFullInfo {
+	if x != nil {
+		return x.OpUser
+	}
+	return nil
+}
+
+func (x *ServerGroupDismissTips) GetMemberList() []*ServerMemberFullInfo {
+	if x != nil {
+		return x.MemberList
+	}
+	return nil
+}
+
+func (x *ServerGroupDismissTips) GetOperationTime() int64 {
+	if x != nil {
+		return x.OperationTime
+	}
+	return 0
+}
+
 // //////////////////cron///////////////////////
 type CronMsgClearTips struct {
 	state         protoimpl.MessageState
@@ -8390,7 +8470,7 @@ type CronMsgClearTips struct {
 func (x *CronMsgClearTips) Reset() {
 	*x = CronMsgClearTips{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_sdkws_sdkws_proto_msgTypes[104]
+		mi := &file_sdkws_sdkws_proto_msgTypes[105]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -8403,7 +8483,7 @@ func (x *CronMsgClearTips) String() string {
 func (*CronMsgClearTips) ProtoMessage() {}
 
 func (x *CronMsgClearTips) ProtoReflect() protoreflect.Message {
-	mi := &file_sdkws_sdkws_proto_msgTypes[104]
+	mi := &file_sdkws_sdkws_proto_msgTypes[105]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -8416,7 +8496,7 @@ func (x *CronMsgClearTips) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CronMsgClearTips.ProtoReflect.Descriptor instead.
 func (*CronMsgClearTips) Descriptor() ([]byte, []int) {
-	return file_sdkws_sdkws_proto_rawDescGZIP(), []int{104}
+	return file_sdkws_sdkws_proto_rawDescGZIP(), []int{105}
 }
 
 func (x *CronMsgClearTips) GetOpUser() *PublicUserInfo {
@@ -9923,20 +10003,36 @@ var file_sdkws_sdkws_proto_rawDesc = []byte{
 	0x6e, 0x66, 0x6f, 0x52, 0x0a, 0x6d, 0x65, 0x6d, 0x62, 0x65, 0x72, 0x4c, 0x69, 0x73, 0x74, 0x12,
 	0x24, 0x0a, 0x0d, 0x6f, 0x70, 0x65, 0x72, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x54, 0x69, 0x6d, 0x65,
 	0x18, 0x05, 0x20, 0x01, 0x28, 0x03, 0x52, 0x0d, 0x6f, 0x70, 0x65, 0x72, 0x61, 0x74, 0x69, 0x6f,
-	0x6e, 0x54, 0x69, 0x6d, 0x65, 0x22, 0x6c, 0x0a, 0x10, 0x43, 0x72, 0x6f, 0x6e, 0x4d, 0x73, 0x67,
-	0x43, 0x6c, 0x65, 0x61, 0x72, 0x54, 0x69, 0x70, 0x73, 0x12, 0x3a, 0x0a, 0x06, 0x6f, 0x70, 0x55,
-	0x73, 0x65, 0x72, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x22, 0x2e, 0x4f, 0x70, 0x65, 0x6e,
-	0x49, 0x4d, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x2e, 0x73, 0x64, 0x6b, 0x77, 0x73, 0x2e, 0x50,
-	0x75, 0x62, 0x6c, 0x69, 0x63, 0x55, 0x73, 0x65, 0x72, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x06, 0x6f,
-	0x70, 0x55, 0x73, 0x65, 0x72, 0x12, 0x1c, 0x0a, 0x09, 0x63, 0x72, 0x6f, 0x6e, 0x43, 0x79, 0x63,
-	0x6c, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x05, 0x52, 0x09, 0x63, 0x72, 0x6f, 0x6e, 0x43, 0x79,
-	0x63, 0x6c, 0x65, 0x2a, 0x30, 0x0a, 0x09, 0x50, 0x75, 0x6c, 0x6c, 0x4f, 0x72, 0x64, 0x65, 0x72,
-	0x12, 0x10, 0x0a, 0x0c, 0x50, 0x75, 0x6c, 0x6c, 0x4f, 0x72, 0x64, 0x65, 0x72, 0x41, 0x73, 0x63,
-	0x10, 0x00, 0x12, 0x11, 0x0a, 0x0d, 0x50, 0x75, 0x6c, 0x6c, 0x4f, 0x72, 0x64, 0x65, 0x72, 0x44,
-	0x65, 0x73, 0x63, 0x10, 0x01, 0x42, 0x25, 0x5a, 0x23, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e,
-	0x63, 0x6f, 0x6d, 0x2f, 0x4f, 0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53, 0x44, 0x4b, 0x2f, 0x70, 0x72,
-	0x6f, 0x74, 0x6f, 0x63, 0x6f, 0x6c, 0x2f, 0x73, 0x64, 0x6b, 0x77, 0x73, 0x62, 0x06, 0x70, 0x72,
-	0x6f, 0x74, 0x6f, 0x33,
+	0x6e, 0x54, 0x69, 0x6d, 0x65, 0x22, 0x80, 0x02, 0x0a, 0x16, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72,
+	0x47, 0x72, 0x6f, 0x75, 0x70, 0x44, 0x69, 0x73, 0x6d, 0x69, 0x73, 0x73, 0x54, 0x69, 0x70, 0x73,
+	0x12, 0x1a, 0x0a, 0x08, 0x73, 0x65, 0x72, 0x76, 0x65, 0x72, 0x49, 0x44, 0x18, 0x01, 0x20, 0x01,
+	0x28, 0x09, 0x52, 0x08, 0x73, 0x65, 0x72, 0x76, 0x65, 0x72, 0x49, 0x44, 0x12, 0x18, 0x0a, 0x07,
+	0x67, 0x72, 0x6f, 0x75, 0x70, 0x49, 0x44, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x67,
+	0x72, 0x6f, 0x75, 0x70, 0x49, 0x44, 0x12, 0x40, 0x0a, 0x06, 0x6f, 0x70, 0x55, 0x73, 0x65, 0x72,
+	0x18, 0x03, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x28, 0x2e, 0x4f, 0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53,
+	0x65, 0x72, 0x76, 0x65, 0x72, 0x2e, 0x73, 0x64, 0x6b, 0x77, 0x73, 0x2e, 0x53, 0x65, 0x72, 0x76,
+	0x65, 0x72, 0x4d, 0x65, 0x6d, 0x62, 0x65, 0x72, 0x46, 0x75, 0x6c, 0x6c, 0x49, 0x6e, 0x66, 0x6f,
+	0x52, 0x06, 0x6f, 0x70, 0x55, 0x73, 0x65, 0x72, 0x12, 0x48, 0x0a, 0x0a, 0x6d, 0x65, 0x6d, 0x62,
+	0x65, 0x72, 0x4c, 0x69, 0x73, 0x74, 0x18, 0x04, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x28, 0x2e, 0x4f,
+	0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x2e, 0x73, 0x64, 0x6b, 0x77,
+	0x73, 0x2e, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x4d, 0x65, 0x6d, 0x62, 0x65, 0x72, 0x46, 0x75,
+	0x6c, 0x6c, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x0a, 0x6d, 0x65, 0x6d, 0x62, 0x65, 0x72, 0x4c, 0x69,
+	0x73, 0x74, 0x12, 0x24, 0x0a, 0x0d, 0x6f, 0x70, 0x65, 0x72, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x54,
+	0x69, 0x6d, 0x65, 0x18, 0x05, 0x20, 0x01, 0x28, 0x03, 0x52, 0x0d, 0x6f, 0x70, 0x65, 0x72, 0x61,
+	0x74, 0x69, 0x6f, 0x6e, 0x54, 0x69, 0x6d, 0x65, 0x22, 0x6c, 0x0a, 0x10, 0x43, 0x72, 0x6f, 0x6e,
+	0x4d, 0x73, 0x67, 0x43, 0x6c, 0x65, 0x61, 0x72, 0x54, 0x69, 0x70, 0x73, 0x12, 0x3a, 0x0a, 0x06,
+	0x6f, 0x70, 0x55, 0x73, 0x65, 0x72, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x22, 0x2e, 0x4f,
+	0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x2e, 0x73, 0x64, 0x6b, 0x77,
+	0x73, 0x2e, 0x50, 0x75, 0x62, 0x6c, 0x69, 0x63, 0x55, 0x73, 0x65, 0x72, 0x49, 0x6e, 0x66, 0x6f,
+	0x52, 0x06, 0x6f, 0x70, 0x55, 0x73, 0x65, 0x72, 0x12, 0x1c, 0x0a, 0x09, 0x63, 0x72, 0x6f, 0x6e,
+	0x43, 0x79, 0x63, 0x6c, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x05, 0x52, 0x09, 0x63, 0x72, 0x6f,
+	0x6e, 0x43, 0x79, 0x63, 0x6c, 0x65, 0x2a, 0x30, 0x0a, 0x09, 0x50, 0x75, 0x6c, 0x6c, 0x4f, 0x72,
+	0x64, 0x65, 0x72, 0x12, 0x10, 0x0a, 0x0c, 0x50, 0x75, 0x6c, 0x6c, 0x4f, 0x72, 0x64, 0x65, 0x72,
+	0x41, 0x73, 0x63, 0x10, 0x00, 0x12, 0x11, 0x0a, 0x0d, 0x50, 0x75, 0x6c, 0x6c, 0x4f, 0x72, 0x64,
+	0x65, 0x72, 0x44, 0x65, 0x73, 0x63, 0x10, 0x01, 0x42, 0x25, 0x5a, 0x23, 0x67, 0x69, 0x74, 0x68,
+	0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x4f, 0x70, 0x65, 0x6e, 0x49, 0x4d, 0x53, 0x44, 0x4b,
+	0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x63, 0x6f, 0x6c, 0x2f, 0x73, 0x64, 0x6b, 0x77, 0x73, 0x62,
+	0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -9952,7 +10048,7 @@ func file_sdkws_sdkws_proto_rawDescGZIP() []byte {
 }
 
 var file_sdkws_sdkws_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
-var file_sdkws_sdkws_proto_msgTypes = make([]protoimpl.MessageInfo, 112)
+var file_sdkws_sdkws_proto_msgTypes = make([]protoimpl.MessageInfo, 113)
 var file_sdkws_sdkws_proto_goTypes = []interface{}{
 	(PullOrder)(0),                        // 0: OpenIMServer.sdkws.PullOrder
 	(*GroupInfo)(nil),                     // 1: OpenIMServer.sdkws.GroupInfo
@@ -10059,22 +10155,23 @@ var file_sdkws_sdkws_proto_goTypes = []interface{}{
 	(*ServerMemberMutedTips)(nil),         // 102: OpenIMServer.sdkws.ServerMemberMutedTips
 	(*ServerMemberCancelMutedTips)(nil),   // 103: OpenIMServer.sdkws.ServerMemberCancelMutedTips
 	(*ServerGroupCreatedTips)(nil),        // 104: OpenIMServer.sdkws.ServerGroupCreatedTips
-	(*CronMsgClearTips)(nil),              // 105: OpenIMServer.sdkws.CronMsgClearTips
-	nil,                                   // 106: OpenIMServer.sdkws.PullMessageBySeqsResp.MsgsEntry
-	nil,                                   // 107: OpenIMServer.sdkws.PullMessageBySeqsResp.NotificationMsgsEntry
-	nil,                                   // 108: OpenIMServer.sdkws.GetMaxSeqResp.MaxSeqsEntry
-	nil,                                   // 109: OpenIMServer.sdkws.GetMaxSeqResp.MinSeqsEntry
-	nil,                                   // 110: OpenIMServer.sdkws.MsgData.OptionsEntry
-	nil,                                   // 111: OpenIMServer.sdkws.PushMessages.MsgsEntry
-	nil,                                   // 112: OpenIMServer.sdkws.PushMessages.NotificationMsgsEntry
-	(*wrapperspb.StringValue)(nil),        // 113: OpenIMServer.protobuf.StringValue
-	(*wrapperspb.Int32Value)(nil),         // 114: OpenIMServer.protobuf.Int32Value
+	(*ServerGroupDismissTips)(nil),        // 105: OpenIMServer.sdkws.ServerGroupDismissTips
+	(*CronMsgClearTips)(nil),              // 106: OpenIMServer.sdkws.CronMsgClearTips
+	nil,                                   // 107: OpenIMServer.sdkws.PullMessageBySeqsResp.MsgsEntry
+	nil,                                   // 108: OpenIMServer.sdkws.PullMessageBySeqsResp.NotificationMsgsEntry
+	nil,                                   // 109: OpenIMServer.sdkws.GetMaxSeqResp.MaxSeqsEntry
+	nil,                                   // 110: OpenIMServer.sdkws.GetMaxSeqResp.MinSeqsEntry
+	nil,                                   // 111: OpenIMServer.sdkws.MsgData.OptionsEntry
+	nil,                                   // 112: OpenIMServer.sdkws.PushMessages.MsgsEntry
+	nil,                                   // 113: OpenIMServer.sdkws.PushMessages.NotificationMsgsEntry
+	(*wrapperspb.StringValue)(nil),        // 114: OpenIMServer.protobuf.StringValue
+	(*wrapperspb.Int32Value)(nil),         // 115: OpenIMServer.protobuf.Int32Value
 }
 var file_sdkws_sdkws_proto_depIdxs = []int32{
-	113, // 0: OpenIMServer.sdkws.GroupInfoForSet.ex:type_name -> OpenIMServer.protobuf.StringValue
-	114, // 1: OpenIMServer.sdkws.GroupInfoForSet.needVerification:type_name -> OpenIMServer.protobuf.Int32Value
-	114, // 2: OpenIMServer.sdkws.GroupInfoForSet.lookMemberInfo:type_name -> OpenIMServer.protobuf.Int32Value
-	114, // 3: OpenIMServer.sdkws.GroupInfoForSet.applyMemberFriend:type_name -> OpenIMServer.protobuf.Int32Value
+	114, // 0: OpenIMServer.sdkws.GroupInfoForSet.ex:type_name -> OpenIMServer.protobuf.StringValue
+	115, // 1: OpenIMServer.sdkws.GroupInfoForSet.needVerification:type_name -> OpenIMServer.protobuf.Int32Value
+	115, // 2: OpenIMServer.sdkws.GroupInfoForSet.lookMemberInfo:type_name -> OpenIMServer.protobuf.Int32Value
+	115, // 3: OpenIMServer.sdkws.GroupInfoForSet.applyMemberFriend:type_name -> OpenIMServer.protobuf.Int32Value
 	5,   // 4: OpenIMServer.sdkws.FriendInfo.friendUser:type_name -> OpenIMServer.sdkws.UserInfo
 	4,   // 5: OpenIMServer.sdkws.BlackInfo.blackUserInfo:type_name -> OpenIMServer.sdkws.PublicUserInfo
 	4,   // 6: OpenIMServer.sdkws.GroupRequest.userInfo:type_name -> OpenIMServer.sdkws.PublicUserInfo
@@ -10082,14 +10179,14 @@ var file_sdkws_sdkws_proto_depIdxs = []int32{
 	13,  // 8: OpenIMServer.sdkws.PullMessageBySeqsReq.seqRanges:type_name -> OpenIMServer.sdkws.SeqRange
 	0,   // 9: OpenIMServer.sdkws.PullMessageBySeqsReq.order:type_name -> OpenIMServer.sdkws.PullOrder
 	19,  // 10: OpenIMServer.sdkws.PullMsgs.Msgs:type_name -> OpenIMServer.sdkws.MsgData
-	106, // 11: OpenIMServer.sdkws.PullMessageBySeqsResp.msgs:type_name -> OpenIMServer.sdkws.PullMessageBySeqsResp.MsgsEntry
-	107, // 12: OpenIMServer.sdkws.PullMessageBySeqsResp.notificationMsgs:type_name -> OpenIMServer.sdkws.PullMessageBySeqsResp.NotificationMsgsEntry
-	108, // 13: OpenIMServer.sdkws.GetMaxSeqResp.maxSeqs:type_name -> OpenIMServer.sdkws.GetMaxSeqResp.MaxSeqsEntry
-	109, // 14: OpenIMServer.sdkws.GetMaxSeqResp.minSeqs:type_name -> OpenIMServer.sdkws.GetMaxSeqResp.MinSeqsEntry
-	110, // 15: OpenIMServer.sdkws.MsgData.options:type_name -> OpenIMServer.sdkws.MsgData.OptionsEntry
+	107, // 11: OpenIMServer.sdkws.PullMessageBySeqsResp.msgs:type_name -> OpenIMServer.sdkws.PullMessageBySeqsResp.MsgsEntry
+	108, // 12: OpenIMServer.sdkws.PullMessageBySeqsResp.notificationMsgs:type_name -> OpenIMServer.sdkws.PullMessageBySeqsResp.NotificationMsgsEntry
+	109, // 13: OpenIMServer.sdkws.GetMaxSeqResp.maxSeqs:type_name -> OpenIMServer.sdkws.GetMaxSeqResp.MaxSeqsEntry
+	110, // 14: OpenIMServer.sdkws.GetMaxSeqResp.minSeqs:type_name -> OpenIMServer.sdkws.GetMaxSeqResp.MinSeqsEntry
+	111, // 15: OpenIMServer.sdkws.MsgData.options:type_name -> OpenIMServer.sdkws.MsgData.OptionsEntry
 	21,  // 16: OpenIMServer.sdkws.MsgData.offlinePushInfo:type_name -> OpenIMServer.sdkws.OfflinePushInfo
-	111, // 17: OpenIMServer.sdkws.PushMessages.msgs:type_name -> OpenIMServer.sdkws.PushMessages.MsgsEntry
-	112, // 18: OpenIMServer.sdkws.PushMessages.notificationMsgs:type_name -> OpenIMServer.sdkws.PushMessages.NotificationMsgsEntry
+	112, // 17: OpenIMServer.sdkws.PushMessages.msgs:type_name -> OpenIMServer.sdkws.PushMessages.MsgsEntry
+	113, // 18: OpenIMServer.sdkws.PushMessages.notificationMsgs:type_name -> OpenIMServer.sdkws.PushMessages.NotificationMsgsEntry
 	4,   // 19: OpenIMServer.sdkws.SignalGroupVoiceCardTips.opUsers:type_name -> OpenIMServer.sdkws.PublicUserInfo
 	4,   // 20: OpenIMServer.sdkws.SignalVoiceTips.opUser:type_name -> OpenIMServer.sdkws.PublicUserInfo
 	4,   // 21: OpenIMServer.sdkws.SignalVoiceTips.participants:type_name -> OpenIMServer.sdkws.PublicUserInfo
@@ -10153,18 +10250,18 @@ var file_sdkws_sdkws_proto_depIdxs = []int32{
 	81,  // 79: OpenIMServer.sdkws.GroupCategoryListInfo.groupList:type_name -> OpenIMServer.sdkws.ServerGroupListInfo
 	87,  // 80: OpenIMServer.sdkws.ServerGroupListInfo.dapp:type_name -> OpenIMServer.sdkws.GroupDappFullInfo
 	83,  // 81: OpenIMServer.sdkws.ServerRecommendedInfo.serverInfo:type_name -> OpenIMServer.sdkws.ServerInfo
-	113, // 82: OpenIMServer.sdkws.ServerInfoForSet.serverName:type_name -> OpenIMServer.protobuf.StringValue
-	113, // 83: OpenIMServer.sdkws.ServerInfoForSet.icon:type_name -> OpenIMServer.protobuf.StringValue
-	113, // 84: OpenIMServer.sdkws.ServerInfoForSet.description:type_name -> OpenIMServer.protobuf.StringValue
-	113, // 85: OpenIMServer.sdkws.ServerInfoForSet.banner:type_name -> OpenIMServer.protobuf.StringValue
-	113, // 86: OpenIMServer.sdkws.ServerInfoForSet.ex:type_name -> OpenIMServer.protobuf.StringValue
-	114, // 87: OpenIMServer.sdkws.ServerInfoForSet.applyMode:type_name -> OpenIMServer.protobuf.Int32Value
-	114, // 88: OpenIMServer.sdkws.ServerInfoForSet.searchable:type_name -> OpenIMServer.protobuf.Int32Value
-	114, // 89: OpenIMServer.sdkws.ServerInfoForSet.userMutualAccessible:type_name -> OpenIMServer.protobuf.Int32Value
-	113, // 90: OpenIMServer.sdkws.ServerInfoForSet.dappID:type_name -> OpenIMServer.protobuf.StringValue
-	113, // 91: OpenIMServer.sdkws.ServerInfoForSet.communityName:type_name -> OpenIMServer.protobuf.StringValue
-	113, // 92: OpenIMServer.sdkws.ServerInfoForSet.communityBanner:type_name -> OpenIMServer.protobuf.StringValue
-	114, // 93: OpenIMServer.sdkws.ServerInfoForSet.communityViewMode:type_name -> OpenIMServer.protobuf.Int32Value
+	114, // 82: OpenIMServer.sdkws.ServerInfoForSet.serverName:type_name -> OpenIMServer.protobuf.StringValue
+	114, // 83: OpenIMServer.sdkws.ServerInfoForSet.icon:type_name -> OpenIMServer.protobuf.StringValue
+	114, // 84: OpenIMServer.sdkws.ServerInfoForSet.description:type_name -> OpenIMServer.protobuf.StringValue
+	114, // 85: OpenIMServer.sdkws.ServerInfoForSet.banner:type_name -> OpenIMServer.protobuf.StringValue
+	114, // 86: OpenIMServer.sdkws.ServerInfoForSet.ex:type_name -> OpenIMServer.protobuf.StringValue
+	115, // 87: OpenIMServer.sdkws.ServerInfoForSet.applyMode:type_name -> OpenIMServer.protobuf.Int32Value
+	115, // 88: OpenIMServer.sdkws.ServerInfoForSet.searchable:type_name -> OpenIMServer.protobuf.Int32Value
+	115, // 89: OpenIMServer.sdkws.ServerInfoForSet.userMutualAccessible:type_name -> OpenIMServer.protobuf.Int32Value
+	114, // 90: OpenIMServer.sdkws.ServerInfoForSet.dappID:type_name -> OpenIMServer.protobuf.StringValue
+	114, // 91: OpenIMServer.sdkws.ServerInfoForSet.communityName:type_name -> OpenIMServer.protobuf.StringValue
+	114, // 92: OpenIMServer.sdkws.ServerInfoForSet.communityBanner:type_name -> OpenIMServer.protobuf.StringValue
+	115, // 93: OpenIMServer.sdkws.ServerInfoForSet.communityViewMode:type_name -> OpenIMServer.protobuf.Int32Value
 	4,   // 94: OpenIMServer.sdkws.ServerRequest.userInfo:type_name -> OpenIMServer.sdkws.PublicUserInfo
 	83,  // 95: OpenIMServer.sdkws.ServerRequest.serverInfo:type_name -> OpenIMServer.sdkws.ServerInfo
 	5,   // 96: OpenIMServer.sdkws.ServerBlackFullInfo.operatorUser:type_name -> OpenIMServer.sdkws.UserInfo
@@ -10193,16 +10290,18 @@ var file_sdkws_sdkws_proto_depIdxs = []int32{
 	1,   // 119: OpenIMServer.sdkws.ServerGroupCreatedTips.group:type_name -> OpenIMServer.sdkws.GroupInfo
 	85,  // 120: OpenIMServer.sdkws.ServerGroupCreatedTips.opUser:type_name -> OpenIMServer.sdkws.ServerMemberFullInfo
 	85,  // 121: OpenIMServer.sdkws.ServerGroupCreatedTips.memberList:type_name -> OpenIMServer.sdkws.ServerMemberFullInfo
-	4,   // 122: OpenIMServer.sdkws.CronMsgClearTips.opUser:type_name -> OpenIMServer.sdkws.PublicUserInfo
-	14,  // 123: OpenIMServer.sdkws.PullMessageBySeqsResp.MsgsEntry.value:type_name -> OpenIMServer.sdkws.PullMsgs
-	14,  // 124: OpenIMServer.sdkws.PullMessageBySeqsResp.NotificationMsgsEntry.value:type_name -> OpenIMServer.sdkws.PullMsgs
-	14,  // 125: OpenIMServer.sdkws.PushMessages.MsgsEntry.value:type_name -> OpenIMServer.sdkws.PullMsgs
-	14,  // 126: OpenIMServer.sdkws.PushMessages.NotificationMsgsEntry.value:type_name -> OpenIMServer.sdkws.PullMsgs
-	127, // [127:127] is the sub-list for method output_type
-	127, // [127:127] is the sub-list for method input_type
-	127, // [127:127] is the sub-list for extension type_name
-	127, // [127:127] is the sub-list for extension extendee
-	0,   // [0:127] is the sub-list for field type_name
+	85,  // 122: OpenIMServer.sdkws.ServerGroupDismissTips.opUser:type_name -> OpenIMServer.sdkws.ServerMemberFullInfo
+	85,  // 123: OpenIMServer.sdkws.ServerGroupDismissTips.memberList:type_name -> OpenIMServer.sdkws.ServerMemberFullInfo
+	4,   // 124: OpenIMServer.sdkws.CronMsgClearTips.opUser:type_name -> OpenIMServer.sdkws.PublicUserInfo
+	14,  // 125: OpenIMServer.sdkws.PullMessageBySeqsResp.MsgsEntry.value:type_name -> OpenIMServer.sdkws.PullMsgs
+	14,  // 126: OpenIMServer.sdkws.PullMessageBySeqsResp.NotificationMsgsEntry.value:type_name -> OpenIMServer.sdkws.PullMsgs
+	14,  // 127: OpenIMServer.sdkws.PushMessages.MsgsEntry.value:type_name -> OpenIMServer.sdkws.PullMsgs
+	14,  // 128: OpenIMServer.sdkws.PushMessages.NotificationMsgsEntry.value:type_name -> OpenIMServer.sdkws.PullMsgs
+	129, // [129:129] is the sub-list for method output_type
+	129, // [129:129] is the sub-list for method input_type
+	129, // [129:129] is the sub-list for extension type_name
+	129, // [129:129] is the sub-list for extension extendee
+	0,   // [0:129] is the sub-list for field type_name
 }
 
 func init() { file_sdkws_sdkws_proto_init() }
@@ -11460,6 +11559,18 @@ func file_sdkws_sdkws_proto_init() {
 			}
 		}
 		file_sdkws_sdkws_proto_msgTypes[104].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ServerGroupDismissTips); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_sdkws_sdkws_proto_msgTypes[105].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*CronMsgClearTips); i {
 			case 0:
 				return &v.state
@@ -11478,7 +11589,7 @@ func file_sdkws_sdkws_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_sdkws_sdkws_proto_rawDesc,
 			NumEnums:      1,
-			NumMessages:   112,
+			NumMessages:   113,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

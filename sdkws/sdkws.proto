@@ -802,6 +802,7 @@ message ServerDissmissedTips {
   int64 operationTime = 4;
 }
 
+//////////////////////server request/////////////////////
 message JoinServerApplicationTips {
   ServerInfo server = 1;
   PublicUserInfo applicant = 2;
@@ -823,6 +824,8 @@ message ServerApplicationRejectedTips {
   string handleMsg = 4;
   int32 receiverAs = 5; // admin(==1) or applicant(==0)
 }
+
+//////////////////////server member/////////////////////
 
 message ServerMemberEnterTips {
   string serverID = 1;
@@ -862,9 +865,19 @@ message ServerMemberCancelMutedTips {
   int64 operationTime = 4;
 }
 
+//////////////////////server group/////////////////////
+
 message ServerGroupCreatedTips {
   string serverID = 1;
   GroupInfo group = 2;
+  ServerMemberFullInfo opUser = 3;
+  repeated ServerMemberFullInfo memberList = 4;
+  int64 operationTime = 5;
+}
+
+message ServerGroupDismissTips {
+  string serverID = 1;
+  string groupID = 2;
   ServerMemberFullInfo opUser = 3;
   repeated ServerMemberFullInfo memberList = 4;
   int64 operationTime = 5;
