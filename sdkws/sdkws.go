@@ -27,3 +27,10 @@ func (x *MsgData) Check() error {
 	}
 	return nil
 }
+
+func (x *SignalVoiceReq) Check() error {
+	if x.InviteUserID == "" {
+		return errors.New("inviteUserID empty")
+	}
+	return nil
+}

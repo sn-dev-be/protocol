@@ -269,7 +269,7 @@ message SignalVoiceReq {
   string customeData = 6;
   int32 duration = 7;
   int32 micphoneStatus = 8;
-  repeated string inviteUsersID = 9;
+  string inviteUserID = 9;
 }
 
 message SignalGroupVoiceCardTips {
