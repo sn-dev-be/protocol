@@ -128,6 +128,7 @@ const (
 	SignalingGroupJoinedNotification           = 1613
 	SignalingSingleChatCanceledNotification    = 1614
 	SignalingSingleChatClosedNotification      = 1615
+	SignalingSingleChatNoAnswerNotification    = 1616
 
 	VoiceChannelEnabled  = 1
 	VoiceChannelDisabled = 2
