@@ -100,6 +100,9 @@ const (
 	VoiceCall = 1
 	VideoCall = 2
 
+	WaitingForCall = "0"
+	OnTheCall      = "1"
+
 	SignalingInviation            = 1
 	SignalingAccept               = 2
 	SignalingReject               = 3
