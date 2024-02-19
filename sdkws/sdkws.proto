@@ -270,6 +270,7 @@ message SignalVoiceReq {
   int32 duration = 7;
   int32 micphoneStatus = 8;
   string inviteUserID = 9;
+  int32 hungUpType = 10;
 }
 
 message SignalGroupVoiceCardTips {

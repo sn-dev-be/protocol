@@ -100,6 +100,9 @@ const (
 	VoiceCall = 1
 	VideoCall = 2
 
+	HungUpWithNormal = 1
+	HungUpWithError  = 2
+
 	WaitingForCall = "0"
 	OnTheCall      = "1"
 
@@ -129,6 +132,7 @@ const (
 	SignalingSingleChatCanceledNotification    = 1614
 	SignalingSingleChatClosedNotification      = 1615
 	SignalingSingleChatNoAnswerNotification    = 1616
+	SignalingSingleChatErrorClosedNotification = 1617
 
 	VoiceChannelEnabled  = 1
 	VoiceChannelDisabled = 2
