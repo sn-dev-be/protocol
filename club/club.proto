@@ -373,7 +373,7 @@ message ServerApplicationResponseReq{
   string handledMsg = 3;
   int32 handleResult = 4;
   string conversationID = 5;
-  int64 seq = 6;
+  repeated int64 seqs = 6;
 }
 message ServerApplicationResponseResp{
 }

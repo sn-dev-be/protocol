@@ -93,7 +93,7 @@ message SetRedPacketMsgStatusResp {}
 
 message ModifyMsgReq {
   string conversationID = 1;
-  int64 seq = 2;
+  repeated int64 seqs = 2;
   string userID = 3;
   string content = 4;
   int32 modifyType = 5;
