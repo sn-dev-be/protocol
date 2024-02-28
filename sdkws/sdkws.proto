@@ -880,7 +880,7 @@ message ServerGroupDismissTips {
   string serverID = 1;
   string groupID = 2;
   ServerMemberFullInfo opUser = 3;
-  repeated ServerMemberFullInfo memberList = 4;
+  repeated string memberUserIDList = 4;
   int64 operationTime = 5;
 }
 
