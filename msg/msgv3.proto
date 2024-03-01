@@ -101,6 +101,15 @@ message ModifyMsgReq {
 
 message ModifyMsgResp {}
 
+message GetMsgBySeqsReq{
+  repeated int64 seqs = 1;
+  string userID = 2;
+  string conversationID = 3;
+}
+message GetMsgBySeqsResp{
+  repeated sdkws.MsgData msgs = 1;
+}
+
 message MarkMsgsAsReadReq {
   string conversationID = 1;
   repeated int64 seqs = 2;
@@ -330,6 +339,8 @@ service msg {
       returns (SetRedPacketMsgStatusResp);
 
   rpc ModifyMsg(ModifyMsgReq) returns (ModifyMsgResp);
+
+  rpc GetMsgBySeqs(GetMsgBySeqsReq) returns (GetMsgBySeqsResp);
 
   //send event to businessMQ
   rpc SendBusinessEventToMQ(SendBusinessEventToMQReq) returns (SendBusinessEventToMQResp);
