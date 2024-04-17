@@ -780,6 +780,18 @@ message ServerGroupBaseInfo {
   int32 conditionType = 9;
 }
 
+message GroupTreasuryInfo {
+  string serverID = 1;
+  string groupID = 2;
+  string treasuryID = 3;
+  string icon = 4;
+  string name = 5;
+  int32 walletType = 6;
+  string contractAddress = 7;
+  string administratorAddress = 8;
+  string ex = 9;
+}
+
 // tips
 message ServerCreatedTips {
   ServerInfo server = 1;

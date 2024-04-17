@@ -465,6 +465,21 @@ message GetServerMuteRecordsResp{
   repeated sdkws.ServerMuteRecord records = 2;
 }
 
+////////////mute_record////////////
+message SetGroupTreasuryReq{
+  sdkws.GroupTreasuryInfo info = 1;
+}
+message SetGroupTreasuryResp{
+
+}
+
+message GetGroupTreasuryReq{
+  repeated string groupIDs = 1;
+}
+message GetGroupTreasuryResp{
+  repeated sdkws.GroupTreasuryInfo records = 1;
+}
+
 service club {
   // 创建部落
   rpc createServer(CreateServerReq) returns (CreateServerResp);
@@ -573,6 +588,10 @@ service club {
   rpc getServerRolesInfo(GetServerRolesInfoReq) returns(GetServerRolesInfoResp);
 
 
-  //mute_record
+  // mute_record
   rpc getServerMuteRecords(GetServerMuteRecordsReq) returns (GetServerMuteRecordsResp);
+
+  // server_treasure
+  rpc setGroupTreasure(SetGroupTreasuryReq) returns(SetGroupTreasuryResp);
+  rpc getGroupTreasure(GetGroupTreasuryReq) returns(GetGroupTreasuryResp);
 }
